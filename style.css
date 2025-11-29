@@ -51,3 +51,23 @@ h2 {
         overflow-x: hidden; /* Oculta qualquer excesso que possa sobrar */
     }
 }
+
+/* --- ESTILO PARA O QR CODE PIX --- */
+.pix-qrcode {
+    display: block; /* Garante que a imagem se comporte como um bloco (ocupa a largura total disponível) */
+    max-width: 150px; /* Define um tamanho máximo para a imagem em telas grandes/desktops */
+    height: auto;   /* Mantém a proporção da imagem, essencial! */
+    margin: 20px auto; /* Centraliza a imagem horizontalmente e adiciona espaço */
+    padding: 5px;
+    border: 1px solid #ddd; /* Uma borda sutil para destacá-lo um pouco */
+    border-radius: 5px; /* Bordas levemente arredondadas */
+    background-color: #fff; /* Fundo branco para garantir contraste, se a página for escura */
+}
+
+/* --- AJUSTES ESPECÍFICOS PARA TELAS PEQUENAS (SMARTPHONES) --- */
+@media (max-width: 600px) {
+    .pix-qrcode {
+        max-width: 120px; /* Reduz um pouco o tamanho máximo em celulares para não ocupar demais */
+        margin: 15px auto; /* Ajusta a margem em telas menores */
+    }
+}

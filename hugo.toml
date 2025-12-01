@@ -1,0 +1,23 @@
+# --- Configuração do Site Principal (bizumatica.github.io) ---
+baseURL = "https://bizumatica.github.io/"
+languageCode = "pt-br"
+title = "Bizumatica"
+theme = "terminal"
+
+[pagination]
+  pagerSize = 5
+
+# Isso garante que o site seja gerado na pasta /docs
+publishDir = "docs"
+
+[params]
+  themeColor = "green" 
+  fullWidthTheme = false
+  centerTheme = true
+  animatedTheme = true
+
+[menu]
+  [[menu.main]]
+    identifier = "blog"
+    name = ":: Acessar Blog ::"
+    url = "/bizumatica-blog/"

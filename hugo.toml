@@ -3,12 +3,10 @@ baseURL = "https://bizumatica.github.io/"
 languageCode = "pt-br"
 title = "Bizumatica"
 theme = "terminal"
+publishDir = "docs"
 
 [pagination]
   pagerSize = 5
-
-# Isso garante que o site seja gerado na pasta /docs
-publishDir = "docs"
 
 [params]
   themeColor = "green" 

@@ -5,6 +5,8 @@ title = "Bizumatica"
 theme = "terminal"
 publishDir = "docs"
 
+enableEmoji = true
+
 [pagination]
   pagerSize = 5
 

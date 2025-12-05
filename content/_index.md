@@ -45,15 +45,11 @@ Cobrimos desde o Kernel até a experiência do usuário.
 
 Se você valoriza o conteúdo sobre Shell Script e Linux que produzimos, considere apoiar nosso trabalho com um café!
 
-  **☕ Via Ko-fi:**
-  
-  <a href='https://ko-fi.com/V7V21PDA6F' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi6.png?v=6' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+  **☕ Via Ko-fi:** [![Me pague um café](/ko-fi.png)](https://ko-fi.com/bizumatica)
   
   **☘️ Pix:** [julio.prata@proton.me](julio.prata@proton.me)
   
-  **#️⃣ QRCode:**
-
-  <img src="pix_qrcode.png" alt="QR Code Pix para Bizumática" class="pix-qrcode">
+  **#️⃣ QRCode:** ![QR Code do Pix](/pix_qrcode.png)
 
 Seu apoio nos ajuda a manter os tutoriais atualizados e os scripts gratuitos.
 

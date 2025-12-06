@@ -45,11 +45,23 @@ Cobrimos desde o Kernel até a experiência do usuário.
 
 Se você valoriza o conteúdo sobre Shell Script e Linux que produzimos, considere apoiar nosso trabalho com um café!
 
-  **☕ Via Ko-fi:** [![Me pague um café](/ko-fi.png)](https://ko-fi.com/bizumatica)
-  
-  **☘️ Pix:** [julio.prata@proton.me](julio.prata@proton.me)
-  
-  **#️⃣ QRCode:** ![QR Code do Pix](/pix_qrcode.png)
+<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start;">
+
+    <div style="flex: 1; min-width: 200px;">
+        <strong>Via Pix:</strong><br>
+        <img src="/pix_qrcode.png" alt="QR Code Pix" 
+             style="width: 100%; max-width: 200px; height: auto; border-radius: 10px; border: 2px solid #333;">
+    </div>
+
+    <div style="flex: 1; min-width: 200px;">
+        <strong>Via Ko-Fi:</strong><br>
+        <a href="https://ko-fi.com/backinbash" target="_blank">
+            <img src="/ko-fi.png" alt="Pague um café no Ko-Fi" 
+                 style="width: 100%; max-width: 200px; height: auto;">
+        </a>
+    </div>
+
+</div>
 
 Seu apoio nos ajuda a manter os tutoriais atualizados e os scripts gratuitos.
 

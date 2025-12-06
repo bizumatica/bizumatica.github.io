@@ -24,3 +24,8 @@ enableEmoji = true
     identifier = "blog"
     name = ":: Acessar Blog ::"
     url = "/bizumatica-blog/"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

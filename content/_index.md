@@ -10,10 +10,10 @@ Aqui você encontrará análises, tutoriais práticos e insights sobre o mundo L
 
 ## 📖 Sumário
 
-1.  [🛠️ Shell Scripting & Automação](/shell-scripting/)
-2.  [🐧 O Ecossistema Linux](/linux/)
-3.  [📱 Análise de Aplicativos](/apps/)
-4.  [📰 Lançamentos e Notícias](/noticias/)
+1.  [O Ecossistema Linux](#o-ecossistema-linux)
+2.  [Shell Scripting & Automação](#shell-scripting--automação)
+3.  [Análise de Aplicativos](#análise-de-aplicativos)
+4.  [Lançamentos e Notícias](#lançamentos-e-notícias)
 
 ## ⚙️ Shell Scripting & Automação
 
@@ -45,21 +45,19 @@ Cobrimos desde o Kernel até a experiência do usuário.
 
 Se você valoriza o conteúdo sobre Shell Script e Linux que produzimos, considere apoiar nosso trabalho com um café!
 
-<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start;">
+<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; margin-top: 20px; margin-bottom: 20px;">
 
-    <div style="flex: 1; min-width: 200px;">
-        <strong>Via Pix:</strong><br>
-        <img src="/pix_qrcode.png" alt="QR Code Pix" 
-             style="width: 100%; max-width: 200px; height: auto; border-radius: 10px; border: 2px solid #333;">
-    </div>
+<div style="flex: 1; min-width: 200px;">
+<strong>Via Pix:</strong><br>
+<img src="/pix_qrcode.png" alt="QR Code Pix" style="width: 100%; max-width: 200px; height: auto; border-radius: 10px; border: 2px solid #333; margin-top: 10px;">
+</div>
 
-    <div style="flex: 1; min-width: 200px;">
-        <strong>Via Ko-Fi:</strong><br>
-        <a href="https://ko-fi.com/backinbash" target="_blank">
-            <img src="/ko-fi.png" alt="Pague um café no Ko-Fi" 
-                 style="width: 100%; max-width: 200px; height: auto;">
-        </a>
-    </div>
+<div style="flex: 1; min-width: 200px;">
+<strong>Via Ko-Fi:</strong><br>
+<a href="https://ko-fi.com/backinbash" target="_blank">
+<img src="/ko-fi.png" alt="Pague um café no Ko-Fi" style="width: 100%; max-width: 200px; height: auto; margin-top: 10px;">
+</a>
+</div>
 
 </div>
 

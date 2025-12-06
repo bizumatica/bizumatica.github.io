@@ -10,10 +10,10 @@ Aqui você encontrará análises, tutoriais práticos e insights sobre o mundo L
 
 ## 📖 Sumário
 
-1.  [O Ecossistema Linux](#o-ecossistema-linux)
-2.  [Shell Scripting & Automação](#shell-scripting--automação)
-3.  [Análise de Aplicativos](#análise-de-aplicativos)
-4.  [Lançamentos e Notícias](#lançamentos-e-notícias)
+1.  [🛠️ Shell Scripting & Automação](/shell-scripting/)
+2.  [🐧 O Ecossistema Linux](/linux/)
+3.  [📱 Análise de Aplicativos](/apps/)
+4.  [📰 Lançamentos e Notícias](/noticias/)
 
 ## ⚙️ Shell Scripting & Automação
 

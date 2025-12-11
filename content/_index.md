@@ -49,12 +49,14 @@ Se você valoriza o conteúdo sobre Shell Script e Linux que produzimos, conside
 
 <div style="flex: 1; min-width: 200px;">
 <strong>Via Pix:</strong><br>
+julio.prata@proton.me<br>
 <img src="/pix_qrcode.png" alt="QR Code Pix" style="width: 100%; max-width: 200px; height: auto; border-radius: 10px; border: 2px solid #333; margin-top: 10px;">
 </div>
 
 <div style="flex: 1; min-width: 200px;">
 <strong>Via Ko-Fi:</strong><br>
-<a href="https://ko-fi.com/backinbash" target="_blank">
+<a href="https://ko-fi.com/bizumatica" target="_blank" style="text-decoration: none; color: inherit;">https://ko-fi.com/bizumatica</a><br>
+<a href="https://ko-fi.com/bizumatica" target="_blank">
 <img src="/ko-fi.png" alt="Pague um café no Ko-Fi" style="width: 100%; max-width: 200px; height: auto; margin-top: 10px;">
 </a>
 </div>

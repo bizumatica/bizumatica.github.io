@@ -71,3 +71,5 @@ Seu apoio nos ajuda a manter os tutoriais atualizados e os scripts gratuitos.
 *   **E-mail:** [julio.prata@proton.me](mailto:julio.prata@proton.me)
 
 [def]: SEU_LINK_DO_BUYMEACOFFEE
+
+[![Visitas](https://visitor-badge.laobi.icu/badge?page_id=bizumatica.github.io&left_color=%23555555&right_color=%2301579B&left_text=Visitas)](https://bizumatica.github.io)

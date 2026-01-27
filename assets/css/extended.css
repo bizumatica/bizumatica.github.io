@@ -1,0 +1,47 @@
+/* assets/css/extended.css */
+
+:root {
+    /* Cores inspiradas em editores de código modernos */
+    --primary-color: #00d1b2; /* Turquesa vivo */
+    --bg-color: #1a1b27;      /* Fundo tipo Tokyo Night */
+    --font-family: 'Fira Code', 'JetBrains Mono', monospace;
+}
+
+body {
+    background-color: var(--bg-color);
+    line-height: 1.8;
+}
+
+/* Deixando os links mais elegantes */
+a {
+    text-decoration: none;
+    border-bottom: 1px dashed var(--primary-color);
+    transition: all 0.2s ease;
+}
+
+a:hover {
+    background: var(--primary-color);
+    color: #000 !important;
+}
+
+/* Estilizando os posts como "blocos de código" ou cards */
+.post {
+    border: 1px solid #333;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+/* Espaçamento entre itens do menu no topo */
+.menu li {
+    margin-left: 1.2rem;
+}
+
+/* Destaque visual para o item 'Sumário' */
+.menu li a[href*="sumario"] {
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 2px 8px;
+    border-radius: 4px;
+}

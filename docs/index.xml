@@ -1,13 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bem-vindo ao Bizumatica on Bizumatica</title><link>https://bizumatica.github.io/</link><description>Recent content in Bem-vindo ao Bizumatica on Bizumatica</description><generator>Hugo</generator><language>pt-br</language><lastBuildDate>Fri, 05 Dec 2025 17:22:51 -0300</lastBuildDate><atom:link href="https://bizumatica.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Fluxo De Trabalho</title><link>https://bizumatica.github.io/fluxo-de-trabalho/</link><pubDate>Fri, 05 Dec 2025 17:22:51 -0300</pubDate><guid>https://bizumatica.github.io/fluxo-de-trabalho/</guid><description>&lt;h1 id="fluxo-de-trabalho-de-atualização-da-bizumática"&gt;Fluxo de Trabalho de Atualização da Bizumática&lt;/h1&gt;
-&lt;pre tabindex="0"&gt;&lt;code class="language-mermaid" data-lang="mermaid"&gt;graph TD
- A[Editar Conteúdo no index.md] --&amp;gt; B{Conteúdo Pronto?};
- B -- Sim --&amp;gt; C[Converter MD para HTML];
- B -- Não --&amp;gt; A;
- C --&amp;gt; D[Copiar o bloco HTML gerado];
- D --&amp;gt; E[Abrir o index.html];
- E --&amp;gt; F[Colar o HTML após a tag &amp;lt;/nav&amp;gt;];
- F --&amp;gt; G[git add index.html];
- G --&amp;gt; H[git commit];
- H --&amp;gt; I[git push];
- I --&amp;gt; J(Site Publicado e Atualizado);
-&lt;/code&gt;&lt;/pre&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bem-vindo ao Bizumatica on Bizumatica</title>
+    <link>https://bizumatica.github.io/</link>
+    <description>Recent content in Bem-vindo ao Bizumatica on Bizumatica</description>
+    <generator>Hugo</generator>
+    <language>pt-br</language>
+    <lastBuildDate>Fri, 05 Dec 2025 17:22:51 -0300</lastBuildDate>
+    <atom:link href="https://bizumatica.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fluxo De Trabalho</title>
+      <link>https://bizumatica.github.io/fluxo-de-trabalho/</link>
+      <pubDate>Fri, 05 Dec 2025 17:22:51 -0300</pubDate>
+      <guid>https://bizumatica.github.io/fluxo-de-trabalho/</guid>
+      <description>&lt;h1 id=&#34;fluxo-de-trabalho-de-atualização-da-bizumática&#34;&gt;Fluxo de Trabalho de Atualização da Bizumática&lt;/h1&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-mermaid&#34; data-lang=&#34;mermaid&#34;&gt;graph TD&#xA;    A[Editar Conteúdo no index.md] --&amp;gt; B{Conteúdo Pronto?};&#xA;    B -- Sim --&amp;gt; C[Converter MD para HTML];&#xA;    B -- Não --&amp;gt; A;&#xA;    C --&amp;gt; D[Copiar o bloco HTML gerado];&#xA;    D --&amp;gt; E[Abrir o index.html];&#xA;    E --&amp;gt; F[Colar o HTML após a tag &amp;lt;/nav&amp;gt;];&#xA;    F --&amp;gt; G[git add index.html];&#xA;    G --&amp;gt; H[git commit];&#xA;    H --&amp;gt; I[git push];&#xA;    I --&amp;gt; J(Site Publicado e Atualizado);&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+  </channel>
+</rss>

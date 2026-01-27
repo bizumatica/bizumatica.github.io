@@ -10,10 +10,10 @@ Aqui você encontrará análises, tutoriais práticos e insights sobre o mundo L
 
 ## 📖 Sumário de Conteúdos
 
-1.  [🛠️ Shell Scripting & Automação](/bizumatica-blog/categories/shell-scripting/)
-2.  [🐧 O Ecossistema Linux](/bizumatica-blog/categories/linux/)
-3.  [📱 Análise de Aplicativos](/bizumatica-blog/categories/apps/)
-4.  [📰 Lançamentos e Notícias](/bizumatica-blog/categories/noticias/)
+1.  [🛠️ Shell Scripting & Automação]({{< blog_url >}}/categories/shell-scripting/)
+2.  [🐧 O Ecossistema Linux]({{< blog_url >}}/categories/linux/)
+3.  [📱 Análise de Aplicativos]({{< blog_url >}}/categories/apps/)
+4.  [📰 Lançamentos e Notícias]({{< blog_url >}}/categories/noticias/)
 
 ## ⚙️ Shell Scripting & Automação
 

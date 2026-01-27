@@ -1,0 +1,20 @@
+<ul class="categories-list">
+  {{ range .Site.Taxonomies.categories }}
+    <li>
+      <a href="/bizumatica-blog/categories/{{ .Page.Title | urlize }}">
+        {{ .Page.Title }}
+      </a>
+    </li>
+  {{ end }}
+</ul><div class="bizu-categories-container">
+  <span class="bizu-label">Tags:</span>
+  <ul class="bizu-categories-list">
+    {{ range .Site.Taxonomies.categories }}
+      <li>
+        <a href="/bizumatica-blog/categories/{{ .Page.Title | urlize }}" class="bizu-tag">
+          <span class="hash">#</span>{{ .Page.Title }}
+        </a>
+      </li>
+    {{ end }}
+  </ul>
+</div>

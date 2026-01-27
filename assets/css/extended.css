@@ -45,3 +45,56 @@ a:hover {
     padding: 2px 8px;
     border-radius: 4px;
 }
+
+/* --- Estilização das Categorias (Bizu-Tags) --- */
+
+.bizu-categories-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 25px 0;
+    flex-wrap: wrap;
+}
+
+.bizu-label {
+    font-family: var(--font-family);
+    font-size: 0.75rem;
+    color: #565f89; /* Um cinza azulado suave do Tokyo Night */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.bizu-categories-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0;
+    margin: 0;
+}
+
+.bizu-tag {
+    font-family: var(--font-family);
+    font-size: 0.85rem;
+    color: var(--primary-color) !important;
+    background: rgba(0, 209, 178, 0.05); /* Fundo sutil da cor primária */
+    padding: 4px 14px;
+    border-radius: 4px; /* Quadrado arredondado combina mais com Terminal que pílula */
+    border: 1px solid var(--primary-color);
+    transition: all 0.2s ease-in-out;
+    text-decoration: none !important;
+}
+
+.bizu-tag:hover {
+    background: var(--primary-color) !important;
+    color: #1a1b27 !important; /* Texto escuro no fundo brilhante */
+    box-shadow: 0 0 12px var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* Ajuste para o '#' antes da tag */
+.bizu-tag::before {
+    content: "#";
+    margin-right: 4px;
+    opacity: 0.6;
+}

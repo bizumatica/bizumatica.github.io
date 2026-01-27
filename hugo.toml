@@ -15,6 +15,7 @@ enableEmoji = true
   fullWidthTheme = false
   centerTheme = true
   animatedTheme = true
+  customCSS = ["css/extended.css"]
 
 [params.Logo]
   logoText = "Bizumática"
@@ -34,3 +35,5 @@ enableEmoji = true
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
+[taxonomies]
+  category = "categories"

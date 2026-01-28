@@ -6,7 +6,7 @@ title: "Bem-vindo ao Bizumatica"
 
 ## 🧭 Guia de Tecnologia Open Source
 
-Aqui você encontrará análises, tutoriais práticos e insights sobre o mundo Linux, Shell Script e o funcionamento interno de aplicativos. Nosso foco é desmistificar a tecnologia para que você possa usá-la melhor.
+Aqui você encontrará análises, tutoriais práticos e insights sobre o mundo Linux, Shell Script e o funcionamento interno de aplicativos. Nosso foco é desmistificar a tecnologia para que você possa usá-la melhor,  e mais: mostrar que a Μαθηματικά (Matemática) é uma linguagem universal!
 
 ## 📖 Sumário de Conteúdos
 
@@ -14,6 +14,7 @@ Aqui você encontrará análises, tutoriais práticos e insights sobre o mundo L
 2.  [🐧 O Ecossistema Linux]({{< blog_url >}}/categories/linux/)
 3.  [📱 Análise de Aplicativos]({{< blog_url >}}/categories/apps/)
 4.  [📰 Lançamentos e Notícias]({{< blog_url >}}/categories/noticias/)
+5.  [🧮 Matemática]({{< blog_url >}}/matematica/)
 
 ## ⚙️ Shell Scripting & Automação
 

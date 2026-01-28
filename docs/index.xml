@@ -1,13 +1,96 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bem-vindo ao Bizumatica on Bizumatica</title><link>https://bizumatica.github.io/</link><description>Recent content in Bem-vindo ao Bizumatica on Bizumatica</description><generator>Hugo</generator><language>pt-br</language><lastBuildDate>Fri, 05 Dec 2025 17:22:51 -0300</lastBuildDate><atom:link href="https://bizumatica.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Fluxo De Trabalho</title><link>https://bizumatica.github.io/fluxo-de-trabalho/</link><pubDate>Fri, 05 Dec 2025 17:22:51 -0300</pubDate><guid>https://bizumatica.github.io/fluxo-de-trabalho/</guid><description>&lt;h1 id="fluxo-de-trabalho-de-atualização-da-bizumática"&gt;Fluxo de Trabalho de Atualização da Bizumática&lt;/h1&gt;
-&lt;pre tabindex="0"&gt;&lt;code class="language-mermaid" data-lang="mermaid"&gt;graph TD
- A[Editar Conteúdo no index.md] --&amp;gt; B{Conteúdo Pronto?};
- B -- Sim --&amp;gt; C[Converter MD para HTML];
- B -- Não --&amp;gt; A;
- C --&amp;gt; D[Copiar o bloco HTML gerado];
- D --&amp;gt; E[Abrir o index.html];
- E --&amp;gt; F[Colar o HTML após a tag &amp;lt;/nav&amp;gt;];
- F --&amp;gt; G[git add index.html];
- G --&amp;gt; H[git commit];
- H --&amp;gt; I[git push];
- I --&amp;gt; J(Site Publicado e Atualizado);
-&lt;/code&gt;&lt;/pre&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bem-vindo ao Bizumatica on Bizumática</title><link>https://bizumatica.github.io/</link><description>Recent content in Bem-vindo ao Bizumatica on Bizumática</description><generator>Hugo</generator><language>pt-br</language><lastBuildDate>Tue, 27 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://bizumatica.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>🧪 Teste de Estética e Funcionalidades</title><link>https://bizumatica.github.io/posts/teste-estetica/</link><pubDate>Tue, 27 Jan 2026 00:00:00 +0000</pubDate><guid>https://bizumatica.github.io/posts/teste-estetica/</guid><description>&lt;p&gt;Este post serve para validar se o novo &lt;code&gt;extended.css&lt;/code&gt; e os shortcodes estão funcionando corretamente no ambiente do &lt;strong&gt;Bizumática&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2 id="1-teste-de-boxes-shortcodes"&gt;1. Teste de Boxes (Shortcodes)&lt;/h2&gt;
+&lt;p&gt;Vamos testar os três níveis de destaque que configuramos:&lt;/p&gt;
+
+
+
+&lt;div class="mat-box box-bizu"&gt;
+ &lt;div class="box-header"&gt;
+ &lt;span class="box-icon"&gt;
+ 💡
+ 
+ 
+ &lt;/span&gt;
+ &lt;span class="box-title"&gt;Macete de Potência&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;div class="box-content"&gt;
+ &lt;p&gt;Para elevar ao quadrado números que terminam em 5:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Multiplique o primeiro algarismo pelo sucessor dele.&lt;/li&gt;
+&lt;li&gt;Escreva &lt;strong&gt;25&lt;/strong&gt; no final.
+&lt;em&gt;Exemplo: $25^2 \rightarrow 2 \times 3 = 6 \rightarrow 625$.&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;
+ &lt;/div&gt;
+&lt;/div&gt;
+
+
+
+&lt;div class="mat-box box-teorema"&gt;
+ &lt;div class="box-header"&gt;
+ &lt;span class="box-icon"&gt;
+ 
+ 📐
+ 
+ &lt;/span&gt;
+ &lt;span class="box-title"&gt;Teorema Fundamental&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;div class="box-content"&gt;
+ A soma dos quadrados dos catetos é igual ao quadrado da hipotenusa:
+$$a^2 + b^2 = c^2$$
+ &lt;/div&gt;
+&lt;/div&gt;
+
+
+
+&lt;div class="mat-box box-aviso"&gt;
+ &lt;div class="box-header"&gt;
+ &lt;span class="box-icon"&gt;
+ 
+ 
+ ⚠️
+ &lt;/span&gt;
+ &lt;span class="box-title"&gt;AVISO&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;div class="box-content"&gt;
+ Lembre-se de sempre limpar o cache do navegador (Ctrl+F5) após o deploy para ver as novas cores turquesa e rosa!
+ &lt;/div&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;h2 id="2-teste-de-matemática-katex"&gt;2. Teste de Matemática (KaTeX)&lt;/h2&gt;
+&lt;p&gt;Aqui testamos se o fundo sutil (&lt;code&gt;background: rgba(255, 255, 255, 0.05)&lt;/code&gt;) e a borda lateral turquesa estão aparecendo nas fórmulas em bloco:&lt;/p&gt;</description></item><item><title>Docker para todos!</title><link>https://bizumatica.github.io/posts/docker-desmistificado-o-guia-para-quem-nao-e-de-ti/</link><pubDate>Wed, 21 Jan 2026 10:00:00 -0300</pubDate><guid>https://bizumatica.github.io/posts/docker-desmistificado-o-guia-para-quem-nao-e-de-ti/</guid><description>&lt;h1 id="docker-desmistificado-o-guia-para-quem-não-é-de-ti"&gt;Docker Desmistificado: O Guia para Quem Não é de TI&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Quando ouvi falar de Docker pela primeira vez, imaginei contêineres de navio rodando no meu computador. A realidade, embora menos literal, é igualmente transformadora. É a ferramenta que resolve o clássico ‘funciona na minha máquina’ e que você provavelmente já usa, sem saber, quando acessa a internet.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Imagine que você quer compartilhar uma receita de bolo, mas não pode simplesmente enviar uma lista de ingredientes. Você precisa garantir que a outra pessoa tenha o forno certo, a batedeira, a forma, a temperatura exata… É cansativo. No mundo do software, esse problema era diário. &lt;strong&gt;Até que o Docker chegou&lt;/strong&gt;.&lt;/p&gt;</description></item><item><title>O Legado do Unix: A Árvore Genealógica que Sustenta o Mundo Moderno</title><link>https://bizumatica.github.io/posts/historia-unix-sistemas-modernos/</link><pubDate>Tue, 13 Jan 2026 10:00:00 -0300</pubDate><guid>https://bizumatica.github.io/posts/historia-unix-sistemas-modernos/</guid><description>&lt;p&gt;Se você está lendo este post agora, seja de um smartphone, de um MacBook ou de um PC com Linux, você está interagindo com o DNA de um projeto que começou há mais de 50 anos em um laboratório de telefonia. O &lt;strong&gt;Unix&lt;/strong&gt; não é apenas um sistema operacional antigo; ele é a fundação invisível da computação moderna.&lt;/p&gt;
+&lt;p&gt;Hoje, no &lt;strong&gt;Bizumática&lt;/strong&gt;, vamos mergulhar na história do &amp;ldquo;Pai de Todos&amp;rdquo; e entender como ele se desmembrou nos sistemas que dominam o nosso dia a dia.&lt;/p&gt;</description></item><item><title>Shell Script: A Habilidade Invisivel</title><link>https://bizumatica.github.io/posts/habilidade-natural-shell/</link><pubDate>Wed, 07 Jan 2026 08:00:00 -0300</pubDate><guid>https://bizumatica.github.io/posts/habilidade-natural-shell/</guid><description>&lt;h2 id="por-que-falar-de-shell-script-em-pleno-2026"&gt;Por que falar de Shell Script em pleno 2026?&lt;/h2&gt;
+&lt;p&gt;Muitas vezes, olhamos para a tela preta de um terminal e imaginamos um cenário de Matrix, restrito a hackers ou administradores de sistemas. No &lt;strong&gt;Bizumática&lt;/strong&gt;, queremos quebrar esse mito. O Shell Script não é apenas uma linguagem de programação; é uma forma de &lt;strong&gt;autonomia&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Independentemente de você ser um advogado, um designer, um acadêmico ou um entusiasta de tecnologia, aprender a &amp;ldquo;falar&amp;rdquo; com o seu sistema operacional de forma direta é como aprender a ler e escrever no mundo digital.&lt;/p&gt;</description></item><item><title>O Bizu do Linux: Entenda o Sistema que Roda o Mundo</title><link>https://bizumatica.github.io/posts/o-bizu-do-linux/</link><pubDate>Thu, 18 Dec 2025 08:00:00 -0300</pubDate><guid>https://bizumatica.github.io/posts/o-bizu-do-linux/</guid><description>&lt;p&gt;Se você acha que Linux é &amp;ldquo;coisa de hacker&amp;rdquo; ou apenas uma tela preta cheia de letras verdes, está na hora de atualizar seus conceitos. A verdade é que você provavelmente já usou Linux hoje — seja ao checar seu Instagram (os servidores rodam Linux), ao usar seu celular Android (o núcleo é Linux) ou ao navegar na internet.&lt;/p&gt;
+&lt;p&gt;Mas, afinal, o que é esse tal de Linux e por que ele é tão importante no mundo da tecnologia? Vamos ao bizu!&lt;/p&gt;</description></item><item><title>O Futuro Chegou: Pop!_OS 24.04 e a Revolução do COSMIC Desktop</title><link>https://bizumatica.github.io/posts/lancamento-pop-os-24-04-cosmic/</link><pubDate>Thu, 18 Dec 2025 08:00:00 -0300</pubDate><guid>https://bizumatica.github.io/posts/lancamento-pop-os-24-04-cosmic/</guid><description>&lt;p&gt;Após meses de expectativa e versões alpha/beta rigorosamente testadas, a &lt;strong&gt;System76&lt;/strong&gt; finalmente liberou a versão estável do &lt;strong&gt;Pop!_OS 24.04 LTS&lt;/strong&gt;. Este não é apenas mais um &amp;ldquo;update&amp;rdquo; de rotina; estamos falando de um marco histórico para o ecossistema Linux desktop.&lt;/p&gt;
+&lt;p&gt;A grande novidade, como todos esperavam, é a estreia oficial da versão final do &lt;strong&gt;COSMIC DE&lt;/strong&gt;, o ambiente de desktop totalmente escrito em &lt;strong&gt;Rust&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2 id="o-que-há-de-novo-no-pop_os-2404"&gt;O que há de novo no Pop!_OS 24.04?&lt;/h2&gt;
+&lt;p&gt;A transição do GNOME para o COSMIC próprio permitiu à System76 um controle sem precedentes sobre a performance e a personalização. Aqui estão os pontos principais que você precisa conferir:&lt;/p&gt;</description></item><item><title>A filosofia Open Source da Criação</title><link>https://bizumatica.github.io/posts/a-filosofia-open-source-da-criacao/</link><pubDate>Tue, 09 Dec 2025 18:00:00 -0300</pubDate><guid>https://bizumatica.github.io/posts/a-filosofia-open-source-da-criacao/</guid><description>&lt;p&gt;Existe um momento sagrado quando o cursor pisca no terminal ou na primeira linha de um arquivo Markdown vazio. É o init, o processo número 1, o começo de tudo. Nesse instante, antes de rodar qualquer comando, o projeto existe de forma perfeita na sua mente.&lt;/p&gt;
+&lt;p&gt;Vivemos cercados por soluções proprietárias, algoritmos de &amp;ldquo;caixa preta&amp;rdquo; e frameworks inchados que prometem pensar por nós. A tentação de delegar a criatividade para uma IA ou seguir o &amp;ldquo;padrão de mercado&amp;rdquo; é o equivalente mental a instalar um sistema operacional cheio de bloatware só porque &amp;ldquo;todo mundo usa&amp;rdquo;.&lt;/p&gt;</description></item><item><title>O Poder da Liberdade: Por que Linux e Shell?</title><link>https://bizumatica.github.io/posts/poder-da-liberdade-linux/</link><pubDate>Sun, 07 Dec 2025 00:00:00 +0000</pubDate><guid>https://bizumatica.github.io/posts/poder-da-liberdade-linux/</guid><description>&lt;p&gt;Vivemos em uma era onde a conveniência muitas vezes custa a nossa privacidade e controle. Usar &lt;strong&gt;Linux&lt;/strong&gt; e apoiar o movimento &lt;strong&gt;FOSS&lt;/strong&gt; (Free and Open Source Software) não é apenas uma escolha técnica; é uma postura de vida.&lt;/p&gt;
+&lt;p&gt;Aqui no &lt;strong&gt;Bizumática&lt;/strong&gt;, acreditamos que você deve ser o dono da sua máquina, e não o contrário.&lt;/p&gt;
+&lt;h3 id="-a-filosofia-do-código-livre"&gt;🐧 A Filosofia do Código Livre&lt;/h3&gt;
+&lt;p&gt;O conceito de Software Livre vai além de &amp;ldquo;grátis&amp;rdquo;. É sobre &lt;strong&gt;liberdade&lt;/strong&gt;:&lt;/p&gt;</description></item><item><title>Fluxo De Trabalho</title><link>https://bizumatica.github.io/posts/fluxo-de-trabalho/</link><pubDate>Fri, 05 Dec 2025 17:22:51 -0300</pubDate><guid>https://bizumatica.github.io/posts/fluxo-de-trabalho/</guid><description>&lt;h1 id="fluxo-de-trabalho-de-atualização-da-bizumática"&gt;Fluxo de Trabalho de Atualização da Bizumática&lt;/h1&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;graph TD
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; A[Editar Conteúdo no index.md] --&amp;gt; B{Conteúdo Pronto?};
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; B -- Sim --&amp;gt; C[Converter MD para HTML];
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; B -- Não --&amp;gt; A;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; C --&amp;gt; D[Copiar o bloco HTML gerado];
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; D --&amp;gt; E[Abrir o index.html];
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; E --&amp;gt; F[Colar o HTML após a tag &amp;lt;/nav&amp;gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; F --&amp;gt; G[git add index.html];
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; G --&amp;gt; H[git commit];
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; H --&amp;gt; I[git push];
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; I --&amp;gt; J(Site Publicado e Atualizado);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description></item><item><title>Sobre: Julio Prata</title><link>https://bizumatica.github.io/about/</link><pubDate>Fri, 05 Dec 2025 00:00:00 +0000</pubDate><guid>https://bizumatica.github.io/about/</guid><description>&lt;p&gt;Olá! Eu sou o &lt;strong&gt;Julio Prata&lt;/strong&gt;, nick&lt;code&gt;BackInBash&lt;/code&gt; ⚡AC/DC⚡:smile:.&lt;/p&gt;
+&lt;p&gt;Sou um entusiasta da tecnologia que acredita na liberdade do código e na disciplina do espírito.&lt;/p&gt;
+&lt;h3 id="martial_arts_uniform-quem-sou-eu"&gt;:martial_arts_uniform: Quem sou eu&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Engenheiro de Computação&lt;/strong&gt;: Apaixonado por construir e entender sistemas.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;警察官 (Keisatsukan)&lt;/strong&gt;: Servir e proteger.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Karateka&lt;/strong&gt;: O caminho das mãos vazias.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="-minha-missão"&gt;🐧 Minha Missão&lt;/h3&gt;
+&lt;p&gt;Este blog é meu &amp;ldquo;dojo digital&amp;rdquo; onde compartilho conhecimentos sobre &lt;strong&gt;Software Livre&lt;/strong&gt;, &lt;strong&gt;FOSS&lt;/strong&gt; e a cultura &lt;strong&gt;Linux&lt;/strong&gt;. Acredito que o conhecimento, assim como o código, deve ser livre e acessível.&lt;/p&gt;</description></item></channel></rss>

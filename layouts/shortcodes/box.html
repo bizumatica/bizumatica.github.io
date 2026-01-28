@@ -1,0 +1,16 @@
+{{ $tipo := .Get "tipo" | default "bizu" }}
+{{ $titulo := .Get "titulo" | default (upper $tipo) }}
+
+<div class="mat-box box-{{ $tipo }}">
+    <div class="box-header">
+        <span class="box-icon">
+            {{ if eq $tipo "bizu" }}💡{{ end }}
+            {{ if eq $tipo "teorema" }}📐{{ end }}
+            {{ if eq $tipo "aviso" }}⚠️{{ end }}
+        </span>
+        <span class="box-title">{{ $titulo }}</span>
+    </div>
+    <div class="box-content">
+        {{ .Inner | markdownify }}
+    </div>
+</div>

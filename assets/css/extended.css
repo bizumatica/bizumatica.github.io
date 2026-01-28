@@ -98,3 +98,58 @@ a:hover {
     margin-right: 4px;
     opacity: 0.6;
 }
+
+/* --- Ajustes para Fórmulas Matemáticas (KaTeX) --- */
+.katex-display {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05); /* Fundo sutil */
+    border-radius: 8px;
+    border-left: 3px solid var(--primary-color); /* Uma barrinha turquesa lateral */
+    overflow-x: auto;
+    overflow-y: hidden;
+    transition: background 0.3s ease;
+}
+
+.katex-display:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* Garante que o texto da fórmula acompanhe o estilo terminal se necessário */
+.katex {
+    font-size: 1.1em;
+}
+
+/* Container Geral dos Boxes */
+.mat-box {
+    margin: 2rem 0;
+    border-radius: 8px;
+    border: 1px solid #333;
+    background: rgba(255, 255, 255, 0.02);
+    overflow: hidden;
+}
+
+.box-header {
+    padding: 8px 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-family);
+    font-weight: bold;
+    font-size: 0.9rem;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.box-content {
+    padding: 15px;
+}
+
+/* Variações de Cores */
+.box-bizu { border-left: 4px solid #00d1b2; }
+.box-bizu .box-header { color: #00d1b2; }
+
+.box-teorema { border-left: 4px solid #ff79c6; }
+.box-teorema .box-header { color: #ff79c6; }
+
+.box-aviso { border-left: 4px solid #f1fa8c; }
+.box-aviso .box-header { color: #f1fa8c; }

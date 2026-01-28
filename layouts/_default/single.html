@@ -1,1 +1,13 @@
-{{ partial "categories.html" . }}
+{{ define "main" }}
+<div class="post">
+  <h1 class="post-title">{{ .Title }}</h1>
+  
+  {{ if .Params.math }}
+    {{ partial "math.html" . }}
+  {{ end }}
+
+  <div class="post-content">
+    {{ .Content }}
+  </div>
+</div>
+{{ end }}

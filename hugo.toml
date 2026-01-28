@@ -1,39 +1,61 @@
-# --- Configuração do Site Principal (bizumatica.github.io) ---
 baseURL = "https://bizumatica.github.io/"
 languageCode = "pt-br"
-title = "Bizumatica"
+title = "Bizumática"
 theme = "terminal"
 publishDir = "docs"
 
-enableEmoji = true
+# Segurança e URLs limpas
+canonifyURLs = true
+relativeURLs = false
 
-[pagination]
-  pagerSize = 5
+[slug]
+  removePathAccents = true # Transforma "Matemática" em "matematica" automaticamente
 
 [params]
-  themeColor = "green" 
+  # Configurações de Design
+  themeColor = "orange"
   fullWidthTheme = false
   centerTheme = true
   animatedTheme = true
+  
+  # O CSS que contém o Turquesa, Rosa e os Boxes de Bizu
   customCSS = ["css/extended.css"]
 
-[params.Logo]
-  logoText = "Bizumática"
+  [params.Logo]
+    logoText = "Bizumática"
+    logoHomeLink = "/"
 
-[params.csp]
-  enable = true
-  # 'self' significa imagens do próprio site
-  img-src = " 'self' https://hits.seeyoufarm.com https://img.shields.io https://visitor-badge.laobi.icu "
-
+# Navegação Principal
 [menu]
   [[menu.main]]
-    identifier = "blog"
-    name = ":: Acessar Blog ::"
-    url = "/bizumatica-blog/"
+    identifier = "posts"
+    name = "Linux"
+    url = "/posts/"
+    weight = 10
+  [[menu.main]]
+    identifier = "matematica"
+    name = "Matemática"
+    url = "/matematica/"
+    weight = 15
+  [[menu.main]]
+    identifier = "about"
+    name = "Sobre"
+    url = "/about/"
+    weight = 20
 
+# Configurações de Renderização (Essencial para KaTeX e Boxes)
 [markup]
-  [markup.goldmark]
-    [markup.goldmark.renderer]
-      unsafe = true
-[taxonomies]
-  category = "categories"
+  [markup.goldmark.renderer]
+    unsafe = true # Permite HTML dentro do Markdown (necessário para os shortcodes)
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    lineNos = false
+    style = "monokai"
+
+# Garante que o Hugo gere o site em HTML corretamente
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML"]
+  taxonomy = ["HTML"]
+  term = ["HTML"]

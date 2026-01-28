@@ -1,14 +1,13 @@
 ---
 title: "🧪 Teste de Estética e Funcionalidades"
 date: 2026-01-27
-# O slug define a URL final: bizumatica.github.io/bizumatica-blog/posts/teste-estetica/
 slug: "teste-estetica"
 author: "Julio Prata"
 description: "Post para validar KaTeX, Shortcodes e o novo CSS Tokyo Night."
 categories: ["Matemática", "Shell Scripting", "Bizus"]
 tags: ["hugo", "css", "katex", "deploy"]
 math: true
-# draft: false
+draft: false
 ---
 
 Este post serve para validar se o novo `extended.css` e os shortcodes estão funcionando corretamente no ambiente do **Bizumática**.

@@ -3,7 +3,7 @@ title: "Exeplo de Post com Math"
 author: "Julio Prata"
 date: 2025-12-18T08:00:00-03:00
 math: true
-draft: true
+draft: false
 slug: "exemplo-math"
 tags: ["matemática"]
 categories: ["mathematics"]

@@ -9,7 +9,7 @@ Olá! Eu sou o **Julio Prata**, nick`BackInBash` ⚡AC/DC⚡:smile:.
 
 Sou um entusiasta da tecnologia que acredita na liberdade do código e na disciplina do espírito.
 
-### :martial_arts_uniform: Quem sou eu
+### 🥋 Quem sou eu
 * **Engenheiro de Computação**: Apaixonado por construir e entender sistemas.
 * **警察官 (Keisatsukan)**: Servir e proteger.
 * **Karateka**: O caminho das mãos vazias.

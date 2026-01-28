@@ -3,6 +3,7 @@ languageCode = "pt-br"
 title = "Bizumática"
 theme = "terminal"
 publishDir = "docs"
+enableEmoji = true
 
 # Segurança e URLs limpas
 canonifyURLs = true

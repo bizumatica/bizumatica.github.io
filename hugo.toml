@@ -5,12 +5,10 @@ theme = "terminal"
 publishDir = "docs"
 enableEmoji = true
 
-# Segurança e URLs limpas
-canonifyURLs = true
-relativeURLs = false
-
-[slug]
-  removePathAccents = true # Transforma "Matemática" em "matematica" automaticamente
+# Ajustes de URL para funcionamento Local e Remoto
+canonifyURLs = false
+relativeURLs = true
+removePathAccents = true
 
 [params]
   # Configurações de Design
@@ -18,9 +16,9 @@ relativeURLs = false
   fullWidthTheme = false
   centerTheme = true
   animatedTheme = true
-  urlBlog = "/"
+  favicon = "favicon.png"
   
-  # CSS que contém o Turquesa, Rosa e os Boxes de Bizu
+  # CSS personalizado para Turquesa, Rosa e Boxes
   customCSS = ["css/extended.css"]
 
   [params.Logo]
@@ -48,14 +46,14 @@ relativeURLs = false
 # Configurações de Renderização (Essencial para KaTeX e Boxes)
 [markup]
   [markup.goldmark.renderer]
-    unsafe = true # Permite HTML dentro do Markdown (necessário para os shortcodes)
+    unsafe = true # Necessário para renderizar HTML/Shortcodes
   [markup.highlight]
     codeFences = true
     guessSyntax = true
     lineNos = false
     style = "monokai"
 
-# Garante que o Hugo gere o site em HTML corretamente
+# Garante que o Hugo gere as páginas de lista e categorias
 [outputs]
   home = ["HTML", "RSS"]
   section = ["HTML"]

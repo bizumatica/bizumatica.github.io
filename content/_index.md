@@ -10,11 +10,11 @@ Aqui você encontrará análises, tutoriais práticos e insights sobre o mundo L
 
 ## 📖 Sumário de Conteúdos
 
-1.  [🛠️ Shell Scripting & Automação]({{< blog_url >}}/categories/shell-scripting/)
-2.  [🐧 O Ecossistema Linux]({{< blog_url >}}/categories/linux/)
-3.  [📱 Análise de Aplicativos]({{< blog_url >}}/categories/apps/)
-4.  [📰 Lançamentos e Notícias]({{< blog_url >}}/categories/noticias/)
-5.  [🧮 Matemática]({{< blog_url >}}/matematica/)
+1. [🛠️ Shell Scripting & Automação](/categories/shell-scripting/)
+2. [🐧 O Ecossistema Linux](/categories/linux/)
+3. [📱 Análise de Aplicativos](/categories/apps/)
+4. [📰 Lançamentos e Notícias](/categories/noticias/)
+5. [🧮 Matemática](/matematica/)
 
 ## ⚙️ Shell Scripting & Automação
 

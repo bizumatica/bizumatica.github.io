@@ -163,8 +163,18 @@ a:hover {
     padding: 0 2px;
 }
 
-/* Ajuste opcional para o emoji de kimono se ele parecer pequeno */
-.kimono-emoji {
-    font-size: 1.2em;
-    vertical-align: middle;
+/* Ataca o ID e a classe ao mesmo tempo */
+#title, .logo__text {
+    background: linear-gradient(45deg, #00f2ff, #ff00ff) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    color: transparent !important;
+    display: inline-block !important;
+    text-decoration: none !important;
+}
+
+.logo__cursor {
+    background-color: #ff00ff !important;
+    box-shadow: 0 0 10px #ff00ff !important;
 }

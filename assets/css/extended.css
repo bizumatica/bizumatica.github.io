@@ -153,3 +153,18 @@ a:hover {
 
 .box-aviso { border-left: 4px solid #f1fa8c; }
 .box-aviso .box-header { color: #f1fa8c; }
+
+/* Estilo para termos em Japonês */
+.jp-text {
+    font-family: "Yu Mincho", "Hiragino Mincho ProN", "MS Mincho", serif;
+    font-weight: 500;
+    font-style: normal;
+    color: var(--primary-color); /* Usa a cor laranja/turquesa do seu tema */
+    padding: 0 2px;
+}
+
+/* Ajuste opcional para o emoji de kimono se ele parecer pequeno */
+.kimono-emoji {
+    font-size: 1.2em;
+    vertical-align: middle;
+}

@@ -1,6 +1,6 @@
 +++
 date = '2025-12-05T17:22:51-03:00'
-draft = false
+draft = true
 title = 'Fluxo De Trabalho'
 +++
 

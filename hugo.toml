@@ -18,8 +18,9 @@ relativeURLs = false
   fullWidthTheme = false
   centerTheme = true
   animatedTheme = true
+  urlBlog = "/"
   
-  # O CSS que contém o Turquesa, Rosa e os Boxes de Bizu
+  # CSS que contém o Turquesa, Rosa e os Boxes de Bizu
   customCSS = ["css/extended.css"]
 
   [params.Logo]

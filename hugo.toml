@@ -45,14 +45,20 @@ removePathAccents = true
 
 # Configurações de Renderização (Essencial para KaTeX e Boxes)
 [markup]
-  [markup.goldmark.renderer]
-    unsafe = true # Necessário para renderizar HTML/Shortcodes
-  [markup.highlight]
-    codeFences = true
-    guessSyntax = true
-    lineNos = false
-    style = "monokai"
-
+  [markup.goldmark]
+   [markup.goldmark.renderer]
+      unsafe = true # Necessário para renderizar HTML/Shortcodes
+    [markup.highlight]
+     codeFences = true
+      guessSyntax = true
+      lineNos = false
+      style = "monokai"
+    [markup.goldmark.extensions]
+       [markup.goldmark.extensions.passthrough]
+         enable = true
+         [markup.goldmark.extensions.passthrough.delimiters]
+           block = [['$$', '$$'], ['\\[', '\\]']]
+           inline = [['$', '$'], ['\\(', '\\)']]
 # Garante que o Hugo gere as páginas de lista e categorias
 [outputs]
   home = ["HTML", "RSS"]

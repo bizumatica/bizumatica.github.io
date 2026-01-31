@@ -1,5 +1,5 @@
 ---
-title: "Exeplo de Post com Math"
+title: "Exemplo de Post com Math"
 author: "Julio Prata"
 date: 2025-12-18T08:00:00-03:00
 math: true

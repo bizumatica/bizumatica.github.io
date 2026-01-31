@@ -9,6 +9,8 @@ tags: ["matemática"]
 categories: ["mathematics"]
 ---
 
+  No dia 23 de março de 2021 um navio encalhou no canal de Suez, no Egito. A embarcação tinha 400 metros de comprimento e metros de largura. No ponto onde aconteceu o acidente, o canal de Suez não tem mais do que  metros de largura. Abaixo apresentamos uma foto de satélite e uma figura representando a situação. O ângulo 𝛼 indicado na figura abaixo mede 67,5º
+
 ### Resolução: Largura do Canal de Suez (Unicamp 2022)
 
 ![Foto do Canal.](/images/canal.png)

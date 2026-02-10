@@ -2,6 +2,7 @@
 title: "O Futuro Chegou: Pop!_OS 24.04 e a Revolução do COSMIC Desktop" 
 date: 2025-12-18T08:00:00-03:00
 draft: false
+toc: true
 slug: "lancamento-pop-os-24-04-cosmic"
 tags: ["linux", "FOSS", "bizu", "tutorial"]
 categories: ["noticias", "linux"]

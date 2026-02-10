@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Author: Julio Prata
-# Version: 2.0 (Unificado)
+# Version: 2.1 (Indexação Pagefind)
 # Description: Deploy otimizado para Portal Bizumática
 
 GREEN='\033[0;32m'
@@ -28,22 +28,27 @@ fi
 if [ -f "hugo.toml" ] || [ -f "config.toml" ]; then
     echo -e "${GREEN}--> Site Hugo detectado.${NC}"
     
-    # Remove e recria a pasta docs (O "Bizu" da limpeza total)
+    # Remove e recria a pasta docs
     rm -rf docs
     mkdir docs
     
     echo -e "${GREEN}--> Gerando build otimizado...${NC}"
     if hugo --gc --minify -d docs; then
-        # Garante que o GitHub Pages não tente usar Jekyll
+        
+        # --- Indexação da Busca ---
+        echo -e "${YELLOW}--> Indexando busca com Pagefind...${NC}"
+        npx pagefind --site docs
+        
+        # Garante que o GitHub Pages não tenta usar Jekyll
         touch docs/.nojekyll
-        echo -e "${GREEN}--> Build OK! (.nojekyll criado)${NC}"
+        echo -e "${GREEN}--> Build e Indexação OK!${NC}"
     else
         echo -e "${RED}--> ERRO: Falha no build do Hugo.${NC}"
         exit 1
     fi
 fi
 
-# 4. Git Push Inteligente
+# 4. Git Push
 if [[ -z $(git status -s) ]]; then
     echo -e "${CYAN}--> Nada para atualizar no momento.${NC}"
     exit 0

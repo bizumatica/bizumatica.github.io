@@ -2,8 +2,20 @@
 <div class="post">
   <h1 class="post-title">{{ .Title }}</h1>
   
+  <div class="post-meta" style="margin-bottom: 20px; opacity: 0.7; font-size: 0.9rem;">
+    <span>📅 {{ .Date.Format "02/01/2006" }}</span> :: 
+    <span>📖 {{ .ReadingTime }} min de leitura</span>
+  </div>
+  
   {{ if .Params.math }}
     {{ partial "math.html" . }}
+  {{ end }}
+
+  {{ if .Params.toc }}
+  <div class="toc" style="border: 1px dashed var(--theme-color); padding: 15px; margin-bottom: 30px;">
+    <strong style="color: var(--theme-color);">📌 Conteúdo do Bizu:</strong>
+    {{ .TableOfContents }}
+  </div>
   {{ end }}
 
   <div class="post-content">

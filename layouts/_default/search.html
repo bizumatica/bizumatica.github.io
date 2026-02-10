@@ -1,0 +1,50 @@
+{{ define "main" }}
+<div class="post">
+    <h1 class="post-title">Pesquisar no Bizumática</h1>
+    
+    <link href="/_pagefind/pagefind-ui.css" rel="stylesheet">
+    <script src="/_pagefind/pagefind-ui.js"></script>
+
+    <div id="search" style="margin-top: 20px;"></div>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            new PagefindUI({ 
+                element: "#search", 
+                showSubResults: true,
+                translations: {
+                    placeholder: "O que você está procurando?",
+                    clear_search: "Limpar",
+                    load_more: "Ver mais resultados",
+                    search_label: "Buscar",
+                    filters_label: "Filtros",
+                    zero_results: "Nenhum bizu encontrado para [SEARCH_TERM]",
+                    many_results: "[COUNT] resultados encontrados para [SEARCH_TERM]",
+                    one_result: "[COUNT] resultado encontrado para [SEARCH_TERM]",
+                    alt_search: "Nenhum resultado para [SEARCH_TERM]. Mostrando resultados para [DIFFERENT_TERM] em vez disso",
+                    search_suggestion: "Nenhum resultado para [SEARCH_TERM]. Tente um destes termos:",
+                    searching: "Buscando..."
+                }
+            });
+        });
+    </script>
+
+    <style>
+        /* Ajuste para combinar com o tema Terminal */
+        :root {
+            --pagefind-ui-primary: var(--theme-color);
+            --pagefind-ui-text: var(--color);
+            --pagefind-ui-background: var(--background);
+            --pagefind-ui-border: var(--theme-color);
+            --pagefind-ui-font: inherit;
+        }
+        .pagefind-ui__result-link {
+            color: var(--theme-color) !important;
+        }
+        .pagefind-ui__result-excerpt {
+            color: var(--color) !important;
+            opacity: 0.8;
+        }
+    </style>
+</div>
+{{ end }}

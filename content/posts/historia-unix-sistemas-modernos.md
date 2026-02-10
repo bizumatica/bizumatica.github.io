@@ -2,6 +2,7 @@
 title: "O Legado do Unix: A Árvore Genealógica que Sustenta o Mundo Moderno" 
 date: 2026-01-13T10:00:00-03:00
 draft: false
+toc: true
 slug: "historia-unix-sistemas-modernos"
 tags: ["unix", "linux", "macos", "historia", "bizu"]
 categories: ["tecnologia", "sistemas-operacionais", "Performance", "Linux"]

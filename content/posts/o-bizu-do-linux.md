@@ -2,6 +2,7 @@
 title: "O Bizu do Linux: Entenda o Sistema que Roda o Mundo"
 date: 2025-12-18T08:00:00-03:00
 draft: false
+toc: true
 slug: "o-bizu-do-linux"
 tags: ["linux", "FOSS"]
 categories: ["linux"]

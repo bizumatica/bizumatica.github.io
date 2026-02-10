@@ -2,7 +2,7 @@
 title: "Bem-vindo ao Bizumatica"
 ---
 
-# 🚀 Bem-Vindo à Bizumática (_em construção_ 🏗️)
+# 🚀 Bem-Vindo ao Bizumática ≡ BΣ
 
 ## 🧭 Guia de Tecnologia Open Source
 

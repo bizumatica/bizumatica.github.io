@@ -2,7 +2,8 @@
 title: "A filosofia Open Source da Criação"
 date: 2025-12-09T18:00:00-03:00
 draft: false
-slug: "a-filosofia-open source-da-criacao"
+toc: true
+slug: "filosofia-open-source-da-criacao"
 tags: ["linux", "FOSS", "tutorial"]
 categories: ["linux"]
 ---

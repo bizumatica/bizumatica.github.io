@@ -27,7 +27,7 @@ removePathAccents = true
 
 # Navegação Principal
 [menu]
-  [[menu.main]]
+    [[menu.main]]
     identifier = "posts"
     name = "Linux"
     url = "/posts/"
@@ -38,10 +38,15 @@ removePathAccents = true
     url = "/matematica/"
     weight = 15
   [[menu.main]]
+    identifier = "search"
+    name = "Buscar"
+    url = "/search/"
+    weight = 20
+  [[menu.main]]
     identifier = "about"
     name = "Sobre"
     url = "/about/"
-    weight = 20
+    weight = 25
 
 # Configurações de Renderização (Essencial para KaTeX e Boxes)
 [markup]
@@ -59,6 +64,10 @@ removePathAccents = true
          [markup.goldmark.extensions.passthrough.delimiters]
            block = [['$$', '$$'], ['\\[', '\\]']]
            inline = [['$', '$'], ['\\(', '\\)']]
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+    ordered = false
 # Garante que o Hugo gere as páginas de lista e categorias
 [outputs]
   home = ["HTML", "RSS"]

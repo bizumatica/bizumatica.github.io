@@ -2,8 +2,9 @@
 title: "Shell Script: A Habilidade Invisivel"
 date: 2026-01-07T08:00:00-03:00
 draft: false
+toc: true
 slug: "habilidade-natural-shell"
-tags: ["Linux", "FOSS", "Shell Script"]
+tags: ["linux", "FOSS", "shell script"]
 categories: ["shell-scripting", "Performance", "Linux"]
 ---
 

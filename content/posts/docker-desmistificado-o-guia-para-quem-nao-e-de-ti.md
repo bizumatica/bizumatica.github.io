@@ -2,6 +2,7 @@
 title: "Docker para todos!" 
 date: 2026-01-21T10:00:00-03:00
 draft: false
+toc: true
 slug: "docker-desmistificado-o-guia-para-quem-nao-e-de-ti"
 tags: ["docker", "linux", "macos", "historia", "bizu"]
 categories: ["apps", "docker", "Performance", "Linux"]

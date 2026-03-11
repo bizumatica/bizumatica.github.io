@@ -178,3 +178,14 @@ a:hover {
     background-color: #ff00ff !important;
     box-shadow: 0 0 10px #ff00ff !important;
 }
+
+/* Margem mínima global para evitar que o texto encoste nas bordas */
+body {
+    padding: 0 5px; /* Adiciona uma folga nas laterais */
+}
+
+/* Garante que o container principal também respeite um limite */
+.container {
+    max-width: 95%; 
+    margin: 0 auto;
+}

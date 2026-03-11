@@ -1,0 +1,80 @@
+/* Brilho Turquesa na Equação */
+.katex-display {
+    color: #00f2ff !important;
+    text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
+}
+
+/* Borda Dourada no Contador (Estilo Foto 1) */
+.contador-bizu img {
+    border: 2px solid #D4AF37 !important;
+    border-radius: 4px;
+}
+
+/* Forçar o conteúdo central no Desktop */
+.center-wrapper {
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Garante que o texto do logo seja preto e não quebre a linha */
+.logo__mark {
+    color: #000 !important;
+    white-space: nowrap !important;
+    display: inline-block !important;
+}
+
+/* Garante que o box amarelo tenha contraste total */
+.logo {
+    background-color: #D4AF37 !important;
+    padding: 5px 10px !important;
+}
+
+/* Ajusta o espaçamento do menu para não bater no logo */
+.menu {
+    margin-left: 20px !important;
+}
+
+/* Ajuste Global para Títulos no Mobile */
+@media (max-width: 768px) {
+    /* Suaviza o tamanho dos títulos para não quebrarem */
+    h1, .post-title {
+        font-size: 1.5rem !important;
+        line-height: 1.2 !important;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    h2 {
+        font-size: 1.3rem !important;
+        line-height: 1.2 !important;
+    }
+
+    h3 {
+        font-size: 1.1rem !important;
+    }
+
+    /* Ajuste específico para a linha "Linux FOSS Matemática" */
+    .content h2, .content h1 {
+        display: block;
+        width: 100%;
+        white-space: normal; /* Permite quebrar linha se necessário, mas com elegância */
+    }
+
+    /* Resolve o problema do Sumário e Shell Scripting */
+    .content h1, .content h2, .content h3 {
+        max-width: 100%;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+}
+
+/* Garante que o KaTeX não quebre o layout lateral no mobile */
+.katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 10px 0;
+}

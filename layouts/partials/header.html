@@ -1,0 +1,106 @@
+<header class="header">
+  <div class="header__inner">
+    <div class="header__logo-row" style="display: flex; align-items: center; width: 100%; overflow: hidden;">
+      <a href="/" style="text-decoration: none; flex-shrink: 0;">
+        <div class="logo-box">
+          BIZUMÁTICA
+        </div>
+      </a>
+      <div class="terminal-bars"></div>
+    </div>
+
+    <nav class="menu-nav">
+      <ul class="menu__inner">
+        <li><a href="/posts">[ Linux ]</a></li>
+        <li><a href="/matematica">[ Matemática ]</a></li>
+        <li><a href="/search">[ Buscar ]</a></li>
+        <li><a href="/about">[ Sobre ]</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+/* 1. COR DEFINIDA: #EEC35E */
+:root {
+    --theme-color: #EEC35E;
+}
+
+.logo-box {
+    background-color: var(--theme-color) !important;
+    color: #000 !important;
+    padding: 5px 12px;
+    font-weight: bold;
+    font-family: monospace;
+    display: inline-block;
+    text-transform: uppercase;
+    margin-right: 10px;
+}
+
+/* 2. BARRAS DECORATIVAS */
+.terminal-bars {
+    flex-grow: 1;
+    height: 25px;
+    background-image: linear-gradient(to right, var(--theme-color) 1px, transparent 1px);
+    background-size: 4px 100%;
+}
+
+/* 3. AJUSTE DO MENU MOBILE (O segredo está aqui) */
+.header__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 0;
+}
+
+.menu-nav {
+    margin-top: 25px;
+    width: 100%;
+}
+
+.menu__inner {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os itens pulem de linha se não couberem */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 10px 20px; /* Espaço vertical e horizontal entre itens */
+}
+
+.menu__inner li {
+    white-space: nowrap; /* Impede que a palavra interna quebre */
+}
+
+.menu__inner li a {
+    color: var(--theme-color) !important;
+    text-decoration: none;
+    font-family: monospace;
+    font-size: 1.1rem;
+    display: inline-block;
+}
+
+/* Ajuste específico para telas muito pequenas */
+@media (max-width: 480px) {
+    .menu__inner {
+        gap: 15px; /* Aumenta o respiro entre os blocos no celular */
+    }
+    .menu__inner li a {
+        font-size: 1rem; /* Diminui levemente a fonte para caber melhor */
+    }
+}
+</style>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body);"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false}
+            ]
+        });
+    });
+</script>

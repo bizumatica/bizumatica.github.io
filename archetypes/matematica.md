@@ -3,7 +3,7 @@ title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
 draft: true
 description: "Resolução e conceitos de..."
-categories: ["Matemática"]
+categories: ["mathematics"]
 tags: ["vestibular", "teorema"]
 math: true
 ---

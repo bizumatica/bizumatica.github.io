@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Katex on Bizumática</title><link>https://bizumatica.github.io/tags/katex/</link><description>Recent content in Katex on Bizumática</description><generator>Hugo</generator><language>pt-br</language><lastBuildDate>Tue, 27 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://bizumatica.github.io/tags/katex/index.xml" rel="self" type="application/rss+xml"/><item><title>🧪 Teste de Estética e Funcionalidades</title><link>https://bizumatica.github.io/matematica/teste-estetica/</link><pubDate>Tue, 27 Jan 2026 00:00:00 +0000</pubDate><guid>https://bizumatica.github.io/matematica/teste-estetica/</guid><description>&lt;p&gt;Este post serve para validar se o novo &lt;code&gt;extended.css&lt;/code&gt; e os shortcodes estão funcionando corretamente no ambiente do &lt;strong&gt;Bizumática&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2 id="1-teste-de-boxes-shortcodes"&gt;1. Teste de Boxes (Shortcodes)&lt;/h2&gt;
+&lt;p&gt;Vamos testar os três níveis de destaque que configuramos:&lt;/p&gt;
+
+
+
+&lt;div class="mat-box box-bizu"&gt;
+ &lt;div class="box-header"&gt;
+ &lt;span class="box-icon"&gt;
+ 💡
+ 
+ 
+ &lt;/span&gt;
+ &lt;span class="box-title"&gt;Macete de Potência&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;div class="box-content"&gt;
+ &lt;p&gt;Para elevar ao quadrado números que terminam em 5:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Multiplique o primeiro algarismo pelo sucessor dele.&lt;/li&gt;
+&lt;li&gt;Escreva &lt;strong&gt;25&lt;/strong&gt; no final.
+&lt;em&gt;Exemplo: $25^2 \rightarrow 2 \times 3 = 6 \rightarrow 625$.&lt;/em&gt;&lt;/li&gt;
+&lt;/ol&gt;
+ &lt;/div&gt;
+&lt;/div&gt;
+
+
+
+&lt;div class="mat-box box-teorema"&gt;
+ &lt;div class="box-header"&gt;
+ &lt;span class="box-icon"&gt;
+ 
+ 📐
+ 
+ &lt;/span&gt;
+ &lt;span class="box-title"&gt;Teorema Fundamental&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;div class="box-content"&gt;
+ &lt;p&gt;A soma dos quadrados dos catetos é igual ao quadrado da hipotenusa:
+&lt;/p&gt;</description></item></channel></rss>

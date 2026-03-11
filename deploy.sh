@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Author: Julio Prata
-# Version: 2.1 (Indexação Pagefind)
-# Description: Deploy otimizado para Portal Bizumática
+# Version: 2.2 (Deploy Blindado)
+# Description: Deploy com verificação de erros e gestão de cache
 
 GREEN='\033[0;32m'
 CYAN='\033[0;36m'
@@ -10,56 +10,50 @@ YELLOW='\033[1;33m'
 RED='\033[0;31m'
 NC='\033[0m'
 
-PROJECT_NAME=$(basename "$PWD")
+echo -e "${CYAN}--- Iniciando Deploy: Bizumática ---${NC}"
 
-echo -e "${CYAN}--- Iniciando Deploy: $PROJECT_NAME ---${NC}"
+# 1. Limpeza Preventiva
+echo -e "${YELLOW}--> Limpando builds anteriores...${NC}"
+rm -rf docs resources/_gen
 
-# 1. Mensagem de Commit
+# 2. Build Hugo com Verificação de Erros
+echo -e "${GREEN}--> Gerando build otimizado...${NC}"
+# --gc: remove arquivos não utilizados
+# --minify: reduz tamanho de HTML/CSS/JS
+# --enableGitInfo: útil se você usa datas de última modificação
+if hugo --gc --minify -d docs; then
+    echo -e "${GREEN}--> Build Hugo: OK!${NC}"
+else
+    echo -e "${RED}--> ERRO CRÍTICO: Falha no build. Verifique os logs acima.${NC}"
+    exit 1
+fi
+
+# 3. Indexação com Pagefind (Apenas se a pasta existir)
+if [ -d "docs" ]; then
+    echo -e "${YELLOW}--> Indexando busca com Pagefind...${NC}"
+    npx pagefind --site docs --output-path docs/pagefind
+    
+    # Prevenção contra Jekyll no GitHub Pages
+    touch docs/.nojekyll
+fi
+
+# 4. Gestão de Commit Inteligente
 msg="Update Portal $(date +'%d/%m/%Y %H:%M:%S')"
 if [ $# -eq 1 ]; then msg="$1"; fi
 
-# 2. Sincronização de Temas
-if [ -d ".git" ]; then
-    echo -e "${YELLOW}--> Sincronizando temas e submódulos...${NC}"
-    git submodule update --init --recursive --quiet
-fi
-
-# 3. Build com Limpeza Total
-if [ -f "hugo.toml" ] || [ -f "config.toml" ]; then
-    echo -e "${GREEN}--> Site Hugo detectado.${NC}"
-    
-    # Remove e recria a pasta docs
-    rm -rf docs
-    mkdir docs
-    
-    echo -e "${GREEN}--> Gerando build otimizado...${NC}"
-    if hugo --gc --minify -d docs; then
-        
-        # --- Indexação da Busca ---
-        echo -e "${YELLOW}--> Indexando busca com Pagefind...${NC}"
-        npx pagefind --site docs
-        
-        # Garante que o GitHub Pages não tenta usar Jekyll
-        touch docs/.nojekyll
-        echo -e "${GREEN}--> Build e Indexação OK!${NC}"
-    else
-        echo -e "${RED}--> ERRO: Falha no build do Hugo.${NC}"
-        exit 1
-    fi
-fi
-
-# 4. Git Push
+# Verifica se houve mudanças reais antes de tentar o push
 if [[ -z $(git status -s) ]]; then
-    echo -e "${CYAN}--> Nada para atualizar no momento.${NC}"
+    echo -e "${CYAN}--> Sem alterações para comitar. Saindo...${NC}"
     exit 0
 fi
 
-echo -e "${GREEN}--> Subindo alterações para o GitHub...${NC}"
+# 5. Push Seguro
+echo -e "${GREEN}--> Sincronizando com GitHub...${NC}"
 git add .
 git commit -m "$msg"
 if git push origin main; then
-    echo -e "${CYAN}--- Portal unificado atualizado com sucesso! 🚀 ---${NC}"
+    echo -e "${CYAN}--- 🚀 Portal Bizumática Online e Atualizado! ---${NC}"
 else
-    echo -e "${RED}--> ERRO: Falha ao subir para o GitHub.${NC}"
+    echo -e "${RED}--> ERRO: Falha no Push. Verifique sua conexão ou permissões.${NC}"
     exit 1
 fi

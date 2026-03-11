@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Calculo on Bizumática</title><link>https://bizumatica.github.io/tags/calculo/</link><description>Recent content in Calculo on Bizumática</description><generator>Hugo</generator><language>pt-br</language><lastBuildDate>Mon, 09 Mar 2026 18:31:01 -0300</lastBuildDate><atom:link href="https://bizumatica.github.io/tags/calculo/index.xml" rel="self" type="application/rss+xml"/><item><title>A Beleza Da Integral De Gaus</title><link>https://bizumatica.github.io/matematica/beleza-da-integral-de-gaus/</link><pubDate>Mon, 09 Mar 2026 18:31:01 -0300</pubDate><guid>https://bizumatica.github.io/matematica/beleza-da-integral-de-gaus/</guid><description>&lt;p&gt;A integral de Gauss, também conhecida como integral de Euler-Poisson, é um daqueles resultados que parecem mágicos na primeira vez que vemos. Ela é fundamental para a estatística (Distribuição Normal) e para a física quântica.&lt;/p&gt;
+&lt;h3 id="o-problema"&gt;O Problema&lt;/h3&gt;
+&lt;p&gt;Queremos calcular o valor da área sob a curva da função gaussiana em toda a reta real:&lt;/p&gt;
+$$I = \int_{-\infty}^{\infty} e^{-x^2} dx$$
+
+
+&lt;div class="mat-box box-bizu"&gt;
+ &lt;div class="box-header"&gt;
+ &lt;span class="box-icon"&gt;
+ 💡
+ 
+ 
+ &lt;/span&gt;
+ &lt;span class="box-title"&gt;BIZU&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;div class="box-content"&gt;
+ &lt;strong&gt;Curiosidade:&lt;/strong&gt; Esta função não possui uma primitiva expressável por funções elementares. Ou seja, você não consegue resolvê-la diretamente pelo Teorema Fundamental do Cálculo convencional. Precisamos de um truque de mestre.
+ &lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 id="a-resolução-o-truque-de-cauchy"&gt;A Resolução (O Truque de Cauchy)&lt;/h3&gt;
+&lt;p&gt;O segredo aqui é elevar a integral ao quadrado e mudar para &lt;strong&gt;coordenadas polares&lt;/strong&gt;. Se $I$ é a nossa integral, então $I^2$ pode ser escrita como:&lt;/p&gt;</description></item></channel></rss>

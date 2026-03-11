@@ -1,7 +1,7 @@
 ---
 title: "A Beleza Da Integral De Gaus"
 date: 2026-03-09T18:31:01-03:00
-draft: true
+draft: false
 description: "Resolução e conceitos de..."
 categories: ["mathematics"]
 tags: ["calculo"]

@@ -1,4 +1,24 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Mathematics on Bizumática</title><link>https://bizumatica.github.io/categories/mathematics/</link><description>Recent content in Mathematics on Bizumática</description><generator>Hugo</generator><language>pt-br</language><lastBuildDate>Fri, 30 Jan 2026 08:00:00 -0300</lastBuildDate><atom:link href="https://bizumatica.github.io/categories/mathematics/index.xml" rel="self" type="application/rss+xml"/><item><title>Unicamp 2022: Largura do Canal de Suez</title><link>https://bizumatica.github.io/matematica/unicamp2022-q40-f1/</link><pubDate>Fri, 30 Jan 2026 08:00:00 -0300</pubDate><guid>https://bizumatica.github.io/matematica/unicamp2022-q40-f1/</guid><description>&lt;p&gt;No dia 23 de março de 2021 um navio encalhou no canal de Suez, no Egito. A embarcação tinha 400 metros de comprimento e metros de largura. No ponto onde aconteceu o acidente, o canal de Suez não tem mais do que metros de largura. Abaixo apresentamos uma foto de satélite e uma figura representando a situação. O ângulo 𝛼 indicado na figura abaixo mede 67,5º&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Mathematics on Bizumática</title><link>https://bizumatica.github.io/categories/mathematics/</link><description>Recent content in Mathematics on Bizumática</description><generator>Hugo</generator><language>pt-br</language><lastBuildDate>Mon, 09 Mar 2026 18:31:01 -0300</lastBuildDate><atom:link href="https://bizumatica.github.io/categories/mathematics/index.xml" rel="self" type="application/rss+xml"/><item><title>A Beleza Da Integral De Gaus</title><link>https://bizumatica.github.io/matematica/beleza-da-integral-de-gaus/</link><pubDate>Mon, 09 Mar 2026 18:31:01 -0300</pubDate><guid>https://bizumatica.github.io/matematica/beleza-da-integral-de-gaus/</guid><description>&lt;p&gt;A integral de Gauss, também conhecida como integral de Euler-Poisson, é um daqueles resultados que parecem mágicos na primeira vez que vemos. Ela é fundamental para a estatística (Distribuição Normal) e para a física quântica.&lt;/p&gt;
+&lt;h3 id="o-problema"&gt;O Problema&lt;/h3&gt;
+&lt;p&gt;Queremos calcular o valor da área sob a curva da função gaussiana em toda a reta real:&lt;/p&gt;
+$$I = \int_{-\infty}^{\infty} e^{-x^2} dx$$
+
+
+&lt;div class="mat-box box-bizu"&gt;
+ &lt;div class="box-header"&gt;
+ &lt;span class="box-icon"&gt;
+ 💡
+ 
+ 
+ &lt;/span&gt;
+ &lt;span class="box-title"&gt;BIZU&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;div class="box-content"&gt;
+ &lt;strong&gt;Curiosidade:&lt;/strong&gt; Esta função não possui uma primitiva expressável por funções elementares. Ou seja, você não consegue resolvê-la diretamente pelo Teorema Fundamental do Cálculo convencional. Precisamos de um truque de mestre.
+ &lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 id="a-resolução-o-truque-de-cauchy"&gt;A Resolução (O Truque de Cauchy)&lt;/h3&gt;
+&lt;p&gt;O segredo aqui é elevar a integral ao quadrado e mudar para &lt;strong&gt;coordenadas polares&lt;/strong&gt;. Se $I$ é a nossa integral, então $I^2$ pode ser escrita como:&lt;/p&gt;</description></item><item><title>Unicamp 2022: Largura do Canal de Suez</title><link>https://bizumatica.github.io/matematica/unicamp2022-q40-f1/</link><pubDate>Fri, 30 Jan 2026 08:00:00 -0300</pubDate><guid>https://bizumatica.github.io/matematica/unicamp2022-q40-f1/</guid><description>&lt;p&gt;No dia 23 de março de 2021 um navio encalhou no canal de Suez, no Egito. A embarcação tinha 400 metros de comprimento e metros de largura. No ponto onde aconteceu o acidente, o canal de Suez não tem mais do que metros de largura. Abaixo apresentamos uma foto de satélite e uma figura representando a situação. O ângulo 𝛼 indicado na figura abaixo mede 67,5º&lt;/p&gt;
 &lt;h3 id="resolução-largura-do-canal-de-suez-unicamp-2022"&gt;Resolução: Largura do Canal de Suez (Unicamp 2022)&lt;/h3&gt;
 &lt;p&gt;&lt;img src="../../images/canal.png" alt="Foto do Canal."&gt;
 &lt;img src="../../images/gcanal.png" alt="Geometria do Problema."&gt;&lt;/p&gt;</description></item><item><title>Exemplo de Post com Math</title><link>https://bizumatica.github.io/matematica/exemplo-math/</link><pubDate>Thu, 18 Dec 2025 08:00:00 -0300</pubDate><guid>https://bizumatica.github.io/matematica/exemplo-math/</guid><description>&lt;div style="border-left: 5px solid #0e1922; background: #0f0f0d; padding: 1rem; margin: 1rem 0; border-radius: 0 8px 8px 0;"&gt;

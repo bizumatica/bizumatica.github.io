@@ -29,10 +29,8 @@ $$a^2 + b^2 = c^2$$
 {{< /box >}}
 
 {{< box tipo="aviso" >}}
-Lembre-se de sempre limpar o cache do navegador (Ctrl+F5) após o deploy para ver as novas cores turquesa e rosa!
+Aproveitamos o teste para lembrar mais $\mathrm{M}\alpha\theta\eta\mu\alpha\tau\iota\kappa\acute{\alpha}$
 {{< /box >}}
-
----
 
 ## 2. Teste de Matemática (KaTeX)
 
@@ -43,6 +41,8 @@ f(x) = \int_{-\infty}^{\infty} \hat{f}(\xi) e^{2 \pi i x \xi} \, d\xi
 $$
 
 E uma fórmula inline para testar o alinhamento: $\lim_{x \to \infty} \frac{1}{x} = 0$.
+
+{{< bizu >}} $$\frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$${{< /bizu >}}
 
 ---
 

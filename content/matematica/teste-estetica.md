@@ -18,6 +18,7 @@ Vamos testar os três níveis de destaque que configuramos:
 
 {{< box tipo="bizu" titulo="Macete de Potência" >}}
 Para elevar ao quadrado números que terminam em 5:
+
 1. Multiplique o primeiro algarismo pelo sucessor dele.
 2. Escreva **25** no final.
 *Exemplo: $25^2 \rightarrow 2 \times 3 = 6 \rightarrow 625$.*

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Constantes on Bizumática</title><link>https://bizumatica.github.io/tags/constantes/</link><description>Recent content in Constantes on Bizumática</description><generator>Hugo</generator><language>pt-br</language><lastBuildDate>Wed, 11 Mar 2026 11:11:25 -0300</lastBuildDate><atom:link href="https://bizumatica.github.io/tags/constantes/index.xml" rel="self" type="application/rss+xml"/><item><title>A Identidade De Euler: A Equação Mais Bela Da Matemática</title><link>https://bizumatica.github.io/matematica/a-identidade-de-euler-a-equacaoo-mais-bela-da-matematica/</link><pubDate>Wed, 11 Mar 2026 11:11:25 -0300</pubDate><guid>https://bizumatica.github.io/matematica/a-identidade-de-euler-a-equacaoo-mais-bela-da-matematica/</guid><description>&lt;p&gt;A &lt;strong&gt;Identidade de Euler&lt;/strong&gt; é frequentemente chamada de &amp;ldquo;a equação mais bonita da matemática&amp;rdquo; por sua capacidade de conectar, em uma expressão simples, cinco números fundamentais de diferentes áreas.&lt;/p&gt;
+$$e^{i\pi} + 1 = 0$$
+
+
+&lt;div class="mat-box box-bizu"&gt;
+ &lt;div class="box-header"&gt;
+ &lt;span class="box-icon"&gt;
+ 💡
+ 
+ 
+ &lt;/span&gt;
+ &lt;span class="box-title"&gt;BIZU&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;div class="box-content"&gt;
+ &lt;p&gt;&lt;strong&gt;Os Cinco Números:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;0&lt;/strong&gt;: Neutro da adição (Aritmética)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;1&lt;/strong&gt;: Neutro da multiplicação (Aritmética)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;π&lt;/strong&gt;: Constante da circunferência (Geometria)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;e&lt;/strong&gt;: Base dos logaritmos naturais (Cálculo/Análise)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;i&lt;/strong&gt;: Unidade imaginária (Álgebra Complexa)&lt;/li&gt;
+&lt;/ul&gt;
+ &lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 id="a-origem-fórmula-de-euler"&gt;A Origem: Fórmula de Euler&lt;/h3&gt;
+&lt;p&gt;A identidade é um caso particular da &lt;strong&gt;Fórmula de Euler&lt;/strong&gt;, que estabelece a ponte entre funções exponenciais e trigonométricas:&lt;/p&gt;</description></item></channel></rss>

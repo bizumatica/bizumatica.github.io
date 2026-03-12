@@ -5,17 +5,20 @@ math: true
 
 <div style="padding: 0 5px;">
 
-# 🚀 Bem-Vindo ao Bizumática ≡ BΣ
+# 🚀 Bizumática ≡ BΣ
 
 ## Linux ↔️ FOSS ↔️ Matemática
 
-Aqui você encontrará análises, tutoriais práticos e insights sobre o mundo Linux, Shell Script e o funcionamento interno de aplicativos. Nosso foco é desmistificar a tecnologia para que você possa usá-la melhor, e mais: mostrar que a Μαθηματικά (Matemática) é uma linguagem universal!
+
+
+> No **Bizumática**, exploramos a interseção entre o código aberto e a lógica pura. Aqui você encontrará análises técnicas, automação com Shell Script e insights práticos sobre o ecossistema Linux. Nosso foco é desmistificar a tecnologia para que você a domine com autonomia, provando que a 
+> $\mathrm{M}\alpha\theta\eta\mu\alpha\tau\iota\kappa\acute{\alpha}$ e o terminal falam a mesma língua: a da elegância e da eficiência.
 
 > **O Manifesto da Elegância:**
 >
 > $$e^{i\pi} + 1 = 0$$
 >
-> *A identidade de Euler une os cinco números mais importantes da matemática em uma única igualdade.*
+> *A identidade de Euler une os cinco números mais importantes da matemática em uma única igualdade. Uma inspiração!*
 
 ## 📖 Sumário de Conteúdos
 
@@ -57,11 +60,7 @@ Se você valoriza o conteúdo sobre Shell Script e Linux que produzimos, conside
 <strong>Via Pix:</strong>
 
 
-
-
 julio.prata@proton.me
-
-
 
 
 <img src="/pix_qrcode.png" alt="QR Code Pix" style="width: 100%; max-width: 200px; height: auto; border-radius: 5px; border: 3px solid #D4AF37; margin-top: 10px;">
@@ -71,11 +70,7 @@ julio.prata@proton.me
 <strong>Via Ko-Fi:</strong>
 
 
-
-
 <a href="https://ko-fi.com/bizumatica" target="_blank" style="text-decoration: none; color: inherit;">https://ko-fi.com/bizumatica</a>
-
-
 
 
 <a href="https://ko-fi.com/bizumatica" target="_blank">

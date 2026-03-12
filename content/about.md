@@ -15,7 +15,7 @@ Sou um entusiasta da tecnologia que acredita na liberdade do código e na discip
 * **<span class="jp-text">空手家</span>(Karateka)**: O caminho das mãos vazias.
 
 ### 🐧 Minha Missão
-Este blog é meu "dojo digital" onde compartilho conhecimentos sobre **Software Livre**, **FOSS** e a cultura **Linux**. Acredito que o conhecimento, assim como o código, deve ser livre e acessível.
+Este blog é meu "dojo digital" onde compartilho conhecimentos sobre **Software Livre**, **FOSS**, a cultura **Linux** e $\mathrm{M}\alpha\theta\eta\mu\alpha\tau\iota\kappa\acute{\alpha}$ . Acredito que o conhecimento, assim como o código, deve ser livre e acessível.
 
 ---
 

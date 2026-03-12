@@ -13,7 +13,11 @@ categories: ["mathematics"]
 
 ### Resolução: Largura do Canal de Suez (Unicamp 2022)
 
-![Foto do Canal.](/images/canal.png)
+<figure>
+  <img src="/images/canal.png" alt="Foto do Canal">
+  <figcaption> Foto do Canal</figcaption>
+</figure>
+
 ![Geometria do Problema.](/images/gcanal.png)
 
 *Legenda: O problema.*

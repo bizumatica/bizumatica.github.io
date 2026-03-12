@@ -1,18 +1,44 @@
 /* assets/css/extended.css */
 
+/* 1. Importação da fonte para suporte CJK (Kanjis) */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+
 :root {
-    /* Cores inspiradas em editores de código modernos */
-    --primary-color: #00d1b2; /* Turquesa vivo */
-    --bg-color: #1a1b27;      /* Fundo tipo Tokyo Night */
-    --font-family: 'Fira Code', 'JetBrains Mono', monospace;
+    --primary-color: #00d1b2; /* Turquesa */
+    --bg-color: #1a1b27;      
+    --font-family: 'Fira Code', 'JetBrains Mono', 'Noto Sans JP', monospace;
 }
 
+/* --- Tipografia e Cores --- */
 body {
     background-color: var(--bg-color);
+    font-family: var(--font-family);
     line-height: 1.8;
+    padding: 0 5px; 
 }
 
-/* Deixando os links mais elegantes */
+/* Garante que Kanjis em negrito nas listas fiquem em Turquesa */
+li strong, li b {
+    color: var(--primary-color);
+    font-family: var(--font-family);
+    font-weight: 700;
+}
+
+/* --- Layout --- */
+.container {
+    max-width: 95%; 
+    margin: 0 auto !important;
+    padding: 0 20px !important;
+}
+
+.content {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+}
+
+/* --- Links --- */
 a {
     text-decoration: none;
     border-bottom: 1px dashed var(--primary-color);
@@ -24,7 +50,7 @@ a:hover {
     color: #000 !important;
 }
 
-/* Estilizando os posts como "blocos de código" ou cards */
+/* --- Posts --- */
 .post {
     border: 1px solid #333;
     padding: 20px;
@@ -33,159 +59,63 @@ a:hover {
     background: rgba(255, 255, 255, 0.03);
 }
 
-/* Espaçamento entre itens do menu no topo */
-.menu li {
-    margin-left: 1.2rem;
-}
-
-/* Destaque visual para o item 'Sumário' */
-.menu li a[href*="sumario"] {
-    color: var(--primary-color);
-    border: 1px solid var(--primary-color);
-    padding: 2px 8px;
-    border-radius: 4px;
-}
-
-/* --- Estilização das Categorias (Bizu-Tags) --- */
-
-.bizu-categories-container {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin: 25px 0;
-    flex-wrap: wrap;
-}
-
-.bizu-label {
-    font-family: var(--font-family);
-    font-size: 0.75rem;
-    color: #565f89; /* Um cinza azulado suave do Tokyo Night */
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-.bizu-categories-list {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    padding: 0;
-    margin: 0;
-}
-
+/* --- Tags Bizu --- */
 .bizu-tag {
     font-family: var(--font-family);
     font-size: 0.85rem;
     color: var(--primary-color) !important;
-    background: rgba(0, 209, 178, 0.05); /* Fundo sutil da cor primária */
+    background: rgba(0, 209, 178, 0.05);
     padding: 4px 14px;
-    border-radius: 4px; /* Quadrado arredondado combina mais com Terminal que pílula */
+    border-radius: 4px;
     border: 1px solid var(--primary-color);
-    transition: all 0.2s ease-in-out;
     text-decoration: none !important;
 }
 
-.bizu-tag:hover {
-    background: var(--primary-color) !important;
-    color: #1a1b27 !important; /* Texto escuro no fundo brilhante */
-    box-shadow: 0 0 12px var(--primary-color);
-    transform: translateY(-2px);
-}
-
-/* Ajuste para o '#' antes da tag */
-.bizu-tag::before {
-    content: "#";
-    margin-right: 4px;
-    opacity: 0.6;
-}
-
-/* --- Ajustes para Fórmulas Matemáticas (KaTeX) --- */
+/* --- KaTeX --- */
 .katex-display {
     margin: 1.5rem 0;
     padding: 1rem;
-    background: rgba(255, 255, 255, 0.05); /* Fundo sutil */
-    border-radius: 8px;
-    border-left: 3px solid var(--primary-color); /* Uma barrinha turquesa lateral */
-    overflow-x: auto;
-    overflow-y: hidden;
-    transition: background 0.3s ease;
-}
-
-.katex-display:hover {
-    background: rgba(255, 255, 255, 0.08);
-}
-
-/* Garante que o texto da fórmula acompanhe o estilo terminal se necessário */
-.katex {
-    font-size: 1.1em;
-}
-
-/* Container Geral dos Boxes */
-.mat-box {
-    margin: 2rem 0;
-    border-radius: 8px;
-    border: 1px solid #333;
-    background: rgba(255, 255, 255, 0.02);
-    overflow: hidden;
-}
-
-.box-header {
-    padding: 8px 15px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-family: var(--font-family);
-    font-weight: bold;
-    font-size: 0.9rem;
     background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border-left: 3px solid var(--primary-color);
+    overflow-x: auto;
 }
 
-.box-content {
-    padding: 15px;
+/* --- Imagens e Legendas (Figures) --- */
+figure {
+    display: block !important;
+    margin: 40px auto !important; 
+    width: 650px !important;      
+    max-width: 100% !important;   
+    text-align: center !important;
 }
 
-/* Variações de Cores */
-.box-bizu { border-left: 4px solid #00d1b2; }
-.box-bizu .box-header { color: #00d1b2; }
-
-.box-teorema { border-left: 4px solid #ff79c6; }
-.box-teorema .box-header { color: #ff79c6; }
-
-.box-aviso { border-left: 4px solid #f1fa8c; }
-.box-aviso .box-header { color: #f1fa8c; }
-
-/* Estilo para termos em Japonês */
-.jp-text {
-    font-family: "Yu Mincho", "Hiragino Mincho ProN", "MS Mincho", serif;
-    font-weight: 500;
-    font-style: normal;
-    color: var(--primary-color); /* Usa a cor laranja/turquesa do seu tema */
-    padding: 0 2px;
+figure img {
+    width: 100% !important;       
+    height: auto !important;
+    border: 5px solid #EEC35E !important; 
+    box-sizing: border-box !important;    
+    display: block !important;
 }
 
-/* Ataca o ID e a classe ao mesmo tempo */
+figcaption {
+    display: inline-block !important;
+    background-color: #EEC35E;
+    color: #1a1b27 !important;
+    padding: 2px 15px;
+    margin-top: 15px !important;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* --- Logo e Estética (Gradients) --- */
 #title, .logo__text {
     background: linear-gradient(45deg, #00f2ff, #ff00ff) !important;
     -webkit-background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
-    background-clip: text !important;
-    color: transparent !important;
-    display: inline-block !important;
-    text-decoration: none !important;
 }
 
 .logo__cursor {
     background-color: #ff00ff !important;
     box-shadow: 0 0 10px #ff00ff !important;
-}
-
-/* Margem mínima global para evitar que o texto encoste nas bordas */
-body {
-    padding: 0 5px; /* Adiciona uma folga nas laterais */
-}
-
-/* Garante que o container principal também respeite um limite */
-.container {
-    max-width: 95%; 
-    margin: 0 auto;
 }

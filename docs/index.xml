@@ -1,4 +1,44 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bem-vindo ao Bizumatica on Bizumática</title><link>https://bizumatica.github.io/</link><description>Recent content in Bem-vindo ao Bizumatica on Bizumática</description><generator>Hugo</generator><language>pt-br</language><lastBuildDate>Mon, 09 Mar 2026 18:31:01 -0300</lastBuildDate><atom:link href="https://bizumatica.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>A Beleza Da Integral De Gaus</title><link>https://bizumatica.github.io/matematica/beleza-da-integral-de-gaus/</link><pubDate>Mon, 09 Mar 2026 18:31:01 -0300</pubDate><guid>https://bizumatica.github.io/matematica/beleza-da-integral-de-gaus/</guid><description>&lt;p&gt;A integral de Gauss, também conhecida como integral de Euler-Poisson, é um daqueles resultados que parecem mágicos na primeira vez que vemos. Ela é fundamental para a estatística (Distribuição Normal) e para a física quântica.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bem-vindo ao Bizumatica on Bizumática</title><link>https://bizumatica.github.io/</link><description>Recent content in Bem-vindo ao Bizumatica on Bizumática</description><generator>Hugo</generator><language>pt-br</language><lastBuildDate>Wed, 11 Mar 2026 11:11:25 -0300</lastBuildDate><atom:link href="https://bizumatica.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>A Identidade De Euler: A Equação Mais Bela Da Matemática</title><link>https://bizumatica.github.io/matematica/a-identidade-de-euler-a-equacaoo-mais-bela-da-matematica/</link><pubDate>Wed, 11 Mar 2026 11:11:25 -0300</pubDate><guid>https://bizumatica.github.io/matematica/a-identidade-de-euler-a-equacaoo-mais-bela-da-matematica/</guid><description>&lt;p&gt;A &lt;strong&gt;Identidade de Euler&lt;/strong&gt; é frequentemente chamada de &amp;ldquo;a equação mais bonita da matemática&amp;rdquo; por sua capacidade de conectar, em uma expressão simples, cinco números fundamentais de diferentes áreas.&lt;/p&gt;
+$$e^{i\pi} + 1 = 0$$
+
+
+&lt;div class="mat-box box-bizu"&gt;
+ &lt;div class="box-header"&gt;
+ &lt;span class="box-icon"&gt;
+ 💡
+ 
+ 
+ &lt;/span&gt;
+ &lt;span class="box-title"&gt;BIZU&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;div class="box-content"&gt;
+ &lt;p&gt;&lt;strong&gt;Os Cinco Números:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;0&lt;/strong&gt;: Neutro da adição (Aritmética)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;1&lt;/strong&gt;: Neutro da multiplicação (Aritmética)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;π&lt;/strong&gt;: Constante da circunferência (Geometria)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;e&lt;/strong&gt;: Base dos logaritmos naturais (Cálculo/Análise)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;i&lt;/strong&gt;: Unidade imaginária (Álgebra Complexa)&lt;/li&gt;
+&lt;/ul&gt;
+ &lt;/div&gt;
+&lt;/div&gt;
+&lt;h3 id="a-origem-fórmula-de-euler"&gt;A Origem: Fórmula de Euler&lt;/h3&gt;
+&lt;p&gt;A identidade é um caso particular da &lt;strong&gt;Fórmula de Euler&lt;/strong&gt;, que estabelece a ponte entre funções exponenciais e trigonométricas:&lt;/p&gt;</description></item><item><title>A Fórmula De Bhaskara: A Jornada Da Equação Quadrática</title><link>https://bizumatica.github.io/matematica/formula-de-bhaskara-jornada-da-equacao-quadratica/</link><pubDate>Wed, 11 Mar 2026 11:02:32 -0300</pubDate><guid>https://bizumatica.github.io/matematica/formula-de-bhaskara-jornada-da-equacao-quadratica/</guid><description>&lt;p&gt;A &lt;strong&gt;fórmula de Bhaskara&lt;/strong&gt; é um dos conteúdos mais emblemáticos da matemática escolar brasileira. Mas você sabia que ela não foi descoberta por Bhaskara? E mais: no resto do mundo, ela é simplesmente chamada de &amp;ldquo;fórmula quadrática&amp;rdquo; .&lt;/p&gt;
+$$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$&lt;p&gt;Vamos explorar a verdadeira história por trás dessa equação que resolve a forma geral $ax^2 + bx + c = 0$, com $a \neq 0$.&lt;/p&gt;
+
+
+
+&lt;div class="mat-box box-bizu"&gt;
+ &lt;div class="box-header"&gt;
+ &lt;span class="box-icon"&gt;
+ 💡
+ 
+ 
+ &lt;/span&gt;
+ &lt;span class="box-title"&gt;BIZU&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;div class="box-content"&gt;
+ &lt;p&gt;&lt;strong&gt;Os Protagonistas:&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>A Beleza Da Integral De Gaus</title><link>https://bizumatica.github.io/matematica/beleza-da-integral-de-gaus/</link><pubDate>Mon, 09 Mar 2026 18:31:01 -0300</pubDate><guid>https://bizumatica.github.io/matematica/beleza-da-integral-de-gaus/</guid><description>&lt;p&gt;A integral de Gauss, também conhecida como integral de Euler-Poisson, é um daqueles resultados que parecem mágicos na primeira vez que vemos. Ela é fundamental para a estatística (Distribuição Normal) e para a física quântica.&lt;/p&gt;
 &lt;h3 id="o-problema"&gt;O Problema&lt;/h3&gt;
 &lt;p&gt;Queremos calcular o valor da área sob a curva da função gaussiana em toda a reta real:&lt;/p&gt;
 $$I = \int_{-\infty}^{\infty} e^{-x^2} dx$$
@@ -20,8 +60,11 @@ $$I = \int_{-\infty}^{\infty} e^{-x^2} dx$$
 &lt;h3 id="a-resolução-o-truque-de-cauchy"&gt;A Resolução (O Truque de Cauchy)&lt;/h3&gt;
 &lt;p&gt;O segredo aqui é elevar a integral ao quadrado e mudar para &lt;strong&gt;coordenadas polares&lt;/strong&gt;. Se $I$ é a nossa integral, então $I^2$ pode ser escrita como:&lt;/p&gt;</description></item><item><title>Unicamp 2022: Largura do Canal de Suez</title><link>https://bizumatica.github.io/matematica/unicamp2022-q40-f1/</link><pubDate>Fri, 30 Jan 2026 08:00:00 -0300</pubDate><guid>https://bizumatica.github.io/matematica/unicamp2022-q40-f1/</guid><description>&lt;p&gt;No dia 23 de março de 2021 um navio encalhou no canal de Suez, no Egito. A embarcação tinha 400 metros de comprimento e metros de largura. No ponto onde aconteceu o acidente, o canal de Suez não tem mais do que metros de largura. Abaixo apresentamos uma foto de satélite e uma figura representando a situação. O ângulo 𝛼 indicado na figura abaixo mede 67,5º&lt;/p&gt;
 &lt;h3 id="resolução-largura-do-canal-de-suez-unicamp-2022"&gt;Resolução: Largura do Canal de Suez (Unicamp 2022)&lt;/h3&gt;
-&lt;p&gt;&lt;img src="./images/canal.png" alt="Foto do Canal."&gt;
-&lt;img src="./images/gcanal.png" alt="Geometria do Problema."&gt;&lt;/p&gt;</description></item><item><title>🧪 Teste de Estética e Funcionalidades</title><link>https://bizumatica.github.io/matematica/teste-estetica/</link><pubDate>Tue, 27 Jan 2026 00:00:00 +0000</pubDate><guid>https://bizumatica.github.io/matematica/teste-estetica/</guid><description>&lt;p&gt;Este post serve para validar se o novo &lt;code&gt;extended.css&lt;/code&gt; e os shortcodes estão funcionando corretamente no ambiente do &lt;strong&gt;Bizumática&lt;/strong&gt;.&lt;/p&gt;
+&lt;figure&gt;
+ &lt;img src="./images/canal.png" alt="Foto do Canal"&gt;
+ &lt;figcaption&gt; Foto do Canal&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;&lt;img src="./images/gcanal.png" alt="Geometria do Problema."&gt;&lt;/p&gt;</description></item><item><title>🧪 Teste de Estética e Funcionalidades</title><link>https://bizumatica.github.io/matematica/teste-estetica/</link><pubDate>Tue, 27 Jan 2026 00:00:00 +0000</pubDate><guid>https://bizumatica.github.io/matematica/teste-estetica/</guid><description>&lt;p&gt;Este post serve para validar se o novo &lt;code&gt;extended.css&lt;/code&gt; e os shortcodes estão funcionando corretamente no ambiente do &lt;strong&gt;Bizumática&lt;/strong&gt;.&lt;/p&gt;
 &lt;h2 id="1-teste-de-boxes-shortcodes"&gt;1. Teste de Boxes (Shortcodes)&lt;/h2&gt;
 &lt;p&gt;Vamos testar os três níveis de destaque que configuramos:&lt;/p&gt;
 
@@ -82,4 +125,4 @@ $$I = \int_{-\infty}^{\infty} e^{-x^2} dx$$
 &lt;li&gt;&lt;strong&gt;&lt;span class="jp-text"&gt;空手家&lt;/span&gt;(Karateka)&lt;/strong&gt;: O caminho das mãos vazias.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id="-minha-missão"&gt;🐧 Minha Missão&lt;/h3&gt;
-&lt;p&gt;Este blog é meu &amp;ldquo;dojo digital&amp;rdquo; onde compartilho conhecimentos sobre &lt;strong&gt;Software Livre&lt;/strong&gt;, &lt;strong&gt;FOSS&lt;/strong&gt; e a cultura &lt;strong&gt;Linux&lt;/strong&gt;. Acredito que o conhecimento, assim como o código, deve ser livre e acessível.&lt;/p&gt;</description></item><item><title>Buscar</title><link>https://bizumatica.github.io/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bizumatica.github.io/search/</guid><description/></item></channel></rss>
+&lt;p&gt;Este blog é meu &amp;ldquo;dojo digital&amp;rdquo; onde compartilho conhecimentos sobre &lt;strong&gt;Software Livre&lt;/strong&gt;, &lt;strong&gt;FOSS&lt;/strong&gt;, a cultura &lt;strong&gt;Linux&lt;/strong&gt; e $\mathrm{M}\alpha\theta\eta\mu\alpha\tau\iota\kappa\acute{\alpha}$ . Acredito que o conhecimento, assim como o código, deve ser livre e acessível.&lt;/p&gt;</description></item><item><title>Buscar</title><link>https://bizumatica.github.io/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://bizumatica.github.io/search/</guid><description/></item></channel></rss>

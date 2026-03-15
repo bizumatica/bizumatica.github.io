@@ -1,0 +1,33 @@
+<div class="product-card">
+    <h3>{{ .Page.Params.product.name }}</h3>
+    
+    <div class="pros-cons">
+        <div class="pros">
+            <span class="pros-label">Sinal Estável (Prós)</span>
+            <ul>
+                {{ range .Page.Params.product.pros }} <li>{{ . }}</li> {{ end }}
+            </ul>
+        </div>
+        <div class="cons">
+            <span class="cons-label">Ruído (Contras)</span>
+            <ul>
+                {{ range .Page.Params.product.cons }} <li>{{ . }}</li> {{ end }}
+            </ul>
+        </div>
+    </div>
+
+    <div class="product-price">
+        VALOR_ATUAL: {{ .Page.Params.product.currency }} {{ .Page.Params.product.current_price }}
+    </div>
+
+    <div class="affiliate-links">
+        <span style="display:block; margin-bottom: 10px; font-size: 0.8em; opacity: 0.7;">
+            // SELECIONE_O_PROVEDOR:
+        </span>
+        {{ range .Page.Params.affiliate }}
+            <a href="{{ .link }}" target="_blank" class="btn-compra multi-store">
+                FETCH --{{ lower .store | urlize }}
+            </a>
+        {{ end }}
+    </div>
+</div>

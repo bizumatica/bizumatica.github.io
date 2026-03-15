@@ -1,4 +1,4 @@
-baseURL = "https://bizumatica.github.io/"
+baseURL = "https://bizumatica.com.br/"
 languageCode = "pt-br"
 title = "Bizumática"
 theme = "terminal"
@@ -31,6 +31,11 @@ removePathAccents = true
     name = "Linux"
     url = "/posts"
     weight = 10
+  [[menu.main]]
+    identifier = "equipamentos"
+    name = "Curadoria"
+    url = "/equipamentos/"
+    weight = 12
   [[menu.main]]
     identifier = "matematica"
     name = "Matemática"

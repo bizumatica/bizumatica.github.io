@@ -7,6 +7,8 @@
     --primary-color: #00d1b2; /* Turquesa */
     --bg-color: #1a1b27;      
     --font-family: 'Fira Code', 'JetBrains Mono', 'Noto Sans JP', monospace;
+    --neon-green: #00ff41;
+    --bizu-yellow: #EEC35E;
 }
 
 /* --- Tipografia e Cores --- */
@@ -93,14 +95,14 @@ figure {
 figure img {
     width: 100% !important;       
     height: auto !important;
-    border: 5px solid #EEC35E !important; 
+    border: 5px solid var(--bizu-yellow) !important; 
     box-sizing: border-box !important;    
     display: block !important;
 }
 
 figcaption {
     display: inline-block !important;
-    background-color: #EEC35E;
+    background-color: var(--bizu-yellow);
     color: #1a1b27 !important;
     padding: 2px 15px;
     margin-top: 15px !important;
@@ -118,4 +120,124 @@ figcaption {
 .logo__cursor {
     background-color: #ff00ff !important;
     box-shadow: 0 0 10px #ff00ff !important;
+}
+
+/* --- ITEM 2: BARRAS DECORATIVAS (RESPONSIVAS) --- */
+.terminal-bars {
+    flex: 1; /* Faz a barra ocupar o espaço restante e encolher se necessário */
+    height: 25px;
+    background-image: linear-gradient(to right, var(--bizu-yellow) 1px, transparent 1px);
+    background-size: 4px 100%;
+    margin-left: 15px;
+    min-width: 50px; /* Garante que sempre apareça um pouco de barra no mobile */
+}
+
+/* --- CARD DE PRODUTO NEON TERMINAL --- */
+.product-card {
+    border: 1px solid var(--neon-green);
+    padding: 1.5rem;
+    margin: 2rem 0;
+    background: rgba(0, 255, 65, 0.03);
+    border-radius: 4px;
+    position: relative;
+    box-shadow: inset 0 0 10px rgba(0, 255, 65, 0.1), 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.product-card h3::before {
+    content: "> ";
+    color: var(--neon-green);
+}
+
+/* Ajuste do Grid para evitar quebra de palavras no mobile */
+.pros-cons {
+    display: flex;
+    flex-wrap: wrap; /* Permite empilhar no mobile */
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+    border-top: 1px dashed rgba(0, 255, 65, 0.3);
+    padding-top: 1rem;
+}
+
+.pros, .cons {
+    flex: 1;
+    min-width: 200px; /* Impede que fiquem muito estreitos */
+}
+
+.pros-cons ul {
+    list-style: none;
+    padding-left: 0;
+    word-break: normal; /* Evita Ergonô-mico */
+    overflow-wrap: anywhere;
+}
+
+.pros-cons .pros li::before { content: "[+] "; color: var(--neon-green); margin-right: 5px; }
+.pros-cons .cons li::before { content: "[-] "; color: #ff5555; margin-right: 5px; }
+
+.pros-label { color: var(--neon-green); font-weight: bold; text-transform: uppercase; display: block; margin-bottom: 0.5rem; }
+.cons-label { color: #ff5555; font-weight: bold; text-transform: uppercase; display: block; margin-bottom: 0.5rem; }
+
+/* Preço em destaque */
+.product-price {
+    font-size: 1.4rem;
+    color: var(--neon-green);
+    font-family: 'Fira Code', monospace;
+    margin: 1rem 0;
+    text-shadow: 0 0 8px rgba(0, 255, 65, 0.6);
+}
+
+/* Botão de Compra com Efeito Glow */
+.btn-compra {
+    display: block; /* Ocupa largura total no mobile */
+    text-align: center;
+    background-color: var(--neon-green);
+    color: #000 !important;
+    padding: 12px 25px;
+    text-decoration: none;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 0;
+    transition: all 0.2s ease-in-out;
+    border: 1px solid var(--neon-green);
+    box-shadow: 3px 3px 0px #008f11;
+    margin-bottom: 10px;
+}
+
+.btn-compra:hover {
+    background-color: #000;
+    color: var(--neon-green) !important;
+    box-shadow: 0 0 15px var(--neon-green);
+    transform: translateY(-2px);
+}
+
+/* --- MEDIA QUERIES --- */
+@media (max-width: 600px) {
+    /* Compacta o espaçamento do menu */
+    .menu-nav {
+        margin-top: 15px !important; /* Diminui distância entre logo e menu */
+    }
+
+    .menu__inner {
+        gap: 8px 12px !important; /* Diminui espaço entre as linhas e entre os itens */
+    }
+
+    .menu__inner li a {
+        font-size: 0.95rem !important; /* Diminui levemente a fonte para ajudar no encaixe */
+        line-height: 1.2;
+    }
+
+    /* Compacta o card de produto também */
+    .product-card {
+        padding: 0.8rem !important;
+        margin: 1rem 0 !important;
+    }
+
+    .pros-cons {
+        gap: 0.8rem !important;
+        margin: 1rem 0 !important;
+    }
+
+    .product-price {
+        margin: 0.5rem 0 !important;
+    }
 }

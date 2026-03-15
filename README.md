@@ -1,69 +1,80 @@
-# ᗧ BΣ Bizumática
+# 🚀 Bizumática - Portal de Conteúdo & Curadoria
 
-> **Linux, Shell Scripting e Matemática: Onde o terminal encontra a lógica.**
+O **Bizumática** é um ecossistema estático baseado em Hugo, focado em educação tecnológica e curadoria de equipamentos. O projeto utiliza uma arquitetura de **SEO Programático** para gerar páginas de afiliados automaticamente a partir de dados externos.
 
-Bem-vindo ao repositório do **Bizumática**. Este é um projeto pessoal de documentação técnica, focado em compartilhar "bizus" (dicas rápidas) sobre sistemas Unix-like e resoluções matemáticas elegantes.
+## 🛠️ Arquitetura do Sistema
 
-[Website Oficial](https://bizumatica.github.io/) | [Conteúdo de Matemática](https://bizumatica.github.io/matematica/) | [Blog](https://bizumatica.github.io/posts/)
+### 1. Fluxo de Dados (Data Pipeline)
 
----
+1. **Fonte:** Google Sheets (camada de gerenciamento de produtos).
+2. **Processamento:** `auto-busca.py` (Script Python com `pandas` e `pyyaml`).
+3. **Geração:** O script consome o CSV (Nuvem ou Local) e gera arquivos Markdown em `content/equipamentos/`.
+4. **Build:** O Hugo processa os arquivos usando o shortcode `{{< compra >}}` e metadados do Front Matter.
 
-## 🛠️ O Projeto
+### 2. Estrutura de Diretórios Chave
 
-O site é gerado estaticamente para máxima performance e segurança.
-
-* **Engine:** [Hugo](https://gohugo.io/) (versão estendida).
-* **Tema:** [Terminal](https://github.com/panr/hugo-theme-terminal) modificado para suporte a Shortcodes customizados.
-* **Busca:** Indexação via [Pagefind](https://pagefind.app/) (funciona 100% offline/estático).
-* **Matemática:** Renderização via LaTeX para fórmulas complexas.
-
-### Estrutura de Pastas Úteis:
-* `content/posts/`: Artigos sobre tecnologia e Linux.
-* `content/matematica/`: Notas de estudo e questões de vestibulares (ex: Unicamp).
-* `layouts/shortcodes/`: Onde residem o `{{< bizu >}}` e o `{{< box >}}` que dão a cara do site.
-* `static/`: Assets como o QR Code do Pix e imagens do canal.
+* `archetypes/`: Moldes para `equipamentos.md` e `matematica.md`.
+* `content/`: Conteúdo bruto (Equipamentos, Matemática e Posts).
+* `layouts/shortcodes/`: Componentes funcionais (`compra.html`, `bizu.html`).
+* `static/`: Ativos estáticos e o arquivo `CNAME` para o domínio `bizumatica.com.br`.
+* `docs/`: Pasta de saída para o deploy (GitHub Pages).
 
 ---
 
-## 🚀 Fluxo de Trabalho
+## 🏗️ Operação & Deploy
 
-Se você quiser rodar ou testar o site localmente:
+### Pré-requisitos
 
-1. **Submódulos e Temas:**
-   ```bash
-   git clone [https://github.com/bizumatica/bizumatica.github.io.git](https://github.com/bizumatica/bizumatica.github.io.git)
-   cd bizumatica.github.io
+* Hugo (versão Extended recomendada)
+* Python 3.x + `pandas`, `pyyaml`, `requests`
+* Node.js (para o `pagefind`)
 
-```
+### Ciclo de Atualização
 
-2. **Server Local:**
-```bash
-hugo server -D
+Para adicionar produtos ou atualizar o site, basta rodar o script de deploy blindado:
 
-```
-
-
-3. **Build e Indexação:**
-O projeto usa um script de deploy customizado (`deploy.sh`) que automatiza o build e a atualização do índice de busca:
 ```bash
 chmod +x deploy.sh
-./deploy.sh
+./deploy.sh "Mensagem do commit"
 
 ```
 
+O `deploy.sh` executa automaticamente:
 
-
----
-
-## 📜 Licença
-
-Este projeto está licenciado sob a **GNU GPL v3.0**.
-Isso significa que você é livre para copiar, modificar e distribuir o conteúdo, desde que mantenha os créditos originais e distribua suas modificações sob a mesma licença.
-
-*A liberdade do software é o nosso bizu principal.* 🐧
+1. Sincronização via `auto-busca.py`.
+2. Limpeza de builds antigos.
+3. Minificação e Build do Hugo em `/docs`.
+4. Indexação de busca via Pagefind.
+5. Push para o repositório remoto.
 
 ---
 
-**Mantido por:** [Bizumática](https://www.google.com/search?q=https://github.com/bizumatica)
+## 📊 Estrutura da Planilha (CSV)
 
-```
+Para a automação funcionar, a fonte de dados deve conter as seguintes colunas:
+`slug`, `nome`, `preco`, `link_afiliado`, `pros`, `cons`, `review_curto`.
+
+---
+
+## 🎨 Identidade Visual
+
+* **Tema:** Terminal (Retro-hacker).
+* **Customizações:** Localizadas em `assets/css/extended.css`.
+* **Componente de Conversão:** O card de compra utiliza estética neon com efeito de profundidade para maximizar o CTR (Click-Through Rate).
+
+---
+
+## 📈 Estratégia de Dividendos
+
+O site foi projetado para:
+
+1. **Baixo Custo Fixo:** Hospedagem gratuita no GitHub Pages + DNS Cloudflare.
+2. **Alta Performance:** SSG (Static Site Generation) para atingir nota máxima no Google PageSpeed.
+3. **Google Ads Ready:** Páginas de destino ultra-específicas geradas programaticamente para reduzir o CPC.
+
+---
+
+**Mantenedor:** Julio Prata
+**Versão da Automação:** 2.3
+
+---

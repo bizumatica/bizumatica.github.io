@@ -5,14 +5,14 @@ math: true
 
 <div style="padding: 0 5px;">
 
-# 🚀 Bizumática ≡ BΣ
+# 🚀Bizumática **BΣ**
 
-## Linux ↔️ FOSS ↔️ Matemática
+## <span style="color: #00D1B2;">Linux-FOSS <span style="color: #00D1B2;">Matemática-Curadoria
 
 
 
 > No **Bizumática**, exploramos a intersecção entre o código aberto e a lógica pura. Aqui você encontrará análises técnicas, automação com Shell Script e insights práticos sobre o ecossistema Linux. Nosso foco é desmistificar a tecnologia para que você a domine com autonomia, provando que a 
-> $\mathrm{M}\alpha\theta\eta\mu\alpha\tau\iota\kappa\acute{\alpha}$ e o terminal falam a mesma língua: a da elegância e da eficiência.
+> <span style="color: #00ff41;">$\mu\alpha\theta\eta\mu\alpha\tau\iota\kappa\alpha$</span> e o terminal falam a mesma língua: a da elegância e da eficiência.
 
 > **O Manifesto da Elegância:**
 >

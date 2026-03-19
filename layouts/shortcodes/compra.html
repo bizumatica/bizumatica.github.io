@@ -1,6 +1,30 @@
+{{/* 1. Definição de Variáveis com Fallbacks Inteligentes */}}
+{{ $name  := .Get "name"  | default .Page.Params.product.name | default "Produto Recomendado" }}
+{{ $price := .Get "price" | default .Page.Params.product.current_price | default "0.00" }}
+{{ $img   := .Get "img"   | default .Page.Params.product.thumbnail }}
+{{ $link  := .Get "link"  | default (index .Page.Params.affiliate 0).link | default "#" }}
+{{ $curr  := .Get "curr"  | default .Page.Params.product.currency | default "BRL" }}
+
 <div class="product-card">
-    <h3>{{ .Page.Params.product.name }}</h3>
+    <div style="font-size: 0.7em; opacity: 0.5; margin-bottom: 5px; font-family: monospace;">
+        // BIZU_CURADORIA: {{ upper .Page.Section }}
+    </div>
     
+    <h3>{{ $name }}</h3>
+    
+    {{ with $img }}
+    <div class="product-thumbnail" style="text-align: center; margin-bottom: 20px;">
+        {{ $resource := $.Page.Resources.GetMatch (printf "*%s*" .) }}
+        {{ if $resource }}
+            <img src="{{ $resource.RelPermalink }}" alt="{{ $name }}" style="max-width: 100%; border-radius: 4px; border: 1px solid #333;">
+        {{ else }}
+            <img src="{{ . | relURL }}" alt="{{ $name }}" style="max-width: 100%; border-radius: 4px; border: 1px solid #333;">
+        {{ end }}
+    </div>
+    {{ end }}
+
+    {{/* Só exibe Pros/Cons se existirem no Frontmatter ou se for a seção Equipamentos */}}
+    {{ if .Page.Params.product.pros }}
     <div class="pros-cons">
         <div class="pros">
             <span class="pros-label">Sinal Estável (Prós)</span>
@@ -8,26 +32,16 @@
                 {{ range .Page.Params.product.pros }} <li>{{ . }}</li> {{ end }}
             </ul>
         </div>
-        <div class="cons">
-            <span class="cons-label">Ruído (Contras)</span>
-            <ul>
-                {{ range .Page.Params.product.cons }} <li>{{ . }}</li> {{ end }}
-            </ul>
-        </div>
     </div>
+    {{ end }}
 
     <div class="product-price">
-        VALOR_ATUAL: {{ .Page.Params.product.currency }} {{ .Page.Params.product.current_price }}
+        VALOR_ESTIMADO: {{ $curr }} {{ $price }}
     </div>
 
     <div class="affiliate-links">
-        <span style="display:block; margin-bottom: 10px; font-size: 0.8em; opacity: 0.7;">
-            // SELECIONE_O_PROVEDOR:
-        </span>
-        {{ range .Page.Params.affiliate }}
-            <a href="{{ .link }}" target="_blank" class="btn-compra multi-store">
-                FETCH --{{ lower .store | urlize }}
-            </a>
-        {{ end }}
+        <a href="{{ $link }}" target="_blank" class="btn-compra multi-store">
+            FETCH --{{ if (strings.Contains $link "amazon") }}AMAZON{{ else if (strings.Contains $link "hotmart") }}HOTMART{{ else }}PROVEDOR{{ end }}
+        </a>
     </div>
 </div>

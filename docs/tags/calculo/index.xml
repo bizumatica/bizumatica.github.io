@@ -2,43 +2,38 @@
 $$e^{i\pi} + 1 = 0$$
 
 
-&lt;div class="mat-box box-bizu"&gt;
- &lt;div class="box-header"&gt;
- &lt;span class="box-icon"&gt;
- 💡
- 
- 
- &lt;/span&gt;
- &lt;span class="box-title"&gt;BIZU&lt;/span&gt;
+
+
+
+
+
+
+
+&lt;div class="mat-box box-bizu" style="border-left: 5px solid var(--box-color, #0e1922); background: #0f0f0d; padding: 1rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;"&gt;
+ &lt;div class="box-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem; border-bottom: 1px solid #333; padding-bottom: 5px;"&gt;
+ &lt;span class="box-icon"&gt;💡&lt;/span&gt;
+ &lt;strong class="box-title" style="font-family: monospace; letter-spacing: 1px;"&gt;BIZU&lt;/strong&gt;
  &lt;/div&gt;
- &lt;div class="box-content"&gt;
- &lt;p&gt;&lt;strong&gt;Os Cinco Números:&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;0&lt;/strong&gt;: Neutro da adição (Aritmética)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;1&lt;/strong&gt;: Neutro da multiplicação (Aritmética)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;π&lt;/strong&gt;: Constante da circunferência (Geometria)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;e&lt;/strong&gt;: Base dos logaritmos naturais (Cálculo/Análise)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;i&lt;/strong&gt;: Unidade imaginária (Álgebra Complexa)&lt;/li&gt;
-&lt;/ul&gt;
- &lt;/div&gt;
-&lt;/div&gt;
-&lt;h3 id="a-origem-fórmula-de-euler"&gt;A Origem: Fórmula de Euler&lt;/h3&gt;
-&lt;p&gt;A identidade é um caso particular da &lt;strong&gt;Fórmula de Euler&lt;/strong&gt;, que estabelece a ponte entre funções exponenciais e trigonométricas:&lt;/p&gt;</description></item><item><title>A Beleza Da Integral De Gaus</title><link>https://bizumatica.com.br/matematica/beleza-da-integral-de-gaus/</link><pubDate>Mon, 09 Mar 2026 18:31:01 -0300</pubDate><guid>https://bizumatica.com.br/matematica/beleza-da-integral-de-gaus/</guid><description>&lt;p&gt;A integral de Gauss, também conhecida como integral de Euler-Poisson, é um daqueles resultados que parecem mágicos na primeira vez que vemos. Ela é fundamental para a estatística (Distribuição Normal) e para a física quântica.&lt;/p&gt;
+ &lt;div class="box-content" style="font-size: 0.95rem; line-height: 1.6;"&gt;
+ &lt;p&gt;&lt;strong&gt;Os Cinco Números:&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>A Beleza Da Integral De Gaus</title><link>https://bizumatica.com.br/matematica/beleza-da-integral-de-gaus/</link><pubDate>Mon, 09 Mar 2026 18:31:01 -0300</pubDate><guid>https://bizumatica.com.br/matematica/beleza-da-integral-de-gaus/</guid><description>&lt;p&gt;A integral de Gauss, também conhecida como integral de Euler-Poisson, é um daqueles resultados que parecem mágicos na primeira vez que vemos. Ela é fundamental para a estatística (Distribuição Normal) e para a física quântica.&lt;/p&gt;
 &lt;h3 id="o-problema"&gt;O Problema&lt;/h3&gt;
 &lt;p&gt;Queremos calcular o valor da área sob a curva da função gaussiana em toda a reta real:&lt;/p&gt;
 $$I = \int_{-\infty}^{\infty} e^{-x^2} dx$$
 
 
-&lt;div class="mat-box box-bizu"&gt;
- &lt;div class="box-header"&gt;
- &lt;span class="box-icon"&gt;
- 💡
- 
- 
- &lt;/span&gt;
- &lt;span class="box-title"&gt;BIZU&lt;/span&gt;
+
+
+
+
+
+
+
+&lt;div class="mat-box box-bizu" style="border-left: 5px solid var(--box-color, #0e1922); background: #0f0f0d; padding: 1rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;"&gt;
+ &lt;div class="box-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem; border-bottom: 1px solid #333; padding-bottom: 5px;"&gt;
+ &lt;span class="box-icon"&gt;💡&lt;/span&gt;
+ &lt;strong class="box-title" style="font-family: monospace; letter-spacing: 1px;"&gt;BIZU&lt;/strong&gt;
  &lt;/div&gt;
- &lt;div class="box-content"&gt;
+ &lt;div class="box-content" style="font-size: 0.95rem; line-height: 1.6;"&gt;
  &lt;strong&gt;Curiosidade:&lt;/strong&gt; Esta função não possui uma primitiva expressável por funções elementares. Ou seja, você não consegue resolvê-la diretamente pelo Teorema Fundamental do Cálculo convencional. Precisamos de um truque de mestre.
  &lt;/div&gt;
 &lt;/div&gt;

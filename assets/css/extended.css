@@ -1,4 +1,4 @@
-/* assets/css/extended.css */
+/* assets/css/extended.css - VERSÃO FINAL BIZUMÁTICA */
 
 /* 1. Importação da fonte para suporte CJK (Kanjis) */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
@@ -19,10 +19,8 @@ body {
     padding: 0 5px; 
 }
 
-/* Garante que Kanjis em negrito nas listas fiquem em Turquesa */
 li strong, li b {
     color: var(--primary-color);
-    font-family: var(--font-family);
     font-weight: 700;
 }
 
@@ -34,8 +32,7 @@ li strong, li b {
 }
 
 .content {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+    margin: 0 !important;
     padding: 0 !important;
     width: 100% !important;
 }
@@ -61,18 +58,6 @@ a:hover {
     background: rgba(255, 255, 255, 0.03);
 }
 
-/* --- Tags Bizu --- */
-.bizu-tag {
-    font-family: var(--font-family);
-    font-size: 0.85rem;
-    color: var(--primary-color) !important;
-    background: rgba(0, 209, 178, 0.05);
-    padding: 4px 14px;
-    border-radius: 4px;
-    border: 1px solid var(--primary-color);
-    text-decoration: none !important;
-}
-
 /* --- KaTeX --- */
 .katex-display {
     margin: 1.5rem 0;
@@ -83,34 +68,42 @@ a:hover {
     overflow-x: auto;
 }
 
-/* --- Imagens e Legendas (Figures) --- */
-figure {
+/* --- IMAGENS E LEGENDAS (O CORAÇÃO DO PROBLEMA) --- */
+/* Forçamos o container a centralizar tudo e não ter bordas do tema */
+figure, .post-content figure, article figure {
     display: block !important;
     margin: 40px auto !important; 
-    width: 650px !important;      
-    max-width: 100% !important;   
-    text-align: center !important;
+    max-width: 650px !important;   
+    width: 100% !important;
+    text-align: center !important; 
+    background: transparent !important;
+    border: none !important;
 }
 
-figure img {
-    width: 100% !important;       
+/* Estilo da Imagem com a Borda Amarela */
+figure img, .post-content img, article img {
+    max-width: 100% !important;
     height: auto !important;
     border: 5px solid var(--bizu-yellow) !important; 
     box-sizing: border-box !important;    
     display: block !important;
+    margin: 0 auto 15px auto !important; 
 }
 
-figcaption {
-    display: inline-block !important;
-    background-color: var(--bizu-yellow);
+/* Estilo da Legenda (Estilo Foto 2) */
+figcaption, .post-content figcaption, article figcaption {
+    display: inline-block !important; /* Faz o fundo abraçar o texto */
+    background-color: var(--bizu-yellow) !important;
     color: #1a1b27 !important;
-    padding: 2px 15px;
-    margin-top: 15px !important;
-    font-weight: bold;
-    text-align: center;
+    padding: 4px 15px !important;
+    font-weight: bold !important;
+    font-family: var(--font-family) !important;
+    font-size: 0.9rem !important;
+    text-align: center !important;
+    margin: 0 auto !important;
 }
 
-/* --- Logo e Estética (Gradients) --- */
+/* --- LOGO E ESTÉTICA TERMINAL --- */
 #title, .logo__text {
     background: linear-gradient(45deg, #00f2ff, #ff00ff) !important;
     -webkit-background-clip: text !important;
@@ -122,17 +115,16 @@ figcaption {
     box-shadow: 0 0 10px #ff00ff !important;
 }
 
-/* --- ITEM 2: BARRAS DECORATIVAS (RESPONSIVAS) --- */
 .terminal-bars {
-    flex: 1; /* Faz a barra ocupar o espaço restante e encolher se necessário */
+    flex: 1; 
     height: 25px;
     background-image: linear-gradient(to right, var(--bizu-yellow) 1px, transparent 1px);
     background-size: 4px 100%;
     margin-left: 15px;
-    min-width: 50px; /* Garante que sempre apareça um pouco de barra no mobile */
+    min-width: 50px; 
 }
 
-/* --- CARD DE PRODUTO NEON TERMINAL --- */
+/* --- CARD DE PRODUTO --- */
 .product-card {
     border: 1px solid var(--neon-green);
     padding: 1.5rem;
@@ -140,104 +132,65 @@ figcaption {
     background: rgba(0, 255, 65, 0.03);
     border-radius: 4px;
     position: relative;
-    box-shadow: inset 0 0 10px rgba(0, 255, 65, 0.1), 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
-.product-card h3::before {
-    content: "> ";
-    color: var(--neon-green);
+.product-card h3::before { content: "> "; color: var(--neon-green); }
+
+.product-thumbnail img {
+    border: 1px solid #333 !important;
+    padding: 5px !important;
+    background: #000 !important;
+    width: auto !important;
+    max-width: 200px !important; /* Thumbnail menor que a imagem do post */
 }
 
-/* Ajuste do Grid para evitar quebra de palavras no mobile */
-.pros-cons {
-    display: flex;
-    flex-wrap: wrap; /* Permite empilhar no mobile */
-    gap: 1.5rem;
-    margin: 1.5rem 0;
-    border-top: 1px dashed rgba(0, 255, 65, 0.3);
-    padding-top: 1rem;
-}
-
-.pros, .cons {
-    flex: 1;
-    min-width: 200px; /* Impede que fiquem muito estreitos */
-}
-
-.pros-cons ul {
-    list-style: none;
-    padding-left: 0;
-    word-break: normal; /* Evita Ergonô-mico */
-    overflow-wrap: anywhere;
-}
-
-.pros-cons .pros li::before { content: "[+] "; color: var(--neon-green); margin-right: 5px; }
-.pros-cons .cons li::before { content: "[-] "; color: #ff5555; margin-right: 5px; }
-
-.pros-label { color: var(--neon-green); font-weight: bold; text-transform: uppercase; display: block; margin-bottom: 0.5rem; }
-.cons-label { color: #ff5555; font-weight: bold; text-transform: uppercase; display: block; margin-bottom: 0.5rem; }
-
-/* Preço em destaque */
-.product-price {
-    font-size: 1.4rem;
-    color: var(--neon-green);
-    font-family: 'Fira Code', monospace;
-    margin: 1rem 0;
-    text-shadow: 0 0 8px rgba(0, 255, 65, 0.6);
-}
-
-/* Botão de Compra com Efeito Glow */
 .btn-compra {
-    display: block; /* Ocupa largura total no mobile */
+    display: block; 
     text-align: center;
     background-color: var(--neon-green);
     color: #000 !important;
     padding: 12px 25px;
-    text-decoration: none;
     font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    border-radius: 0;
-    transition: all 0.2s ease-in-out;
     border: 1px solid var(--neon-green);
     box-shadow: 3px 3px 0px #008f11;
-    margin-bottom: 10px;
 }
 
-.btn-compra:hover {
-    background-color: #000;
-    color: var(--neon-green) !important;
-    box-shadow: 0 0 15px var(--neon-green);
-    transform: translateY(-2px);
+/* --- BOXES (BIZU, TEOREMA, AVISO) --- */
+.mat-box {
+    border-radius: 0 8px 8px 0;
+    padding: 1.2rem;
+    margin: 1.8rem 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
+
+.box-bizu { border-left: 5px solid var(--bizu-yellow) !important; background: rgba(238, 195, 94, 0.03); }
+.box-teorema { border-left: 5px solid var(--primary-color) !important; background: rgba(0, 209, 178, 0.03); }
+.box-aviso { border-left: 5px solid #ff5555 !important; background: rgba(255, 85, 85, 0.03); }
+
+/* --- AFILIADOS --- */
+.affiliate-disclosure {
+    border: 1px dashed #444;
+    background: rgba(255, 255, 255, 0.02);
+    margin: 2.5rem 0;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+}
+
+.disclosure-header {
+    font-size: 0.65rem;
+    color: #666;
+    padding: 5px 15px;
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px dashed #444;
+}
+
+.disclosure-body { display: flex; align-items: center; gap: 15px; padding: 1.2rem; }
+.disclosure-text { font-size: 0.85rem; color: #ccc; }
 
 /* --- MEDIA QUERIES --- */
 @media (max-width: 600px) {
-    /* Compacta o espaçamento do menu */
-    .menu-nav {
-        margin-top: 15px !important; /* Diminui distância entre logo e menu */
-    }
-
-    .menu__inner {
-        gap: 8px 12px !important; /* Diminui espaço entre as linhas e entre os itens */
-    }
-
-    .menu__inner li a {
-        font-size: 0.95rem !important; /* Diminui levemente a fonte para ajudar no encaixe */
-        line-height: 1.2;
-    }
-
-    /* Compacta o card de produto também */
-    .product-card {
-        padding: 0.8rem !important;
-        margin: 1rem 0 !important;
-    }
-
-    .pros-cons {
-        gap: 0.8rem !important;
-        margin: 1rem 0 !important;
-    }
-
-    .product-price {
-        margin: 0.5rem 0 !important;
-    }
+    .menu__inner { gap: 8px 12px !important; }
+    .product-card { padding: 0.8rem !important; }
 }

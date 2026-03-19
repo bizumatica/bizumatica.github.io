@@ -1,0 +1,16 @@
+<div class="affiliate-disclosure" style="border: 1px dashed #444; background: #111; padding: 1.2rem; margin: 2rem 0; border-radius: 8px; font-family: monospace; position: relative;">
+    <span style="position: absolute; top: -12px; left: 15px; background: #000; padding: 0 10px; font-size: 0.75em; color: #888;">
+        // TRANSPARENCIA_AFILIADOS
+    </span>
+    
+    <div style="display: flex; align-items: flex-start; gap: 15px;">
+        <span style="font-size: 1.5rem;">🛍️</span>
+        <div style="font-size: 0.85rem; color: #ccc; line-height: 1.5;">
+            {{ if .Inner }}
+                {{ .Inner | markdownify }}
+            {{ else }}
+                <strong>Transparência:</strong> Ao clicar nos links de produtos, o <strong>Bizumática</strong> e comprar um item você ajuda a manter o servidor (e o café) ativos. <strong>Use os links abaixo:</strong>
+            {{ end }}
+        </div>
+    </div>
+</div>

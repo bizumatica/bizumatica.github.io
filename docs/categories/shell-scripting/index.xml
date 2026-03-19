@@ -4,38 +4,19 @@
 
 
 
-&lt;div class="mat-box box-bizu"&gt;
- &lt;div class="box-header"&gt;
- &lt;span class="box-icon"&gt;
- 💡
- 
- 
- &lt;/span&gt;
- &lt;span class="box-title"&gt;Macete de Potência&lt;/span&gt;
- &lt;/div&gt;
- &lt;div class="box-content"&gt;
- &lt;p&gt;Para elevar ao quadrado números que terminam em 5:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Multiplique o primeiro algarismo pelo sucessor dele.&lt;/li&gt;
-&lt;li&gt;Escreva &lt;strong&gt;25&lt;/strong&gt; no final.
-&lt;em&gt;Exemplo: $25^2 \rightarrow 2 \times 3 = 6 \rightarrow 625$.&lt;/em&gt;&lt;/li&gt;
-&lt;/ol&gt;
- &lt;/div&gt;
-&lt;/div&gt;
 
 
 
-&lt;div class="mat-box box-teorema"&gt;
- &lt;div class="box-header"&gt;
- &lt;span class="box-icon"&gt;
- 
- 📐
- 
- &lt;/span&gt;
- &lt;span class="box-title"&gt;Teorema Fundamental&lt;/span&gt;
+
+
+
+
+&lt;div class="mat-box box-bizu" style="border-left: 5px solid var(--box-color, #0e1922); background: #0f0f0d; padding: 1rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;"&gt;
+ &lt;div class="box-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem; border-bottom: 1px solid #333; padding-bottom: 5px;"&gt;
+ &lt;span class="box-icon"&gt;💡&lt;/span&gt;
+ &lt;strong class="box-title" style="font-family: monospace; letter-spacing: 1px;"&gt;Macete de Potência&lt;/strong&gt;
  &lt;/div&gt;
- &lt;div class="box-content"&gt;
- &lt;p&gt;A soma dos quadrados dos catetos é igual ao quadrado da hipotenusa:
-&lt;/p&gt;</description></item><item><title>Shell Script: A Habilidade Invisivel</title><link>https://bizumatica.com.br/posts/habilidade-natural-shell/</link><pubDate>Wed, 07 Jan 2026 08:00:00 -0300</pubDate><guid>https://bizumatica.com.br/posts/habilidade-natural-shell/</guid><description>&lt;h2 id="por-que-falar-de-shell-script-em-pleno-2026"&gt;Por que falar de Shell Script em pleno 2026?&lt;/h2&gt;
+ &lt;div class="box-content" style="font-size: 0.95rem; line-height: 1.6;"&gt;
+ &lt;p&gt;Para elevar ao quadrado números que terminam em 5:&lt;/p&gt;</description></item><item><title>Shell Script: A Habilidade Invisivel</title><link>https://bizumatica.com.br/posts/habilidade-natural-shell/</link><pubDate>Wed, 07 Jan 2026 08:00:00 -0300</pubDate><guid>https://bizumatica.com.br/posts/habilidade-natural-shell/</guid><description>&lt;h2 id="por-que-falar-de-shell-script-em-pleno-2026"&gt;Por que falar de Shell Script em pleno 2026?&lt;/h2&gt;
 &lt;p&gt;Muitas vezes, olhamos para a tela preta de um terminal e imaginamos um cenário de Matrix, restrito a hackers ou administradores de sistemas. No &lt;strong&gt;Bizumática&lt;/strong&gt;, queremos quebrar esse mito. O Shell Script não é apenas uma linguagem de programação; é uma forma de &lt;strong&gt;autonomia&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Independentemente de você ser um advogado, um designer, um acadêmico ou um entusiasta de tecnologia, aprender a &amp;ldquo;falar&amp;rdquo; com o seu sistema operacional de forma direta é como aprender a ler e escrever no mundo digital.&lt;/p&gt;</description></item></channel></rss>

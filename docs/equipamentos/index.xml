@@ -1,38 +1,32 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Curadoria on Bizumática</title><link>https://bizumatica.com.br/equipamentos/</link><description>Recent content in Curadoria on Bizumática</description><generator>Hugo</generator><language>pt-br</language><lastBuildDate>Sun, 15 Mar 2026 18:19:48 -0300</lastBuildDate><atom:link href="https://bizumatica.com.br/equipamentos/index.xml" rel="self" type="application/rss+xml"/><item><title>Logitech MX Master 3S</title><link>https://bizumatica.com.br/equipamentos/mouse-mx-master-3s/</link><pubDate>Sun, 15 Mar 2026 18:19:48 -0300</pubDate><guid>https://bizumatica.com.br/equipamentos/mouse-mx-master-3s/</guid><description>&lt;p&gt;Review teste.&lt;/p&gt;
-&lt;div class="product-card"&gt;
- &lt;h3&gt;Logitech MX Master 3S&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Curadoria on Bizumática</title><link>https://bizumatica.com.br/equipamentos/</link><description>Recent content in Curadoria on Bizumática</description><generator>Hugo</generator><language>pt-br</language><lastBuildDate>Thu, 19 Mar 2026 14:52:13 -0300</lastBuildDate><atom:link href="https://bizumatica.com.br/equipamentos/index.xml" rel="self" type="application/rss+xml"/><item><title>Mouse Mx Master 3s</title><link>https://bizumatica.com.br/equipamentos/mouse-mx-master-3s/</link><pubDate>Thu, 19 Mar 2026 14:52:13 -0300</pubDate><guid>https://bizumatica.com.br/equipamentos/mouse-mx-master-3s/</guid><description>&lt;div class="product-card"&gt;
+ &lt;div style="font-size: 0.7em; opacity: 0.5; margin-bottom: 5px; font-family: monospace;"&gt;
+ // BIZU_CURADORIA: EQUIPAMENTOS
+ &lt;/div&gt;
  
- &lt;div class="pros-cons"&gt;
- &lt;div class="pros"&gt;
- &lt;span class="pros-label"&gt;Sinal Estável (Prós)&lt;/span&gt;
- &lt;ul&gt;
- &lt;li&gt;Ergonômico&lt;/li&gt; &lt;li&gt;Silencioso&lt;/li&gt; 
- &lt;/ul&gt;
+ &lt;h3&gt;Produto Recomendado&lt;/h3&gt;
+ 
+ 
+ &lt;div class="product-thumbnail" style="text-align: center; margin-bottom: 20px;"&gt;
+ 
+ 
+ &lt;img src="../images/produtos/thumb-produto.jpg" alt="Produto Recomendado" style="max-width: 100%; border-radius: 4px; border: 1px solid #333;"&gt;
+ 
  &lt;/div&gt;
- &lt;div class="cons"&gt;
- &lt;span class="cons-label"&gt;Ruído (Contras)&lt;/span&gt;
- &lt;ul&gt;
- &lt;li&gt;Preço alto&lt;/li&gt; 
- &lt;/ul&gt;
- &lt;/div&gt;
- &lt;/div&gt;
+ 
+
+ 
+ 
 
  &lt;div class="product-price"&gt;
- VALOR_ATUAL: BRL 549
+ VALOR_ESTIMADO: BRL 0.00
  &lt;/div&gt;
 
  &lt;div class="affiliate-links"&gt;
- &lt;span style="display:block; margin-bottom: 10px; font-size: 0.8em; opacity: 0.7;"&gt;
- // SELECIONE_O_PROVEDOR:
- &lt;/span&gt;
- 
- &lt;a href="https://amzn.to/3x" target="_blank" class="btn-compra multi-store"&gt;
- FETCH --amazon
+ &lt;a href="#" target="_blank" class="btn-compra multi-store"&gt;
+ FETCH --PROVEDOR
  &lt;/a&gt;
- 
- &lt;a href="https://mercadolivre.com.br/y" target="_blank" class="btn-compra multi-store"&gt;
- FETCH --mercadolivre
- &lt;/a&gt;
- 
  &lt;/div&gt;
-&lt;/div&gt;</description></item></channel></rss>
+&lt;/div&gt;</description></item><item><title>Backup Universal Shell Hd Externo</title><link>https://bizumatica.com.br/equipamentos/backup-universal-shell-hd-externo/</link><pubDate>Wed, 18 Mar 2026 18:15:07 -0300</pubDate><guid>https://bizumatica.com.br/equipamentos/backup-universal-shell-hd-externo/</guid><description>&lt;p&gt;No Bizumática, seguimos a regra: &lt;strong&gt;&amp;ldquo;quem tem um, não tem nenhum&amp;rdquo;&lt;/strong&gt;. Se seus dados sensíveis estão apenas no SSD do seu notebook, você está a uma pane elétrica do desastre.&lt;/p&gt;
+&lt;p&gt;Abaixo, entrego um script universal e a estratégia de hardware para profissionais que não podem perder prazos ou contratos.&lt;/p&gt;
+&lt;h2 id="01-o-script-backup-tarball-automatizado"&gt;01. O Script: Backup Tarball Automatizado&lt;/h2&gt;
+&lt;p&gt;Este script empacota seus documentos em um arquivo &lt;code&gt;.tar.gz&lt;/code&gt; datado. É a forma mais limpa de garantir integridade via terminal.&lt;/p&gt;</description></item></channel></rss>

@@ -1,6 +1,6 @@
 ---
 title: Logitech MX Master 3S
-date: '2026-03-19T17:25:37-03:00'
+date: '2026-03-19T17:29:50-03:00'
 draft: false
 slug: mouse-mx-master-3s
 product:

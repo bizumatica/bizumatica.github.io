@@ -1,10 +1,40 @@
 {{ define "main" }}
-    <main class="posts">
+    <main class="posts" data-pagefind-body>
+        {{/* Bloco Principal: Hero / Boas-vindas */}}
         <div class="post">
-            <h1 class="post-title">{{ .Title | markdownify }}</h1>
-            <div class="post-content">
+            {{/* Título com gradiente e efeito terminal */}}
+            <h1 class="post-title logo__text">{{ .Title | markdownify }}</h1>
+            
+            {{/* O container hero-text ativa o cursor piscante (::before) no CSS */}}
+            <div class="post-content hero-text">
                 {{ .Content }}
             </div>
         </div>
+
+        {{/* Listagem de Posts Recentes (Abaixo do Manifesto) */}}
+        {{ if .IsHome }}
+            <hr style="border: 1px dashed #333; margin: 40px 0;">
+            <h2 style="color: var(--bizu-yellow); margin-bottom: 20px;">> SISTEMA_LOG: POSTS_RECENTES</h2>
+            
+            <div class="recent-posts">
+                {{/* Puxa os últimos 5 posts de seções específicas */}}
+                {{ range (where .Site.RegularPages "Section" "in" (slice "posts" "matematica" "equipamentos") | first 5) }}
+                    <article class="post" style="margin-bottom: 15px; border-left: 2px solid var(--primary-color);">
+                        <h3 class="post-title" style="font-size: 1.2rem;">
+                            <a href="{{ .Permalink }}" style="border: none;">> {{ .Title }}</a>
+                        </h3>
+                        <div class="post-meta" style="font-size: 0.8rem; opacity: 0.8;">
+                            <time>{{ .Date.Format "02/01/2006" }}</time>
+                            <span class="header-metadata" style="color: var(--primary-color);"> | {{ .Section | upper }}</span>
+                        </div>
+                    </article>
+                {{ end }}
+            </div>
+            
+            {{/* Botão para ver tudo */}}
+            <div style="margin-top: 20px;">
+                <a href="/posts/" class="btn-compra" style="display: inline-block; text-decoration: none;">VER_TODOS_OS_LOGS</a>
+            </div>
+        {{ end }}
     </main>
 {{ end }}

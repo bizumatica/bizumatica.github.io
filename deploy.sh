@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Author: Julio Prata
-# Version: 2.3 (Deploy Blindado com Automação de Dados)
-# Description: Deploy com integração de produtos e posts manuais
+# Version: 2.4 (Deploy Blindado + Cache Killer)
+# Description: Deploy com limpeza profunda de assets e integração Python
 
 GREEN='\033[0;32m'
 CYAN='\033[0;36m'
@@ -14,19 +14,24 @@ echo -e "${CYAN}--- Iniciando Deploy: Bizumática ---${NC}"
 
 # 0. Sincronização de Dados
 echo -e "${YELLOW}--> Rodando automação de dados (Nuvem/Local)...${NC}"
+# Removendo pastas fantasmas/lixo antes de rodar o python
+rm -rf "content/equipamentos/#"* 2>/dev/null
+
 if python3 auto-busca.py; then
     echo -e "${GREEN}--> Sincronização: OK!${NC}"
 else
-    echo -e "${RED}--> AVISO: Nenhuma fonte de produtos encontrada. Prosseguindo com site estático...${NC}"
-    # Não damos exit 1 aqui para permitir que o blog manual suba mesmo sem produtos novos
+    echo -e "${RED}--> AVISO: Falha na automação. Prosseguindo com dados locais...${NC}"
 fi
 
-# 1. Limpeza Preventiva
-echo -e "${YELLOW}--> Limpando builds anteriores...${NC}"
-rm -rf docs resources/_gen
+# 1. Limpeza Preventiva Profunda (Cache Killer)
+echo -e "${YELLOW}--> Limpando builds, caches e recursos antigos...${NC}"
+# Apagamos a pasta resources inteira para forçar o Hugo a reprocessar o CSS/JS
+rm -rf docs resources/_gen resources public
+hugo mod clean 2>/dev/null
 
 # 2. Build Hugo com Verificação de Erros
-echo -e "${GREEN}--> Gerando build otimizado...${NC}"
+echo -e "${GREEN}--> Gerando build otimizado (-d docs)...${NC}"
+# Usamos --gc (Garbage Collection) para garantir um build limpo
 if hugo --gc --minify -d docs; then
     echo -e "${GREEN}--> Build Hugo: OK!${NC}"
 else
@@ -47,12 +52,12 @@ if [ $# -eq 1 ]; then msg="$1"; fi
 
 # Verifica se houve mudanças reais antes de tentar o push
 if [[ -z $(git status -s) ]]; then
-    echo -e "${CYAN}--> Sem alterações para comitar. Saindo...${NC}"
+    echo -e "${CYAN}--> Sem alterações detectadas. O site já está atualizado.${NC}"
     exit 0
 fi
 
 # 5. Push Seguro
-echo -e "${GREEN}--> Sincronizando com GitHub...${NC}"
+echo -e "${GREEN}--> Enviando alterações para o GitHub...${NC}"
 git add .
 git commit -m "$msg"
 if git push origin main; then

@@ -37,7 +37,6 @@ def otimizar_imagens_bundle(diretorio_bundle):
             
             try:
                 with Image.open(caminho_original) as img:
-                    # Converte para RGB/RGBA dependendo da transparência
                     if img.mode in ("RGBA", "P"):
                         img = img.convert("RGBA")
                     else:
@@ -46,24 +45,20 @@ def otimizar_imagens_bundle(diretorio_bundle):
                     img.save(caminho_webp, "WEBP", quality=85)
                     print(f"    📸 Otimizado: {arquivo} -> {nome_sem_ext}.webp")
                 
-                # Remove o original após a conversão bem sucedida
                 os.remove(caminho_original)
             except Exception as e:
                 print(f"    ⚠️ Erro ao converter {arquivo}: {e}")
 
 def create_hugo_bundle(row):
-    # 1. Define a seção baseado na planilha (fallback para equipamentos)
     secao = str(row.get('secao', 'equipamentos')).strip().lower()
     slug = str(row['slug']).strip().lower()
     
-    # 2. Caminho do BUNDLE: content/secao/slug/
     bundle_dir = os.path.join(CONTENT_DIR, secao, slug)
     if not os.path.exists(bundle_dir):
         os.makedirs(bundle_dir)
     
     filename = os.path.join(bundle_dir, "index.md")
 
-    # Montagem de Afiliados
     affiliate_links = []
     for store, col in [('Amazon', 'link_afiliado'), ('MercadoLivre', 'link_ml'), ('AliExpress', 'link_ali')]:
         if col in row and pd.notna(row[col]):
@@ -88,21 +83,30 @@ def create_hugo_bundle(row):
     yaml_block = yaml.dump(front_matter, allow_unicode=True, sort_keys=False)
     content = f"---\n{yaml_block}---\n\n{row.get('review_curto', '')}\n\n{{{{< compra >}}}}"
     
-    # 3. Escreve o index.md
     with open(filename, 'w', encoding='utf-8') as f:
         f.write(content)
     
-    # 4. Busca e converte imagens na pasta do post
     otimizar_imagens_bundle(bundle_dir)
 
-# Execução Principal
+# --- EXECUÇÃO PRINCIPAL ---
 df = carregar_dados()
 
 if df is not None:
+    # Remove linhas onde o slug é nulo
     df = df.dropna(subset=['slug'])
-    print(f"--> Iniciando processamento de {len(df)} itens...")
+    
+    print(f"--> Iniciando processamento de itens válidos...")
+    count = 0
     for index, row in df.iterrows():
+        slug_raw = str(row['slug']).strip()
+        
+        # TRAVA DE SEGURANÇA: ignora slugs vazios, comentários ou instruções da planilha
+        if not slug_raw or slug_raw.startswith('#') or "use o slug" in slug_raw.lower():
+            continue
+            
         create_hugo_bundle(row)
-    print(f"✓ Finalizado com sucesso.")
+        count += 1
+        
+    print(f"✓ Processamento de {count} bundles finalizado com sucesso.")
 else:
     print("❌ Erro: Nenhuma fonte de dados encontrada.")

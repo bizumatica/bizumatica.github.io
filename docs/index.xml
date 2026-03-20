@@ -1,29 +1,91 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bem-vindo ao Bizumática on Bizumática</title><link>https://bizumatica.com.br/</link><description>Recent content in Bem-vindo ao Bizumática on Bizumática</description><generator>Hugo</generator><language>pt-br</language><lastBuildDate>Thu, 19 Mar 2026 14:52:13 -0300</lastBuildDate><atom:link href="https://bizumatica.com.br/index.xml" rel="self" type="application/rss+xml"/><item><title>Mouse Mx Master 3s</title><link>https://bizumatica.com.br/equipamentos/mouse-mx-master-3s/</link><pubDate>Thu, 19 Mar 2026 14:52:13 -0300</pubDate><guid>https://bizumatica.com.br/equipamentos/mouse-mx-master-3s/</guid><description>&lt;div class="product-card"&gt;
- &lt;div style="font-size: 0.7em; opacity: 0.5; margin-bottom: 5px; font-family: monospace;"&gt;
- // BIZU_CURADORIA: EQUIPAMENTOS
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bem-vindo ao Bizumática on Bizumática</title><link>https://bizumatica.com.br/</link><description>Recent content in Bem-vindo ao Bizumática on Bizumática</description><generator>Hugo</generator><language>pt-br</language><lastBuildDate>Fri, 20 Mar 2026 18:48:14 -0300</lastBuildDate><atom:link href="https://bizumatica.com.br/index.xml" rel="self" type="application/rss+xml"/><item><title>Calculadora TI-Nspire</title><link>https://bizumatica.com.br/equipamentos/ti-nspire/</link><pubDate>Fri, 20 Mar 2026 18:48:14 -0300</pubDate><guid>https://bizumatica.com.br/equipamentos/ti-nspire/</guid><description>&lt;p&gt;A melhor.&lt;/p&gt;
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+&lt;div class="product-card" style="border: 1px solid #333; padding: 20px; background: #1a1a1a; margin: 20px 0; border-radius: 4px;"&gt;
+ &lt;div style="font-size: 0.65rem; color: #666; margin-bottom: 10px; font-family: monospace; letter-spacing: 1.5px;"&gt;
+ // BIZU_ESTUDO: EQUIPAMENTOS / TI-NSPIRE
  &lt;/div&gt;
  
- &lt;h3&gt;Produto Recomendado&lt;/h3&gt;
+ &lt;h3 style="margin-top: 0; color: #eee;"&gt;Calculadora TI-Nspire&lt;/h3&gt;
  
- 
- &lt;div class="product-thumbnail" style="text-align: center; margin-bottom: 20px;"&gt;
- 
- 
- &lt;img src="./images/produtos/thumb-produto.jpg" alt="Produto Recomendado" style="max-width: 100%; border-radius: 4px; border: 1px solid #333;"&gt;
- 
- &lt;/div&gt;
  
 
  
  
+ 
+ &lt;div style="margin-bottom: 15px; border-top: 1px solid #333; padding-top: 10px;"&gt;
+ &lt;span style="color: #00ff00; font-size: 0.7rem; font-weight: bold; font-family: monospace;"&gt;[+] VANTAGEM:&lt;/span&gt;
+ &lt;p style="font-size: 0.85rem; color: #aaa; margin: 5px 0; font-style: italic;"&gt;"CAS Ativo"&lt;/p&gt;
+ &lt;/div&gt;
+ 
 
- &lt;div class="product-price"&gt;
- VALOR_ESTIMADO: BRL 0.00
+ &lt;div class="product-price" style="font-size: 1.3rem; color: #ffcc00; font-weight: bold; margin-bottom: 15px; font-family: monospace;"&gt;
+ VALOR: BRL 1620.0
  &lt;/div&gt;
 
  &lt;div class="affiliate-links"&gt;
- &lt;a href="#" target="_blank" class="btn-compra multi-store"&gt;
- FETCH --PROVEDOR
+ &lt;a href="https://amzn.to/..." target="_blank" style="display: block; background: #333; color: #fff; text-decoration: none; padding: 12px; text-align: center; font-weight: bold; border: 1px solid #444; transition: 0.3s;" onmouseover="this.style.background='#444'" onmouseout="this.style.background='#333'"&gt;
+ 
+ 🔗 ACESSAR OFERTA
+ 
+ &lt;/a&gt;
+ &lt;/div&gt;
+&lt;/div&gt;</description></item><item><title>Mouse Mx Master 3s</title><link>https://bizumatica.com.br/equipamentos/mouse-mx-master-3s/</link><pubDate>Thu, 19 Mar 2026 14:52:13 -0300</pubDate><guid>https://bizumatica.com.br/equipamentos/mouse-mx-master-3s/</guid><description>&lt;div class="product-card" style="border: 1px solid #333; padding: 20px; background: #1a1a1a; margin: 20px 0; border-radius: 4px;"&gt;
+ &lt;div style="font-size: 0.65rem; color: #666; margin-bottom: 10px; font-family: monospace; letter-spacing: 1.5px;"&gt;
+ // BIZU_ESTUDO: EQUIPAMENTOS / MOUSE-MX-MASTER-3S
+ &lt;/div&gt;
+ 
+ &lt;h3 style="margin-top: 0; color: #eee;"&gt;Mouse Mx Master 3s&lt;/h3&gt;
+ 
+ 
+
+ 
+ 
+ 
+
+ &lt;div class="product-price" style="font-size: 1.3rem; color: #ffcc00; font-weight: bold; margin-bottom: 15px; font-family: monospace;"&gt;
+ VALOR: BRL 0
+ &lt;/div&gt;
+
+ &lt;div class="affiliate-links"&gt;
+ &lt;a href="#" target="_blank" style="display: block; background: #333; color: #fff; text-decoration: none; padding: 12px; text-align: center; font-weight: bold; border: 1px solid #444; transition: 0.3s;" onmouseover="this.style.background='#444'" onmouseout="this.style.background='#333'"&gt;
+ 
+ 🔗 ACESSAR OFERTA
+ 
  &lt;/a&gt;
  &lt;/div&gt;
 &lt;/div&gt;</description></item><item><title>Teorema de Binet-Cauchy: Determinantes em Matrizes Não Quadradas</title><link>https://bizumatica.com.br/matematica/teorema-de-binet-cauchy/</link><pubDate>Thu, 19 Mar 2026 10:00:00 -0300</pubDate><guid>https://bizumatica.com.br/matematica/teorema-de-binet-cauchy/</guid><description>&lt;p&gt;Se você já estudou Álgebra Linear, conhece a regra clássica: $\det(AB) = \det(A)\det(B)$. Mas e se as matrizes $A$ e $B$ não forem quadradas? É aqui que entra o elegante &lt;strong&gt;Teorema de Binet-Cauchy&lt;/strong&gt;.&lt;/p&gt;
@@ -95,7 +157,8 @@ $$I = \int_{-\infty}^{\infty} e^{-x^2} dx$$
  &lt;img src="./images/canal.png" alt="Foto do Canal"&gt;
  &lt;figcaption&gt; Foto do Canal&lt;/figcaption&gt;
 &lt;/figure&gt;
-&lt;p&gt;&lt;img src="./images/gcanal.png" alt="Geometria do Problema."&gt;&lt;/p&gt;</description></item><item><title>🧪 Teste de Estética e Funcionalidades</title><link>https://bizumatica.com.br/matematica/teste-estetica/</link><pubDate>Tue, 27 Jan 2026 00:00:00 +0000</pubDate><guid>https://bizumatica.com.br/matematica/teste-estetica/</guid><description>&lt;p&gt;Este post serve para validar se o novo &lt;code&gt;extended.css&lt;/code&gt; e os shortcodes estão funcionando corretamente no ambiente do &lt;strong&gt;Bizumática&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src="./images/gcanal.png" alt="Geometria do Problema."&gt;
+&lt;em&gt;O problema&lt;/em&gt;&lt;/p&gt;</description></item><item><title>🧪 Teste de Estética e Funcionalidades</title><link>https://bizumatica.com.br/matematica/teste-estetica/</link><pubDate>Tue, 27 Jan 2026 00:00:00 +0000</pubDate><guid>https://bizumatica.com.br/matematica/teste-estetica/</guid><description>&lt;p&gt;Este post serve para validar se o novo &lt;code&gt;extended.css&lt;/code&gt; e os shortcodes estão funcionando corretamente no ambiente do &lt;strong&gt;Bizumática&lt;/strong&gt;.&lt;/p&gt;
 &lt;h2 id="1-teste-de-boxes-shortcodes"&gt;1. Teste de Boxes (Shortcodes)&lt;/h2&gt;
 &lt;p&gt;Vamos testar os três níveis de destaque que configuramos:&lt;/p&gt;
 

@@ -64,7 +64,8 @@ $$I = \int_{-\infty}^{\infty} e^{-x^2} dx$$
  &lt;img src="../images/canal.png" alt="Foto do Canal"&gt;
  &lt;figcaption&gt; Foto do Canal&lt;/figcaption&gt;
 &lt;/figure&gt;
-&lt;p&gt;&lt;img src="../images/gcanal.png" alt="Geometria do Problema."&gt;&lt;/p&gt;</description></item><item><title>🧪 Teste de Estética e Funcionalidades</title><link>https://bizumatica.com.br/matematica/teste-estetica/</link><pubDate>Tue, 27 Jan 2026 00:00:00 +0000</pubDate><guid>https://bizumatica.com.br/matematica/teste-estetica/</guid><description>&lt;p&gt;Este post serve para validar se o novo &lt;code&gt;extended.css&lt;/code&gt; e os shortcodes estão funcionando corretamente no ambiente do &lt;strong&gt;Bizumática&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src="../images/gcanal.png" alt="Geometria do Problema."&gt;
+&lt;em&gt;O problema&lt;/em&gt;&lt;/p&gt;</description></item><item><title>🧪 Teste de Estética e Funcionalidades</title><link>https://bizumatica.com.br/matematica/teste-estetica/</link><pubDate>Tue, 27 Jan 2026 00:00:00 +0000</pubDate><guid>https://bizumatica.com.br/matematica/teste-estetica/</guid><description>&lt;p&gt;Este post serve para validar se o novo &lt;code&gt;extended.css&lt;/code&gt; e os shortcodes estão funcionando corretamente no ambiente do &lt;strong&gt;Bizumática&lt;/strong&gt;.&lt;/p&gt;
 &lt;h2 id="1-teste-de-boxes-shortcodes"&gt;1. Teste de Boxes (Shortcodes)&lt;/h2&gt;
 &lt;p&gt;Vamos testar os três níveis de destaque que configuramos:&lt;/p&gt;
 

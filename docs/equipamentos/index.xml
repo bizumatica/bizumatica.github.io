@@ -1,29 +1,91 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Curadoria on Bizumática</title><link>https://bizumatica.com.br/equipamentos/</link><description>Recent content in Curadoria on Bizumática</description><generator>Hugo</generator><language>pt-br</language><lastBuildDate>Thu, 19 Mar 2026 14:52:13 -0300</lastBuildDate><atom:link href="https://bizumatica.com.br/equipamentos/index.xml" rel="self" type="application/rss+xml"/><item><title>Mouse Mx Master 3s</title><link>https://bizumatica.com.br/equipamentos/mouse-mx-master-3s/</link><pubDate>Thu, 19 Mar 2026 14:52:13 -0300</pubDate><guid>https://bizumatica.com.br/equipamentos/mouse-mx-master-3s/</guid><description>&lt;div class="product-card"&gt;
- &lt;div style="font-size: 0.7em; opacity: 0.5; margin-bottom: 5px; font-family: monospace;"&gt;
- // BIZU_CURADORIA: EQUIPAMENTOS
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Curadoria on Bizumática</title><link>https://bizumatica.com.br/equipamentos/</link><description>Recent content in Curadoria on Bizumática</description><generator>Hugo</generator><language>pt-br</language><lastBuildDate>Fri, 20 Mar 2026 18:48:14 -0300</lastBuildDate><atom:link href="https://bizumatica.com.br/equipamentos/index.xml" rel="self" type="application/rss+xml"/><item><title>Calculadora TI-Nspire</title><link>https://bizumatica.com.br/equipamentos/ti-nspire/</link><pubDate>Fri, 20 Mar 2026 18:48:14 -0300</pubDate><guid>https://bizumatica.com.br/equipamentos/ti-nspire/</guid><description>&lt;p&gt;A melhor.&lt;/p&gt;
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+&lt;div class="product-card" style="border: 1px solid #333; padding: 20px; background: #1a1a1a; margin: 20px 0; border-radius: 4px;"&gt;
+ &lt;div style="font-size: 0.65rem; color: #666; margin-bottom: 10px; font-family: monospace; letter-spacing: 1.5px;"&gt;
+ // BIZU_ESTUDO: EQUIPAMENTOS / TI-NSPIRE
  &lt;/div&gt;
  
- &lt;h3&gt;Produto Recomendado&lt;/h3&gt;
+ &lt;h3 style="margin-top: 0; color: #eee;"&gt;Calculadora TI-Nspire&lt;/h3&gt;
  
- 
- &lt;div class="product-thumbnail" style="text-align: center; margin-bottom: 20px;"&gt;
- 
- 
- &lt;img src="../images/produtos/thumb-produto.jpg" alt="Produto Recomendado" style="max-width: 100%; border-radius: 4px; border: 1px solid #333;"&gt;
- 
- &lt;/div&gt;
  
 
  
  
+ 
+ &lt;div style="margin-bottom: 15px; border-top: 1px solid #333; padding-top: 10px;"&gt;
+ &lt;span style="color: #00ff00; font-size: 0.7rem; font-weight: bold; font-family: monospace;"&gt;[+] VANTAGEM:&lt;/span&gt;
+ &lt;p style="font-size: 0.85rem; color: #aaa; margin: 5px 0; font-style: italic;"&gt;"CAS Ativo"&lt;/p&gt;
+ &lt;/div&gt;
+ 
 
- &lt;div class="product-price"&gt;
- VALOR_ESTIMADO: BRL 0.00
+ &lt;div class="product-price" style="font-size: 1.3rem; color: #ffcc00; font-weight: bold; margin-bottom: 15px; font-family: monospace;"&gt;
+ VALOR: BRL 1620.0
  &lt;/div&gt;
 
  &lt;div class="affiliate-links"&gt;
- &lt;a href="#" target="_blank" class="btn-compra multi-store"&gt;
- FETCH --PROVEDOR
+ &lt;a href="https://amzn.to/..." target="_blank" style="display: block; background: #333; color: #fff; text-decoration: none; padding: 12px; text-align: center; font-weight: bold; border: 1px solid #444; transition: 0.3s;" onmouseover="this.style.background='#444'" onmouseout="this.style.background='#333'"&gt;
+ 
+ 🔗 ACESSAR OFERTA
+ 
+ &lt;/a&gt;
+ &lt;/div&gt;
+&lt;/div&gt;</description></item><item><title>Mouse Mx Master 3s</title><link>https://bizumatica.com.br/equipamentos/mouse-mx-master-3s/</link><pubDate>Thu, 19 Mar 2026 14:52:13 -0300</pubDate><guid>https://bizumatica.com.br/equipamentos/mouse-mx-master-3s/</guid><description>&lt;div class="product-card" style="border: 1px solid #333; padding: 20px; background: #1a1a1a; margin: 20px 0; border-radius: 4px;"&gt;
+ &lt;div style="font-size: 0.65rem; color: #666; margin-bottom: 10px; font-family: monospace; letter-spacing: 1.5px;"&gt;
+ // BIZU_ESTUDO: EQUIPAMENTOS / MOUSE-MX-MASTER-3S
+ &lt;/div&gt;
+ 
+ &lt;h3 style="margin-top: 0; color: #eee;"&gt;Mouse Mx Master 3s&lt;/h3&gt;
+ 
+ 
+
+ 
+ 
+ 
+
+ &lt;div class="product-price" style="font-size: 1.3rem; color: #ffcc00; font-weight: bold; margin-bottom: 15px; font-family: monospace;"&gt;
+ VALOR: BRL 0
+ &lt;/div&gt;
+
+ &lt;div class="affiliate-links"&gt;
+ &lt;a href="#" target="_blank" style="display: block; background: #333; color: #fff; text-decoration: none; padding: 12px; text-align: center; font-weight: bold; border: 1px solid #444; transition: 0.3s;" onmouseover="this.style.background='#444'" onmouseout="this.style.background='#333'"&gt;
+ 
+ 🔗 ACESSAR OFERTA
+ 
  &lt;/a&gt;
  &lt;/div&gt;
 &lt;/div&gt;</description></item><item><title>Backup Universal Shell Hd Externo</title><link>https://bizumatica.com.br/equipamentos/backup-universal-shell-hd-externo/</link><pubDate>Wed, 18 Mar 2026 18:15:07 -0300</pubDate><guid>https://bizumatica.com.br/equipamentos/backup-universal-shell-hd-externo/</guid><description>&lt;p&gt;No Bizumática, seguimos a regra: &lt;strong&gt;&amp;ldquo;quem tem um, não tem nenhum&amp;rdquo;&lt;/strong&gt;. Se seus dados sensíveis estão apenas no SSD do seu notebook, você está a uma pane elétrica do desastre.&lt;/p&gt;

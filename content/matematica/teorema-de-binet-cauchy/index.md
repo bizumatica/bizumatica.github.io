@@ -15,7 +15,7 @@ Se você já estudou Álgebra Linear, conhece a regra clássica: $\det(AB) = \de
 Imagine que $A$ é uma matriz $m \times n$ e $B$ é uma matriz $n \times m$. O produto $AB$ resultará em uma matriz quadrada $m \times m$. Como calcular esse determinante sem realizar toda a multiplicação exaustiva?
 
 ![Diagrama das Matrizes A e B](binet-cauchy.webp)
-*Legenda: Visualização das dimensões m x n e n x m.*
+*Visualização das dimensões m x n e n x m.*
 
 ### O Teorema
 
@@ -34,6 +34,7 @@ Se **$m > n$**, o determinante de $AB$ será sempre **zero**. Isso ocorre porque
 Este teorema é a base para calcular a **área de um paralelogramo** formado por dois vetores no espaço tridimensional. Se projetarmos os vetores nos planos $xy$, $yz$ e $xz$:
 
 ![Projeções Geométricas](geometria-projeção.webp)
+*Contribuições das Submatrizes*
 
 $$\text{Área}^2 = \det(A_{xy})^2 + \det(A_{yz})^2 + \det(A_{xz})^2$$
 
@@ -54,8 +55,8 @@ Na computação gráfica e no desenvolvimento de **Motores de Jogos (Engines)**,
 Para visualizar esses conceitos em 3D ou realizar cálculos pesados de Álgebra Linear, recomendo o uso de calculadoras gráficas e livros de referência:
 {{< /links >}}
 
-{{< compra name="Calculadora HP Prime" price="1250" img="hp-prime" link="https://amzn.to/link-hp" >}}
+{{< compra name="TI-Nspire CX II CAS" price="1620" img="hp-prime" link="https://amzn.to/4uIdBi4" >}}
 
-{{< compra name="Álgebra Linear - Boldrini" price="180" img="livro-boldrini" link="https://amzn.to/link-boldrini" >}}
+{{< compra name="Casio FX-9860GIII com Python" price="690" img="livro-boldrini" link="https://amzn.to/4t3Oi8B" >}}
 
 ---

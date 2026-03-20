@@ -1,47 +1,70 @@
-{{/* 1. Definição de Variáveis com Fallbacks Inteligentes */}}
-{{ $name  := .Get "name"  | default .Page.Params.product.name | default "Produto Recomendado" }}
-{{ $price := .Get "price" | default .Page.Params.product.current_price | default "0.00" }}
-{{ $img   := .Get "img"   | default .Page.Params.product.thumbnail }}
-{{ $link  := .Get "link"  | default (index .Page.Params.affiliate 0).link | default "#" }}
-{{ $curr  := .Get "curr"  | default .Page.Params.product.currency | default "BRL" }}
+{{/* 1. Identificadores */}}
+{{ $slug := .Get "slug" | default .Page.Slug | default .Page.File.ContentBaseName }}
+{{ $csvData := dict }}
 
-<div class="product-card">
-    <div style="font-size: 0.7em; opacity: 0.5; margin-bottom: 5px; font-family: monospace;">
-        // BIZU_CURADORIA: {{ upper .Page.Section }}
-    </div>
-    
-    <h3>{{ $name }}</h3>
-    
-    {{ with $img }}
-    <div class="product-thumbnail" style="text-align: center; margin-bottom: 20px;">
-        {{ $resource := $.Page.Resources.GetMatch (printf "*%s*" .) }}
-        {{ if $resource }}
-            <img src="{{ $resource.RelPermalink }}" alt="{{ $name }}" style="max-width: 100%; border-radius: 4px; border: 1px solid #333;">
-        {{ else }}
-            <img src="{{ . | relURL }}" alt="{{ $name }}" style="max-width: 100%; border-radius: 4px; border: 1px solid #333;">
+{{/* 2. Carregamento do CSV em assets/ */}}
+{{ with resources.Get "produtos_sheets.csv" }}
+    {{ $csv := . | transform.Unmarshal (dict "delimiter" ",") }}
+    {{ range $csv }}
+        {{/* Supondo que a coluna 0 seja o slug na sua planilha */}}
+        {{ if eq (index . 0) $slug }}
+            {{ $csvData = dict "nome" (index . 1) "preco" (index . 2) "link" (index . 3) "pros" (index . 5) "cons" (index . 6) "foto" (index . 8) }}
         {{ end }}
-    </div>
     {{ end }}
+{{ end }}
 
-    {{/* Só exibe Pros/Cons se existirem no Frontmatter ou se for a seção Equipamentos */}}
-    {{ if .Page.Params.product.pros }}
-    <div class="pros-cons">
-        <div class="pros">
-            <span class="pros-label">Sinal Estável (Prós)</span>
-            <ul>
-                {{ range .Page.Params.product.pros }} <li>{{ . }}</li> {{ end }}
-            </ul>
+{{/* 3. Definição de Variáveis (Hierarquia de Verdade) */}}
+{{ $name  := .Get "name"  | default $csvData.nome  | default .Page.Params.product.name | default .Page.Title }}
+{{ $price := .Get "price" | default $csvData.preco | default .Page.Params.product.current_price }}
+{{ $link  := .Get "link"  | default $csvData.link  | default (index .Page.Params.affiliate 0).link | default "#" }}
+
+{{/* 4. Lógica de Imagem para Leaf Bundles */}}
+{{/* Tenta: 1. Parâmetro 'img' do shortcode | 2. Nome da foto no CSV | 3. Imagem padrão 'featured' do Bundle */}}
+{{ $imgName := .Get "img" | default $csvData.foto | default "*feature*" }}
+{{ $resource := .Page.Resources.GetMatch (printf "*%s*" $imgName) }}
+
+{{/* Se não achou nada específico, tenta pegar a primeira imagem webp da pasta */}}
+{{ if not $resource }}
+    {{ $resource = .Page.Resources.GetMatch "*.webp" }}
+{{ end }}
+
+<div class="product-card" style="border: 1px solid #333; padding: 20px; background: #1a1a1a; margin: 20px 0; border-radius: 4px;">
+    <div style="font-size: 0.65rem; color: #666; margin-bottom: 10px; font-family: monospace; letter-spacing: 1.5px;">
+        // BIZU_ESTUDO: {{ upper .Page.Section }} / {{ upper $slug }}
+    </div>
+    
+    <h3 style="margin-top: 0; color: #eee;">{{ $name }}</h3>
+    
+    {{ if $resource }}
+        <div class="product-thumbnail" style="text-align: center; margin: 20px 0;">
+            {{/* Como o Python já converteu para WebP, só precisamos redimensionar se for muito grande */}}
+            {{ $optimized := $resource.Resize "400x" }}
+            <img src="{{ $optimized.RelPermalink }}" alt="{{ $name }}" style="max-width: 100%; height: auto; border: 1px solid #444; padding: 5px; background: #000;">
         </div>
+    {{ end }}
+
+    {{/* Vantagens */}}
+    {{ $pros := .Get "pros" | default $csvData.pros }}
+    {{ if $pros }}
+    <div style="margin-bottom: 15px; border-top: 1px solid #333; padding-top: 10px;">
+        <span style="color: #00ff00; font-size: 0.7rem; font-weight: bold; font-family: monospace;">[+] VANTAGEM:</span>
+        <p style="font-size: 0.85rem; color: #aaa; margin: 5px 0; font-style: italic;">"{{ $pros }}"</p>
     </div>
     {{ end }}
 
-    <div class="product-price">
-        VALOR_ESTIMADO: {{ $curr }} {{ $price }}
+    <div class="product-price" style="font-size: 1.3rem; color: #ffcc00; font-weight: bold; margin-bottom: 15px; font-family: monospace;">
+        VALOR: BRL {{ $price }}
     </div>
 
     <div class="affiliate-links">
-        <a href="{{ $link }}" target="_blank" class="btn-compra multi-store">
-            FETCH --{{ if (strings.Contains $link "amazon") }}AMAZON{{ else if (strings.Contains $link "hotmart") }}HOTMART{{ else }}PROVEDOR{{ end }}
+        <a href="{{ $link }}" target="_blank" style="display: block; background: #333; color: #fff; text-decoration: none; padding: 12px; text-align: center; font-weight: bold; border: 1px solid #444; transition: 0.3s;" onmouseover="this.style.background='#444'" onmouseout="this.style.background='#333'">
+            {{ if (strings.Contains (lower $link) "amazon") }}
+                🛒 VER NA AMAZON
+            {{ else if (strings.Contains (lower $link) "mercadolivre") }}
+                📦 VER NO MERCADO LIVRE
+            {{ else }}
+                🔗 ACESSAR OFERTA
+            {{ end }}
         </a>
     </div>
 </div>

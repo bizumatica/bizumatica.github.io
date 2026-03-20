@@ -5,9 +5,9 @@ math: true
 
 <div style="padding: 0 5px;">
 
-# 🚀Bizumática **BΣ**
+# **B Σ**
 
-## <span style="color: #00D1B2;">Linux-FOSS <span style="color: #00D1B2;">Matemática-Curadoria
+## <span style="color: #00D1B2;">Linux | FOSS | Matemática | Curadoria
 
 
 

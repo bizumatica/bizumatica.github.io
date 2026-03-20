@@ -69,8 +69,9 @@ a:hover {
 }
 
 /* --- IMAGENS E LEGENDAS (O CORAÇÃO DO PROBLEMA) --- */
-/* Forçamos o container a centralizar tudo e não ter bordas do tema */
-figure, .post-content figure, article figure {
+
+/* Detecta tanto a tag figure quanto parágrafos que contêm imagens */
+figure, .post-content figure, article figure, .post-content p:has(img) {
     display: block !important;
     margin: 40px auto !important; 
     max-width: 650px !important;   
@@ -81,7 +82,7 @@ figure, .post-content figure, article figure {
 }
 
 /* Estilo da Imagem com a Borda Amarela */
-figure img, .post-content img, article img {
+figure img, .post-content img, article img, .post-content p img {
     max-width: 100% !important;
     height: auto !important;
     border: 5px solid var(--bizu-yellow) !important; 
@@ -91,12 +92,14 @@ figure img, .post-content img, article img {
 }
 
 /* Estilo da Legenda (Estilo Foto 2) */
-figcaption, .post-content figcaption, article figcaption {
-    display: inline-block !important; /* Faz o fundo abraçar o texto */
+/* Alvo: figcaption OU o texto em itálico logo após a imagem no Markdown */
+figcaption, .post-content figcaption, article figcaption, .post-content img + em, .post-content p img + em {
+    display: inline-block !important; /* Essencial para o fundo abraçar o texto */
     background-color: var(--bizu-yellow) !important;
     color: #1a1b27 !important;
     padding: 4px 15px !important;
     font-weight: bold !important;
+    font-style: normal !important; /* Remove o itálico original */
     font-family: var(--font-family) !important;
     font-size: 0.9rem !important;
     text-align: center !important;
@@ -193,4 +196,27 @@ figcaption, .post-content figcaption, article figcaption {
 @media (max-width: 600px) {
     .menu__inner { gap: 8px 12px !important; }
     .product-card { padding: 0.8rem !important; }
+}
+
+/* Efeito de destaque para o texto em grego */
+span.math-term {
+    color: #00ff00; /* Neon Green */
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+    font-style: normal;
+}
+
+/* Ajuste das tags para não quebrarem feio no mobile */
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 8px;
+    color: #00ffff;
+    font-family: 'Courier New', monospace;
+}
+
+/* Opcional: Adicionar um prompt ao parágrafo */
+.hero-text p::before {
+    content: "> ";
+    color: var(--bizu-yellow);
 }

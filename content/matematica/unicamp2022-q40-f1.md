@@ -19,8 +19,7 @@ categories: ["mathematics"]
 </figure>
 
 ![Geometria do Problema.](/images/gcanal.png)
-
-*Legenda: O problema.*
+*O problema*
 
 Para encontrar a largura $L$ do canal, decompomos o posicionamento do navio em relação às margens. A largura total é a soma das projeções do comprimento ($400 \text{ m}$) e da largura ($60 \text{ m}$) do navio.
 

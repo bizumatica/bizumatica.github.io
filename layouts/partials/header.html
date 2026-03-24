@@ -20,10 +20,8 @@
 </header>
 
 <style>
-/* 1. COR DEFINIDA: #EEC35E */
-:root {
-    --theme-color: #EEC35E;
-}
+/* Variável global mantida para consistência */
+:root { --theme-color: #EEC35E; }
 
 .logo-box {
     background-color: var(--theme-color) !important;
@@ -36,7 +34,6 @@
     margin-right: 10px;
 }
 
-/* 2. BARRAS DECORATIVAS */
 .terminal-bars {
     flex-grow: 1;
     height: 25px;
@@ -44,7 +41,6 @@
     background-size: 4px 100%;
 }
 
-/* 3. AJUSTE DO MENU MOBILE */
 .header__inner {
     display: flex;
     flex-direction: column;
@@ -52,22 +48,15 @@
     padding: 20px 0;
 }
 
-.menu-nav {
-    margin-top: 25px;
-    width: 100%;
-}
+.menu-nav { margin-top: 25px; width: 100%; }
 
 .menu__inner {
     display: flex;
-    flex-wrap: wrap; /* Permite que os itens pulem de linha se não couberem */
+    flex-wrap: wrap;
     list-style: none;
     padding: 0;
     margin: 0;
-    gap: 10px 20px; /* Espaço vertical e horizontal entre itens */
-}
-
-.menu__inner li {
-    white-space: nowrap; /* Impede que a palavra interna quebre */
+    gap: 10px 20px;
 }
 
 .menu__inner li a {
@@ -75,31 +64,10 @@
     text-decoration: none;
     font-family: monospace;
     font-size: 1.1rem;
-    display: inline-block;
 }
 
-/* Ajuste específico para telas muito pequenas */
 @media (max-width: 480px) {
-    .menu__inner {
-        gap: 15px; /* Aumenta o respiro entre os blocos no celular */
-    }
-    .menu__inner li a {
-        font-size: 1rem; /* Diminui levemente a fonte para caber melhor */
-    }
+    .menu__inner { gap: 15px; }
+    .menu__inner li a { font-size: 1rem; }
 }
 </style>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
-    onload="renderMathInElement(document.body);"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        renderMathInElement(document.body, {
-            delimiters: [
-                {left: "$$", right: "$$", display: true},
-                {left: "$", right: "$", display: false}
-            ]
-        });
-    });
-</script>

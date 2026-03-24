@@ -1,14 +1,28 @@
 ---
-title: "Bem-vindo ao Bizumática"
+title: ""
 math: true
 ---
 
-<div style="padding: 0 5px;" class="hero-text">
+<div style="text-align: center; margin-bottom: 40px;">
 
-# **B Σ**
+# <span style="background: linear-gradient(to right, #00ffff, #ff00ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Bem-vindo ao Bizumática</span>
+<div style="color: var(--bizu-yellow); font-family: monospace; margin-top: -15px; letter-spacing: 2px;">:::::::::::::::::::::::::::::::::::::::::</div>
 
-<div class="tags-container">
-Linux | FOSS | Matemática | Curadoria
+<div class="brand-header">
+    <span class="brand-letter">B</span>
+    <span class="brand-sigma">Σ</span>
+</div>
+
+<div class="tags-container-home">
+    <a href="/categories/linux/" class="home-tag">Linux</a>
+    <span class="tag-separator">|</span>
+    <a href="/categories/foss/" class="home-tag">FOSS</a>
+    <span class="tag-separator">|</span>
+    <a href="/matematica/" class="home-tag">Matemática</a>
+    <span class="tag-separator">|</span>
+    <a href="/equipamentos/" class="home-tag">Curadoria</a>
+</div>
+
 </div>
 
 <p class="introduction">
@@ -54,33 +68,7 @@ fi
 
 ## 🌟 Apoie o Projeto Bizumática
 
-Se você valoriza o conteúdo sobre Shell Script e Linux que produzimos, considere apoiar nosso trabalho com um café!
-
-<div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; margin-top: 20px; margin-bottom: 20px;">
-
-<div style="flex: 1; min-width: 200px;">
-<strong>Via Pix:</strong>
-
-
-julio.prata@proton.me
-
-
-<img src="/pix_qrcode.png" alt="QR Code Pix" style="width: 100%; max-width: 200px; height: auto; border-radius: 5px; border: 3px solid #D4AF37; margin-top: 10px;">
-</div>
-
-<div style="flex: 1; min-width: 200px;">
-<strong>Via Ko-Fi:</strong>
-
-
-<a href="https://ko-fi.com/bizumatica" target="_blank" style="text-decoration: none; color: inherit;">https://ko-fi.com/bizumatica</a>
-
-
-<a href="https://ko-fi.com/bizumatica" target="_blank">
-<img src="/ko-fi.png" alt="Pague um café no Ko-Fi" style="width: 100%; max-width: 200px; height: auto; margin-top: 10px; border: 3px solid #D4AF37; border-radius: 5px;">
-</a>
-</div>
-
-</div>
+{{< apoie >}}
 
 ## 💬 Contato e Redes
 

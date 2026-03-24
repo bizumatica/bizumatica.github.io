@@ -5,7 +5,7 @@ theme = "terminal"
 publishDir = "docs"
 enableEmoji = true
 
-# Ajustes de URL para GitHub Pages (Sempre use false aqui para evitar quebra de CSS)
+# Ajustes de URL para GitHub Pages
 canonifyURLs = false
 relativeURLs = true
 removePathAccents = true
@@ -17,14 +17,43 @@ removePathAccents = true
   favicon = "favicon.png"
   customCSS = ["css/extended.css"]
 
-  # Logo Global (Aparece em todas as páginas)
   [params.Logo]
     logoText = "Bizumática"
     logoHomeLink = "/"
-    # Esta linha abaixo evita que o texto quebre
     logoCursorStyle = "block"
 
-# Menu Global (Fora do bloco de línguas para não dar erro)
+# --- BLOCO DE IMAGENS (ESSENCIAL PARA O SHORTCODE) ---
+[imaging]
+  # Qualidade do processamento de imagem do Hugo
+  resampleFilter = "lanczos"
+  quality = 85
+  anchor = "smart" # Foca no conteúdo principal da foto ao cortar
+
+# --- CONFIGURAÇÃO DE TAXONOMIAS ---
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+  series = "series"
+
+# --- CONFIGURAÇÃO DE MARKUP ---
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true # Mantido para permitir HTML nos posts
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['$$', '$$'], ['\\[', '\\]']]
+          inline = [['$', '$'], ['\\(', '\\)']]
+  
+  # Adicionado para facilitar a leitura de tabelas de specs
+  [markup.tableOfContents]
+    endLevel = 3
+    ordered = false
+    startLevel = 2
+
+# --- MENUS ---
 [menu]
   [[menu.main]]
     identifier = "linux"
@@ -51,14 +80,3 @@ removePathAccents = true
     name = "Sobre"
     url = "/about"
     weight = 25
-
-[markup]
-  [markup.goldmark]
-    [markup.goldmark.renderer]
-      unsafe = true
-    [markup.goldmark.extensions]
-      [markup.goldmark.extensions.passthrough]
-        enable = true
-        [markup.goldmark.extensions.passthrough.delimiters]
-          block = [['$$', '$$'], ['\\[', '\\]']]
-          inline = [['$', '$'], ['\\(', '\\)']]

@@ -1,92 +1,94 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Curadoria on Bizumática</title><link>https://bizumatica.com.br/equipamentos/</link><description>Recent content in Curadoria on Bizumática</description><generator>Hugo</generator><language>pt-br</language><lastBuildDate>Fri, 20 Mar 2026 18:59:37 -0300</lastBuildDate><atom:link href="https://bizumatica.com.br/equipamentos/index.xml" rel="self" type="application/rss+xml"/><item><title>Calculadora TI-Nspire</title><link>https://bizumatica.com.br/equipamentos/ti-nspire/</link><pubDate>Fri, 20 Mar 2026 18:59:37 -0300</pubDate><guid>https://bizumatica.com.br/equipamentos/ti-nspire/</guid><description>&lt;p&gt;A melhor.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Curadoria on Bizumática</title><link>https://bizumatica.com.br/equipamentos/</link><description>Recent content in Curadoria on Bizumática</description><generator>Hugo</generator><language>pt-br</language><lastBuildDate>Tue, 24 Mar 2026 19:13:33 -0300</lastBuildDate><atom:link href="https://bizumatica.com.br/equipamentos/index.xml" rel="self" type="application/rss+xml"/><item><title>Calculadora TI-Nspire</title><link>https://bizumatica.com.br/equipamentos/ti-nspire/</link><pubDate>Tue, 24 Mar 2026 19:13:33 -0300</pubDate><guid>https://bizumatica.com.br/equipamentos/ti-nspire/</guid><description>&lt;p&gt;A melhor.&lt;/p&gt;
 
 
 
 
 
 
+&lt;div class="product-card" style="border: 2px solid #333; padding: 20px; background: #0d0d0d; margin: 2rem 0; font-family: 'Fira Code', monospace; position: relative;"&gt;
+ &lt;div style="position: absolute; top: -12px; left: 15px; background: #0d0d0d; padding: 0 10px; color: #ff00ff; font-size: 0.7rem; border: 1px solid #333;"&gt;[ PRODUCT_INFO ]&lt;/div&gt;
+ &lt;div style="font-size: 0.65rem; color: #666; margin-bottom: 15px; letter-spacing: 1px;"&gt;ID: TI-NSPIRE | SYNC_OK&lt;/div&gt;
  
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+ &lt;h3 style="margin: 0 0 15px 0; color: #00ffff; text-transform: uppercase;"&gt;&gt; Calculadora TI-Nspire&lt;/h3&gt;
  
  
 
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-&lt;div class="product-card" style="border: 1px solid #333; padding: 20px; background: #1a1a1a; margin: 20px 0; border-radius: 4px;"&gt;
- &lt;div style="font-size: 0.65rem; color: #666; margin-bottom: 10px; font-family: monospace; letter-spacing: 1.5px;"&gt;
- // BIZU_ESTUDO: EQUIPAMENTOS / TI-NSPIRE
- &lt;/div&gt;
- 
- &lt;h3 style="margin-top: 0; color: #eee;"&gt;Calculadora TI-Nspire&lt;/h3&gt;
- 
- 
-
- 
- 
- 
- &lt;div style="margin-bottom: 15px; border-top: 1px solid #333; padding-top: 10px;"&gt;
- &lt;span style="color: #00ff00; font-size: 0.7rem; font-weight: bold; font-family: monospace;"&gt;[+] VANTAGEM:&lt;/span&gt;
- &lt;p style="font-size: 0.85rem; color: #aaa; margin: 5px 0; font-style: italic;"&gt;"CAS Ativo"&lt;/p&gt;
- &lt;/div&gt;
- 
-
- &lt;div class="product-price" style="font-size: 1.3rem; color: #ffcc00; font-weight: bold; margin-bottom: 15px; font-family: monospace;"&gt;
- VALOR: BRL 1620.0
+ &lt;div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; font-size: 0.8rem;"&gt;
+ &lt;div&gt;&lt;span style="color: #50fa7b;"&gt;[+] PROS:&lt;/span&gt;&lt;ul style="list-style: none; padding: 0; color: #888; margin-top: 5px;"&gt;&lt;li&gt;- CAS Ativo&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;
+ &lt;div&gt;&lt;span style="color: #ff5555;"&gt;[-] CONS:&lt;/span&gt;&lt;ul style="list-style: none; padding: 0; color: #888; margin-top: 5px;"&gt;&lt;li&gt;- Cara&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;
  &lt;/div&gt;
 
- &lt;div class="affiliate-links"&gt;
- &lt;a href="https://amzn.to/..." target="_blank" style="display: block; background: #333; color: #fff; text-decoration: none; padding: 12px; text-align: center; font-weight: bold; border: 1px solid #444; transition: 0.3s;" onmouseover="this.style.background='#444'" onmouseout="this.style.background='#333'"&gt;
+ &lt;div style="font-size: 1.5rem; color: #f1fa8c; margin: 10px 0; font-weight: bold;"&gt;PRICE: BRL 1620&lt;/div&gt;
+ &lt;div style="font-size: 0.6rem; color: #555; margin-bottom: 20px;"&gt;ATUALIZADO EM: 24/03/2026 19:13&lt;/div&gt;
+
+ &lt;div class="affiliate-grid" style="display: grid; gap: 12px;"&gt;
  
- 🔗 ACESSAR OFERTA
  
+ 
+ 
+ 
+
+ &lt;a href="https://amzn.to/..." target="_blank" rel="sponsored nofollow" 
+ style="display: block; border: 1px solid #ff9900; 
+ background: transparent;
+ color: #ff9900;
+ text-decoration: none; padding: 14px; text-align: center; font-weight: bold; font-family: monospace; transition: 0.3s;
+ "
+ onmouseover="this.style.transform='scale(1.05)'; this.style.filter='brightness(1.2)'" 
+ onmouseout="this.style.transform='scale(1)'; this.style.filter='none'"&gt;
+ AMAZON
  &lt;/a&gt;
- &lt;/div&gt;
-&lt;/div&gt;</description></item><item><title>Mouse Mx Master 3s</title><link>https://bizumatica.com.br/equipamentos/mouse-mx-master-3s/</link><pubDate>Thu, 19 Mar 2026 14:52:13 -0300</pubDate><guid>https://bizumatica.com.br/equipamentos/mouse-mx-master-3s/</guid><description>&lt;div class="product-card" style="border: 1px solid #333; padding: 20px; background: #1a1a1a; margin: 20px 0; border-radius: 4px;"&gt;
- &lt;div style="font-size: 0.65rem; color: #666; margin-bottom: 10px; font-family: monospace; letter-spacing: 1.5px;"&gt;
- // BIZU_ESTUDO: EQUIPAMENTOS / MOUSE-MX-MASTER-3S
- &lt;/div&gt;
  
- &lt;h3 style="margin-top: 0; color: #eee;"&gt;Mouse Mx Master 3s&lt;/h3&gt;
+ &lt;/div&gt;
+&lt;/div&gt;</description></item><item><title>Mouse Mx Master 3s</title><link>https://bizumatica.com.br/equipamentos/mouse-mx-master-3s/</link><pubDate>Thu, 19 Mar 2026 14:52:13 -0300</pubDate><guid>https://bizumatica.com.br/equipamentos/mouse-mx-master-3s/</guid><description>&lt;div class="product-card" style="border: 2px solid #333; padding: 20px; background: #0d0d0d; margin: 2rem 0; font-family: 'Fira Code', monospace; position: relative;"&gt;
+ &lt;div style="position: absolute; top: -12px; left: 15px; background: #0d0d0d; padding: 0 10px; color: #ff00ff; font-size: 0.7rem; border: 1px solid #333;"&gt;[ PRODUCT_INFO ]&lt;/div&gt;
+ &lt;div style="font-size: 0.65rem; color: #666; margin-bottom: 15px; letter-spacing: 1px;"&gt;ID: MOUSE-MX-MASTER-3S | SYNC_OK&lt;/div&gt;
+ 
+ &lt;h3 style="margin: 0 0 15px 0; color: #00ffff; text-transform: uppercase;"&gt;&gt; Mouse Mx Master 3s&lt;/h3&gt;
  
  
 
+ &lt;div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; font-size: 0.8rem;"&gt;
  
  
- 
-
- &lt;div class="product-price" style="font-size: 1.3rem; color: #ffcc00; font-weight: bold; margin-bottom: 15px; font-family: monospace;"&gt;
- VALOR: BRL 0
  &lt;/div&gt;
 
- &lt;div class="affiliate-links"&gt;
- &lt;a href="#" target="_blank" style="display: block; background: #333; color: #fff; text-decoration: none; padding: 12px; text-align: center; font-weight: bold; border: 1px solid #444; transition: 0.3s;" onmouseover="this.style.background='#444'" onmouseout="this.style.background='#333'"&gt;
+ &lt;div style="font-size: 1.5rem; color: #f1fa8c; margin: 10px 0; font-weight: bold;"&gt;PRICE: BRL 0&lt;/div&gt;
+ &lt;div style="font-size: 0.6rem; color: #555; margin-bottom: 20px;"&gt;ATUALIZADO EM: 01/01/0001 00:00&lt;/div&gt;
+
+ &lt;div class="affiliate-grid" style="display: grid; gap: 12px;"&gt;
  
- 🔗 ACESSAR OFERTA
  
+ 
+ 
+ 
+
+ &lt;a href="" target="_blank" rel="sponsored nofollow" 
+ style="display: block; border: 1px solid #ff9900; 
+ background: transparent;
+ color: #ff9900;
+ text-decoration: none; padding: 14px; text-align: center; font-weight: bold; font-family: monospace; transition: 0.3s;
+ "
+ onmouseover="this.style.transform='scale(1.05)'; this.style.filter='brightness(1.2)'" 
+ onmouseout="this.style.transform='scale(1)'; this.style.filter='none'"&gt;
+ AMAZON
  &lt;/a&gt;
+ 
+ 
+ 
+ 
+
+ &lt;a href="" target="_blank" rel="sponsored nofollow" 
+ style="display: block; border: 1px solid #50fa7b; 
+ background: transparent;
+ color: #50fa7b;
+ text-decoration: none; padding: 14px; text-align: center; font-weight: bold; font-family: monospace; transition: 0.3s;
+ "
+ onmouseover="this.style.transform='scale(1.05)'; this.style.filter='brightness(1.2)'" 
+ onmouseout="this.style.transform='scale(1)'; this.style.filter='none'"&gt;
+ MERCADOLIVRE
+ &lt;/a&gt;
+ 
  &lt;/div&gt;
 &lt;/div&gt;</description></item><item><title>Backup Universal Shell Hd Externo</title><link>https://bizumatica.com.br/equipamentos/backup-universal-shell-hd-externo/</link><pubDate>Wed, 18 Mar 2026 18:15:07 -0300</pubDate><guid>https://bizumatica.com.br/equipamentos/backup-universal-shell-hd-externo/</guid><description>&lt;p&gt;No Bizumática, seguimos a regra: &lt;strong&gt;&amp;ldquo;quem tem um, não tem nenhum&amp;rdquo;&lt;/strong&gt;. Se seus dados sensíveis estão apenas no SSD do seu notebook, você está a uma pane elétrica do desastre.&lt;/p&gt;
 &lt;p&gt;Abaixo, entrego um script universal e a estratégia de hardware para profissionais que não podem perder prazos ou contratos.&lt;/p&gt;

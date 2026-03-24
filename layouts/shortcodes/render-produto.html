@@ -1,0 +1,52 @@
+{{- $p := .Page.Params -}}
+<div class="product-card">
+    <div class="disclosure-header">
+        FILE_TYPE: {{ $p.categoria_bizu | upper }} | SLUG: {{ $p.slug }}
+    </div>
+
+    <h3>{{ $p.nome }}</h3>
+
+    <div class="disclosure-body" style="align-items: flex-start;">
+        <div class="product-thumbnail">
+            <img src="{{ $p.foto_local }}" alt="{{ $p.nome }}" class="foto-produto">
+        </div>
+
+        <div class="disclosure-text">
+            <p><strong>> REVIEW:</strong> {{ $p.review_curto }}</p>
+            
+            <div style="display: flex; gap: 20px; margin-top: 10px;">
+                <div style="color: var(--neon-green); font-size: 0.8rem;">
+                    <strong>[ PRÓS ]</strong><br>
+                    {{ range (split $p.pros ",") }}
+                        • {{ . | trim " " }}<br>
+                    {{ end }}
+                </div>
+                
+                <div style="color: #ff5555; font-size: 0.8rem;">
+                    <strong>[ CONS ]</strong><br>
+                    {{ range (split $p.cons ",") }}
+                        • {{ . | trim " " }}<br>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 20px; border-top: 1px dashed #444; padding-top: 15px;">
+        <p style="font-family: var(--font-family); color: var(--bizu-yellow);">
+            PREÇO_ESTIMADO: R$ {{ $p.preco }}
+        </p>
+        
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <a href="{{ $p.link_afiliado }}" target="_blank" class="btn-compra best-deal-glow" style="flex: 1; min-width: 200px;">
+                ADQUIRIR VIA CURADORIA
+            </a>
+            
+            {{ if $p.link_ml }}
+            <a href="{{ $p.link_ml }}" target="_blank" class="btn-compra" style="background: #ffe600; color: #2d3277 !important; border-color: #ffe600; box-shadow: 3px 3px 0px #bfad00; flex: 1; min-width: 200px;">
+                BUSCAR NO MERCADO LIVRE
+            </a>
+            {{ end }}
+        </div>
+    </div>
+</div>

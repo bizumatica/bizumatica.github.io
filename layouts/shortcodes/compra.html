@@ -1,70 +1,48 @@
-{{/* 1. Identificadores */}}
-{{ $slug := .Get "slug" | default .Page.Slug | default .Page.File.ContentBaseName }}
-{{ $csvData := dict }}
+{{ $product := .Page.Params.product }}
+{{ $affiliate := .Page.Params.affiliate }}
+{{ $name := .Get "name" | default $product.name | default .Page.Title }}
+{{ $price := .Get "price" | default $product.current_price }}
+{{ $img := .Page.Resources.GetMatch "*.webp" }}
 
-{{/* 2. Carregamento do CSV em assets/ */}}
-{{ with resources.Get "produtos_sheets.csv" }}
-    {{ $csv := . | transform.Unmarshal (dict "delimiter" ",") }}
-    {{ range $csv }}
-        {{/* Supondo que a coluna 0 seja o slug na sua planilha */}}
-        {{ if eq (index . 0) $slug }}
-            {{ $csvData = dict "nome" (index . 1) "preco" (index . 2) "link" (index . 3) "pros" (index . 5) "cons" (index . 6) "foto" (index . 8) }}
-        {{ end }}
-    {{ end }}
-{{ end }}
-
-{{/* 3. Definição de Variáveis (Hierarquia de Verdade) */}}
-{{ $name  := .Get "name"  | default $csvData.nome  | default .Page.Params.product.name | default .Page.Title }}
-{{ $price := .Get "price" | default $csvData.preco | default .Page.Params.product.current_price }}
-{{ $link  := .Get "link"  | default $csvData.link  | default (index .Page.Params.affiliate 0).link | default "#" }}
-
-{{/* 4. Lógica de Imagem para Leaf Bundles */}}
-{{/* Tenta: 1. Parâmetro 'img' do shortcode | 2. Nome da foto no CSV | 3. Imagem padrão 'featured' do Bundle */}}
-{{ $imgName := .Get "img" | default $csvData.foto | default "*feature*" }}
-{{ $resource := .Page.Resources.GetMatch (printf "*%s*" $imgName) }}
-
-{{/* Se não achou nada específico, tenta pegar a primeira imagem webp da pasta */}}
-{{ if not $resource }}
-    {{ $resource = .Page.Resources.GetMatch "*.webp" }}
-{{ end }}
-
-<div class="product-card" style="border: 1px solid #333; padding: 20px; background: #1a1a1a; margin: 20px 0; border-radius: 4px;">
-    <div style="font-size: 0.65rem; color: #666; margin-bottom: 10px; font-family: monospace; letter-spacing: 1.5px;">
-        // BIZU_ESTUDO: {{ upper .Page.Section }} / {{ upper $slug }}
-    </div>
+<div class="product-card" style="border: 2px solid #333; padding: 20px; background: #0d0d0d; margin: 2rem 0; font-family: 'Fira Code', monospace; position: relative;">
+    <div style="position: absolute; top: -12px; left: 15px; background: #0d0d0d; padding: 0 10px; color: #ff00ff; font-size: 0.7rem; border: 1px solid #333;">[ PRODUCT_INFO ]</div>
+    <div style="font-size: 0.65rem; color: #666; margin-bottom: 15px; letter-spacing: 1px;">ID: {{ upper .Page.File.ContentBaseName }} | SYNC_OK</div>
     
-    <h3 style="margin-top: 0; color: #eee;">{{ $name }}</h3>
+    <h3 style="margin: 0 0 15px 0; color: #00ffff; text-transform: uppercase;">> {{ $name }}</h3>
     
-    {{ if $resource }}
-        <div class="product-thumbnail" style="text-align: center; margin: 20px 0;">
-            {{/* Como o Python já converteu para WebP, só precisamos redimensionar se for muito grande */}}
-            {{ $optimized := $resource.Resize "400x" }}
-            <img src="{{ $optimized.RelPermalink }}" alt="{{ $name }}" style="max-width: 100%; height: auto; border: 1px solid #444; padding: 5px; background: #000;">
+    {{ if $img }}
+        <div style="text-align: center; margin: 20px 0; border: 1px dashed #444; padding: 10px;">
+            {{ $optimized := $img.Resize "500x webp" }}
+            <img src="{{ $optimized.RelPermalink }}" alt="{{ $name }}" style="max-width: 100%; height: auto;">
         </div>
     {{ end }}
 
-    {{/* Vantagens */}}
-    {{ $pros := .Get "pros" | default $csvData.pros }}
-    {{ if $pros }}
-    <div style="margin-bottom: 15px; border-top: 1px solid #333; padding-top: 10px;">
-        <span style="color: #00ff00; font-size: 0.7rem; font-weight: bold; font-family: monospace;">[+] VANTAGEM:</span>
-        <p style="font-size: 0.85rem; color: #aaa; margin: 5px 0; font-style: italic;">"{{ $pros }}"</p>
-    </div>
-    {{ end }}
-
-    <div class="product-price" style="font-size: 1.3rem; color: #ffcc00; font-weight: bold; margin-bottom: 15px; font-family: monospace;">
-        VALOR: BRL {{ $price }}
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; font-size: 0.8rem;">
+        {{ with $product.pros }}<div><span style="color: #50fa7b;">[+] PROS:</span><ul style="list-style: none; padding: 0; color: #888; margin-top: 5px;">{{ range . }}<li>- {{ . }}</li>{{ end }}</ul></div>{{ end }}
+        {{ with $product.cons }}<div><span style="color: #ff5555;">[-] CONS:</span><ul style="list-style: none; padding: 0; color: #888; margin-top: 5px;">{{ range . }}<li>- {{ . }}</li>{{ end }}</ul></div>{{ end }}
     </div>
 
-    <div class="affiliate-links">
-        <a href="{{ $link }}" target="_blank" style="display: block; background: #333; color: #fff; text-decoration: none; padding: 12px; text-align: center; font-weight: bold; border: 1px solid #444; transition: 0.3s;" onmouseover="this.style.background='#444'" onmouseout="this.style.background='#333'">
-            {{ if (strings.Contains (lower $link) "amazon") }}
-                🛒 VER NA AMAZON
-            {{ else if (strings.Contains (lower $link) "mercadolivre") }}
-                📦 VER NO MERCADO LIVRE
-            {{ else }}
-                🔗 ACESSAR OFERTA
-            {{ end }}
-        </a>
+    <div style="font-size: 1.5rem; color: #f1fa8c; margin: 10px 0; font-weight: bold;">PRICE: BRL {{ $price }}</div>
+    <div style="font-size: 0.6rem; color: #555; margin-bottom: 20px;">ATUALIZADO EM: {{ .Page.Params.last_check | time.Format "02/01/2006 15:04" }}</div>
+
+    <div class="affiliate-grid" style="display: grid; gap: 12px;">
+        {{ range $affiliate }}
+            {{ $isBest := .best_deal }}
+            {{ $btnColor := "#50fa7b" }}
+            {{ if eq (lower .store) "amazon" }}{{ $btnColor = "#ff9900" }}
+            {{ else if (strings.Contains (lower .link) "mercadolivre") }}{{ $btnColor = "#ffe600" }}
+            {{ else if (strings.Contains (lower .link) "hotmart") }}{{ $btnColor = "#ff5d5e" }}{{ end }}
+
+            <a href="{{ .link }}" target="_blank" rel="sponsored nofollow" 
+                style="display: block; border: 1px solid {{ $btnColor }}; 
+                background: {{ if $isBest }}{{ $btnColor }}{{ else }}transparent{{ end }};
+                color: {{ if $isBest }}#000{{ else }}{{ $btnColor }}{{ end }};
+                text-decoration: none; padding: 14px; text-align: center; font-weight: bold; font-family: monospace; transition: 0.3s;
+                {{ if $isBest }}box-shadow: 0 0 15px {{ $btnColor }}66; transform: scale(1.02);{{ end }}"
+                onmouseover="this.style.transform='scale(1.05)'; this.style.filter='brightness(1.2)'" 
+                onmouseout="this.style.transform='{{ if $isBest }}scale(1.02){{ else }}scale(1){{ end }}'; this.style.filter='none'">
+                {{ if $isBest }}🔥 MELHOR PREÇO: {{ end }}{{ upper .store }}
+            </a>
+        {{ end }}
     </div>
 </div>

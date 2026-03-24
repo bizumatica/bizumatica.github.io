@@ -1,6 +1,7 @@
 ---
 title: Calculadora TI-Nspire
-date: '2026-03-20T18:59:37-03:00'
+date: '2026-03-24T19:13:33-03:00'
+last_check: '2026-03-24T19:13:33-03:00'
 draft: false
 slug: ti-nspire
 type: equipamentos
@@ -15,6 +16,7 @@ product:
 affiliate:
 - store: Amazon
   link: https://amzn.to/...
+  best_deal: false
 ---
 
 A melhor.

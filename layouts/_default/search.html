@@ -1,19 +1,20 @@
 {{ define "main" }}
 <div class="post">
-  <h1 class="post-title">Buscar no Portal</h1>
+  <h1 class="post-title">❯ BUSCAR_NO_PORTAL</h1>
   
-  <link href="/pagefind/pagefind-ui.css" rel="stylesheet">
-  <script src="/pagefind/pagefind-ui.js"></script>
+  <link href="{{ "pagefind/pagefind-ui.css" | relURL }}" rel="stylesheet">
+  <script src="{{ "pagefind/pagefind-ui.js" | relURL }}"></script>
 
-  <div id="search"></div>
+  <div id="search" class="terminal-search-container"></div>
 
   <script>
     window.addEventListener('DOMContentLoaded', (event) => {
         new PagefindUI({ 
             element: "#search", 
             showSubResults: true,
+            showImages: true,
             translations: {
-                placeholder: "O que você está procurando?",
+                placeholder: "Digite o termo de busca...",
                 clear_search: "Limpar",
                 load_more: "Ver mais resultados",
                 search_label: "Buscar",
@@ -21,24 +22,52 @@
                 zero_results: "Nada encontrado para [search]",
                 many_results: "[count] resultados encontrados para [search]",
                 one_result: "[count] resultado encontrado para [search]",
-                alt_search: "Sem resultados para [search]. Mostrando para [alt] no lugar.",
-                search_suggestion: "Sem resultados para [search]. Tente um destes termos:",
-                searching: "Buscando por [search]..."
+                searching: "Consultando banco de dados..."
             }
         });
     });
   </script>
 
   <style>
-    /* Customizando o Pagefind para seu tema */
+    /* INTEGRAÇÃO COM O TEMA BIZUMÁTICA */
     :root {
-      --pagefind-ui-primary: #EEC35E;
+      --pagefind-ui-primary: var(--bizu-yellow, #EEC35E);
       --pagefind-ui-text: #eeeeee;
-      --pagefind-ui-background: #1a1b1c;
-      --pagefind-ui-border: #EEC35E;
+      --pagefind-ui-background: #000000;
+      --pagefind-ui-border: #333333;
+      --pagefind-ui-tag: #1a1b1c;
     }
-    .pagefind-ui__result-link { color: #EEC35E !important; }
-    .pagefind-ui__search-input { background-color: #000 !important; color: #fff !important; }
+
+    /* Estilização do Input estilo Terminal */
+    .pagefind-ui__search-input {
+        border: 1px solid var(--bizu-yellow) !important;
+        border-radius: 0 !important;
+        font-family: var(--font-family, monospace) !important;
+        text-transform: uppercase;
+    }
+
+    /* Ajuste dos links de resultado */
+    .pagefind-ui__result-link {
+        color: var(--bizu-yellow) !important;
+        font-weight: bold !important;
+        text-decoration: none !important;
+    }
+
+    .pagefind-ui__result-link:hover {
+        text-decoration: underline !important;
+    }
+
+    /* Estilização do Texto de resumo */
+    .pagefind-ui__result-excerpt {
+        color: #bbb !important;
+        font-family: var(--font-family, monospace) !important;
+    }
+
+    /* Marcador de texto encontrado */
+    mark {
+        background-color: var(--bizu-yellow) !important;
+        color: #000 !important;
+    }
   </style>
 </div>
 {{ end }}

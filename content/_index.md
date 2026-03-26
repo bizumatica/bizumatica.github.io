@@ -6,7 +6,7 @@ math: true
 <div style="text-align: center; margin-bottom: 40px;">
 
 # <span style="background: linear-gradient(to right, #00ffff, #ff00ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Bem-vindo ao Bizumática</span>
-<div style="color: var(--bizu-yellow); font-family: monospace; margin-top: -15px; letter-spacing: 2px;">:::::::::::::::::::::::::::::::::::::::::</div>
+<div class="terminal-line">:::::::::::::::::::::::::::::</div>
 
 <div class="brand-header">
     <span class="brand-letter">B</span>

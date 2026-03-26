@@ -5,7 +5,6 @@ import requests
 import io
 from datetime import datetime
 from PIL import Image
-import re
 
 # --- CONFIGURAÇÃO ---
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
@@ -16,7 +15,7 @@ HEADERS = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/
 
 def carregar_dados():
     try:
-        print(f"--> [Nuvem] Baixando Google Sheets...")
+        print(f"--> [Nuvem] Sincronizando com Google Sheets...")
         response = requests.get(URL_SHEETS_CSV, timeout=15)
         response.raise_for_status()
         df = pd.read_csv(io.StringIO(response.content.decode('utf-8')))
@@ -24,35 +23,52 @@ def carregar_dados():
         df.to_csv(ARQUIVO_LOCAL, index=False)
         return df
     except Exception as e:
-        print(f"--> [Aviso] Falha na nuvem: {e}")
+        print(f"--> [Aviso] Usando cache local: {e}")
         return pd.read_csv(ARQUIVO_LOCAL) if os.path.exists(ARQUIVO_LOCAL) else None
 
-def baixar_imagem_externa(url, diretorio_bundle):
+def baixar_imagem(url, diretorio, slug):
     if not url or pd.isna(url) or not str(url).startswith('http'): return None
-    nome_arquivo = "featured_raw" + os.path.splitext(url.split('?')[0])[1]
-    if len(nome_arquivo) < 5: nome_arquivo = "featured_raw.jpg"
-    caminho_destino = os.path.join(diretorio_bundle, nome_arquivo)
-    if any(f.startswith("featured_raw") for f in os.listdir(diretorio_bundle)): return None
-    try:
-        res = requests.get(url, headers=HEADERS, timeout=10)
-        res.raise_for_status()
-        with open(caminho_destino, 'wb') as f: f.write(res.content)
-        return caminho_destino
-    except: return None
+    
+    nome_base = f"prod-{slug}"
+    # Se o webp já existe, não faz nada
+    if os.path.exists(os.path.join(diretorio, f"{nome_base}.webp")):
+        return nome_base
 
-def otimizar_imagens_bundle(diretorio_bundle):
-    for arquivo in os.listdir(diretorio_bundle):
-        if arquivo.lower().endswith(('.png', '.jpg', '.jpeg')):
-            caminho_original = os.path.join(diretorio_bundle, arquivo)
-            caminho_webp = os.path.join(diretorio_bundle, f"{os.path.splitext(arquivo)[0]}.webp")
-            if os.path.exists(caminho_webp):
-                os.remove(caminho_original)
-                continue
-            try:
-                with Image.open(caminho_original) as img:
-                    img = img.convert("RGB") if img.mode != "RGBA" else img.convert("RGBA")
-                    img.save(caminho_webp, "WEBP", quality=82, method=6)
-                os.remove(caminho_original)
+    ext = os.path.splitext(url.split('?')[0])[1].lower()
+    if ext not in ['.jpg', '.jpeg', '.png', '.webp']: ext = ".jpg"
+    
+    caminho_temp = os.path.join(diretorio, nome_base + ext)
+    
+    try:
+        res = requests.get(url, headers=HEADERS, timeout=12)
+        res.raise_for_status()
+        with open(caminho_temp, 'wb') as f:
+            f.write(res.content)
+        return nome_base, caminho_temp
+    except Exception as e:
+        print(f"    [Erro] Download falhou ({slug}): {e}")
+        return None
+
+def processar_e_limpar(diretorio, info_imagem):
+    if not info_imagem: return
+    nome_base, caminho_temp = info_imagem
+    caminho_webp = os.path.join(diretorio, f"{nome_base}.webp")
+    
+    try:
+        with Image.open(caminho_temp) as img:
+            # Converte para RGB (remove transparência se for JPG, mantém se for PNG)
+            formato_saida = "RGB" if img.mode != "RGBA" else "RGBA"
+            img.convert(formato_saida).save(caminho_webp, "WEBP", quality=80, method=6)
+        
+        # Remove o arquivo temporário (jpg/png) após converter
+        if os.path.exists(caminho_temp): os.remove(caminho_temp)
+    except Exception as e:
+        print(f"    [Erro] Falha ao processar WebP: {e}")
+
+    # FAXINA: Remove arquivos órfãos com o nome antigo 'featured_raw'
+    for f in os.listdir(diretorio):
+        if "featured_raw" in f:
+            try: os.remove(os.path.join(diretorio, f))
             except: pass
 
 def create_hugo_bundle(row):
@@ -61,30 +77,31 @@ def create_hugo_bundle(row):
     bundle_dir = os.path.join(CONTENT_DIR, secao, slug)
     os.makedirs(bundle_dir, exist_ok=True)
     
-    baixar_imagem_externa(row.get('foto'), bundle_dir)
+    # Baixa e processa a imagem do produto
+    dados_img = baixar_imagem(row.get('foto'), bundle_dir, slug)
+    if dados_img:
+        processar_e_limpar(bundle_dir, dados_img)
+        nome_img_final = dados_img[0]
+    else:
+        # Tenta ver se já existe um prod-slug.webp lá
+        nome_img_final = f"prod-{slug}" if os.path.exists(os.path.join(bundle_dir, f"prod-{slug}.webp")) else ""
 
-    # Lógica de Afiliados com detecção de Melhor Preço
-    affiliate_links = []
-    melhor_loja_planilha = str(row.get('melhor_loja', '')).strip().lower()
-    
-    # Mapeamento de colunas da sua planilha
-    stores_map = [
-        ('Amazon', 'link_afiliado'),
-        ('MercadoLivre', 'link_ml'),
-        ('AliExpress', 'link_ali'),
-        ('Hotmart', 'link_hotmart')
-    ]
+    # Mapeamento de Afiliados
+    links = []
+    melhor_loja = str(row.get('melhor_loja', '')).strip().lower()
+    lojas = [('Amazon', 'link_afiliado'), ('MercadoLivre', 'link_ml'), ('AliExpress', 'link_ali'), ('Hotmart', 'link_hotmart')]
 
-    for store_name, col in stores_map:
-        link = str(row.get(col, '')).strip()
-        if link and link.lower() != 'nan':
-            affiliate_links.append({
-                'store': store_name,
-                'link': link,
-                'best_deal': (store_name.lower() == melhor_loja_planilha)
+    for nome_loja, coluna in lojas:
+        url = str(row.get(coluna, '')).strip()
+        if url and url.lower() != 'nan':
+            links.append({
+                'store': nome_loja,
+                'link': url,
+                'best_deal': (nome_loja.lower() == melhor_loja)
             })
 
     agora = datetime.now().strftime('%Y-%m-%dT%H:%M:%S-03:00')
+    
     front_matter = {
         'title': row['nome'],
         'date': agora,
@@ -95,16 +112,20 @@ def create_hugo_bundle(row):
         'product': {
             'name': row['nome'],
             'current_price': float(row['preco']) if pd.notna(row['preco']) else 0,
-            'currency': 'BRL',
-            'pros': [p.strip() for p in str(row.get('pros', '')).split(',') if p.strip() and p.lower() != 'nan'],
-            'cons': [c.strip() for c in str(row.get('cons', '')).split(',') if c.strip() and c.lower() != 'nan']
+            'pros': [p.strip().capitalize() for p in str(row.get('pros', '')).replace('PROS:', '').split(',') if p.strip() and p.lower() != 'nan'],
+            'cons': [c.strip().capitalize() for c in str(row.get('cons', '')).replace('CONS:', '').split(',') if c.strip() and c.lower() != 'nan']
         },
-        'affiliate': affiliate_links
+        'affiliate': links
     }
     
-    content = f"---\n{yaml.dump(front_matter, allow_unicode=True, sort_keys=False)}---\n\n{row.get('review_curto', '')}\n\n{{{{< compra >}}}}"
-    with open(os.path.join(bundle_dir, "index.md"), 'w', encoding='utf-8') as f: f.write(content)
-    otimizar_imagens_bundle(bundle_dir)
+    # Gera o Shortcode com o parâmetro de imagem específico
+    img_attr = f' img="{nome_img_final}"' if nome_img_final else ""
+    review = row.get('review_curto', '') if pd.notna(row.get('review_curto')) else ""
+    
+    content = f"---\n{yaml.dump(front_matter, allow_unicode=True, sort_keys=False)}---\n\n{review}\n\n{{{{< compra{img_attr} >}}}}"
+    
+    with open(os.path.join(bundle_dir, "index.md"), 'w', encoding='utf-8') as f:
+        f.write(content)
 
 if __name__ == "__main__":
     df = carregar_dados()
@@ -112,5 +133,6 @@ if __name__ == "__main__":
         df = df.dropna(subset=['slug'])
         for _, row in df.iterrows():
             if not str(row['slug']).strip() or str(row['slug']).startswith('#'): continue
+            print(f"--> Processando: {row['slug']}")
             create_hugo_bundle(row)
-        print("✓ Bundles processados com Sucesso.")
+        print("\n✓ Todos os bundles foram atualizados e limpos.")

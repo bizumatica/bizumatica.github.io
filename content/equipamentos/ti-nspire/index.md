@@ -1,7 +1,7 @@
 ---
 title: Calculadora TI-Nspire
-date: '2026-03-24T19:13:33-03:00'
-last_check: '2026-03-24T19:13:33-03:00'
+date: '2026-03-24T19:16:51-03:00'
+last_check: '2026-03-24T19:16:51-03:00'
 draft: false
 slug: ti-nspire
 type: equipamentos

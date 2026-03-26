@@ -1,46 +1,83 @@
-{{ $product := .Page.Params.product }}
-{{ $affiliate := .Page.Params.affiliate }}
-{{ $name := .Get "name" | default $product.name | default .Page.Title }}
-{{ $price := .Get "price" | default $product.current_price }}
-{{ $img := .Page.Resources.GetMatch "*.webp" }}
+{{- $product := .Page.Params.product -}}
+{{- $affiliate := .Page.Params.affiliate -}}
+{{- $name := .Get "name" | default $product.name | default .Page.Title -}}
+{{- $price := .Get "price" | default $product.current_price -}}
 
-<div class="product-card" style="border: 2px solid #333; padding: 20px; background: #0d0d0d; margin: 2rem 0; font-family: 'Fira Code', monospace; position: relative;">
-    <div style="position: absolute; top: -12px; left: 15px; background: #0d0d0d; padding: 0 10px; color: #ff00ff; font-size: 0.7rem; border: 1px solid #333;">[ PRODUCT_INFO ]</div>
-    <div style="font-size: 0.65rem; color: #666; margin-bottom: 15px; letter-spacing: 1px;">ID: {{ upper .Page.File.ContentBaseName }} | SYNC_OK</div>
+{{- /* LOGICA DE IMAGEM INTELIGENTE */ -}}
+{{- $imgName := .Get "img" -}}
+{{- $img := "" -}}
+
+{{- if $imgName -}}
+    {{- /* Busca específica pelo nome passado no shortcode */ -}}
+    {{- $img = .Page.Resources.GetMatch (printf "*%s*" $imgName) -}}
+{{- end -}}
+
+{{- if not $img -}}
+    {{- /* Fallback: se não achar pelo nome ou não tiver parâmetro, pega o primeiro webp */ -}}
+    {{- $img = .Page.Resources.GetMatch "*.webp" -}}
+{{- end -}}
+
+<div class="product-card" style="border: 2px solid #333; padding: 20px; background: #0d0d0d; margin: 2rem 0; font-family: 'Fira Code', monospace; position: relative; border-radius: 4px;">
+    <div style="position: absolute; top: -12px; left: 15px; background: #0d0d0d; padding: 0 10px; color: var(--bizu-yellow, #EEC35E); font-size: 0.7rem; border: 1px solid #333; letter-spacing: 1px;">[ PRODUCT_INFO ]</div>
     
-    <h3 style="margin: 0 0 15px 0; color: #00ffff; text-transform: uppercase;">> {{ $name }}</h3>
+    <div style="font-size: 0.65rem; color: #555; margin-bottom: 15px; text-transform: uppercase;">
+        ID: {{ upper .Page.File.ContentBaseName }} | STATUS: {{ if $product }}SYNC_OK{{ else }}MANUAL_ENTRY{{ end }}
+    </div>
+    
+    <h3 style="margin: 0 0 15px 0; color: #00ffff; text-transform: uppercase; font-size: 1.2rem;">> {{ $name }}</h3>
     
     {{ if $img }}
-        <div style="text-align: center; margin: 20px 0; border: 1px dashed #444; padding: 10px;">
-            {{ $optimized := $img.Resize "500x webp" }}
-            <img src="{{ $optimized.RelPermalink }}" alt="{{ $name }}" style="max-width: 100%; height: auto;">
+        <div style="text-align: center; margin: 20px 0; border: 1px dashed #333; padding: 15px; background: #050505;">
+            {{- $optimized := $img.Resize "600x webp" -}}
+            <img src="{{ $optimized.RelPermalink }}" alt="{{ $name }}" style="max-width: 100%; height: auto; border: 1px solid #222;">
         </div>
     {{ end }}
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; font-size: 0.8rem;">
-        {{ with $product.pros }}<div><span style="color: #50fa7b;">[+] PROS:</span><ul style="list-style: none; padding: 0; color: #888; margin-top: 5px;">{{ range . }}<li>- {{ . }}</li>{{ end }}</ul></div>{{ end }}
-        {{ with $product.cons }}<div><span style="color: #ff5555;">[-] CONS:</span><ul style="list-style: none; padding: 0; color: #888; margin-top: 5px;">{{ range . }}<li>- {{ . }}</li>{{ end }}</ul></div>{{ end }}
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; margin-bottom: 25px; font-size: 0.85rem;">
+        {{ with $product.pros }}
+        <div>
+            <span style="color: #50fa7b; font-weight: bold;">[+] PROS:</span>
+            <ul style="list-style: none; padding: 0; color: #aaa; margin-top: 8px; line-height: 1.4;">
+                {{ range . }}<li>• {{ . }}</li>{{ end }}
+            </ul>
+        </div>
+        {{ end }}
+        
+        {{ with $product.cons }}
+        <div>
+            <span style="color: #ff5555; font-weight: bold;">[-] CONS:</span>
+            <ul style="list-style: none; padding: 0; color: #aaa; margin-top: 8px; line-height: 1.4;">
+                {{ range . }}<li>• {{ . }}</li>{{ end }}
+            </ul>
+        </div>
+        {{ end }}
     </div>
 
-    <div style="font-size: 1.5rem; color: #f1fa8c; margin: 10px 0; font-weight: bold;">PRICE: BRL {{ $price }}</div>
-    <div style="font-size: 0.6rem; color: #555; margin-bottom: 20px;">ATUALIZADO EM: {{ .Page.Params.last_check | time.Format "02/01/2006 15:04" }}</div>
+    <div style="border-top: 1px double #333; padding-top: 15px;">
+        <div style="font-size: 1.6rem; color: #f1fa8c; margin-bottom: 5px; font-weight: bold;">
+            PRICE: R$ {{ $price }}
+        </div>
+        <div style="font-size: 0.6rem; color: #444; margin-bottom: 20px; text-transform: uppercase;">
+            Última verificação: {{ if .Page.Params.last_check }}{{ .Page.Params.last_check | time.Format "02/01/2006 15:04" }}{{ else }}Recente{{ end }}
+        </div>
+    </div>
 
-    <div class="affiliate-grid" style="display: grid; gap: 12px;">
+    <div class="affiliate-grid" style="display: grid; gap: 10px;">
         {{ range $affiliate }}
-            {{ $isBest := .best_deal }}
-            {{ $btnColor := "#50fa7b" }}
-            {{ if eq (lower .store) "amazon" }}{{ $btnColor = "#ff9900" }}
-            {{ else if (strings.Contains (lower .link) "mercadolivre") }}{{ $btnColor = "#ffe600" }}
-            {{ else if (strings.Contains (lower .link) "hotmart") }}{{ $btnColor = "#ff5d5e" }}{{ end }}
+            {{- $isBest := .best_deal -}}
+            {{- $btnColor := "#50fa7b" -}}
+            {{- if eq (lower .store) "amazon" }}{{ $btnColor = "#ff9900" }}
+            {{- else if (strings.Contains (lower .link) "mercadolivre") }}{{ $btnColor = "#ffe600" }}
+            {{- else if (strings.Contains (lower .link) "hotmart") }}{{ $btnColor = "#ff5d5e" }}{{ end -}}
 
             <a href="{{ .link }}" target="_blank" rel="sponsored nofollow" 
                 style="display: block; border: 1px solid {{ $btnColor }}; 
                 background: {{ if $isBest }}{{ $btnColor }}{{ else }}transparent{{ end }};
                 color: {{ if $isBest }}#000{{ else }}{{ $btnColor }}{{ end }};
-                text-decoration: none; padding: 14px; text-align: center; font-weight: bold; font-family: monospace; transition: 0.3s;
-                {{ if $isBest }}box-shadow: 0 0 15px {{ $btnColor }}66; transform: scale(1.02);{{ end }}"
-                onmouseover="this.style.transform='scale(1.05)'; this.style.filter='brightness(1.2)'" 
-                onmouseout="this.style.transform='{{ if $isBest }}scale(1.02){{ else }}scale(1){{ end }}'; this.style.filter='none'">
+                text-decoration: none; padding: 12px; text-align: center; font-weight: bold; font-family: monospace; transition: 0.2s;
+                {{ if $isBest }}box-shadow: 0 0 10px {{ $btnColor }}44;{{ end }}"
+                onmouseover="this.style.filter='brightness(1.3)';" 
+                onmouseout="this.style.filter='none';">
                 {{ if $isBest }}🔥 MELHOR PREÇO: {{ end }}{{ upper .store }}
             </a>
         {{ end }}

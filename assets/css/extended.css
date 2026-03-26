@@ -277,3 +277,18 @@ figcaption, .post-content img + em, .post-content p img + em {
     50% { box-shadow: 0 0 20px rgba(80, 250, 123, 0.6); }
     100% { box-shadow: 0 0 5px rgba(80, 250, 123, 0.2); }
 }
+
+/* --- SEPARADOR ESTILO TERMINAL (ANTI-QUEBRA MOBILE) --- */
+.terminal-line {
+    display: block;
+    width: 100%;
+    white-space: nowrap;   /* Impede que os pontos pulem para a linha de baixo */
+    overflow: hidden;      /* Corta o excesso no mobile sem criar barra de rolagem */
+    text-align: center;
+    color: var(--bizu-yellow);
+    font-family: var(--font-family);
+    letter-spacing: 2px;   /* Dá um respiro elegante entre os pontos */
+    opacity: 0.8;
+    margin: 15px 0;        /* Espaçamento vertical padrão */
+    user-select: none;     /* O usuário não seleciona a linha ao copiar o texto */
+}

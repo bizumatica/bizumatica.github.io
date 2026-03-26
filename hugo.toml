@@ -5,7 +5,7 @@ theme = "terminal"
 publishDir = "docs"
 enableEmoji = true
 
-# Ajustes de URL para GitHub Pages
+# --- AJUSTES PARA GITHUB PAGES ---
 canonifyURLs = false
 relativeURLs = true
 removePathAccents = true
@@ -15,6 +15,7 @@ removePathAccents = true
   centerTheme = true
   animatedTheme = true
   favicon = "favicon.png"
+  # O terminal theme carrega customCSS automaticamente de assets/css/
   customCSS = ["css/extended.css"]
 
   [params.Logo]
@@ -22,61 +23,65 @@ removePathAccents = true
     logoHomeLink = "/"
     logoCursorStyle = "block"
 
-# --- BLOCO DE IMAGENS (ESSENCIAL PARA O SHORTCODE) ---
+# --- PROCESSAMENTO DE IMAGENS ---
 [imaging]
-  # Qualidade do processamento de imagem do Hugo
   resampleFilter = "lanczos"
   quality = 85
-  anchor = "smart" # Foca no conteúdo principal da foto ao cortar
+  anchor = "smart"
 
-# --- CONFIGURAÇÃO DE TAXONOMIAS ---
+# --- TAXONOMIAS ---
 [taxonomies]
   category = "categories"
   tag = "tags"
   series = "series"
 
-# --- CONFIGURAÇÃO DE MARKUP ---
+# --- RENDERIZAÇÃO DE MARKUP (KaTeX & HTML) ---
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
-      unsafe = true # Mantido para permitir HTML nos posts
+      unsafe = true # Essencial para renderizar HTML/Shortcodes nos posts
+    
     [markup.goldmark.extensions]
       [markup.goldmark.extensions.passthrough]
         enable = true
         [markup.goldmark.extensions.passthrough.delimiters]
+          # Sintaxe otimizada para o Hugo interpretar os blocos de equações
           block = [['$$', '$$'], ['\\[', '\\]']]
           inline = [['$', '$'], ['\\(', '\\)']]
-  
-  # Adicionado para facilitar a leitura de tabelas de specs
+
   [markup.tableOfContents]
     endLevel = 3
     ordered = false
     startLevel = 2
 
-# --- MENUS ---
-[menu]
-  [[menu.main]]
-    identifier = "linux"
-    name = "Linux"
-    url = "/posts"
-    weight = 10
-  [[menu.main]]
-    identifier = "equipamentos"
-    name = "Curadoria"
-    url = "/equipamentos/"
-    weight = 12
-  [[menu.main]]
-    identifier = "matematica"
-    name = "Matemática"
-    url = "/matematica"
-    weight = 15
-  [[menu.main]]
-    identifier = "search"
-    name = "Buscar"
-    url = "/search"
-    weight = 20
-  [[menu.main]]
-    identifier = "about"
-    name = "Sobre"
-    url = "/about"
-    weight = 25
+# --- NAVEGAÇÃO (MENUS) ---
+# Padronizados com '/' final para melhor performance de carregamento
+[[menu.main]]
+  identifier = "linux"
+  name = "Linux"
+  url = "/posts/"
+  weight = 10
+
+[[menu.main]]
+  identifier = "curadoria"
+  name = "Curadoria"
+  url = "/equipamentos/"
+  weight = 12
+
+[[menu.main]]
+  identifier = "matematica"
+  name = "Matemática"
+  url = "/matematica/"
+  weight = 15
+
+[[menu.main]]
+  identifier = "search"
+  name = "Buscar"
+  url = "/search/"
+  weight = 20
+
+[[menu.main]]
+  identifier = "about"
+  name = "Sobre"
+  url = "/about/"
+  weight = 25

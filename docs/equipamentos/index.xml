@@ -1,91 +1,102 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Curadoria on Bizumática</title><link>https://bizumatica.com.br/equipamentos/</link><description>Recent content in Curadoria on Bizumática</description><generator>Hugo</generator><language>pt-br</language><lastBuildDate>Tue, 24 Mar 2026 19:13:33 -0300</lastBuildDate><atom:link href="https://bizumatica.com.br/equipamentos/index.xml" rel="self" type="application/rss+xml"/><item><title>Calculadora TI-Nspire</title><link>https://bizumatica.com.br/equipamentos/ti-nspire/</link><pubDate>Tue, 24 Mar 2026 19:13:33 -0300</pubDate><guid>https://bizumatica.com.br/equipamentos/ti-nspire/</guid><description>&lt;p&gt;A melhor.&lt;/p&gt;
-
-
-
-
-
-
-&lt;div class="product-card" style="border: 2px solid #333; padding: 20px; background: #0d0d0d; margin: 2rem 0; font-family: 'Fira Code', monospace; position: relative;"&gt;
- &lt;div style="position: absolute; top: -12px; left: 15px; background: #0d0d0d; padding: 0 10px; color: #ff00ff; font-size: 0.7rem; border: 1px solid #333;"&gt;[ PRODUCT_INFO ]&lt;/div&gt;
- &lt;div style="font-size: 0.65rem; color: #666; margin-bottom: 15px; letter-spacing: 1px;"&gt;ID: TI-NSPIRE | SYNC_OK&lt;/div&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Curadoria on Bizumática</title><link>https://bizumatica.com.br/equipamentos/</link><description>Recent content in Curadoria on Bizumática</description><generator>Hugo</generator><language>pt-br</language><lastBuildDate>Tue, 24 Mar 2026 19:16:51 -0300</lastBuildDate><atom:link href="https://bizumatica.com.br/equipamentos/index.xml" rel="self" type="application/rss+xml"/><item><title>Calculadora TI-Nspire</title><link>https://bizumatica.com.br/equipamentos/ti-nspire/</link><pubDate>Tue, 24 Mar 2026 19:16:51 -0300</pubDate><guid>https://bizumatica.com.br/equipamentos/ti-nspire/</guid><description>&lt;p&gt;A melhor.&lt;/p&gt;
+&lt;div class="product-card" style="border: 2px solid #333; padding: 20px; background: #0d0d0d; margin: 2rem 0; font-family: 'Fira Code', monospace; position: relative; border-radius: 4px;"&gt;
+ &lt;div style="position: absolute; top: -12px; left: 15px; background: #0d0d0d; padding: 0 10px; color: var(--bizu-yellow, #EEC35E); font-size: 0.7rem; border: 1px solid #333; letter-spacing: 1px;"&gt;[ PRODUCT_INFO ]&lt;/div&gt;
  
- &lt;h3 style="margin: 0 0 15px 0; color: #00ffff; text-transform: uppercase;"&gt;&gt; Calculadora TI-Nspire&lt;/h3&gt;
+ &lt;div style="font-size: 0.65rem; color: #555; margin-bottom: 15px; text-transform: uppercase;"&gt;
+ ID: TI-NSPIRE | STATUS: SYNC_OK
+ &lt;/div&gt;
+ 
+ &lt;h3 style="margin: 0 0 15px 0; color: #00ffff; text-transform: uppercase; font-size: 1.2rem;"&gt;&gt; Calculadora TI-Nspire&lt;/h3&gt;
  
  
 
- &lt;div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; font-size: 0.8rem;"&gt;
- &lt;div&gt;&lt;span style="color: #50fa7b;"&gt;[+] PROS:&lt;/span&gt;&lt;ul style="list-style: none; padding: 0; color: #888; margin-top: 5px;"&gt;&lt;li&gt;- CAS Ativo&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;
- &lt;div&gt;&lt;span style="color: #ff5555;"&gt;[-] CONS:&lt;/span&gt;&lt;ul style="list-style: none; padding: 0; color: #888; margin-top: 5px;"&gt;&lt;li&gt;- Cara&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;
+ &lt;div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; margin-bottom: 25px; font-size: 0.85rem;"&gt;
+ 
+ &lt;div&gt;
+ &lt;span style="color: #50fa7b; font-weight: bold;"&gt;[+] PROS:&lt;/span&gt;
+ &lt;ul style="list-style: none; padding: 0; color: #aaa; margin-top: 8px; line-height: 1.4;"&gt;
+ &lt;li&gt;• CAS Ativo&lt;/li&gt;
+ &lt;/ul&gt;
+ &lt;/div&gt;
+ 
+ 
+ 
+ &lt;div&gt;
+ &lt;span style="color: #ff5555; font-weight: bold;"&gt;[-] CONS:&lt;/span&gt;
+ &lt;ul style="list-style: none; padding: 0; color: #aaa; margin-top: 8px; line-height: 1.4;"&gt;
+ &lt;li&gt;• Cara&lt;/li&gt;
+ &lt;/ul&gt;
+ &lt;/div&gt;
+ 
  &lt;/div&gt;
 
- &lt;div style="font-size: 1.5rem; color: #f1fa8c; margin: 10px 0; font-weight: bold;"&gt;PRICE: BRL 1620&lt;/div&gt;
- &lt;div style="font-size: 0.6rem; color: #555; margin-bottom: 20px;"&gt;ATUALIZADO EM: 24/03/2026 19:13&lt;/div&gt;
+ &lt;div style="border-top: 1px double #333; padding-top: 15px;"&gt;
+ &lt;div style="font-size: 1.6rem; color: #f1fa8c; margin-bottom: 5px; font-weight: bold;"&gt;
+ PRICE: R$ 1620
+ &lt;/div&gt;
+ &lt;div style="font-size: 0.6rem; color: #444; margin-bottom: 20px; text-transform: uppercase;"&gt;
+ Última verificação: 24/03/2026 19:16
+ &lt;/div&gt;
+ &lt;/div&gt;
 
- &lt;div class="affiliate-grid" style="display: grid; gap: 12px;"&gt;
- 
- 
- 
- 
- 
-
+ &lt;div class="affiliate-grid" style="display: grid; gap: 10px;"&gt;
  &lt;a href="https://amzn.to/..." target="_blank" rel="sponsored nofollow" 
  style="display: block; border: 1px solid #ff9900; 
  background: transparent;
  color: #ff9900;
- text-decoration: none; padding: 14px; text-align: center; font-weight: bold; font-family: monospace; transition: 0.3s;
+ text-decoration: none; padding: 12px; text-align: center; font-weight: bold; font-family: monospace; transition: 0.2s;
  "
- onmouseover="this.style.transform='scale(1.05)'; this.style.filter='brightness(1.2)'" 
- onmouseout="this.style.transform='scale(1)'; this.style.filter='none'"&gt;
+ onmouseover="this.style.filter='brightness(1.3)';" 
+ onmouseout="this.style.filter='none';"&gt;
  AMAZON
  &lt;/a&gt;
  
  &lt;/div&gt;
-&lt;/div&gt;</description></item><item><title>Mouse Mx Master 3s</title><link>https://bizumatica.com.br/equipamentos/mouse-mx-master-3s/</link><pubDate>Thu, 19 Mar 2026 14:52:13 -0300</pubDate><guid>https://bizumatica.com.br/equipamentos/mouse-mx-master-3s/</guid><description>&lt;div class="product-card" style="border: 2px solid #333; padding: 20px; background: #0d0d0d; margin: 2rem 0; font-family: 'Fira Code', monospace; position: relative;"&gt;
- &lt;div style="position: absolute; top: -12px; left: 15px; background: #0d0d0d; padding: 0 10px; color: #ff00ff; font-size: 0.7rem; border: 1px solid #333;"&gt;[ PRODUCT_INFO ]&lt;/div&gt;
- &lt;div style="font-size: 0.65rem; color: #666; margin-bottom: 15px; letter-spacing: 1px;"&gt;ID: MOUSE-MX-MASTER-3S | SYNC_OK&lt;/div&gt;
+&lt;/div&gt;</description></item><item><title>Mouse Mx Master 3s</title><link>https://bizumatica.com.br/equipamentos/mouse-mx-master-3s/</link><pubDate>Thu, 19 Mar 2026 14:52:13 -0300</pubDate><guid>https://bizumatica.com.br/equipamentos/mouse-mx-master-3s/</guid><description>&lt;div class="product-card" style="border: 2px solid #333; padding: 20px; background: #0d0d0d; margin: 2rem 0; font-family: 'Fira Code', monospace; position: relative; border-radius: 4px;"&gt;
+ &lt;div style="position: absolute; top: -12px; left: 15px; background: #0d0d0d; padding: 0 10px; color: var(--bizu-yellow, #EEC35E); font-size: 0.7rem; border: 1px solid #333; letter-spacing: 1px;"&gt;[ PRODUCT_INFO ]&lt;/div&gt;
  
- &lt;h3 style="margin: 0 0 15px 0; color: #00ffff; text-transform: uppercase;"&gt;&gt; Mouse Mx Master 3s&lt;/h3&gt;
+ &lt;div style="font-size: 0.65rem; color: #555; margin-bottom: 15px; text-transform: uppercase;"&gt;
+ ID: MOUSE-MX-MASTER-3S | STATUS: SYNC_OK
+ &lt;/div&gt;
+ 
+ &lt;h3 style="margin: 0 0 15px 0; color: #00ffff; text-transform: uppercase; font-size: 1.2rem;"&gt;&gt; Mouse Mx Master 3s&lt;/h3&gt;
  
  
 
- &lt;div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; font-size: 0.8rem;"&gt;
+ &lt;div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; margin-bottom: 25px; font-size: 0.85rem;"&gt;
+ 
  
  
  &lt;/div&gt;
 
- &lt;div style="font-size: 1.5rem; color: #f1fa8c; margin: 10px 0; font-weight: bold;"&gt;PRICE: BRL 0&lt;/div&gt;
- &lt;div style="font-size: 0.6rem; color: #555; margin-bottom: 20px;"&gt;ATUALIZADO EM: 01/01/0001 00:00&lt;/div&gt;
+ &lt;div style="border-top: 1px double #333; padding-top: 15px;"&gt;
+ &lt;div style="font-size: 1.6rem; color: #f1fa8c; margin-bottom: 5px; font-weight: bold;"&gt;
+ PRICE: R$ 0
+ &lt;/div&gt;
+ &lt;div style="font-size: 0.6rem; color: #444; margin-bottom: 20px; text-transform: uppercase;"&gt;
+ Última verificação: Recente
+ &lt;/div&gt;
+ &lt;/div&gt;
 
- &lt;div class="affiliate-grid" style="display: grid; gap: 12px;"&gt;
- 
- 
- 
- 
- 
-
+ &lt;div class="affiliate-grid" style="display: grid; gap: 10px;"&gt;
  &lt;a href="" target="_blank" rel="sponsored nofollow" 
  style="display: block; border: 1px solid #ff9900; 
  background: transparent;
  color: #ff9900;
- text-decoration: none; padding: 14px; text-align: center; font-weight: bold; font-family: monospace; transition: 0.3s;
+ text-decoration: none; padding: 12px; text-align: center; font-weight: bold; font-family: monospace; transition: 0.2s;
  "
- onmouseover="this.style.transform='scale(1.05)'; this.style.filter='brightness(1.2)'" 
- onmouseout="this.style.transform='scale(1)'; this.style.filter='none'"&gt;
+ onmouseover="this.style.filter='brightness(1.3)';" 
+ onmouseout="this.style.filter='none';"&gt;
  AMAZON
  &lt;/a&gt;
- 
- 
- 
- 
-
  &lt;a href="" target="_blank" rel="sponsored nofollow" 
  style="display: block; border: 1px solid #50fa7b; 
  background: transparent;
  color: #50fa7b;
- text-decoration: none; padding: 14px; text-align: center; font-weight: bold; font-family: monospace; transition: 0.3s;
+ text-decoration: none; padding: 12px; text-align: center; font-weight: bold; font-family: monospace; transition: 0.2s;
  "
- onmouseover="this.style.transform='scale(1.05)'; this.style.filter='brightness(1.2)'" 
- onmouseout="this.style.transform='scale(1)'; this.style.filter='none'"&gt;
+ onmouseover="this.style.filter='brightness(1.3)';" 
+ onmouseout="this.style.filter='none';"&gt;
  MERCADOLIVRE
  &lt;/a&gt;
  

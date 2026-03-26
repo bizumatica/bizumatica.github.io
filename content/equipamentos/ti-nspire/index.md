@@ -1,24 +1,28 @@
 ---
-title: Calculadora TI-Nspire
-date: '2026-03-24T19:16:51-03:00'
-last_check: '2026-03-24T19:16:51-03:00'
+title: Calculadora Grafica Texas Ti 84-Plus CE
+date: '2026-03-26T18:20:54-03:00'
+last_check: '2026-03-26T18:20:54-03:00'
 draft: false
 slug: ti-nspire
 type: equipamentos
 product:
-  name: Calculadora TI-Nspire
-  current_price: 1620.0
-  currency: BRL
+  name: Calculadora Grafica Texas Ti 84-Plus CE
+  current_price: 1164.9
   pros:
-  - CAS Ativo
+  - Tela antirreflexo impecável
+  - Desempenho excepcional
+  - Inteligência artificial útil
+  - Construção em titânio resistente
   cons:
-  - Cara
+  - Carregamento lento
+  - Tamanho avantajado
+  - Preço elevado
 affiliate:
 - store: Amazon
-  link: https://amzn.to/...
+  link: https://amzn.to/4s0OMLE
   best_deal: false
 ---
 
-A melhor.
+Padrão ouro em exames internacionais, a TI-84 Plus CE combina tela colorida vibrante e bateria recarregável para estudantes de engenharia e ciências.
 
 {{< compra >}}

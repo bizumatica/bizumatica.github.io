@@ -56,16 +56,13 @@ def processar_e_limpar(diretorio, info_imagem):
     
     try:
         with Image.open(caminho_temp) as img:
-            # Converte para RGB (remove transparência se for JPG, mantém se for PNG)
             formato_saida = "RGB" if img.mode != "RGBA" else "RGBA"
             img.convert(formato_saida).save(caminho_webp, "WEBP", quality=80, method=6)
         
-        # Remove o arquivo temporário (jpg/png) após converter
         if os.path.exists(caminho_temp): os.remove(caminho_temp)
     except Exception as e:
         print(f"    [Erro] Falha ao processar WebP: {e}")
 
-    # FAXINA: Remove arquivos órfãos com o nome antigo 'featured_raw'
     for f in os.listdir(diretorio):
         if "featured_raw" in f:
             try: os.remove(os.path.join(diretorio, f))
@@ -83,7 +80,6 @@ def create_hugo_bundle(row):
         processar_e_limpar(bundle_dir, dados_img)
         nome_img_final = dados_img[0]
     else:
-        # Tenta ver se já existe um prod-slug.webp lá
         nome_img_final = f"prod-{slug}" if os.path.exists(os.path.join(bundle_dir, f"prod-{slug}.webp")) else ""
 
     # Mapeamento de Afiliados
@@ -102,6 +98,14 @@ def create_hugo_bundle(row):
 
     agora = datetime.now().strftime('%Y-%m-%dT%H:%M:%S-03:00')
     
+    # Tratamento de Preço (PT-BR -> Float)
+    try:
+        preco_raw = str(row.get('preco', '0')).replace('.', '').replace(',', '.')
+        preco_float = float(preco_raw)
+    except:
+        preco_float = 0.0
+
+    # Front Matter - Montagem Segura
     front_matter = {
         'title': row['nome'],
         'date': agora,
@@ -111,14 +115,14 @@ def create_hugo_bundle(row):
         'type': secao,
         'product': {
             'name': row['nome'],
-            'current_price': float(row['preco']) if pd.notna(row['preco']) else 0,
+            'current_price': preco_float,
             'pros': [p.strip().capitalize() for p in str(row.get('pros', '')).replace('PROS:', '').split(',') if p.strip() and p.lower() != 'nan'],
             'cons': [c.strip().capitalize() for c in str(row.get('cons', '')).replace('CONS:', '').split(',') if c.strip() and c.lower() != 'nan']
         },
         'affiliate': links
     }
     
-    # Gera o Shortcode com o parâmetro de imagem específico
+    # Geração do Arquivo index.md
     img_attr = f' img="{nome_img_final}"' if nome_img_final else ""
     review = row.get('review_curto', '') if pd.notna(row.get('review_curto')) else ""
     

@@ -1,106 +1,116 @@
 ---
-title: "SOP-01: Fluxo de Publicação e Curadoria Bizumática"
-author: "Julio"
-version: "1.0"
-last_mod: 2026-03-19
-status: "Ativo"
-description: "Guia técnico para padronização de Page Bundles, Imagens WebP e Shortcodes."
-
-# Campos para controle do Hugo (se ficar em content)
+title: "SOP-01: Framework de Engenharia e Publicação Bizumática"
+author: "Julio Prata"
+version: "3.3.1 (Full Automation)"
+last_mod: 2026-03-26
+status: "OPERACIONAL / CRÍTICO"
+description: "Documentação técnica de arquitetura, pipeline de dados Sheets-to-Hugo e padronização de ativos."
+# Configurações de Documentação Interna (Draft impede publicação no feed público)
 draft: true
 type: "docs"
 toc: true
 ---
 
-# 📖 Guia de Publicação: Padrão Bizumática (Hugo 2026)
+# 📖 SOP-01: Framework de Engenharia e Publicação (v3.3)
 
-Este guia define como criar posts organizados, com imagens otimizadas e monetização integrada em qualquer uma das três seções (**Matemática, Equipamentos, Posts**).
-
-## 1. Estrutura de Pasta (Page Bundles)
-Em vez de arquivos `.md` soltos, cada post agora é uma **pasta**. Isso mantém as imagens grudadas ao texto.
-
-**Como criar:**
-No terminal, na raiz do projeto:
-```bash
-hugo new posts/nome-do-post/index.md
-# ou para matemática
-hugo new matematica/teorema-xyz/index.md
-```
-
-**Organização dos arquivos:**
-```text
-content/posts/meu-post-exemplo/
-├── index.md           <-- O texto do seu post
-├── capa.webp          <-- Imagem do produto principal
-└── detalhe.webp       <-- Outra imagem de curadoria
-```
+Este documento rege a arquitetura técnica do portal Bizumática. Ele serve como o "Manual de Voo" para garantir a integridade do sistema de automação, a otimização de performance (Lighthouse 100) e a consistência da interface de terminal.
 
 ---
 
-## 2. O Frontmatter (O Cabeçalho)
-Use o arquétipo atualizado para garantir que o Shortcode `compra` funcione mesmo sem parâmetros extras.
+## 1. Arquitetura de Dados e "Single Source of Truth"
 
-```yaml
----
-title: "Título do Post"
-date: 2026-03-19T10:00:00-03:00
-product:
-  name: "Produto Padrão"
-  current_price: 450.0
-  currency: "BRL"
-  thumbnail: "capa.webp" # Apenas o nome do arquivo na pasta
-  pros: ["Pró 1", "Pró 2"]
-  cons: ["Contra 1"]
-affiliate:
-  - store: "Amazon"
-    link: "https://amzn.to/..."
----
-```
+O projeto opera sob o princípio de **Dados Desacoplados**. O Google Sheets funciona como o Banco de Dados (DB), enquanto o Hugo funciona apenas como a camada de apresentação.
+
+### 1.1. Categorias de Conteúdo
+* **Manual (Matemática/Blog):** Arquivos criados via CLI `hugo new`. O controle de metadados é local no arquivo `.md`.
+* **Automatizado (Equipamentos/Produtos):** Geridos exclusivamente pelo script `auto-busca.py`. 
+    * **⚠️ PROIBIÇÃO:** Alterações manuais em `content/equipamentos/*/index.md` serão sobrescritas no próximo deploy. A edição deve ocorrer na Planilha Mestra.
+
+### 1.2. Page Bundles (Obrigatoriedade)
+Todo novo post **DEVE** ser uma pasta contendo um arquivo `index.md`. Arquivos soltos na raiz de `/content` quebram a lógica de processamento de imagens do Hugo (`.Page.Resources`).
 
 ---
 
-## 3. Uso dos Shortcodes no Markdown
+## 2. Pipeline de Automação (Sheets -> Python)
 
-### A. O Box de Conteúdo (`box.html`)
-Use para destacar Bizus, Teoremas ou Avisos.
-```markdown
-{{< box tipo="bizu" titulo="DICA DE SHELL" >}}
-Use `rsync` em vez de `cp` para backups grandes.
-{{< /box >}}
+O script `scripts/auto-busca.py` é o motor de sincronização. Ele realiza as seguintes operações críticas de ETL (Extract, Transform, Load):
 
-{{< box tipo="teorema" >}}
-A² + B² = C²
-{{< /box >}}
-```
+### 2.1. Tratamento de Strings e Preços
+O script limpa a formatação brasileira (PT-BR) para garantir que o Hugo receba floats válidos:
+* **Input:** `1.250,90` (String na Sheet)
+* **Processamento:** `replace('.', '').replace(',', '.')`
+* **Output:** `1250.90` (Float no YAML)
 
-### B. Transparência de Afiliados (`links.html`)
-Chame sempre antes de listar os produtos para gerar confiança no leitor.
-```markdown
-## Onde adquirir
-{{< links />}} 
-```
-*Dica: Você pode colocar texto dentro: `{{< links >}}Apoie o site comprando aqui:{{< /links >}}`.*
-
-### C. O Card de Venda (`compra.html`)
-O novo shortcode é inteligente: ele busca a imagem na pasta do post automaticamente.
-
-* **Modo Automático:** Puxa tudo do Frontmatter.
-    `{{< compra />}}`
-* **Modo Manual (Curadoria de múltiplos itens):**
-    `{{< compra name="Samsung T7" price="800" img="ssd-samsung" link="URL_HOTMART" >}}`
+### 2.2. Lógica de Pros e Cons
+O script aceita o prefixo `PROS:` ou `CONS:` (comum em saídas de IA) e o remove via regex/replace, garantindo que o array no Frontmatter contenha apenas os itens limpos e capitalizados.
 
 ---
 
-## 4. Fluxo de Trabalho (Workflow)
+## 3. Gestão de Ativos e Imagens (WebP Engine)
 
-1.  **Crie a pasta** do post e o arquivo `index.md`.
-2.  **Cole as imagens** (`.jpg` ou `.png`) dentro da pasta do post.
-3.  **Rode o script de otimização**:
-    ```bash
-    ./optimize-images.sh
-    ```
-    *(Isso transformará tudo em `.webp` e economizará espaço).*
-4.  **Escreva o conteúdo** usando os shortcodes acima.
-5.  **Teste localmente** com `hugo server` e publique.
+O portal utiliza o formato **Next-Gen WebP** com processamento automatizado para garantir carregamento sub-1s.
+
+### 3.1. Imagens de Produtos (Automático)
+1.  O script baixa a imagem do link fornecido na coluna `foto`.
+2.  Renomeia para `prod-[slug].webp`.
+3.  Converte para WebP (Quality 80) e redimensiona via Pillow.
+4.  **Fallback:** Se o link na sheet falhar, o script mantém a imagem existente na pasta para evitar links quebrados (404).
+
+### 3.2. Imagens Manuais (Manual)
+Ao adicionar diagramas ou fotos em posts de matemática:
+* Salve o arquivo bruto (`.png` ou `.jpg`) na pasta do post.
+* O Shortcode `{{< compra >}}` ou o Hugo Image Processing cuidará da conversão em tempo de build.
 
 ---
+
+## 4. Shortcodes: Especificações Técnicas
+
+### 4.1. `{{< compra >}}` - Card de Engenharia
+Este é o componente mais complexo do sistema. Ele possui lógica condicional:
+* **Atributo `img`:** Se definido, busca o arquivo exato. Se omitido, utiliza o primeiro `.webp` encontrado no Bundle.
+* **Atributo `price`:** Se o preço for `0` ou `null`, exibe o status "Consultar".
+* **Máscara BRL:** Utiliza `lang.FormatNumberCustom 2 $price "- . ,"` para renderizar `1250.90` como `R$ 1.250,90`.
+
+### 4.2. `{{< box >}}` - Containers de Metadados
+Utilizado para destacar conceitos semânticos.
+* **`tipo="bizu"`:** Borda amarela, ícone de lâmpada simulado via terminal.
+* **`tipo="teorema"`:** Fundo escuro, borda cyan, focado em fórmulas LaTeX.
+* **`tipo="warning"`:** Borda vermelha, focado em limitações de hardware.
+
+---
+
+## 5. Protocolo de Deploy (Lifecycle v3.3)
+
+O comando `./scripts/deploy.sh` dispara uma sequência de eventos que deve ser monitorada via log:
+
+1.  **Sincronização Cloud:** O Python valida o CSV e reconstrói os Bundles de equipamentos.
+2.  **Limpeza de Cache (Faxina):** * Remove `static/css/extended.css` (redundante).
+    * Remove imagens temporárias `featured_raw`.
+    * Limpa `resources/_gen` para forçar a regeneração de thumbnails.
+3.  **Build Hugo:** O binário gera os arquivos estáticos em `/docs` com minificação ativa (`--minify`).
+4.  **Indexação Pagefind:** Varre a pasta `/docs` e gera o índice de busca `pagefind.js`.
+5.  **Git Sync:** Realiza o Atomic Commit e Push para a Main.
+
+---
+
+## 6. Troubleshooting e Manutenção
+
+### 6.1. Erros Comuns no Deploy
+* **`ValueError: could not convert string`**: Caractere inválido na coluna de preço da Sheet.
+* **`SyntaxError: '{' was never closed`**: Erro de indentação no `auto-busca.py` ao manipular o dicionário `front_matter`.
+* **Imagens não aparecem:** Verifique se o arquivo está na pasta correta e se a extensão é `.webp`.
+
+### 6.2. Comandos de Verificação
+* **Testar Sincronização:** `python3 scripts/auto-busca.py` (antes de subir pro Git).
+* **Testar Site Local:** `hugo server -D` (para ver rascunhos).
+* **Verificar Busca:** Abrir `localhost:1313` e testar a barra de busca após o build local.
+
+---
+
+## 7. Melhores Práticas de SEO e Afiliados
+* **Links de Afiliados:** Sempre utilize o parâmetro `rel="sponsored nofollow"` (já automatizado no shortcode).
+* **Slugs:** Devem ser curtos, sem acentos e separados por hífens (ex: `calculadora-hp-50g`).
+* **Transparência:** O shortcode `{{< links >}}` deve preceder qualquer lista de produtos para cumprir normas de publicidade.
+
+---
+**FIM DA DOCUMENTAÇÃO - OPERE COM CAUTELA.**

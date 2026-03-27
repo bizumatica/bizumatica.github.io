@@ -1,6 +1,7 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Curadoria on Bizumática</title><link>https://bizumatica.com.br/equipamentos/</link><description>Recent content in Curadoria on Bizumática</description><generator>Hugo</generator><language>pt-br</language><lastBuildDate>Thu, 26 Mar 2026 18:20:54 -0300</lastBuildDate><atom:link href="https://bizumatica.com.br/equipamentos/index.xml" rel="self" type="application/rss+xml"/><item><title>Calculadora Grafica Texas Ti 84-Plus CE</title><link>https://bizumatica.com.br/equipamentos/ti-nspire/</link><pubDate>Thu, 26 Mar 2026 18:20:54 -0300</pubDate><guid>https://bizumatica.com.br/equipamentos/ti-nspire/</guid><description>&lt;p&gt;Padrão ouro em exames internacionais, a TI-84 Plus CE combina tela colorida vibrante e bateria recarregável para estudantes de engenharia e ciências.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Curadoria on Bizumática</title><link>https://bizumatica.com.br/equipamentos/</link><description>Recent content in Curadoria on Bizumática</description><generator>Hugo</generator><language>pt-br</language><lastBuildDate>Fri, 27 Mar 2026 19:02:52 -0300</lastBuildDate><atom:link href="https://bizumatica.com.br/equipamentos/index.xml" rel="self" type="application/rss+xml"/><item><title>Calculadora Grafica Texas Ti 84-Plus CE</title><link>https://bizumatica.com.br/equipamentos/ti-nspire/</link><pubDate>Fri, 27 Mar 2026 19:02:52 -0300</pubDate><guid>https://bizumatica.com.br/equipamentos/ti-nspire/</guid><description>&lt;p&gt;Padrão ouro em exames internacionais, a TI-84 Plus CE combina tela colorida vibrante e bateria recarregável para estudantes de engenharia e ciências.&lt;/p&gt;
 &lt;div class="product-card" style="border: 2px solid #333; padding: 20px; background: #0d0d0d; margin: 2rem 0; font-family: 'Fira Code', monospace; position: relative; border-radius: 4px;"&gt;
- &lt;div style="position: absolute; top: -12px; left: 15px; background: #0d0d0d; padding: 0 10px; color: var(--bizu-yellow, #EEC35E); font-size: 0.7rem; border: 1px solid #333; letter-spacing: 1px;"&gt;[ PRODUCT_INFO ]&lt;/div&gt;
+ 
+ &lt;div style="position: absolute; top: -12px; left: 15px; background: #0d0d0d; padding: 0 10px; color: #EEC35E; font-size: 0.7rem; border: 1px solid #333; letter-spacing: 1px; z-index: 10;"&gt;[ PRODUCT_INFO ]&lt;/div&gt;
  
  &lt;div style="font-size: 0.65rem; color: #555; margin-bottom: 15px; text-transform: uppercase;"&gt;
  ID: TI-NSPIRE | STATUS: SYNC_OK
@@ -32,10 +33,10 @@
 
  &lt;div style="border-top: 1px double #333; padding-top: 15px;"&gt;
  &lt;div style="font-size: 1.6rem; color: #f1fa8c; margin-bottom: 5px; font-weight: bold;"&gt;
- PRICE: R$ 1164.9
+ R$ 1,164.90
  &lt;/div&gt;
  &lt;div style="font-size: 0.6rem; color: #444; margin-bottom: 20px; text-transform: uppercase;"&gt;
- Última verificação: 26/03/2026 18:20
+ Última verificação: 27/03/2026 19:02
  &lt;/div&gt;
  &lt;/div&gt;
 
@@ -52,8 +53,64 @@
  &lt;/a&gt;
  
  &lt;/div&gt;
+&lt;/div&gt;</description></item><item><title>The Ultimate Linux Shell Scripting Guide</title><link>https://bizumatica.com.br/equipamentos/caps-lock-indicator/</link><pubDate>Fri, 27 Mar 2026 19:02:52 -0300</pubDate><guid>https://bizumatica.com.br/equipamentos/caps-lock-indicator/</guid><description>&lt;p&gt;Guia definitivo e atualizado para dominar automação no Linux, sendo indispensável para administradores de sistemas e desenvolvedores DevOps.&lt;/p&gt;
+&lt;div class="product-card" style="border: 2px solid #333; padding: 20px; background: #0d0d0d; margin: 2rem 0; font-family: 'Fira Code', monospace; position: relative; border-radius: 4px;"&gt;
+ 
+ &lt;div style="position: absolute; top: -12px; left: 15px; background: #0d0d0d; padding: 0 10px; color: #EEC35E; font-size: 0.7rem; border: 1px solid #333; letter-spacing: 1px; z-index: 10;"&gt;[ PRODUCT_INFO ]&lt;/div&gt;
+ 
+ &lt;div style="font-size: 0.65rem; color: #555; margin-bottom: 15px; text-transform: uppercase;"&gt;
+ ID: CAPS-LOCK-INDICATOR | STATUS: SYNC_OK
+ &lt;/div&gt;
+ 
+ &lt;h3 style="margin: 0 0 15px 0; color: #00ffff; text-transform: uppercase; font-size: 1.2rem;"&gt;&gt; The Ultimate Linux Shell Scripting Guide&lt;/h3&gt;
+ 
+ 
+
+ &lt;div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; margin-bottom: 25px; font-size: 0.85rem;"&gt;
+ 
+ &lt;div&gt;
+ &lt;span style="color: #50fa7b; font-weight: bold;"&gt;[+] PROS:&lt;/span&gt;
+ &lt;ul style="list-style: none; padding: 0; color: #aaa; margin-top: 8px; line-height: 1.4;"&gt;
+ &lt;li&gt;• Conteúdo técnico abrangente&lt;/li&gt;&lt;li&gt;• Exemplos práticos úteis&lt;/li&gt;&lt;li&gt;• Didática clara e direta&lt;/li&gt;&lt;li&gt;• Focado em automação moderna&lt;/li&gt;
+ &lt;/ul&gt;
+ &lt;/div&gt;
+ 
+ 
+ 
+ &lt;div&gt;
+ &lt;span style="color: #ff5555; font-weight: bold;"&gt;[-] CONS:&lt;/span&gt;
+ &lt;ul style="list-style: none; padding: 0; color: #aaa; margin-top: 8px; line-height: 1.4;"&gt;
+ &lt;li&gt;• Conteúdo em inglês&lt;/li&gt;&lt;li&gt;• Curva aprendizado inicial&lt;/li&gt;&lt;li&gt;• Preço elevado&lt;/li&gt;
+ &lt;/ul&gt;
+ &lt;/div&gt;
+ 
+ &lt;/div&gt;
+
+ &lt;div style="border-top: 1px double #333; padding-top: 15px;"&gt;
+ &lt;div style="font-size: 1.6rem; color: #f1fa8c; margin-bottom: 5px; font-weight: bold;"&gt;
+ R$ 305.18
+ &lt;/div&gt;
+ &lt;div style="font-size: 0.6rem; color: #444; margin-bottom: 20px; text-transform: uppercase;"&gt;
+ Última verificação: 27/03/2026 19:02
+ &lt;/div&gt;
+ &lt;/div&gt;
+
+ &lt;div class="affiliate-grid" style="display: grid; gap: 10px;"&gt;
+ &lt;a href="https://amzn.to/40ZIEbu" target="_blank" rel="sponsored nofollow" 
+ style="display: block; border: 1px solid #ff9900; 
+ background: transparent;
+ color: #ff9900;
+ text-decoration: none; padding: 12px; text-align: center; font-weight: bold; font-family: monospace; transition: 0.2s;
+ "
+ onmouseover="this.style.filter='brightness(1.3)';" 
+ onmouseout="this.style.filter='none';"&gt;
+ AMAZON
+ &lt;/a&gt;
+ 
+ &lt;/div&gt;
 &lt;/div&gt;</description></item><item><title>Mouse Mx Master 3s</title><link>https://bizumatica.com.br/equipamentos/mouse-mx-master-3s/</link><pubDate>Thu, 19 Mar 2026 14:52:13 -0300</pubDate><guid>https://bizumatica.com.br/equipamentos/mouse-mx-master-3s/</guid><description>&lt;div class="product-card" style="border: 2px solid #333; padding: 20px; background: #0d0d0d; margin: 2rem 0; font-family: 'Fira Code', monospace; position: relative; border-radius: 4px;"&gt;
- &lt;div style="position: absolute; top: -12px; left: 15px; background: #0d0d0d; padding: 0 10px; color: var(--bizu-yellow, #EEC35E); font-size: 0.7rem; border: 1px solid #333; letter-spacing: 1px;"&gt;[ PRODUCT_INFO ]&lt;/div&gt;
+ 
+ &lt;div style="position: absolute; top: -12px; left: 15px; background: #0d0d0d; padding: 0 10px; color: #EEC35E; font-size: 0.7rem; border: 1px solid #333; letter-spacing: 1px; z-index: 10;"&gt;[ PRODUCT_INFO ]&lt;/div&gt;
  
  &lt;div style="font-size: 0.65rem; color: #555; margin-bottom: 15px; text-transform: uppercase;"&gt;
  ID: MOUSE-MX-MASTER-3S | STATUS: SYNC_OK
@@ -71,7 +128,7 @@
 
  &lt;div style="border-top: 1px double #333; padding-top: 15px;"&gt;
  &lt;div style="font-size: 1.6rem; color: #f1fa8c; margin-bottom: 5px; font-weight: bold;"&gt;
- PRICE: R$ 0
+ Consultar
  &lt;/div&gt;
  &lt;div style="font-size: 0.6rem; color: #444; margin-bottom: 20px; text-transform: uppercase;"&gt;
  Última verificação: Recente

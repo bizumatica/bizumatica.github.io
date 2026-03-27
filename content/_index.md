@@ -21,9 +21,56 @@ math: true
     <a href="/matematica/" class="home-tag">Matemática</a>
     <span class="tag-separator">|</span>
     <a href="/equipamentos/" class="home-tag">Curadoria</a>
+    <span class="tag-separator">|</span>
+    <a href="/shell-scripting/" class="home-tag">Shell</a>
 </div>
 
 </div>
+
+<style>
+/* Corrige o aperto da Foto 2 */
+.tags-container-home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* O segredo: permite que os links pulem de linha no mobile */
+    gap: 10px;
+    padding: 0 10px;
+}
+
+.home-tag {
+    color: #8be9fd;
+    text-decoration: none;
+    font-family: monospace;
+    white-space: nowrap; /* Impede que a palavra se quebre ao meio */
+}
+
+.tag-separator {
+    color: #444;
+}
+
+/* No mobile, escondemos os separadores "|" para o layout ficar mais limpo se quebrar linha */
+@media (max-width: 600px) {
+    .tag-separator {
+        display: none;
+    }
+    .tags-container-home {
+        gap: 15px; /* Aumenta o espaço entre os botões no celular */
+    }
+    .home-tag {
+        border: 1px solid #8be9fd44;
+        padding: 4px 10px;
+        border-radius: 3px;
+        font-size: 0.9rem;
+    }
+}
+
+.brand-header {
+    font-size: 4rem;
+    margin: 20px 0;
+}
+/* ... mantenha seus outros estilos do brand-header aqui ... */
+</style>
 
 <p class="introduction">
 No <strong>Bizumática</strong>, exploramos a intersecção entre o código aberto e a lógica pura. Aqui você encontrará análises técnicas, automação com Shell Script e insights práticos sobre o ecossistema Linux. Nosso foco é desmistificar a tecnologia para que você a domine com autonomia, provando que a 
@@ -84,5 +131,3 @@ fi
 </p>
 
 </div>
-
-```

@@ -75,6 +75,12 @@ removePathAccents = true
   weight = 15
 
 [[menu.main]]
+  identifier = "shell-scripting"
+  name = "Shell"
+  url = "/shell-scripting/"
+  weight = 18
+
+[[menu.main]]
   identifier = "search"
   name = "Buscar"
   url = "/search/"

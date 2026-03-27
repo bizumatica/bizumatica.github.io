@@ -18,7 +18,7 @@
             
             <div class="recent-posts">
                 {{/* Puxa os últimos 5 posts de seções específicas */}}
-                {{ range (where .Site.RegularPages "Section" "in" (slice "posts" "matematica" "equipamentos") | first 5) }}
+                {{ range (where .Site.RegularPages "Section" "in" (slice "posts" "matematica" "equipamentos" "shell-scripting") | first 5) }}
                     <article class="post" style="margin-bottom: 15px; border-left: 2px solid var(--primary-color);">
                         <h3 class="post-title" style="font-size: 1.2rem;">
                             <a href="{{ .Permalink }}" style="border: none;">> {{ .Title }}</a>
@@ -33,7 +33,7 @@
             
             {{/* Botão para ver tudo */}}
             <div style="margin-top: 20px;">
-                <a href="/posts/" class="btn-compra" style="display: inline-block; text-decoration: none;">VER_TODOS_OS_LOGS</a>
+                <a href="/arquivo/" class="btn-compra" style="display: inline-block; text-decoration: none;">VER_TODOS_OS_LOGS</a>
             </div>
         {{ end }}
     </main>

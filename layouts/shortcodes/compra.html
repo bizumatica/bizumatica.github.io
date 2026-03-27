@@ -1,24 +1,28 @@
+{{- /* 1. CAPTURA DE VARIÁVEIS */ -}}
 {{- $product := .Page.Params.product -}}
 {{- $affiliate := .Page.Params.affiliate -}}
 {{- $name := .Get "name" | default $product.name | default .Page.Title -}}
-{{- $price := .Get "price" | default $product.current_price -}}
+{{- $rawPrice := .Get "price" | default $product.current_price -}}
 
-{{- /* LOGICA DE IMAGEM INTELIGENTE */ -}}
-{{- $imgName := .Get "img" -}}
-{{- $img := "" -}}
-
-{{- if $imgName -}}
-    {{- /* Busca específica pelo nome passado no shortcode */ -}}
-    {{- $img = .Page.Resources.GetMatch (printf "*%s*" $imgName) -}}
+{{- /* 2. FORMATAÇÃO DE PREÇO PT-BR */ -}}
+{{- $formattedPrice := "Consultar" -}}
+{{- if $rawPrice -}}
+    {{- $formattedPrice = printf "R$ %s" (lang.FormatNumberCustom 2 $rawPrice "- . ," ) -}}
 {{- end -}}
 
+{{- /* 3. LÓGICA DE IMAGEM INTELIGENTE */ -}}
+{{- $imgName := .Get "img" -}}
+{{- $img := "" -}}
+{{- if $imgName -}}
+    {{- $img = .Page.Resources.GetMatch (printf "*%s*" $imgName) -}}
+{{- end -}}
 {{- if not $img -}}
-    {{- /* Fallback: se não achar pelo nome ou não tiver parâmetro, pega o primeiro webp */ -}}
     {{- $img = .Page.Resources.GetMatch "*.webp" -}}
 {{- end -}}
 
 <div class="product-card" style="border: 2px solid #333; padding: 20px; background: #0d0d0d; margin: 2rem 0; font-family: 'Fira Code', monospace; position: relative; border-radius: 4px;">
-    <div style="position: absolute; top: -12px; left: 15px; background: #0d0d0d; padding: 0 10px; color: var(--bizu-yellow, #EEC35E); font-size: 0.7rem; border: 1px solid #333; letter-spacing: 1px;">[ PRODUCT_INFO ]</div>
+    
+    <div style="position: absolute; top: -12px; left: 15px; background: #0d0d0d; padding: 0 10px; color: #EEC35E; font-size: 0.7rem; border: 1px solid #333; letter-spacing: 1px; z-index: 10;">[ PRODUCT_INFO ]</div>
     
     <div style="font-size: 0.65rem; color: #555; margin-bottom: 15px; text-transform: uppercase;">
         ID: {{ upper .Page.File.ContentBaseName }} | STATUS: {{ if $product }}SYNC_OK{{ else }}MANUAL_ENTRY{{ end }}
@@ -28,7 +32,7 @@
     
     {{ if $img }}
         <div style="text-align: center; margin: 20px 0; border: 1px dashed #333; padding: 15px; background: #050505;">
-            {{- $optimized := $img.Resize "600x webp" -}}
+            {{- $optimized := $img.Resize "600x webp q90" -}}
             <img src="{{ $optimized.RelPermalink }}" alt="{{ $name }}" style="max-width: 100%; height: auto; border: 1px solid #222;">
         </div>
     {{ end }}
@@ -55,7 +59,7 @@
 
     <div style="border-top: 1px double #333; padding-top: 15px;">
         <div style="font-size: 1.6rem; color: #f1fa8c; margin-bottom: 5px; font-weight: bold;">
-            PRICE: R$ {{ $price }}
+            {{ $formattedPrice }}
         </div>
         <div style="font-size: 0.6rem; color: #444; margin-bottom: 20px; text-transform: uppercase;">
             Última verificação: {{ if .Page.Params.last_check }}{{ .Page.Params.last_check | time.Format "02/01/2006 15:04" }}{{ else }}Recente{{ end }}
@@ -68,7 +72,8 @@
             {{- $btnColor := "#50fa7b" -}}
             {{- if eq (lower .store) "amazon" }}{{ $btnColor = "#ff9900" }}
             {{- else if (strings.Contains (lower .link) "mercadolivre") }}{{ $btnColor = "#ffe600" }}
-            {{- else if (strings.Contains (lower .link) "hotmart") }}{{ $btnColor = "#ff5d5e" }}{{ end -}}
+            {{- else if (strings.Contains (lower .link) "aliexpress") }}{{ $btnColor = "#ff4747" }}
+            {{- else if (eq (lower .store) "hotmart") }}{{ $btnColor = "#ff5d5e" }}{{ end -}}
 
             <a href="{{ .link }}" target="_blank" rel="sponsored nofollow" 
                 style="display: block; border: 1px solid {{ $btnColor }}; 

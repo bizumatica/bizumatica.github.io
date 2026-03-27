@@ -1,0 +1,83 @@
+{{ define "main" }}
+<style>
+    /* Container do Terminal */
+    .terminal-archive {
+        padding: 20px;
+        background: #0a0a0a;
+        border: 1px solid #222;
+        min-height: 80vh;
+        font-family: 'Fira Code', monospace;
+        color: #eee;
+    }
+
+    /* Linha do Log */
+    .log-row {
+        display: flex;
+        flex-direction: row; /* Desktop: Lado a lado */
+        gap: 10px;
+        margin-bottom: 12px;
+        align-items: flex-start;
+        border-bottom: 1px solid #111;
+        padding-bottom: 8px;
+    }
+
+    .log-date { color: #444; font-size: 0.8rem; white-space: nowrap; flex-shrink: 0; }
+    
+    .log-tag { font-size: 0.7rem; text-transform: uppercase; font-weight: bold; white-space: nowrap; flex-shrink: 0; min-width: 120px; }
+
+    .log-title { color: #eee; text-decoration: none; font-size: 0.95rem; line-height: 1.4; word-break: break-word; }
+
+    /* --- RESPONSIVIDADE (MOBILE) --- */
+    @media (max-width: 768px) {
+        .log-row {
+            flex-direction: column; /* Celular: Empilha os elementos */
+            gap: 4px;
+            margin-bottom: 20px;
+        }
+        .log-tag {
+            min-width: auto; /* Remove a largura fixa no mobile */
+        }
+        .meta-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+    }
+</style>
+
+<div class="terminal-archive">
+    {{ $secoes_permitidas := slice "matematica" "equipamentos" "posts" "shell-scripting" }} <!-- se no futuro eu criar uma pasta /nova, basta adicionar "nova" no slice -->
+    {{ $all_logs := where (where .Site.RegularPages "Section" "in" $secoes_permitidas) "Permalink" "!=" .Permalink }}
+    
+    <div style="margin-bottom: 30px; border-bottom: 1px solid #333; padding-bottom: 10px;">
+        <h1 style="color: #EEC35E; font-size: 1.2rem; margin: 0;">> [SCANNING_ALL_LOGS]... DONE.</h1>
+        <p style="color: #555; font-size: 0.7rem; margin: 5px 0 0 0;">SISTEMA: {{ len $all_logs }} ENTRADAS VÁLIDAS.</p>
+    </div>
+    
+    <div class="entry-list">
+        {{ range $all_logs.ByDate.Reverse }}
+            <div class="log-row">
+                <div class="meta-group">
+                    <span class="log-date">[{{ .Date.Format "02/01/2006" }}]</span>
+                    
+                    {{ $color := "#8be9fd" }}
+                    {{ if eq .Section "matematica" }}{{ $color = "#bd93f9" }}{{ end }}
+                    {{ if eq .Section "equipamentos" }}{{ $color = "#50fa7b" }}{{ end }}
+                    {{ if eq .Section "posts" }}{{ $color = "#ffb86c" }}{{ end }}
+                    {{ if eq .Section "shell-scripting" }}{{ $color = "#8be9fd" }}{{ end }} {{/* Verde Ciano */}}
+                    
+                    <span class="log-tag" style="color: {{ $color }};">
+                        [{{ .Section | default "LOG" }}]
+                    </span>
+                </div>
+
+                <a href="{{ .RelPermalink }}" class="log-title">
+                   > {{ .Title }}
+                </a>
+            </div>
+        {{ end }}
+    </div>
+
+    <div style="margin-top: 50px; color: #222; font-size: 0.6rem;">-- [EOF] --</div>
+</div>
+{{ end }}

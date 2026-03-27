@@ -11,7 +11,10 @@ BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 URL_SHEETS_CSV = "https://docs.google.com/spreadsheets/d/18ipD4FyXPZxYpv89uk56bbfTK1Bp1Qb2jQplDwxAblo/export?format=csv"
 ARQUIVO_LOCAL = os.path.join(BASE_DIR, "assets/produtos_sheets.csv") 
 CONTENT_DIR = os.path.join(BASE_DIR, "content")
-HEADERS = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
+HEADERS = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+    'Accept': 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8'
+}
 
 def carregar_dados():
     try:
@@ -27,42 +30,58 @@ def carregar_dados():
         return pd.read_csv(ARQUIVO_LOCAL) if os.path.exists(ARQUIVO_LOCAL) else None
 
 def baixar_imagem(url, diretorio, slug):
-    if not url or pd.isna(url) or not str(url).startswith('http'): return None
+    if not url or pd.isna(url) or not str(url).startswith('http'): 
+        return None
     
     nome_base = f"prod-{slug}"
-    # Se o webp já existe, não faz nada
-    if os.path.exists(os.path.join(diretorio, f"{nome_base}.webp")):
+    caminho_webp = os.path.join(diretorio, f"{nome_base}.webp")
+
+    # Se o webp já existe, assumimos que o processamento já foi feito
+    if os.path.exists(caminho_webp):
         return nome_base
 
-    ext = os.path.splitext(url.split('?')[0])[1].lower()
-    if ext not in ['.jpg', '.jpeg', '.png', '.webp']: ext = ".jpg"
+    # Extração da extensão correta ignorando parâmetros de URL da Amazon
+    ext = ".jpg"
+    clean_url = url.split('?')[0].lower()
+    for e in ['.png', '.webp', '.jpeg', '.jpg']:
+        if clean_url.endswith(e):
+            ext = e
+            break
     
     caminho_temp = os.path.join(diretorio, nome_base + ext)
     
     try:
-        res = requests.get(url, headers=HEADERS, timeout=12)
+        # allow_redirects=True é CRÍTICO para links da Amazon/S3
+        res = requests.get(url, headers=HEADERS, timeout=20, allow_redirects=True)
         res.raise_for_status()
+        
         with open(caminho_temp, 'wb') as f:
             f.write(res.content)
+            
         return nome_base, caminho_temp
     except Exception as e:
-        print(f"    [Erro] Download falhou ({slug}): {e}")
+        print(f"    [!] Download ignorado para ({slug}): Link indisponível ou bloqueado.")
         return None
 
 def processar_e_limpar(diretorio, info_imagem):
-    if not info_imagem: return
+    if not info_imagem or not isinstance(info_imagem, tuple): 
+        return
+        
     nome_base, caminho_temp = info_imagem
     caminho_webp = os.path.join(diretorio, f"{nome_base}.webp")
     
     try:
         with Image.open(caminho_temp) as img:
+            # Garante compatibilidade de transparência
             formato_saida = "RGB" if img.mode != "RGBA" else "RGBA"
-            img.convert(formato_saida).save(caminho_webp, "WEBP", quality=80, method=6)
+            img.convert(formato_saida).save(caminho_webp, "WEBP", quality=85, method=6)
         
-        if os.path.exists(caminho_temp): os.remove(caminho_temp)
+        if os.path.exists(caminho_temp): 
+            os.remove(caminho_temp)
     except Exception as e:
-        print(f"    [Erro] Falha ao processar WebP: {e}")
+        print(f"    [Erro] Falha ao converter para WebP: {e}")
 
+    # FAXINA: Remove lixo de versões antigas do script
     for f in os.listdir(diretorio):
         if "featured_raw" in f:
             try: os.remove(os.path.join(diretorio, f))
@@ -76,10 +95,13 @@ def create_hugo_bundle(row):
     
     # Baixa e processa a imagem do produto
     dados_img = baixar_imagem(row.get('foto'), bundle_dir, slug)
-    if dados_img:
+    
+    # Se dados_img for uma tupla, significa que houve um download novo para processar
+    if isinstance(dados_img, tuple):
         processar_e_limpar(bundle_dir, dados_img)
         nome_img_final = dados_img[0]
     else:
+        # Se for string ou None, apenas verificamos se o arquivo webp existe na pasta
         nome_img_final = f"prod-{slug}" if os.path.exists(os.path.join(bundle_dir, f"prod-{slug}.webp")) else ""
 
     # Mapeamento de Afiliados

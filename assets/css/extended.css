@@ -292,3 +292,7 @@ figcaption, .post-content img + em, .post-content p img + em {
     margin: 15px 0;        /* Espaçamento vertical padrão */
     user-select: none;     /* O usuário não seleciona a linha ao copiar o texto */
 }
+
+html {
+  scroll-behavior: smooth;
+}

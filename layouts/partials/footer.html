@@ -1,11 +1,16 @@
 <footer class="footer">
   <div class="footer__inner">
+    
+    <div class="footer__nav">
+      <a href="#" class="nav-btn btn-up">[ UP_TO_TOP ]</a>
+      <a href="/" class="nav-btn btn-home">[ RETURN_HOME ]</a>
+      <a href="/arquivo/" class="nav-btn btn-logs">[ ALL_LOGS ]</a>
+    </div>
+
     <div class="copyright">
       <span>© {{ now.Format "2006" }} Powered by <a href="https://gohugo.io">Hugo</a></span>
       <span>:: Theme made by <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">panr</a></span>
-      <br>
       <span>:: Modificado com ☕ por <a href="https://github.com/bizumatica" target="_blank">Julio Prata</a></span>
-      <br>
       <span>:: Visite <a href="https://juliostudio.dev.br" target="_blank">JulioStudio</a></span>
     </div>
   </div>
@@ -14,25 +19,62 @@
 <style>
 .footer {
   padding: 40px 0;
-  text-align: center;
-  color: var(--theme-color); /* Usa o #EEC35E automaticamente */
-  font-family: monospace;
-  font-size: 0.9rem;
-  opacity: 0.7;
+  border-top: 1px double #222;
+  width: 100%;
+  /* REMOVIDO: opacity: 0.7 - Isso estava esmaecendo as cores */
 }
 
+.footer__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer__nav {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.nav-btn {
+  font-family: monospace;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-decoration: none !important;
+  padding: 4px 10px;
+  /* Cores sólidas e vibrantes */
+  transition: transform 0.1s ease;
+}
+
+.nav-btn:active { transform: scale(0.95); }
+
+/* Cores Tokyo Night Originais (Sem esmaecer) */
+.btn-up { color: #50fa7b !important; border: 1px solid #50fa7b66 !important; }
+.btn-home { color: #EEC35E !important; border: 1px solid #EEC35E66 !important; }
+.btn-logs { color: #8be9fd !important; border: 1px solid #8be9fd66 !important; }
+
+.copyright {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  color: #888; /* Cinza neutro para o texto secundário */
+  font-family: monospace;
+  font-size: 0.85rem;
+}
+
+/* Links do Copyright - Usam a cor principal do tema sem transparência */
 .footer a {
-  color: inherit;
+  color: var(--theme-color);
   text-decoration: none;
   border-bottom: 1px dashed var(--theme-color);
 }
 
 .footer a:hover {
-  border-bottom-style: solid;
-}
-
-.copyright span {
-  display: inline-block;
-  margin: 5px 10px;
+  filter: brightness(1.2); /* Brilha ao passar o mouse */
 }
 </style>

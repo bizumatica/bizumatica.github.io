@@ -1,90 +1,54 @@
-{{- /* 1. CAPTURA DE VARIÁVEIS */ -}}
-{{- $product := .Page.Params.product -}}
-{{- $affiliate := .Page.Params.affiliate -}}
-{{- $name := .Get "name" | default $product.name | default .Page.Title -}}
-{{- $rawPrice := .Get "price" | default $product.current_price -}}
+{{- /* 1. CAPTURA E LIMPEZA DE PARÂMETROS */ -}}
+{{- $name := .Get "name" | default .Page.Title -}}
+{{- $price := .Get "price" -}}
+{{- $imgID := .Get "img" -}}
 
-{{- /* 2. FORMATAÇÃO DE PREÇO PT-BR */ -}}
+{{- /* 2. LOGICA DE IMAGEM BLINDADA (SOP-01 v3.5) */ -}}
+{{- $finalImg := "" -}}
+{{- if $imgID -}}
+    {{- /* Busca exata para evitar que o Hugo processe o arquivo errado */ -}}
+    {{- $pattern := printf "*%s*" $imgID -}}
+    {{- $res := .Page.Resources.GetMatch $pattern -}}
+    
+    {{- if $res -}}
+        {{- /* Só processa se a imagem for maior que 600px para poupar CPU */ -}}
+        {{- $finalImg = $res -}}
+    {{- end -}}
+{{- end -}}
+
+{{- /* 3. FORMATAÇÃO DE PREÇO */ -}}
 {{- $formattedPrice := "Consultar" -}}
-{{- if $rawPrice -}}
-    {{- $formattedPrice = printf "R$ %s" (lang.FormatNumberCustom 2 $rawPrice "- . ," ) -}}
+{{- if $price -}}
+    {{- $formattedPrice = printf "R$ %s" (lang.FormatNumberCustom 2 $price "- . ," ) -}}
 {{- end -}}
 
-{{- /* 3. LÓGICA DE IMAGEM INTELIGENTE */ -}}
-{{- $imgName := .Get "img" -}}
-{{- $img := "" -}}
-{{- if $imgName -}}
-    {{- $img = .Page.Resources.GetMatch (printf "*%s*" $imgName) -}}
-{{- end -}}
-{{- if not $img -}}
-    {{- $img = .Page.Resources.GetMatch "*.webp" -}}
-{{- end -}}
-
-<div class="product-card" style="border: 2px solid #333; padding: 20px; background: #0d0d0d; margin: 2rem 0; font-family: 'Fira Code', monospace; position: relative; border-radius: 4px;">
+<div class="product-card" style="border: 2px solid #333; padding: 20px; background: #0d0d0d; margin: 2rem 0; font-family: 'Fira Code', monospace; border-radius: 4px; color: #eee;">
     
-    <div style="position: absolute; top: -12px; left: 15px; background: #0d0d0d; padding: 0 10px; color: #EEC35E; font-size: 0.7rem; border: 1px solid #333; letter-spacing: 1px; z-index: 10;">[ PRODUCT_INFO ]</div>
-    
-    <div style="font-size: 0.65rem; color: #555; margin-bottom: 15px; text-transform: uppercase;">
-        ID: {{ upper .Page.File.ContentBaseName }} | STATUS: {{ if $product }}SYNC_OK{{ else }}MANUAL_ENTRY{{ end }}
+    <div style="font-size: 0.6rem; color: #444; margin-bottom: 10px; text-transform: uppercase; border-bottom: 1px solid #222; padding-bottom: 5px;">
+        [ RESOURCE_ID: {{ $imgID | default "NULL" }} | STATUS: {{ if $finalImg }}LOADED{{ else }}MISSING{{ end }} ]
     </div>
-    
-    <h3 style="margin: 0 0 15px 0; color: #00ffff; text-transform: uppercase; font-size: 1.2rem;">> {{ $name }}</h3>
-    
-    {{ if $img }}
-        <div style="text-align: center; margin: 20px 0; border: 1px dashed #333; padding: 15px; background: #050505;">
-            {{- $optimized := $img.Resize "600x webp q90" -}}
-            <img src="{{ $optimized.RelPermalink }}" alt="{{ $name }}" style="max-width: 100%; height: auto; border: 1px solid #222;">
-        </div>
-    {{ end }}
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; margin-bottom: 25px; font-size: 0.85rem;">
-        {{ with $product.pros }}
-        <div>
-            <span style="color: #50fa7b; font-weight: bold;">[+] PROS:</span>
-            <ul style="list-style: none; padding: 0; color: #aaa; margin-top: 8px; line-height: 1.4;">
-                {{ range . }}<li>• {{ . }}</li>{{ end }}
-            </ul>
+    <h3 style="margin: 0 0 15px 0; color: #00ffff; font-size: 1.2rem;">> {{ $name }}</h3>
+
+    {{- if $finalImg -}}
+        <div class="img-container" style="text-align: center; margin: 15px 0; background: #050505; padding: 10px; border: 1px dashed #333;">
+            <img src="{{ $finalImg.RelPermalink }}" 
+                 alt="{{ $name }}" 
+                 loading="lazy"
+                 style="max-width: 100%; height: auto; border: 1px solid #222;">
         </div>
-        {{ end }}
+    {{- else if $imgID -}}
+        <div style="border: 1px double #ff5555; color: #ff5555; padding: 10px; font-size: 0.7rem; text-align: center; margin: 10px 0;">
+            CRITICAL_ERROR: Image "{{ $imgID }}" not found in bundle.
+        </div>
+    {{- end -}}
+
+    <div class="price-tag" style="margin-top: 20px;">
+        <div style="font-size: 1.8rem; color: #f1fa8c; font-weight: bold;">{{ $formattedPrice }}</div>
         
-        {{ with $product.cons }}
-        <div>
-            <span style="color: #ff5555; font-weight: bold;">[-] CONS:</span>
-            <ul style="list-style: none; padding: 0; color: #aaa; margin-top: 8px; line-height: 1.4;">
-                {{ range . }}<li>• {{ . }}</li>{{ end }}
-            </ul>
-        </div>
-        {{ end }}
-    </div>
-
-    <div style="border-top: 1px double #333; padding-top: 15px;">
-        <div style="font-size: 1.6rem; color: #f1fa8c; margin-bottom: 5px; font-weight: bold;">
-            {{ $formattedPrice }}
-        </div>
-        <div style="font-size: 0.6rem; color: #444; margin-bottom: 20px; text-transform: uppercase;">
-            Última verificação: {{ if .Page.Params.last_check }}{{ .Page.Params.last_check | time.Format "02/01/2006 15:04" }}{{ else }}Recente{{ end }}
-        </div>
-    </div>
-
-    <div class="affiliate-grid" style="display: grid; gap: 10px;">
-        {{ range $affiliate }}
-            {{- $isBest := .best_deal -}}
-            {{- $btnColor := "#50fa7b" -}}
-            {{- if eq (lower .store) "amazon" }}{{ $btnColor = "#ff9900" }}
-            {{- else if (strings.Contains (lower .link) "mercadolivre") }}{{ $btnColor = "#ffe600" }}
-            {{- else if (strings.Contains (lower .link) "aliexpress") }}{{ $btnColor = "#ff4747" }}
-            {{- else if (eq (lower .store) "hotmart") }}{{ $btnColor = "#ff5d5e" }}{{ end -}}
-
-            <a href="{{ .link }}" target="_blank" rel="sponsored nofollow" 
-                style="display: block; border: 1px solid {{ $btnColor }}; 
-                background: {{ if $isBest }}{{ $btnColor }}{{ else }}transparent{{ end }};
-                color: {{ if $isBest }}#000{{ else }}{{ $btnColor }}{{ end }};
-                text-decoration: none; padding: 12px; text-align: center; font-weight: bold; font-family: monospace; transition: 0.2s;
-                {{ if $isBest }}box-shadow: 0 0 10px {{ $btnColor }}44;{{ end }}"
-                onmouseover="this.style.filter='brightness(1.3)';" 
-                onmouseout="this.style.filter='none';">
-                {{ if $isBest }}🔥 MELHOR PREÇO: {{ end }}{{ upper .store }}
-            </a>
-        {{ end }}
+        <a href="{{ .Get `link` }}" target="_blank" rel="sponsored" 
+           style="display: block; margin-top: 15px; background: #ff9900; color: #000; text-align: center; padding: 12px; text-decoration: none; font-weight: bold; text-transform: uppercase; transition: 0.3s;">
+           Ver na Loja
+        </a>
     </div>
 </div>

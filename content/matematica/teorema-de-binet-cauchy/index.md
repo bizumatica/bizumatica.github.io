@@ -6,6 +6,7 @@ description: "Como calcular o determinante do produto de matrizes retangulares e
 categories: ["mathematics"]
 tags: ["algebra-linear", "matrizes"]
 math: true
+image: "binet-cauchy.webp"
 ---
 
 Se você já estudou Álgebra Linear, conhece a regra clássica: $\det(AB) = \det(A)\det(B)$. Mas e se as matrizes $A$ e $B$ não forem quadradas? É aqui que entra o elegante **Teorema de Binet-Cauchy**.
@@ -33,7 +34,7 @@ Se **$m > n$**, o determinante de $AB$ será sempre **zero**. Isso ocorre porque
 
 Este teorema é a base para calcular a **área de um paralelogramo** formado por dois vetores no espaço tridimensional. Se projetarmos os vetores nos planos $xy$, $yz$ e $xz$:
 
-![Projeções Geométricas](geometria-projeção.webp)
+![Projeções Geométricas](geometria-projecao.webp)
 *Contribuições das Submatrizes*
 
 $$\text{Área}^2 = \det(A_{xy})^2 + \det(A_{yz})^2 + \det(A_{xz})^2$$
@@ -52,11 +53,13 @@ Na computação gráfica e no desenvolvimento de **Motores de Jogos (Engines)**,
 
 ## Ferramentas para Estudo
 {{< links >}}
-Para visualizar esses conceitos em 3D ou realizar cálculos pesados de Álgebra Linear, recomendo o uso de calculadoras gráficas e livros de referência:
+Para visualizar esses conceitos em 3D ou realizar cálculos pesados de Álgebra Linear, recomendo o uso de calculadoras gráficas e livros de referência e você ainda ajuda o portal 🙂:
 {{< /links >}}
 
-{{< compra name="TI-Nspire CX II CAS" price="1620" img="hp-prime" link="https://amzn.to/4uIdBi4" >}}
+{{< compra name="TI-Nspire CX II CAS" price="1620" img="ti" link="https://amzn.to/4uIdBi4" >}}
 
-{{< compra name="Casio FX-9860GIII com Python" price="690" img="livro-boldrini" link="https://amzn.to/4t3Oi8B" >}}
+{{< compra name="Casio FX-9860GIII com Python" price="690" img="cassio" link="https://amzn.to/4t3Oi8B" >}}
+
+{{< compra name="Álgebra Linear e suas Aplicações - Gilbert Strang" price="230" img="livro-strang" link="https://amzn.to/4sUZgxe" >}}
 
 ---

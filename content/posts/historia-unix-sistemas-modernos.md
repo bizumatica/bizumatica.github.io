@@ -45,6 +45,6 @@ O **bizu** é claro: entender Unix/Linux é entender as engrenagens do mundo dig
 ---
 
 **Fontes e Referências:**
-1. [History of UNIX - UNIX.org](https://unix.org/what_is_unix/history_timeline.html)
+1. [History of UNIX - UNIX.org](https://www.unix.org/unix_history.html)
 2. [O que é Unix? - Tecnoblog](https://tecnoblog.net/responde/o-que-e-unix-conheca-a-historia-do-pai-dos-sistemas-operacionais/)
 3. [The Unix Family Tree - Levenez](https://levenez.com/unix/)

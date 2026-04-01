@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Author: Julio Prata
-# Version: 3.5 (Automated Hybrid Content Logic)
-# Description: Deploy com limpeza inteligente de posts migrados para Bundles.
+# Version: 3.6 (Standard Fast Deploy + Audit Reminder)
+# Description: Deploy com limpeza inteligente e alerta de manutenção de links.
 
 # GARANTIR QUE O SCRIPT EXECUTE NA RAIZ DO PROJETO
 cd "$(dirname "$0")/.."
@@ -14,7 +14,7 @@ YELLOW='\033[1;33m'
 RED='\033[0;31m'
 NC='\033[0m'
 
-echo -e "${CYAN}--- [START] Deploy: Bizumática v3.5 (Automated Mode) ---${NC}"
+echo -e "${CYAN}--- [START] Deploy: Bizumática v3.6 ---${NC}"
 
 # 0. Sincronização de Dados e Imagens
 echo -e "${YELLOW}--> Rodando automação Python (Sincronização)...${NC}"
@@ -24,20 +24,16 @@ else
     echo -e "${RED}--> ALERTA: Falha no Python. Prosseguindo com dados locais...${NC}"
 fi
 
-# 1. Limpeza Inteligente de Migração (O Pulo do Gato)
+# 1. Limpeza Inteligente de Migração
 echo -e "${YELLOW}--> Verificando migrações de arquivos para pastas (Bundles)...${NC}"
-# Remove cache de recursos processados
 rm -rf resources/_gen
 
-# Loop por seções principais para detectar duplicidade (Arquivo vs Pasta)
 for section in content/equipamentos content/matematica content/posts; do
     if [ -d "$section" ]; then
         for dir in "$section"/*/; do
-            [ -d "$dir" ] || continue # Pula se não for diretório
-            
+            [ -d "$dir" ] || continue
             base_name=$(basename "$dir")
             old_file="${section}/${base_name}.md"
-            
             if [ -f "$old_file" ]; then
                 echo -e "${RED}--> Migração detectada: Removendo arquivo legado: $old_file${NC}"
                 rm "$old_file"
@@ -46,23 +42,20 @@ for section in content/equipamentos content/matematica content/posts; do
     fi
 done
 
-# 2. Build Hugo (Produção)
+# 2. Build Hugo
 export HUGO_ENV="production"
 echo -e "${YELLOW}--> Gerando build otimizado em /docs...${NC}"
-
 if hugo --gc --minify --cleanDestinationDir -d docs; then
     echo -e "${GREEN}--> Build Hugo: OK!${NC}"
 else
-    echo -e "${RED}--> ERRO CRÍTICO: Falha no build. Abortando.${NC}"
+    echo -e "${RED}--> ERRO CRÍTICO: Falha no build.${NC}"
     exit 1
 fi
 
-# 3. Indexação de Busca (Pagefind)
+# 3. Indexação de Busca
 if npx pagefind --site docs --output-path docs/pagefind --quiet; then
     echo -e "${GREEN}--> Pagefind: Índice atualizado!${NC}"
     touch docs/.nojekyll
-else
-    echo -e "${YELLOW}--> [Aviso] Pagefind não processado.${NC}"
 fi
 
 # 4. Gestão de Commit
@@ -74,14 +67,16 @@ if [[ -z $(git status -s) ]]; then
     exit 0
 fi
 
-# 5. Push para o GitHub
+# 5. Sincronização GitHub
 echo -e "${GREEN}--> Sincronizando com GitHub...${NC}"
 git add . 
 git commit -m "$msg"
+git pull origin main --rebase --no-edit
 
 if git push origin main; then
-    echo -e "${CYAN}--- 🚀 [DONE] Bizumática v3.5 está online! ---${NC}"
+    echo -e "${CYAN}--- 🚀 [DONE] Bizumática v3.6 está online! ---${NC}"
+    echo -e "${YELLOW}Dica: Faz tempo que não checa os links? Rode: ./scripts/check-links.sh${NC}"
 else
-    echo -e "${RED}--> ERRO: Falha no Push.${NC}"
+    echo -e "${RED}--> ERRO: Falha no Push. Verifique conflitos manuais.${NC}"
     exit 1
 fi

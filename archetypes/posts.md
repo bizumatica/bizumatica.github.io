@@ -1,8 +1,3 @@
-Aqui está o seu **Arquétipo 3 (Default)**, totalmente adaptado para o sistema de **Leaf Bundles**, focado em posts gerais, notícias e tutoriais de Shell Scripting, já com a estrutura de monetização sutil integrada.
-
-### 3\. Arquétipo de Posts (Notícias, Tutoriais e Shell Scripting)
-
-````markdown
 ---
 title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
@@ -14,6 +9,8 @@ categories: ["noticias", "linux"]
 tags: ["tutorial", "bash", "bizu", "foss"]
 image: "cover.webp"
 ---
+
+<!-- Nota: este é o comando padrão: hugo new posts/slug/index.md -->
 
 ### Introdução
 
@@ -41,24 +38,24 @@ Aqui entra o código principal, scripts ou passos de configuração:
 
 echo "Iniciando processamento..."
 # Seu código aqui
-````
+```
 
 -----
 
 ## Conclusão e Dicas Extras
 
-{{\< bizu \>}}
+{{ print `{{< bizu >}}` }}
 **Bizu de Terminal:** Para agilizar este processo no dia a dia, crie um alias no seu `.bashrc` ou `.zshrc`.
-{{\< /bizu \>}}
+{{ print `{{< /bizu >}}` }}
 
 -----
 
 ## Equipamento Recomendado para Devs
 
-{{\< links \>}}
+{{ print `{{< bizu >}}` }}
 Gostou deste tutorial? Confira o hardware que utilizamos para desenvolver e testar nossos scripts:
-{{\< /links \>}}
+{{ print `{{< /bizu >}}` }}
 
-{{\< compra name="Teclado Mecânico Low Profile" price="450" img="teclado" link="https://www.google.com/search?q=https://amzn.to/exemplo" \>}}
+{{ print `{{< compra name="Teclado Mecânico Low Profile" price="450" img="teclado" link="https://amzn.to/exemplo" >}}` }}
 
------
+---

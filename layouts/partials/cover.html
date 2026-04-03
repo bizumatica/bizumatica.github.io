@@ -1,0 +1,10 @@
+{{- with .Params.image -}}
+    {{- $image := $.Resources.GetMatch . -}}
+    {{- if $image -}}
+        {{- /* Se a imagem está na pasta do post (Bundle) */ -}}
+        <img src="{{ $image.RelPermalink }}" class="post-cover" alt="{{ $.Title }}" />
+    {{- else -}}
+        {{- /* Se a imagem está na pasta static/ ou é uma URL externa */ -}}
+        <img src="{{ . | absURL }}" class="post-cover" alt="{{ $.Title }}" />
+    {{- end -}}
+{{- end -}}

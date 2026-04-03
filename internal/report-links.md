@@ -1,5 +1,5 @@
 # 🔗 Relatório de Integridade de Links - Bizumática
-> **Gerado em:** 01/04/2026 16:56:18
+> **Gerado em:** 03/04/2026 17:56:12
 
 ## 📊 Resumo da Auditoria
 Este relatório lista o status de todos os links (afiliados e externos) encontrados na pasta `content`.
@@ -8,8 +8,8 @@ Este relatório lista o status de todos os links (afiliados e externos) encontra
 
 | Status         | Count |
 |----------------|-------|
-| 🔍 Total       | 46    |
-| ✅ Successful  | 19    |
+| 🔍 Total       | 51    |
+| ✅ Successful  | 24    |
 | ⏳ Timeouts    | 0     |
 | 🔀 Redirected  | 10    |
 | 👻 Excluded    | 1     |

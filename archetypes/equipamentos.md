@@ -48,4 +48,6 @@ Descreva aqui os testes realizados no hardware e a integração com o sistema.
 **Bizu de Economia:** Verifique sempre se o vendedor no Mercado Livre possui medalha "Mercado Líder" para garantir a entrega.
 {{< /bizu >}}
 
+---
+
 <!-- Nota: este é o comando padrão: hugo new equipamentos/slug/index.md -->

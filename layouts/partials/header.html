@@ -1,7 +1,8 @@
 <header class="header">
   <div class="header__inner">
     <div class="header__logo-row" style="display: flex; align-items: center; width: 100%; overflow: hidden;">
-      <a href="/" style="text-decoration: none; flex-shrink: 0;">
+      {{- /* Link da Logo apontando para a raiz absoluta */ -}}
+      <a href="{{ "/" | relURL }}" style="text-decoration: none; flex-shrink: 0;">
         <div class="logo-box">BIZUMÁTICA</div>
       </a>
       <div class="terminal-bars"></div>
@@ -9,19 +10,20 @@
 
     <nav class="menu-nav">
       <ul class="menu__inner">
-        <li><a href="/posts">[ Linux ]</a></li>
-        <li><a href="/matematica">[ Matemática ]</a></li>
-        <li><a href="/equipamentos">[ Curadoria ]</a></li>
-        <li><a href="/shell-scripting">[ Shell ]</a></li>
-        <li><a href="/search">[ Buscar ]</a></li>
-        <li><a href="/about">[ Sobre ]</a></li>
+        {{- /* Adicionada a barra "/" para evitar o erro de URLs grudadas */ -}}
+        <li><a href="{{ "/posts/" | relURL }}">[ Linux ]</a></li>
+        <li><a href="{{ "/matematica/" | relURL }}">[ Matemática ]</a></li>
+        <li><a href="{{ "/equipamentos/" | relURL }}">[ Curadoria ]</a></li>
+        <li><a href="{{ "/foss/" | relURL }}">[ FOSS ]</a></li> 
+        <li><a href="{{ "/search/" | relURL }}">[ Buscar ]</a></li>
+        <li><a href="{{ "/about/" | relURL }}">[ Sobre ]</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
 <style>
-/* Variável global mantida para consistência */
+/* ... (mantenha seu CSS igual, ele está ótimo) ... */
 :root { --theme-color: #EEC35E; }
 
 .logo-box {
@@ -33,6 +35,7 @@
     display: inline-block;
     text-transform: uppercase;
     margin-right: 10px;
+    cursor: pointer;
 }
 
 .terminal-bars {
@@ -65,6 +68,11 @@
     text-decoration: none;
     font-family: monospace;
     font-size: 1.1rem;
+}
+
+.menu__inner li a:hover {
+    text-decoration: underline;
+    filter: brightness(1.2);
 }
 
 @media (max-width: 480px) {

@@ -1,24 +1,393 @@
-<!doctype html><html lang=en><head><title>Backup Universal Shell Hd Externo :: Bizumática</title><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="No Bizumática, seguimos a regra: &ldquo;quem tem um, não tem nenhum&rdquo;. Se seus dados sensíveis estão apenas no SSD do seu notebook, você está a uma pane elétrica do desastre.
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  
+    <title>Backup Universal Shell Hd Externo :: Bizumática</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="No Bizumática, seguimos a regra: &ldquo;quem tem um, não tem nenhum&rdquo;. Se seus dados sensíveis estão apenas no SSD do seu notebook, você está a uma pane elétrica do desastre.
 Abaixo, entrego um script universal e a estratégia de hardware para profissionais que não podem perder prazos ou contratos.
 01. O Script: Backup Tarball Automatizado Este script empacota seus documentos em um arquivo .tar.gz datado. É a forma mais limpa de garantir integridade via terminal.
-"><meta name=keywords content><meta name=robots content="noodp"><link rel=canonical href=https://bizumatica.com.br/equipamentos/backup-universal-shell-hd-externo/><link rel=stylesheet href=https://bizumatica.com.br/css/extended.min.f0625697c823526b2bed401ee65d3b2c2481af7175b9f262c67f7bd088ea2a51.css><link rel=stylesheet href=https://bizumatica.com.br/css/buttons.min.86f6b4c106b6c6eb690ae5203d36b442c1f66f718ff4e8164fa86cf6c61ad641.css><link rel=stylesheet href=https://bizumatica.com.br/css/code.min.c4581949edab7810737609fc5568852bcd908945f14561e366dcd2300a370545.css><link rel=stylesheet href=https://bizumatica.com.br/css/fonts.min.5bb7ed13e1d00d8ff39ea84af26737007eb5051b157b86fc24487c94f3dc8bbe.css><link rel=stylesheet href=https://bizumatica.com.br/css/footer.min.eb8dfc2c6a7eafa36cd3ba92d63e69e849e2200e0002a228d137f236b09ecd75.css><link rel=stylesheet href=https://bizumatica.com.br/css/gist.min.a751e8b0abe1ba8bc53ced52a38b19d8950fe78ca29454ea8c2595cf26aad5c0.css><link rel=stylesheet href=https://bizumatica.com.br/css/header.min.75c7eb0e2872d95ff48109c6647d0223a38db52e2561dd87966eb5fc7c6bdac6.css><link rel=stylesheet href=https://bizumatica.com.br/css/main.min.36833afd348409fc6c3d09d0897c5833d9d5bf1ff31f5e60ea3ee42ce2b1268c.css><link rel=stylesheet href=https://bizumatica.com.br/css/menu.min.3c17467ebeb3d38663dce68f71f519901124fa5cbb4519b2fb0667a21e9aca39.css><link rel=stylesheet href=https://bizumatica.com.br/css/pagination.min.bbb986dbce00a5ce5aca0504b7925fc1c581992a4bf57f163e5d69cc1db7d836.css><link rel=stylesheet href=https://bizumatica.com.br/css/post.min.e6dddd258e64c83e05cec0cd49c05216742d42fc8ecbfbe6b67083412b609bd3.css><link rel=stylesheet href=https://bizumatica.com.br/css/syntax.min.a2cc694a9b481f15d41722bffc2cc54eea4c4f74fd9072b0b33253604c22606e.css><link rel=stylesheet href=https://bizumatica.com.br/css/terminal.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css><link rel=stylesheet href=https://bizumatica.com.br/css/terms.min.b81791663c3790e738e571cdbf802312390d30e4b1d8dc9d814a5b5454d0ac11.css><link rel=stylesheet href=https://bizumatica.com.br/style.css><link rel="shortcut icon" href=https://bizumatica.com.br/favicon.png><meta name=twitter:card content="summary"><meta property="og:type" content="article"><meta property="og:title" content="Backup Universal Shell Hd Externo"><meta property="og:url" content="https://bizumatica.com.br/equipamentos/backup-universal-shell-hd-externo/"><meta property="og:site_name" content="Bizumática"><link rel=icon type=image/svg+xml href=https://bizumatica.com.br/logo-bizu.svg><link rel=apple-touch-icon href=https://bizumatica.com.br/apple-touch-icon.png><link rel=stylesheet href=https://bizumatica.com.br/css/extended.css></head><body><div class="container center"><header class=header><div class=header__inner><div class=header__logo-row style=display:flex;align-items:center;width:100%;overflow:hidden><a href=../../ style=text-decoration:none;flex-shrink:0><div class=logo-box>BIZUMÁTICA</div></a><div class=terminal-bars></div></div><nav class=menu-nav><ul class=menu__inner><li><a href=../../posts/>[ Linux ]</a></li><li><a href=../../matematica/>[ Matemática ]</a></li><li><a href=../../equipamentos/>[ Curadoria ]</a></li><li><a href=../../foss/>[ FOSS ]</a></li><li><a href=../../search/>[ Buscar ]</a></li><li><a href=../../about/>[ Sobre ]</a></li></ul></nav></div></header><style>:root{--theme-color:#EEC35E}.logo-box{background-color:var(--theme-color)!important;color:#000!important;padding:5px 12px;font-weight:700;font-family:monospace;display:inline-block;text-transform:uppercase;margin-right:10px;cursor:pointer}.terminal-bars{flex-grow:1;height:25px;background-image:linear-gradient(to right,var(--theme-color) 1px,transparent 1px);background-size:4px 100%}.header__inner{display:flex;flex-direction:column;align-items:flex-start;padding:20px 0}.menu-nav{margin-top:25px;width:100%}.menu__inner{display:flex;flex-wrap:wrap;list-style:none;padding:0;margin:0;gap:10px 20px}.menu__inner li a{color:var(--theme-color)!important;text-decoration:none;font-family:monospace;font-size:1.1rem}.menu__inner li a:hover{text-decoration:underline;filter:brightness(1.2)}@media(max-width:480px){.menu__inner{gap:15px}.menu__inner li a{font-size:1rem}}</style><div class=content><div class=post><h1 class=post-title>Backup Universal Shell Hd Externo</h1><div class=post-meta style=margin-bottom:20px;opacity:.7;font-size:.9rem><span>📅 18/03/2026</span> ::
-<span>📖 2 min de leitura</span></div><div class=post-content><p>No Bizumática, seguimos a regra: <strong>&ldquo;quem tem um, não tem nenhum&rdquo;</strong>. Se seus dados sensíveis estão apenas no SSD do seu notebook, você está a uma pane elétrica do desastre.</p><p>Abaixo, entrego um script universal e a estratégia de hardware para profissionais que não podem perder prazos ou contratos.</p><h2 id=01-o-script-backup-tarball-automatizado>01. O Script: Backup Tarball Automatizado</h2><p>Este script empacota seus documentos em um arquivo <code>.tar.gz</code> datado. É a forma mais limpa de garantir integridade via terminal.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#!/bin/bash
-</span></span></span><span style=display:flex><span><span style=color:#75715e># Backup Universal - Bizumática</span>
-</span></span><span style=display:flex><span>ORIGEM<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span>$HOME<span style=color:#e6db74>/documentos&#34;</span>
-</span></span><span style=display:flex><span>DESTINO<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;/media/</span>$USER<span style=color:#e6db74>/BACKUP_EXTERNO&#34;</span> <span style=color:#75715e># &lt;-- Mantenha fora do PC</span>
-</span></span><span style=display:flex><span>DATA<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>date +<span style=color:#e6db74>&#34;%Y-%m-%d_%H-%M&#34;</span><span style=color:#66d9ef>)</span>
-</span></span><span style=display:flex><span>ARQUIVO<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;backup_</span>$DATA<span style=color:#e6db74>.tar.gz&#34;</span>
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>mkdir -p <span style=color:#e6db74>&#34;</span>$DESTINO<span style=color:#e6db74>&#34;</span>
-</span></span><span style=display:flex><span>tar -czvf <span style=color:#e6db74>&#34;</span>$DESTINO<span style=color:#e6db74>/</span>$ARQUIVO<span style=color:#e6db74>&#34;</span> <span style=color:#e6db74>&#34;</span>$ORIGEM<span style=color:#e6db74>&#34;</span> &gt; /dev/null 2&gt;&amp;<span style=color:#ae81ff>1</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#ae81ff>\
-</span></span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;✅ Sucesso: </span>$DESTINO<span style=color:#e6db74>/</span>$ARQUIVO<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>||</span> echo <span style=color:#e6db74>&#34;❌ Erro no backup&#34;</span>
-</span></span></code></pre></div><div style="border-left:5px solid #0e1922;background:#0f0f0d;padding:1rem;margin:1rem 0;border-radius:0 8px 8px 0"><strong>💡 Bizu:</strong><blockquote><p><strong>Dica Windows:</strong> Se usa WSL2, seu HD externo estará em <code>/mnt/d/</code>. No PowerShell nativo, use: <code>Compress-Archive -Path $HOME\Documents -DestinationPath D:\backup.zip</code>.</p></blockquote></div><h2 id=02-curadoria-bizumática-onde-salvar>02. Curadoria Bizumática: Onde salvar?</h2><h3 id=-1-seagate-expansion-2tb>🛡️ 1. Seagate Expansion 2TB</h3><p>O clássico para backups frios.</p><h2 id=onde-adquirir>Onde adquirir</h2><div class=affiliate-disclosure style="border:1px dashed #444;background:#111;padding:1.2rem;margin:2rem 0;border-radius:8px;font-family:monospace;position:relative"><span style="position:absolute;top:-12px;left:15px;background:#000;padding:0 10px;font-size:.75em;color:#888">// TRANSPARENCIA_AFILIADOS</span><div style=display:flex;align-items:flex-start;gap:15px><span style=font-size:1.5rem>🛍️</span><div style=font-size:.85rem;color:#ccc;line-height:1.5><strong>Transparência:</strong> Ao clicar nos links de produtos, o <strong>Bizumática</strong> e comprar um item você ajuda a manter o servidor (e o café) ativos. <strong>Use os links abaixo:</strong></div></div></div><div class=product-card style="border:2px solid #333;padding:20px;background:#0d0d0d;margin:2rem 0;font-family:fira code,monospace;border-radius:4px;color:#eee"><div style="font-size:.6rem;color:#444;margin-bottom:10px;text-transform:uppercase;border-bottom:1px solid #222;padding-bottom:5px">[ RESOURCE_ID: seagate.webp | STATUS: MISSING ]</div><h3 style="margin:0 0 15px;color:#0ff;font-size:1.2rem">> Backup Universal Shell Hd Externo</h3><div style="border:1px double #f55;color:#f55;padding:10px;font-size:.7rem;text-align:center;margin:10px 0">CRITICAL_ERROR: Image "seagate.webp" not found in bundle.</div><div class=price-tag style=margin-top:20px><div style=font-size:1.8rem;color:#f1fa8c;font-weight:700>Consultar</div><div class=purchase-options style=margin-top:15px;display:flex;flex-direction:column;gap:10px><a href target=_blank rel=sponsored style=display:block;background:#f90;color:#000;text-align:center;padding:12px;text-decoration:none;font-weight:700;text-transform:uppercase;transition:.3s>Ver na Amazon
-</a><a href target=_blank rel=sponsored style=display:block;background:#f90;color:#000;text-align:center;padding:12px;text-decoration:none;font-weight:700;text-transform:uppercase;transition:.3s>Ver na MercadoLivre</a></div></div></div><h3 id=-2-samsung-t7-ssd>⚡ 2. Samsung T7 SSD</h3><p>Velocidade extrema para backups diários.</p><div class=affiliate-disclosure style="border:1px dashed #444;background:#111;padding:1.2rem;margin:2rem 0;border-radius:8px;font-family:monospace;position:relative"><span style="position:absolute;top:-12px;left:15px;background:#000;padding:0 10px;font-size:.75em;color:#888">// TRANSPARENCIA_AFILIADOS</span><div style=display:flex;align-items:flex-start;gap:15px><span style=font-size:1.5rem>🛍️</span><div style=font-size:.85rem;color:#ccc;line-height:1.5><strong>Transparência:</strong> Ao clicar nos links de produtos, o <strong>Bizumática</strong> e comprar um item você ajuda a manter o servidor (e o café) ativos. <strong>Use os links abaixo:</strong></div></div></div><div class=product-card style="border:2px solid #333;padding:20px;background:#0d0d0d;margin:2rem 0;font-family:fira code,monospace;border-radius:4px;color:#eee"><div style="font-size:.6rem;color:#444;margin-bottom:10px;text-transform:uppercase;border-bottom:1px solid #222;padding-bottom:5px">[ RESOURCE_ID: samsung.webp | STATUS: MISSING ]</div><h3 style="margin:0 0 15px;color:#0ff;font-size:1.2rem">> Backup Universal Shell Hd Externo</h3><div style="border:1px double #f55;color:#f55;padding:10px;font-size:.7rem;text-align:center;margin:10px 0">CRITICAL_ERROR: Image "samsung.webp" not found in bundle.</div><div class=price-tag style=margin-top:20px><div style=font-size:1.8rem;color:#f1fa8c;font-weight:700>Consultar</div><div class=purchase-options style=margin-top:15px;display:flex;flex-direction:column;gap:10px><a href target=_blank rel=sponsored style=display:block;background:#f90;color:#000;text-align:center;padding:12px;text-decoration:none;font-weight:700;text-transform:uppercase;transition:.3s>Ver na Amazon
-</a><a href target=_blank rel=sponsored style=display:block;background:#f90;color:#000;text-align:center;padding:12px;text-decoration:none;font-weight:700;text-transform:uppercase;transition:.3s>Ver na MercadoLivre</a></div></div></div><div class=product-card style="border:2px solid #333;padding:20px;background:#0d0d0d;margin:2rem 0;font-family:fira code,monospace;border-radius:4px;color:#eee"><div style="font-size:.6rem;color:#444;margin-bottom:10px;text-transform:uppercase;border-bottom:1px solid #222;padding-bottom:5px">[ RESOURCE_ID: NULL | STATUS: MISSING ]</div><h3 style="margin:0 0 15px;color:#0ff;font-size:1.2rem">> Backup Universal Shell Hd Externo</h3><div class=price-tag style=margin-top:20px><div style=font-size:1.8rem;color:#f1fa8c;font-weight:700>Consultar</div><div class=purchase-options style=margin-top:15px;display:flex;flex-direction:column;gap:10px><a href target=_blank rel=sponsored style=display:block;background:#f90;color:#000;text-align:center;padding:12px;text-decoration:none;font-weight:700;text-transform:uppercase;transition:.3s>Ver na Amazon
-</a><a href target=_blank rel=sponsored style=display:block;background:#f90;color:#000;text-align:center;padding:12px;text-decoration:none;font-weight:700;text-transform:uppercase;transition:.3s>Ver na MercadoLivre</a></div></div></div><h2 id=03-o-gargalo-e-a-automação>03. O Gargalo e a Automação</h2><p>Ao gerar backups diários, seu SSD interno lotaria em semanas. O <strong>HD Externo</strong> resolve o espaço e a segurança física (contra furtos ou panes).</p><p><strong>Dica Pro:</strong> Automatize. Digite <code>crontab -e</code> e adicione a linha abaixo para rodar o script todo dia às 20h:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#ae81ff>00</span> <span style=color:#ae81ff>20</span> * * * /caminho/do/seu/script.sh
-</span></span></code></pre></div><div class=affiliate-disclosure style="border:1px dashed #444;background:#111;padding:1.2rem;margin:2rem 0;border-radius:8px;font-family:monospace;position:relative"><span style="position:absolute;top:-12px;left:15px;background:#000;padding:0 10px;font-size:.75em;color:#888">// TRANSPARENCIA_AFILIADOS</span><div style=display:flex;align-items:flex-start;gap:15px><span style=font-size:1.5rem>🛍️</span><div style=font-size:.85rem;color:#ccc;line-height:1.5>Apoie o site comprando aqui 😊</div></div></div><pre tabindex=0><code></code></pre></div></div></div><footer class=footer><div class=footer__inner><div class=footer__nav><a href=# class="nav-btn btn-up">[ UP_TO_TOP ]</a>
-<a href=../../ class="nav-btn btn-home">[ RETURN_HOME ]</a>
-<a href=../../arquivo/ class="nav-btn btn-logs">[ ALL_LOGS ]</a></div><div class=copyright><span>© 2026 Powered by <a href=https://gohugo.io>Hugo</a></span>
-<span>:: Theme made by <a href=https://github.com/panr/hugo-theme-terminal target=_blank>panr</a></span>
-<span>:: Modificado com ☕ por <a href=https://github.com/bizumatica target=_blank>Julio Prata</a></span>
-<span>:: Visite <a href=https://juliostudio.dev.br target=_blank>JulioStudio</a></span></div></div></footer><style>.footer{padding:40px 0;border-top:1px double #222;width:100%}.footer__inner{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px}.footer__nav{display:flex;justify-content:center;gap:15px;flex-wrap:wrap}.nav-btn{font-family:monospace;font-size:.85rem;font-weight:700;text-decoration:none!important;padding:4px 10px;transition:transform .1s ease}.nav-btn:active{transform:scale(.95)}.btn-up{color:#50fa7b!important;border:1px solid #50fa7b66!important}.btn-home{color:#eec35e!important;border:1px solid #eec35e66!important}.btn-logs{color:#8be9fd!important;border:1px solid #8be9fd66!important}.copyright{display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;color:#888;font-family:monospace;font-size:.85rem}.footer a{color:var(--theme-color);text-decoration:none;border-bottom:1px dashed var(--theme-color)}.footer a:hover{filter:brightness(1.2)}</style></div></body></html>
+" />
+<meta name="keywords" content="" />
+
+
+    <meta name="robots" content="noodp" />
+
+
+<link rel="canonical" href="http://localhost:1313/equipamentos/backup-universal-shell-hd-externo/" />
+
+
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/extended.min.f0625697c823526b2bed401ee65d3b2c2481af7175b9f262c67f7bd088ea2a51.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/buttons.min.86f6b4c106b6c6eb690ae5203d36b442c1f66f718ff4e8164fa86cf6c61ad641.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/code.min.c4581949edab7810737609fc5568852bcd908945f14561e366dcd2300a370545.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/fonts.min.5bb7ed13e1d00d8ff39ea84af26737007eb5051b157b86fc24487c94f3dc8bbe.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/footer.min.eb8dfc2c6a7eafa36cd3ba92d63e69e849e2200e0002a228d137f236b09ecd75.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/gist.min.a751e8b0abe1ba8bc53ced52a38b19d8950fe78ca29454ea8c2595cf26aad5c0.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/header.min.75c7eb0e2872d95ff48109c6647d0223a38db52e2561dd87966eb5fc7c6bdac6.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/main.min.36833afd348409fc6c3d09d0897c5833d9d5bf1ff31f5e60ea3ee42ce2b1268c.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/menu.min.3c17467ebeb3d38663dce68f71f519901124fa5cbb4519b2fb0667a21e9aca39.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/pagination.min.bbb986dbce00a5ce5aca0504b7925fc1c581992a4bf57f163e5d69cc1db7d836.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/post.min.e6dddd258e64c83e05cec0cd49c05216742d42fc8ecbfbe6b67083412b609bd3.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/syntax.min.a2cc694a9b481f15d41722bffc2cc54eea4c4f74fd9072b0b33253604c22606e.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/terminal.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/terms.min.b81791663c3790e738e571cdbf802312390d30e4b1d8dc9d814a5b5454d0ac11.css">
+
+
+
+<link rel="stylesheet" href="http://localhost:1313/style.css">
+
+<link rel="shortcut icon" href="http://localhost:1313/favicon.png">
+
+<meta name="twitter:card" content="summary" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Backup Universal Shell Hd Externo">
+<meta property="og:url" content="http://localhost:1313/equipamentos/backup-universal-shell-hd-externo/" />
+<meta property="og:site_name" content="Bizumática" />
+
+
+
+<link rel="icon" type="image/svg+xml" href="http://localhost:1313/logo-bizu.svg">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+
+<link rel="stylesheet" href="http://localhost:1313/css/extended.css">
+</head>
+<body>
+
+
+<div class="container center">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo-row" style="display: flex; align-items: center; width: 100%; overflow: hidden;"><a href="../../" style="text-decoration: none; flex-shrink: 0;">
+        <div class="logo-box">BIZUMÁTICA</div>
+      </a>
+      <div class="terminal-bars"></div>
+    </div>
+
+    <nav class="menu-nav">
+      <ul class="menu__inner"><li><a href="../../posts/">[ Linux ]</a></li>
+        <li><a href="../../matematica/">[ Matemática ]</a></li>
+        <li><a href="../../equipamentos/">[ Curadoria ]</a></li>
+        <li><a href="../../foss/">[ FOSS ]</a></li> 
+        <li><a href="../../search/">[ Buscar ]</a></li>
+        <li><a href="../../about/">[ Sobre ]</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+ 
+:root { --theme-color: #EEC35E; }
+
+.logo-box {
+    background-color: var(--theme-color) !important;
+    color: #000 !important;
+    padding: 5px 12px;
+    font-weight: bold;
+    font-family: monospace;
+    display: inline-block;
+    text-transform: uppercase;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.terminal-bars {
+    flex-grow: 1;
+    height: 25px;
+    background-image: linear-gradient(to right, var(--theme-color) 1px, transparent 1px);
+    background-size: 4px 100%;
+}
+
+.header__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 0;
+}
+
+.menu-nav { margin-top: 25px; width: 100%; }
+
+.menu__inner {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 10px 20px;
+}
+
+.menu__inner li a {
+    color: var(--theme-color) !important;
+    text-decoration: none;
+    font-family: monospace;
+    font-size: 1.1rem;
+}
+
+.menu__inner li a:hover {
+    text-decoration: underline;
+    filter: brightness(1.2);
+}
+
+@media (max-width: 480px) {
+    .menu__inner { gap: 15px; }
+    .menu__inner li a { font-size: 1rem; }
+}
+</style>
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">Backup Universal Shell Hd Externo</h1>
+  
+  <div class="post-meta" style="margin-bottom: 20px; opacity: 0.7; font-size: 0.9rem;">
+    <span>📅 18/03/2026</span> :: 
+    <span>📖 2 min de leitura</span>
+  </div>
+  
+  
+
+  
+
+  <div class="post-content">
+    <p>No Bizumática, seguimos a regra: <strong>&ldquo;quem tem um, não tem nenhum&rdquo;</strong>. Se seus dados sensíveis estão apenas no SSD do seu notebook, você está a uma pane elétrica do desastre.</p>
+<p>Abaixo, entrego um script universal e a estratégia de hardware para profissionais que não podem perder prazos ou contratos.</p>
+<h2 id="01-o-script-backup-tarball-automatizado">01. O Script: Backup Tarball Automatizado</h2>
+<p>Este script empacota seus documentos em um arquivo <code>.tar.gz</code> datado. É a forma mais limpa de garantir integridade via terminal.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"># Backup Universal - Bizumática</span>
+</span></span><span style="display:flex;"><span>ORIGEM<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$HOME<span style="color:#e6db74">/documentos&#34;</span>
+</span></span><span style="display:flex;"><span>DESTINO<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/media/</span>$USER<span style="color:#e6db74">/BACKUP_EXTERNO&#34;</span> <span style="color:#75715e"># &lt;-- Mantenha fora do PC</span>
+</span></span><span style="display:flex;"><span>DATA<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>date +<span style="color:#e6db74">&#34;%Y-%m-%d_%H-%M&#34;</span><span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>ARQUIVO<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;backup_</span>$DATA<span style="color:#e6db74">.tar.gz&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mkdir -p <span style="color:#e6db74">&#34;</span>$DESTINO<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>tar -czvf <span style="color:#e6db74">&#34;</span>$DESTINO<span style="color:#e6db74">/</span>$ARQUIVO<span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;</span>$ORIGEM<span style="color:#e6db74">&#34;</span> &gt; /dev/null 2&gt;&amp;<span style="color:#ae81ff">1</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;✅ Sucesso: </span>$DESTINO<span style="color:#e6db74">/</span>$ARQUIVO<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">||</span> echo <span style="color:#e6db74">&#34;❌ Erro no backup&#34;</span>
+</span></span></code></pre></div><div style="border-left: 5px solid #0e1922; background: #0f0f0d; padding: 1rem; margin: 1rem 0; border-radius: 0 8px 8px 0;">
+    <strong>💡 Bizu:</strong> <blockquote>
+<p><strong>Dica Windows:</strong> Se usa WSL2, seu HD externo estará em <code>/mnt/d/</code>. No PowerShell nativo, use: <code>Compress-Archive -Path $HOME\Documents -DestinationPath D:\backup.zip</code>.</p>
+</blockquote>
+</div>
+<h2 id="02-curadoria-bizumática-onde-salvar">02. Curadoria Bizumática: Onde salvar?</h2>
+<h3 id="-1-seagate-expansion-2tb">🛡️ 1. Seagate Expansion 2TB</h3>
+<p>O clássico para backups frios.</p>
+<h2 id="onde-adquirir">Onde adquirir</h2>
+<!-- Insiro o links.html aqui --><div class="affiliate-disclosure" style="border: 1px dashed #444; background: #111; padding: 1.2rem; margin: 2rem 0; border-radius: 8px; font-family: monospace; position: relative;">
+    <span style="position: absolute; top: -12px; left: 15px; background: #000; padding: 0 10px; font-size: 0.75em; color: #888;">
+        // TRANSPARENCIA_AFILIADOS
+    </span>
+    
+    <div style="display: flex; align-items: flex-start; gap: 15px;">
+        <span style="font-size: 1.5rem;">🛍️</span>
+        <div style="font-size: 0.85rem; color: #ccc; line-height: 1.5;">
+            
+                <strong>Transparência:</strong> Ao clicar nos links de produtos, o <strong>Bizumática</strong> e comprar um item você ajuda a manter o servidor (e o café) ativos. <strong>Use os links abaixo:</strong>
+            
+        </div>
+    </div>
+</div>
+<div class="product-card" style="border: 2px solid #333; padding: 20px; background: #0d0d0d; margin: 2rem 0; font-family: 'Fira Code', monospace; border-radius: 4px; color: #eee;">
+        
+        <h3 style="margin: 0 0 15px 0; color: #00ffff; font-size: 1.2rem;">> </h3><div style="margin-top: 20px;">
+            <div style="font-size: 1.8rem; color: #f1fa8c; font-weight: bold;">
+                Consultar
+            </div>
+            
+            <div style="margin-top: 15px; display: flex; flex-direction: column; gap: 10px;"><a href="" target="_blank" rel="sponsored" 
+                           style="display: block; background: #ff9900; color: #000; text-align: center; padding: 12px; text-decoration: none; font-weight: bold; text-transform: uppercase;">
+                           Ver na Amazon 
+                        </a><a href="" target="_blank" rel="sponsored" 
+                           style="display: block; background: #ff9900; color: #000; text-align: center; padding: 12px; text-decoration: none; font-weight: bold; text-transform: uppercase;">
+                           Ver no MercadoLivre 
+                        </a></div>
+        </div>
+    </div>
+<h3 id="-2-samsung-t7-ssd">⚡ 2. Samsung T7 SSD</h3>
+<p>Velocidade extrema para backups diários.</p>
+<!-- Insiro o links.html aqui --><div class="affiliate-disclosure" style="border: 1px dashed #444; background: #111; padding: 1.2rem; margin: 2rem 0; border-radius: 8px; font-family: monospace; position: relative;">
+    <span style="position: absolute; top: -12px; left: 15px; background: #000; padding: 0 10px; font-size: 0.75em; color: #888;">
+        // TRANSPARENCIA_AFILIADOS
+    </span>
+    
+    <div style="display: flex; align-items: flex-start; gap: 15px;">
+        <span style="font-size: 1.5rem;">🛍️</span>
+        <div style="font-size: 0.85rem; color: #ccc; line-height: 1.5;">
+            
+                <strong>Transparência:</strong> Ao clicar nos links de produtos, o <strong>Bizumática</strong> e comprar um item você ajuda a manter o servidor (e o café) ativos. <strong>Use os links abaixo:</strong>
+            
+        </div>
+    </div>
+</div>
+<div class="product-card" style="border: 2px solid #333; padding: 20px; background: #0d0d0d; margin: 2rem 0; font-family: 'Fira Code', monospace; border-radius: 4px; color: #eee;">
+        
+        <h3 style="margin: 0 0 15px 0; color: #00ffff; font-size: 1.2rem;">> </h3><div style="margin-top: 20px;">
+            <div style="font-size: 1.8rem; color: #f1fa8c; font-weight: bold;">
+                Consultar
+            </div>
+            
+            <div style="margin-top: 15px; display: flex; flex-direction: column; gap: 10px;"><a href="" target="_blank" rel="sponsored" 
+                           style="display: block; background: #ff9900; color: #000; text-align: center; padding: 12px; text-decoration: none; font-weight: bold; text-transform: uppercase;">
+                           Ver na Amazon 
+                        </a><a href="" target="_blank" rel="sponsored" 
+                           style="display: block; background: #ff9900; color: #000; text-align: center; padding: 12px; text-decoration: none; font-weight: bold; text-transform: uppercase;">
+                           Ver no MercadoLivre 
+                        </a></div>
+        </div>
+    </div>
+<div class="product-card" style="border: 2px solid #333; padding: 20px; background: #0d0d0d; margin: 2rem 0; font-family: 'Fira Code', monospace; border-radius: 4px; color: #eee;">
+        
+        <h3 style="margin: 0 0 15px 0; color: #00ffff; font-size: 1.2rem;">> </h3><div style="margin-top: 20px;">
+            <div style="font-size: 1.8rem; color: #f1fa8c; font-weight: bold;">
+                Consultar
+            </div>
+            
+            <div style="margin-top: 15px; display: flex; flex-direction: column; gap: 10px;"><a href="" target="_blank" rel="sponsored" 
+                           style="display: block; background: #ff9900; color: #000; text-align: center; padding: 12px; text-decoration: none; font-weight: bold; text-transform: uppercase;">
+                           Ver na Amazon 
+                        </a><a href="" target="_blank" rel="sponsored" 
+                           style="display: block; background: #ff9900; color: #000; text-align: center; padding: 12px; text-decoration: none; font-weight: bold; text-transform: uppercase;">
+                           Ver no MercadoLivre 
+                        </a></div>
+        </div>
+    </div>
+<h2 id="03-o-gargalo-e-a-automação">03. O Gargalo e a Automação</h2>
+<p>Ao gerar backups diários, seu SSD interno lotaria em semanas. O <strong>HD Externo</strong> resolve o espaço e a segurança física (contra furtos ou panes).</p>
+<p><strong>Dica Pro:</strong> Automatize. Digite <code>crontab -e</code> e adicione a linha abaixo para rodar o script todo dia às 20h:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#ae81ff">00</span> <span style="color:#ae81ff">20</span> * * * /caminho/do/seu/script.sh
+</span></span></code></pre></div><div class="affiliate-disclosure" style="border: 1px dashed #444; background: #111; padding: 1.2rem; margin: 2rem 0; border-radius: 8px; font-family: monospace; position: relative;">
+    <span style="position: absolute; top: -12px; left: 15px; background: #000; padding: 0 10px; font-size: 0.75em; color: #888;">
+        // TRANSPARENCIA_AFILIADOS
+    </span>
+    
+    <div style="display: flex; align-items: flex-start; gap: 15px;">
+        <span style="font-size: 1.5rem;">🛍️</span>
+        <div style="font-size: 0.85rem; color: #ccc; line-height: 1.5;">
+            
+                Apoie o site comprando aqui 😊
+            
+        </div>
+    </div>
+</div>
+<pre tabindex="0"><code></code></pre>
+  </div>
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+    <div class="footer__nav">
+      <a href="#" class="nav-btn btn-up">[ UP_TO_TOP ]</a>
+      <a href="../../" class="nav-btn btn-home">[ RETURN_HOME ]</a>
+      <a href="../../arquivo/" class="nav-btn btn-logs">[ ALL_LOGS ]</a>
+    </div>
+
+    <div class="copyright">
+      <span>© 2026 Powered by <a href="https://gohugo.io">Hugo</a></span>
+      <span>:: Theme made by <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">panr</a></span>
+      <span>:: Modificado com ☕ por <a href="https://github.com/bizumatica" target="_blank">Julio Prata</a></span>
+      <span>:: Visite <a href="https://juliostudio.dev.br" target="_blank">JulioStudio</a></span>
+    </div>
+  </div>
+</footer>
+
+<style>
+.footer {
+  padding: 40px 0;
+  border-top: 1px double #222;
+  width: 100%;
+   
+}
+
+.footer__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer__nav {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.nav-btn {
+  font-family: monospace;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-decoration: none !important;
+  padding: 4px 10px;
+   
+  transition: transform 0.1s ease;
+}
+
+.nav-btn:active { transform: scale(0.95); }
+
+ 
+.btn-up { color: #50fa7b !important; border: 1px solid #50fa7b66 !important; }
+.btn-home { color: #EEC35E !important; border: 1px solid #EEC35E66 !important; }
+.btn-logs { color: #8be9fd !important; border: 1px solid #8be9fd66 !important; }
+
+.copyright {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  color: #888;  
+  font-family: monospace;
+  font-size: 0.85rem;
+}
+
+ 
+.footer a {
+  color: var(--theme-color);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--theme-color);
+}
+
+.footer a:hover {
+  filter: brightness(1.2);  
+}
+</style>
+  
+</div>
+
+</body>
+</html>

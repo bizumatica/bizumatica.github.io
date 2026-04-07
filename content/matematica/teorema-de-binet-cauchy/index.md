@@ -7,6 +7,26 @@ categories: ["mathematics"]
 tags: ["algebra-linear", "matrizes"]
 math: true
 image: "binet-cauchy.webp"
+# --- SEÇÃO DE MONETIZAÇÃO ---
+recommendations:
+  ti:
+    name: "TI-Nspire CX II CAS"
+    price: 1620
+    img: "ti"
+    store: "Amazon"
+    link: "https://amzn.to/4uIdBi4"
+  casio:
+    name: "Casio FX-9860GIII com Python"
+    price: 690
+    img: "cassio"
+    store: "Amazon"
+    link: "https://amzn.to/4t3Oi8B"
+  livro:
+    name: "Álgebra Linear - Gilbert Strang"
+    price: 230
+    img: "livro-strang"
+    store: "Amazon"
+    link: "https://amzn.to/4sUZgxe"
 ---
 
 Se você já estudou Álgebra Linear, conhece a regra clássica: $\det(AB) = \det(A)\det(B)$. Mas e se as matrizes $A$ e $B$ não forem quadradas? É aqui que entra o elegante **Teorema de Binet-Cauchy**.
@@ -56,10 +76,10 @@ Na computação gráfica e no desenvolvimento de **Motores de Jogos (Engines)**,
 Para visualizar esses conceitos em 3D ou realizar cálculos pesados de Álgebra Linear, recomendo o uso de calculadoras gráficas e livros de referência e você ainda ajuda o portal 🙂:
 {{< /links >}}
 
-{{< compra name="TI-Nspire CX II CAS" price="1620" img="ti" link="https://amzn.to/4uIdBi4" >}}
+{{< compra item="ti" >}}
 
-{{< compra name="Casio FX-9860GIII com Python" price="690" img="cassio" link="https://amzn.to/4t3Oi8B" >}}
+{{< compra item="casio" >}}
 
-{{< compra name="Álgebra Linear e suas Aplicações - Gilbert Strang" price="230" img="livro-strang" link="https://amzn.to/4sUZgxe" >}}
+{{< compra item="livro" >}}
 
 ---

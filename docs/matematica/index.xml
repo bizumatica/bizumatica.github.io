@@ -1,89 +1,61 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Matematicas on Bizumática</title><link>https://bizumatica.com.br/matematica/</link><description>Recent content in Matematicas on Bizumática</description><generator>Hugo</generator><language>pt-br</language><lastBuildDate>Thu, 19 Mar 2026 10:00:00 -0300</lastBuildDate><atom:link href="https://bizumatica.com.br/matematica/index.xml" rel="self" type="application/rss+xml"/><item><title>Teorema de Binet-Cauchy: Determinantes em Matrizes Não Quadradas</title><link>https://bizumatica.com.br/matematica/teorema-de-binet-cauchy/</link><pubDate>Thu, 19 Mar 2026 10:00:00 -0300</pubDate><guid>https://bizumatica.com.br/matematica/teorema-de-binet-cauchy/</guid><description>&lt;p&gt;Se você já estudou Álgebra Linear, conhece a regra clássica: $\det(AB) = \det(A)\det(B)$. Mas e se as matrizes $A$ e $B$ não forem quadradas? É aqui que entra o elegante &lt;strong&gt;Teorema de Binet-Cauchy&lt;/strong&gt;.&lt;/p&gt;
-&lt;h3 id="o-problema-das-matrizes-retangulares"&gt;O Problema das Matrizes Retangulares&lt;/h3&gt;
-&lt;p&gt;Imagine que $A$ é uma matriz $m \times n$ e $B$ é uma matriz $n \times m$. O produto $AB$ resultará em uma matriz quadrada $m \times m$. Como calcular esse determinante sem realizar toda a multiplicação exaustiva?&lt;/p&gt;</description></item><item><title>A Identidade De Euler: A Equação Mais Bela Da Matemática</title><link>https://bizumatica.com.br/matematica/a-identidade-de-euler-a-equacaoo-mais-bela-da-matematica/</link><pubDate>Wed, 11 Mar 2026 11:11:25 -0300</pubDate><guid>https://bizumatica.com.br/matematica/a-identidade-de-euler-a-equacaoo-mais-bela-da-matematica/</guid><description>&lt;p&gt;A &lt;strong&gt;Identidade de Euler&lt;/strong&gt; é frequentemente chamada de &amp;ldquo;a equação mais bonita da matemática&amp;rdquo; por sua capacidade de conectar, em uma expressão simples, cinco números fundamentais de diferentes áreas.&lt;/p&gt;
-$$e^{i\pi} + 1 = 0$$
-
-
-
-
-
-
-
-
-
-&lt;div class="mat-box box-bizu" style="border-left: 5px solid var(--box-color, #0e1922); background: #0f0f0d; padding: 1rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;"&gt;
- &lt;div class="box-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem; border-bottom: 1px solid #333; padding-bottom: 5px;"&gt;
- &lt;span class="box-icon"&gt;💡&lt;/span&gt;
- &lt;strong class="box-title" style="font-family: monospace; letter-spacing: 1px;"&gt;BIZU&lt;/strong&gt;
- &lt;/div&gt;
- &lt;div class="box-content" style="font-size: 0.95rem; line-height: 1.6;"&gt;
- &lt;p&gt;&lt;strong&gt;Os Cinco Números:&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>A Fórmula De Bhaskara: A Jornada Da Equação Quadrática</title><link>https://bizumatica.com.br/matematica/formula-de-bhaskara-jornada-da-equacao-quadratica/</link><pubDate>Wed, 11 Mar 2026 11:02:32 -0300</pubDate><guid>https://bizumatica.com.br/matematica/formula-de-bhaskara-jornada-da-equacao-quadratica/</guid><description>&lt;p&gt;A &lt;strong&gt;fórmula de Bhaskara&lt;/strong&gt; é um dos conteúdos mais emblemáticos da matemática escolar brasileira. Mas você sabia que ela não foi descoberta por Bhaskara? E mais: no resto do mundo, ela é simplesmente chamada de &amp;ldquo;fórmula quadrática&amp;rdquo; .&lt;/p&gt;
-$$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$&lt;p&gt;Vamos explorar a verdadeira história por trás dessa equação que resolve a forma geral $ax^2 + bx + c = 0$, com $a \neq 0$.&lt;/p&gt;
-
-
-
-
-
-
-
-
-
-
-&lt;div class="mat-box box-bizu" style="border-left: 5px solid var(--box-color, #0e1922); background: #0f0f0d; padding: 1rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;"&gt;
- &lt;div class="box-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem; border-bottom: 1px solid #333; padding-bottom: 5px;"&gt;
- &lt;span class="box-icon"&gt;💡&lt;/span&gt;
- &lt;strong class="box-title" style="font-family: monospace; letter-spacing: 1px;"&gt;BIZU&lt;/strong&gt;
- &lt;/div&gt;
- &lt;div class="box-content" style="font-size: 0.95rem; line-height: 1.6;"&gt;
- &lt;p&gt;&lt;strong&gt;Os Protagonistas:&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>A Beleza Da Integral De Gaus</title><link>https://bizumatica.com.br/matematica/beleza-da-integral-de-gaus/</link><pubDate>Mon, 09 Mar 2026 18:31:01 -0300</pubDate><guid>https://bizumatica.com.br/matematica/beleza-da-integral-de-gaus/</guid><description>&lt;p&gt;A integral de Gauss, também conhecida como integral de Euler-Poisson, é um daqueles resultados que parecem mágicos na primeira vez que vemos. Ela é fundamental para a estatística (Distribuição Normal) e para a física quântica.&lt;/p&gt;
-&lt;h3 id="o-problema"&gt;O Problema&lt;/h3&gt;
-&lt;p&gt;Queremos calcular o valor da área sob a curva da função gaussiana em toda a reta real:&lt;/p&gt;
-$$I = \int_{-\infty}^{\infty} e^{-x^2} dx$$
-
-
-
-
-
-
-
-
-
-&lt;div class="mat-box box-bizu" style="border-left: 5px solid var(--box-color, #0e1922); background: #0f0f0d; padding: 1rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;"&gt;
- &lt;div class="box-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem; border-bottom: 1px solid #333; padding-bottom: 5px;"&gt;
- &lt;span class="box-icon"&gt;💡&lt;/span&gt;
- &lt;strong class="box-title" style="font-family: monospace; letter-spacing: 1px;"&gt;BIZU&lt;/strong&gt;
- &lt;/div&gt;
- &lt;div class="box-content" style="font-size: 0.95rem; line-height: 1.6;"&gt;
- &lt;strong&gt;Curiosidade:&lt;/strong&gt; Esta função não possui uma primitiva expressável por funções elementares. Ou seja, você não consegue resolvê-la diretamente pelo Teorema Fundamental do Cálculo convencional. Precisamos de um truque de mestre.
- &lt;/div&gt;
-&lt;/div&gt;
-&lt;h3 id="a-resolução-o-truque-de-cauchy"&gt;A Resolução (O Truque de Cauchy)&lt;/h3&gt;
-&lt;p&gt;O segredo aqui é elevar a integral ao quadrado e mudar para &lt;strong&gt;coordenadas polares&lt;/strong&gt;. Se $I$ é a nossa integral, então $I^2$ pode ser escrita como:&lt;/p&gt;</description></item><item><title>Unicamp 2022: Largura do Canal de Suez</title><link>https://bizumatica.com.br/matematica/unicamp2022-q40-f1/</link><pubDate>Fri, 30 Jan 2026 08:00:00 -0300</pubDate><guid>https://bizumatica.com.br/matematica/unicamp2022-q40-f1/</guid><description>&lt;p&gt;No dia 23 de março de 2021 um navio encalhou no canal de Suez, no Egito. A embarcação tinha 400 metros de comprimento e metros de largura. No ponto onde aconteceu o acidente, o canal de Suez não tem mais do que metros de largura. Abaixo apresentamos uma foto de satélite e uma figura representando a situação. O ângulo 𝛼 indicado na figura abaixo mede 67,5º&lt;/p&gt;
-&lt;h3 id="resolução-largura-do-canal-de-suez-unicamp-2022"&gt;Resolução: Largura do Canal de Suez (Unicamp 2022)&lt;/h3&gt;
-&lt;figure&gt;
- &lt;img src="../images/canal.png" alt="Foto do Canal"&gt;
- &lt;figcaption&gt; Foto do Canal&lt;/figcaption&gt;
-&lt;/figure&gt;
-&lt;p&gt;&lt;img src="../images/gcanal.png" alt="Geometria do Problema."&gt;
-&lt;em&gt;O problema&lt;/em&gt;&lt;/p&gt;</description></item><item><title>🧪 Teste de Estética e Funcionalidades</title><link>https://bizumatica.com.br/matematica/teste-estetica/</link><pubDate>Tue, 27 Jan 2026 00:00:00 +0000</pubDate><guid>https://bizumatica.com.br/matematica/teste-estetica/</guid><description>&lt;p&gt;Este post serve para validar se o novo &lt;code&gt;extended.css&lt;/code&gt; e os shortcodes estão funcionando corretamente no ambiente do &lt;strong&gt;Bizumática&lt;/strong&gt;.&lt;/p&gt;
-&lt;h2 id="1-teste-de-boxes-shortcodes"&gt;1. Teste de Boxes (Shortcodes)&lt;/h2&gt;
-&lt;p&gt;Vamos testar os três níveis de destaque que configuramos:&lt;/p&gt;
-
-
-
-
-
-
-
-
-
-
-&lt;div class="mat-box box-bizu" style="border-left: 5px solid var(--box-color, #0e1922); background: #0f0f0d; padding: 1rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;"&gt;
- &lt;div class="box-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem; border-bottom: 1px solid #333; padding-bottom: 5px;"&gt;
- &lt;span class="box-icon"&gt;💡&lt;/span&gt;
- &lt;strong class="box-title" style="font-family: monospace; letter-spacing: 1px;"&gt;Macete de Potência&lt;/strong&gt;
- &lt;/div&gt;
- &lt;div class="box-content" style="font-size: 0.95rem; line-height: 1.6;"&gt;
- &lt;p&gt;Para elevar ao quadrado números que terminam em 5:&lt;/p&gt;</description></item><item><title>Exemplo de Post com Math</title><link>https://bizumatica.com.br/matematica/exemplo-math/</link><pubDate>Thu, 18 Dec 2025 08:00:00 -0300</pubDate><guid>https://bizumatica.com.br/matematica/exemplo-math/</guid><description>&lt;div style="border-left: 5px solid #0e1922; background: #0f0f0d; padding: 1rem; margin: 1rem 0; border-radius: 0 8px 8px 0;"&gt;
- &lt;strong&gt;💡 Bizu:&lt;/strong&gt; $$\frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
-&lt;/div&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Matematicas on Bizumática</title>
+    <link>http://localhost:1313/matematica/</link>
+    <description>Recent content in Matematicas on Bizumática</description>
+    <generator>Hugo</generator>
+    <language>pt-br</language>
+    <lastBuildDate>Thu, 19 Mar 2026 10:00:00 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/matematica/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Teorema de Binet-Cauchy: Determinantes em Matrizes Não Quadradas</title>
+      <link>http://localhost:1313/matematica/teorema-de-binet-cauchy/</link>
+      <pubDate>Thu, 19 Mar 2026 10:00:00 -0300</pubDate>
+      <guid>http://localhost:1313/matematica/teorema-de-binet-cauchy/</guid>
+      <description>&lt;p&gt;Se você já estudou Álgebra Linear, conhece a regra clássica: $\det(AB) = \det(A)\det(B)$. Mas e se as matrizes $A$ e $B$ não forem quadradas? É aqui que entra o elegante &lt;strong&gt;Teorema de Binet-Cauchy&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;h3 id=&#34;o-problema-das-matrizes-retangulares&#34;&gt;O Problema das Matrizes Retangulares&lt;/h3&gt;&#xA;&lt;p&gt;Imagine que $A$ é uma matriz $m \times n$ e $B$ é uma matriz $n \times m$. O produto $AB$ resultará em uma matriz quadrada $m \times m$. Como calcular esse determinante sem realizar toda a multiplicação exaustiva?&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>A Identidade De Euler: A Equação Mais Bela Da Matemática</title>
+      <link>http://localhost:1313/matematica/a-identidade-de-euler-a-equacaoo-mais-bela-da-matematica/</link>
+      <pubDate>Wed, 11 Mar 2026 11:11:25 -0300</pubDate>
+      <guid>http://localhost:1313/matematica/a-identidade-de-euler-a-equacaoo-mais-bela-da-matematica/</guid>
+      <description>&lt;p&gt;A &lt;strong&gt;Identidade de Euler&lt;/strong&gt; é frequentemente chamada de &amp;ldquo;a equação mais bonita da matemática&amp;rdquo; por sua capacidade de conectar, em uma expressão simples, cinco números fundamentais de diferentes áreas.&lt;/p&gt;&#xA;$$e^{i\pi} + 1 = 0$$&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;div class=&#34;mat-box box-bizu&#34; style=&#34;border-left: 5px solid var(--box-color, #0e1922); background: #0f0f0d; padding: 1rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;&#34;&gt;&#xA;    &lt;div class=&#34;box-header&#34; style=&#34;display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem; border-bottom: 1px solid #333; padding-bottom: 5px;&#34;&gt;&#xA;        &lt;span class=&#34;box-icon&#34;&gt;💡&lt;/span&gt;&#xA;        &lt;strong class=&#34;box-title&#34; style=&#34;font-family: monospace; letter-spacing: 1px;&#34;&gt;BIZU&lt;/strong&gt;&#xA;    &lt;/div&gt;&#xA;    &lt;div class=&#34;box-content&#34; style=&#34;font-size: 0.95rem; line-height: 1.6;&#34;&gt;&#xA;        &lt;p&gt;&lt;strong&gt;Os Cinco Números:&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>A Fórmula De Bhaskara: A Jornada Da Equação Quadrática</title>
+      <link>http://localhost:1313/matematica/formula-de-bhaskara-jornada-da-equacao-quadratica/</link>
+      <pubDate>Wed, 11 Mar 2026 11:02:32 -0300</pubDate>
+      <guid>http://localhost:1313/matematica/formula-de-bhaskara-jornada-da-equacao-quadratica/</guid>
+      <description>&lt;p&gt;A &lt;strong&gt;fórmula de Bhaskara&lt;/strong&gt; é um dos conteúdos mais emblemáticos da matemática escolar brasileira. Mas você sabia que ela não foi descoberta por Bhaskara? E mais: no resto do mundo, ela é simplesmente chamada de &amp;ldquo;fórmula quadrática&amp;rdquo; .&lt;/p&gt;&#xA;$$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$&lt;p&gt;Vamos explorar a verdadeira história por trás dessa equação que resolve a forma geral $ax^2 + bx + c = 0$, com $a \neq 0$.&lt;/p&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;div class=&#34;mat-box box-bizu&#34; style=&#34;border-left: 5px solid var(--box-color, #0e1922); background: #0f0f0d; padding: 1rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;&#34;&gt;&#xA;    &lt;div class=&#34;box-header&#34; style=&#34;display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem; border-bottom: 1px solid #333; padding-bottom: 5px;&#34;&gt;&#xA;        &lt;span class=&#34;box-icon&#34;&gt;💡&lt;/span&gt;&#xA;        &lt;strong class=&#34;box-title&#34; style=&#34;font-family: monospace; letter-spacing: 1px;&#34;&gt;BIZU&lt;/strong&gt;&#xA;    &lt;/div&gt;&#xA;    &lt;div class=&#34;box-content&#34; style=&#34;font-size: 0.95rem; line-height: 1.6;&#34;&gt;&#xA;        &lt;p&gt;&lt;strong&gt;Os Protagonistas:&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>A Beleza Da Integral De Gaus</title>
+      <link>http://localhost:1313/matematica/beleza-da-integral-de-gaus/</link>
+      <pubDate>Mon, 09 Mar 2026 18:31:01 -0300</pubDate>
+      <guid>http://localhost:1313/matematica/beleza-da-integral-de-gaus/</guid>
+      <description>&lt;p&gt;A integral de Gauss, também conhecida como integral de Euler-Poisson, é um daqueles resultados que parecem mágicos na primeira vez que vemos. Ela é fundamental para a estatística (Distribuição Normal) e para a física quântica.&lt;/p&gt;&#xA;&lt;h3 id=&#34;o-problema&#34;&gt;O Problema&lt;/h3&gt;&#xA;&lt;p&gt;Queremos calcular o valor da área sob a curva da função gaussiana em toda a reta real:&lt;/p&gt;&#xA;$$I = \int_{-\infty}^{\infty} e^{-x^2} dx$$&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;div class=&#34;mat-box box-bizu&#34; style=&#34;border-left: 5px solid var(--box-color, #0e1922); background: #0f0f0d; padding: 1rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;&#34;&gt;&#xA;    &lt;div class=&#34;box-header&#34; style=&#34;display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem; border-bottom: 1px solid #333; padding-bottom: 5px;&#34;&gt;&#xA;        &lt;span class=&#34;box-icon&#34;&gt;💡&lt;/span&gt;&#xA;        &lt;strong class=&#34;box-title&#34; style=&#34;font-family: monospace; letter-spacing: 1px;&#34;&gt;BIZU&lt;/strong&gt;&#xA;    &lt;/div&gt;&#xA;    &lt;div class=&#34;box-content&#34; style=&#34;font-size: 0.95rem; line-height: 1.6;&#34;&gt;&#xA;        &lt;strong&gt;Curiosidade:&lt;/strong&gt; Esta função não possui uma primitiva expressável por funções elementares. Ou seja, você não consegue resolvê-la diretamente pelo Teorema Fundamental do Cálculo convencional. Precisamos de um truque de mestre.&#xA;    &lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;h3 id=&#34;a-resolução-o-truque-de-cauchy&#34;&gt;A Resolução (O Truque de Cauchy)&lt;/h3&gt;&#xA;&lt;p&gt;O segredo aqui é elevar a integral ao quadrado e mudar para &lt;strong&gt;coordenadas polares&lt;/strong&gt;. Se $I$ é a nossa integral, então $I^2$ pode ser escrita como:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Unicamp 2022: Largura do Canal de Suez</title>
+      <link>http://localhost:1313/matematica/unicamp2022-q40-f1/</link>
+      <pubDate>Fri, 30 Jan 2026 08:00:00 -0300</pubDate>
+      <guid>http://localhost:1313/matematica/unicamp2022-q40-f1/</guid>
+      <description>&lt;p&gt;No dia 23 de março de 2021 um navio encalhou no canal de Suez, no Egito. A embarcação tinha 400 metros de comprimento e metros de largura. No ponto onde aconteceu o acidente, o canal de Suez não tem mais do que  metros de largura. Abaixo apresentamos uma foto de satélite e uma figura representando a situação. O ângulo 𝛼 indicado na figura abaixo mede 67,5º&lt;/p&gt;&#xA;&lt;h3 id=&#34;resolução-largura-do-canal-de-suez-unicamp-2022&#34;&gt;Resolução: Largura do Canal de Suez (Unicamp 2022)&lt;/h3&gt;&#xA;&lt;figure&gt;&#xA;  &lt;img src=&#34;../images/canal.png&#34; alt=&#34;Foto do Canal&#34;&gt;&#xA;  &lt;figcaption&gt; Foto do Canal&lt;/figcaption&gt;&#xA;&lt;/figure&gt;&#xA;&lt;p&gt;&lt;img src=&#34;../images/gcanal.png&#34; alt=&#34;Geometria do Problema.&#34;&gt;&#xA;&lt;em&gt;O problema&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>🧪 Teste de Estética e Funcionalidades</title>
+      <link>http://localhost:1313/matematica/teste-estetica/</link>
+      <pubDate>Tue, 27 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/matematica/teste-estetica/</guid>
+      <description>&lt;p&gt;Este post serve para validar se o novo &lt;code&gt;extended.css&lt;/code&gt; e os shortcodes estão funcionando corretamente no ambiente do &lt;strong&gt;Bizumática&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;1-teste-de-boxes-shortcodes&#34;&gt;1. Teste de Boxes (Shortcodes)&lt;/h2&gt;&#xA;&lt;p&gt;Vamos testar os três níveis de destaque que configuramos:&lt;/p&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;div class=&#34;mat-box box-bizu&#34; style=&#34;border-left: 5px solid var(--box-color, #0e1922); background: #0f0f0d; padding: 1rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;&#34;&gt;&#xA;    &lt;div class=&#34;box-header&#34; style=&#34;display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem; border-bottom: 1px solid #333; padding-bottom: 5px;&#34;&gt;&#xA;        &lt;span class=&#34;box-icon&#34;&gt;💡&lt;/span&gt;&#xA;        &lt;strong class=&#34;box-title&#34; style=&#34;font-family: monospace; letter-spacing: 1px;&#34;&gt;Macete de Potência&lt;/strong&gt;&#xA;    &lt;/div&gt;&#xA;    &lt;div class=&#34;box-content&#34; style=&#34;font-size: 0.95rem; line-height: 1.6;&#34;&gt;&#xA;        &lt;p&gt;Para elevar ao quadrado números que terminam em 5:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Exemplo de Post com Math</title>
+      <link>http://localhost:1313/matematica/exemplo-math/</link>
+      <pubDate>Thu, 18 Dec 2025 08:00:00 -0300</pubDate>
+      <guid>http://localhost:1313/matematica/exemplo-math/</guid>
+      <description>&lt;div style=&#34;border-left: 5px solid #0e1922; background: #0f0f0d; padding: 1rem; margin: 1rem 0; border-radius: 0 8px 8px 0;&#34;&gt;&#xA;    &lt;strong&gt;💡 Bizu:&lt;/strong&gt; $$\frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

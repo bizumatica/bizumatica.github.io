@@ -1,60 +1,60 @@
-{{- /* 1. CAPTURA DE DADOS DO FRONT MATTER (Vindo do Python) */ -}}
-{{- $product := .Page.Params.product -}}
-{{- $affiliates := .Page.Params.affiliate -}}
-{{- $imgID := .Get "img" -}}
+{{- /* 1. IDENTIFICA SE É UM ITEM ESPECÍFICO OU O PRODUTO PRINCIPAL */ -}}
+{{- $itemKey := .Get "item" -}}
+{{- $data := "" -}}
+{{- $isManual := false -}}
 
-{{- /* 2. LÓGICA DE IMAGEM */ -}}
-{{- $finalImg := "" -}}
-{{- if $imgID -}}
-    {{- $pattern := printf "*%s*" $imgID -}}
-    {{- $res := .Page.Resources.GetMatch $pattern -}}
-    {{- if $res -}}
-        {{- $finalImg = $res -}}
-    {{- end -}}
+{{- if $itemKey -}}
+    {{- /* BUSCA NAS RECOMENDAÇÕES DO FRONT MATTER */ -}}
+    {{- $data = index .Page.Params.recommendations $itemKey -}}
+    {{- $isManual = true -}}
+{{- else -}}
+    {{- /* PADRÃO PARA POSTS DO PYTHON (EQUIPAMENTOS) */ -}}
+    {{- $data = .Page.Params.product -}}
 {{- end -}}
 
-{{- /* 3. FORMATAÇÃO DE PREÇO (Pega do product.current_price) */ -}}
-{{- $price := $product.current_price -}}
-{{- $formattedPrice := "Consultar" -}}
-{{- if and $price (ne $price 0.0) -}}
-    {{- $formattedPrice = printf "R$ %s" (lang.FormatNumberCustom 2 $price "- . ," ) -}}
-{{- end -}}
+{{- if $data -}}
+    {{- /* LÓGICA DE IMAGEM */ -}}
+    {{- $imgID := $data.img | default (.Get "img") -}}
+    {{- $finalImg := .Page.Resources.GetMatch (printf "*%s*" $imgID) -}}
 
-<div class="product-card" style="border: 2px solid #333; padding: 20px; background: #0d0d0d; margin: 2rem 0; font-family: 'Fira Code', monospace; border-radius: 4px; color: #eee;">
-    
-    <div style="font-size: 0.6rem; color: #444; margin-bottom: 10px; text-transform: uppercase; border-bottom: 1px solid #222; padding-bottom: 5px;">
-        [ RESOURCE_ID: {{ $imgID | default "NULL" }} | STATUS: {{ if $finalImg }}LOADED{{ else }}MISSING{{ end }} ]
-    </div>
-
-    <h3 style="margin: 0 0 15px 0; color: #00ffff; font-size: 1.2rem;">> {{ $product.name | default .Page.Title }}</h3>
-
-    {{- if $finalImg -}}
-        <div class="img-container" style="text-align: center; margin: 15px 0; background: #050505; padding: 10px; border: 1px dashed #333;">
-            <img src="{{ $finalImg.RelPermalink }}" 
-                 alt="{{ $product.name }}" 
-                 loading="lazy"
-                 style="max-width: 100%; height: auto; border: 1px solid #222;">
-        </div>
-    {{- else if $imgID -}}
-        <div style="border: 1px double #ff5555; color: #ff5555; padding: 10px; font-size: 0.7rem; text-align: center; margin: 10px 0;">
-            CRITICAL_ERROR: Image "{{ $imgID }}" not found in bundle.
-        </div>
-    {{- end -}}
-
-    <div class="price-tag" style="margin-top: 20px;">
-        <div style="font-size: 1.8rem; color: #f1fa8c; font-weight: bold;">{{ $formattedPrice }}</div>
+    <div class="product-card" style="border: 2px solid #333; padding: 20px; background: #0d0d0d; margin: 2rem 0; font-family: 'Fira Code', monospace; border-radius: 4px; color: #eee;">
         
-        <div class="purchase-options" style="margin-top: 15px; display: flex; flex-direction: column; gap: 10px;">
-            {{- if $affiliates -}}
-                {{- range $affiliates -}}
-                <a href="{{ .link | safeURL }}" target="_blank" rel="sponsored" 
-                   style="display: block; background: {{ if .best_deal }}#00ff00{{ else }}#ff9900{{ end }}; color: #000; text-align: center; padding: 12px; text-decoration: none; font-weight: bold; text-transform: uppercase; transition: 0.3s;">
-                   Ver na {{ .store }} {{ if .best_deal }}(Melhor Preço){{ end }}
-                </a>
+        <h3 style="margin: 0 0 15px 0; color: #00ffff; font-size: 1.2rem;">> {{ $data.name }}</h3>
+
+        {{- if $finalImg -}}
+            <div style="text-align: center; margin: 15px 0; background: #050505; padding: 10px; border: 1px dashed #333;">
+                <img src="{{ $finalImg.RelPermalink }}" alt="{{ $data.name }}" style="max-width: 100%; height: auto;">
+            </div>
+        {{- end -}}
+
+        <div style="margin-top: 20px;">
+            <div style="font-size: 1.8rem; color: #f1fa8c; font-weight: bold;">
+                {{ if $data.price }}R$ {{ lang.FormatNumberCustom 2 $data.price "- . ," }}{{ else }}Consultar{{ end }}
+            </div>
+            
+            <div style="margin-top: 15px; display: flex; flex-direction: column; gap: 10px;">
+                {{- /* SE FOR MANUAL (Binet) */ -}}
+                {{- if $isManual -}}
+                    {{- $prep := "no" -}}
+                    {{- if in (slice "Amazon" "Magalu" "Shopee") $data.store -}}{{- $prep = "na" -}}{{- end -}}
+                    
+                    <a href="{{ $data.link | safeURL }}" target="_blank" rel="sponsored" 
+                       style="display: block; background: #00ff00; color: #000; text-align: center; padding: 12px; text-decoration: none; font-weight: bold; text-transform: uppercase;">
+                       Ver {{ $prep }} {{ $data.store }}
+                    </a>
+                {{- else -}}
+                    {{- /* SE FOR AUTOMÁTICO (Python) */ -}}
+                    {{- range .Page.Params.affiliate -}}
+                        {{- $p := "no" -}}{{- if in (slice "Amazon" "Magalu" "Shopee") .store -}}{{- $p = "na" -}}{{- end -}}
+                        <a href="{{ .link | safeURL }}" target="_blank" rel="sponsored" 
+                           style="display: block; background: {{ if .best_deal }}#00ff00{{ else }}#ff9900{{ end }}; color: #000; text-align: center; padding: 12px; text-decoration: none; font-weight: bold; text-transform: uppercase;">
+                           Ver {{ $p }} {{ .store }} {{ if .best_deal }}(Melhor Preço){{ end }}
+                        </a>
+                    {{- end -}}
                 {{- end -}}
-            {{- else -}}
-                <div style="color: #ff5555; font-size: 0.8rem;">[ ERROR: NO_AFFILIATE_LINKS_FOUND ]</div>
-            {{- end -}}
+            </div>
         </div>
     </div>
-</div>
+{{- else -}}
+    <div style="color: #ff5555;">[ ERROR: DATA_NOT_FOUND_FOR_KEY: {{ $itemKey }} ]</div>
+{{- end -}}

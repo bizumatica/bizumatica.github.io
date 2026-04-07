@@ -1,20 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Matemática on Bizumática</title><link>https://bizumatica.com.br/categories/matematica/</link><description>Recent content in Matemática on Bizumática</description><generator>Hugo</generator><language>pt-br</language><lastBuildDate>Tue, 27 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://bizumatica.com.br/categories/matematica/index.xml" rel="self" type="application/rss+xml"/><item><title>🧪 Teste de Estética e Funcionalidades</title><link>https://bizumatica.com.br/matematica/teste-estetica/</link><pubDate>Tue, 27 Jan 2026 00:00:00 +0000</pubDate><guid>https://bizumatica.com.br/matematica/teste-estetica/</guid><description>&lt;p&gt;Este post serve para validar se o novo &lt;code&gt;extended.css&lt;/code&gt; e os shortcodes estão funcionando corretamente no ambiente do &lt;strong&gt;Bizumática&lt;/strong&gt;.&lt;/p&gt;
-&lt;h2 id="1-teste-de-boxes-shortcodes"&gt;1. Teste de Boxes (Shortcodes)&lt;/h2&gt;
-&lt;p&gt;Vamos testar os três níveis de destaque que configuramos:&lt;/p&gt;
-
-
-
-
-
-
-
-
-
-
-&lt;div class="mat-box box-bizu" style="border-left: 5px solid var(--box-color, #0e1922); background: #0f0f0d; padding: 1rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;"&gt;
- &lt;div class="box-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem; border-bottom: 1px solid #333; padding-bottom: 5px;"&gt;
- &lt;span class="box-icon"&gt;💡&lt;/span&gt;
- &lt;strong class="box-title" style="font-family: monospace; letter-spacing: 1px;"&gt;Macete de Potência&lt;/strong&gt;
- &lt;/div&gt;
- &lt;div class="box-content" style="font-size: 0.95rem; line-height: 1.6;"&gt;
- &lt;p&gt;Para elevar ao quadrado números que terminam em 5:&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Matemática on Bizumática</title>
+    <link>http://localhost:1313/categories/matematica/</link>
+    <description>Recent content in Matemática on Bizumática</description>
+    <generator>Hugo</generator>
+    <language>pt-br</language>
+    <lastBuildDate>Tue, 27 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/matematica/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>🧪 Teste de Estética e Funcionalidades</title>
+      <link>http://localhost:1313/matematica/teste-estetica/</link>
+      <pubDate>Tue, 27 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/matematica/teste-estetica/</guid>
+      <description>&lt;p&gt;Este post serve para validar se o novo &lt;code&gt;extended.css&lt;/code&gt; e os shortcodes estão funcionando corretamente no ambiente do &lt;strong&gt;Bizumática&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;1-teste-de-boxes-shortcodes&#34;&gt;1. Teste de Boxes (Shortcodes)&lt;/h2&gt;&#xA;&lt;p&gt;Vamos testar os três níveis de destaque que configuramos:&lt;/p&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;div class=&#34;mat-box box-bizu&#34; style=&#34;border-left: 5px solid var(--box-color, #0e1922); background: #0f0f0d; padding: 1rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;&#34;&gt;&#xA;    &lt;div class=&#34;box-header&#34; style=&#34;display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem; border-bottom: 1px solid #333; padding-bottom: 5px;&#34;&gt;&#xA;        &lt;span class=&#34;box-icon&#34;&gt;💡&lt;/span&gt;&#xA;        &lt;strong class=&#34;box-title&#34; style=&#34;font-family: monospace; letter-spacing: 1px;&#34;&gt;Macete de Potência&lt;/strong&gt;&#xA;    &lt;/div&gt;&#xA;    &lt;div class=&#34;box-content&#34; style=&#34;font-size: 0.95rem; line-height: 1.6;&#34;&gt;&#xA;        &lt;p&gt;Para elevar ao quadrado números que terminam em 5:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

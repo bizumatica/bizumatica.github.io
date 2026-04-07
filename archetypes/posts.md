@@ -8,6 +8,19 @@ description: "Guia completo sobre {{ replace .Name "-" " " }} com foco em perfor
 categories: ["noticias", "linux"]
 tags: ["tutorial", "bash", "bizu", "foss"]
 image: "cover.webp"
+--- SEÇÃO DE MONETIZAÇÃO ---
+monetization:
+  enabled: true
+  type: "affiliate" # opções: adsense, affiliate, sponsor
+  ad_slot: ""       # ID do bloco de anúncio se for AdSense
+  
+affiliate:
+  - store: "Amazon"
+    link: ""
+    best_deal: true
+  - store: "MercadoLivre"
+    link: ""
+    best_deal: false
 ---
 
 <!-- Nota: este é o comando padrão: hugo new posts/slug/index.md -->

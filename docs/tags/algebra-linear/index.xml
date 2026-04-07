@@ -1,3 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Algebra-Linear on Bizumática</title><link>https://bizumatica.com.br/tags/algebra-linear/</link><description>Recent content in Algebra-Linear on Bizumática</description><generator>Hugo</generator><language>pt-br</language><lastBuildDate>Thu, 19 Mar 2026 10:00:00 -0300</lastBuildDate><atom:link href="https://bizumatica.com.br/tags/algebra-linear/index.xml" rel="self" type="application/rss+xml"/><item><title>Teorema de Binet-Cauchy: Determinantes em Matrizes Não Quadradas</title><link>https://bizumatica.com.br/matematica/teorema-de-binet-cauchy/</link><pubDate>Thu, 19 Mar 2026 10:00:00 -0300</pubDate><guid>https://bizumatica.com.br/matematica/teorema-de-binet-cauchy/</guid><description>&lt;p&gt;Se você já estudou Álgebra Linear, conhece a regra clássica: $\det(AB) = \det(A)\det(B)$. Mas e se as matrizes $A$ e $B$ não forem quadradas? É aqui que entra o elegante &lt;strong&gt;Teorema de Binet-Cauchy&lt;/strong&gt;.&lt;/p&gt;
-&lt;h3 id="o-problema-das-matrizes-retangulares"&gt;O Problema das Matrizes Retangulares&lt;/h3&gt;
-&lt;p&gt;Imagine que $A$ é uma matriz $m \times n$ e $B$ é uma matriz $n \times m$. O produto $AB$ resultará em uma matriz quadrada $m \times m$. Como calcular esse determinante sem realizar toda a multiplicação exaustiva?&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Algebra-Linear on Bizumática</title>
+    <link>http://localhost:1313/tags/algebra-linear/</link>
+    <description>Recent content in Algebra-Linear on Bizumática</description>
+    <generator>Hugo</generator>
+    <language>pt-br</language>
+    <lastBuildDate>Thu, 19 Mar 2026 10:00:00 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/algebra-linear/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Teorema de Binet-Cauchy: Determinantes em Matrizes Não Quadradas</title>
+      <link>http://localhost:1313/matematica/teorema-de-binet-cauchy/</link>
+      <pubDate>Thu, 19 Mar 2026 10:00:00 -0300</pubDate>
+      <guid>http://localhost:1313/matematica/teorema-de-binet-cauchy/</guid>
+      <description>&lt;p&gt;Se você já estudou Álgebra Linear, conhece a regra clássica: $\det(AB) = \det(A)\det(B)$. Mas e se as matrizes $A$ e $B$ não forem quadradas? É aqui que entra o elegante &lt;strong&gt;Teorema de Binet-Cauchy&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;h3 id=&#34;o-problema-das-matrizes-retangulares&#34;&gt;O Problema das Matrizes Retangulares&lt;/h3&gt;&#xA;&lt;p&gt;Imagine que $A$ é uma matriz $m \times n$ e $B$ é uma matriz $n \times m$. O produto $AB$ resultará em uma matriz quadrada $m \times m$. Como calcular esse determinante sem realizar toda a multiplicação exaustiva?&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

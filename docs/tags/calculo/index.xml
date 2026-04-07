@@ -1,41 +1,26 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Calculo on Bizumática</title><link>https://bizumatica.com.br/tags/calculo/</link><description>Recent content in Calculo on Bizumática</description><generator>Hugo</generator><language>pt-br</language><lastBuildDate>Wed, 11 Mar 2026 11:11:25 -0300</lastBuildDate><atom:link href="https://bizumatica.com.br/tags/calculo/index.xml" rel="self" type="application/rss+xml"/><item><title>A Identidade De Euler: A Equação Mais Bela Da Matemática</title><link>https://bizumatica.com.br/matematica/a-identidade-de-euler-a-equacaoo-mais-bela-da-matematica/</link><pubDate>Wed, 11 Mar 2026 11:11:25 -0300</pubDate><guid>https://bizumatica.com.br/matematica/a-identidade-de-euler-a-equacaoo-mais-bela-da-matematica/</guid><description>&lt;p&gt;A &lt;strong&gt;Identidade de Euler&lt;/strong&gt; é frequentemente chamada de &amp;ldquo;a equação mais bonita da matemática&amp;rdquo; por sua capacidade de conectar, em uma expressão simples, cinco números fundamentais de diferentes áreas.&lt;/p&gt;
-$$e^{i\pi} + 1 = 0$$
-
-
-
-
-
-
-
-
-
-&lt;div class="mat-box box-bizu" style="border-left: 5px solid var(--box-color, #0e1922); background: #0f0f0d; padding: 1rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;"&gt;
- &lt;div class="box-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem; border-bottom: 1px solid #333; padding-bottom: 5px;"&gt;
- &lt;span class="box-icon"&gt;💡&lt;/span&gt;
- &lt;strong class="box-title" style="font-family: monospace; letter-spacing: 1px;"&gt;BIZU&lt;/strong&gt;
- &lt;/div&gt;
- &lt;div class="box-content" style="font-size: 0.95rem; line-height: 1.6;"&gt;
- &lt;p&gt;&lt;strong&gt;Os Cinco Números:&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>A Beleza Da Integral De Gaus</title><link>https://bizumatica.com.br/matematica/beleza-da-integral-de-gaus/</link><pubDate>Mon, 09 Mar 2026 18:31:01 -0300</pubDate><guid>https://bizumatica.com.br/matematica/beleza-da-integral-de-gaus/</guid><description>&lt;p&gt;A integral de Gauss, também conhecida como integral de Euler-Poisson, é um daqueles resultados que parecem mágicos na primeira vez que vemos. Ela é fundamental para a estatística (Distribuição Normal) e para a física quântica.&lt;/p&gt;
-&lt;h3 id="o-problema"&gt;O Problema&lt;/h3&gt;
-&lt;p&gt;Queremos calcular o valor da área sob a curva da função gaussiana em toda a reta real:&lt;/p&gt;
-$$I = \int_{-\infty}^{\infty} e^{-x^2} dx$$
-
-
-
-
-
-
-
-
-
-&lt;div class="mat-box box-bizu" style="border-left: 5px solid var(--box-color, #0e1922); background: #0f0f0d; padding: 1rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;"&gt;
- &lt;div class="box-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem; border-bottom: 1px solid #333; padding-bottom: 5px;"&gt;
- &lt;span class="box-icon"&gt;💡&lt;/span&gt;
- &lt;strong class="box-title" style="font-family: monospace; letter-spacing: 1px;"&gt;BIZU&lt;/strong&gt;
- &lt;/div&gt;
- &lt;div class="box-content" style="font-size: 0.95rem; line-height: 1.6;"&gt;
- &lt;strong&gt;Curiosidade:&lt;/strong&gt; Esta função não possui uma primitiva expressável por funções elementares. Ou seja, você não consegue resolvê-la diretamente pelo Teorema Fundamental do Cálculo convencional. Precisamos de um truque de mestre.
- &lt;/div&gt;
-&lt;/div&gt;
-&lt;h3 id="a-resolução-o-truque-de-cauchy"&gt;A Resolução (O Truque de Cauchy)&lt;/h3&gt;
-&lt;p&gt;O segredo aqui é elevar a integral ao quadrado e mudar para &lt;strong&gt;coordenadas polares&lt;/strong&gt;. Se $I$ é a nossa integral, então $I^2$ pode ser escrita como:&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Calculo on Bizumática</title>
+    <link>http://localhost:1313/tags/calculo/</link>
+    <description>Recent content in Calculo on Bizumática</description>
+    <generator>Hugo</generator>
+    <language>pt-br</language>
+    <lastBuildDate>Wed, 11 Mar 2026 11:11:25 -0300</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/calculo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A Identidade De Euler: A Equação Mais Bela Da Matemática</title>
+      <link>http://localhost:1313/matematica/a-identidade-de-euler-a-equacaoo-mais-bela-da-matematica/</link>
+      <pubDate>Wed, 11 Mar 2026 11:11:25 -0300</pubDate>
+      <guid>http://localhost:1313/matematica/a-identidade-de-euler-a-equacaoo-mais-bela-da-matematica/</guid>
+      <description>&lt;p&gt;A &lt;strong&gt;Identidade de Euler&lt;/strong&gt; é frequentemente chamada de &amp;ldquo;a equação mais bonita da matemática&amp;rdquo; por sua capacidade de conectar, em uma expressão simples, cinco números fundamentais de diferentes áreas.&lt;/p&gt;&#xA;$$e^{i\pi} + 1 = 0$$&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;div class=&#34;mat-box box-bizu&#34; style=&#34;border-left: 5px solid var(--box-color, #0e1922); background: #0f0f0d; padding: 1rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;&#34;&gt;&#xA;    &lt;div class=&#34;box-header&#34; style=&#34;display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem; border-bottom: 1px solid #333; padding-bottom: 5px;&#34;&gt;&#xA;        &lt;span class=&#34;box-icon&#34;&gt;💡&lt;/span&gt;&#xA;        &lt;strong class=&#34;box-title&#34; style=&#34;font-family: monospace; letter-spacing: 1px;&#34;&gt;BIZU&lt;/strong&gt;&#xA;    &lt;/div&gt;&#xA;    &lt;div class=&#34;box-content&#34; style=&#34;font-size: 0.95rem; line-height: 1.6;&#34;&gt;&#xA;        &lt;p&gt;&lt;strong&gt;Os Cinco Números:&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>A Beleza Da Integral De Gaus</title>
+      <link>http://localhost:1313/matematica/beleza-da-integral-de-gaus/</link>
+      <pubDate>Mon, 09 Mar 2026 18:31:01 -0300</pubDate>
+      <guid>http://localhost:1313/matematica/beleza-da-integral-de-gaus/</guid>
+      <description>&lt;p&gt;A integral de Gauss, também conhecida como integral de Euler-Poisson, é um daqueles resultados que parecem mágicos na primeira vez que vemos. Ela é fundamental para a estatística (Distribuição Normal) e para a física quântica.&lt;/p&gt;&#xA;&lt;h3 id=&#34;o-problema&#34;&gt;O Problema&lt;/h3&gt;&#xA;&lt;p&gt;Queremos calcular o valor da área sob a curva da função gaussiana em toda a reta real:&lt;/p&gt;&#xA;$$I = \int_{-\infty}^{\infty} e^{-x^2} dx$$&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;div class=&#34;mat-box box-bizu&#34; style=&#34;border-left: 5px solid var(--box-color, #0e1922); background: #0f0f0d; padding: 1rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;&#34;&gt;&#xA;    &lt;div class=&#34;box-header&#34; style=&#34;display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem; border-bottom: 1px solid #333; padding-bottom: 5px;&#34;&gt;&#xA;        &lt;span class=&#34;box-icon&#34;&gt;💡&lt;/span&gt;&#xA;        &lt;strong class=&#34;box-title&#34; style=&#34;font-family: monospace; letter-spacing: 1px;&#34;&gt;BIZU&lt;/strong&gt;&#xA;    &lt;/div&gt;&#xA;    &lt;div class=&#34;box-content&#34; style=&#34;font-size: 0.95rem; line-height: 1.6;&#34;&gt;&#xA;        &lt;strong&gt;Curiosidade:&lt;/strong&gt; Esta função não possui uma primitiva expressável por funções elementares. Ou seja, você não consegue resolvê-la diretamente pelo Teorema Fundamental do Cálculo convencional. Precisamos de um truque de mestre.&#xA;    &lt;/div&gt;&#xA;&lt;/div&gt;&#xA;&lt;h3 id=&#34;a-resolução-o-truque-de-cauchy&#34;&gt;A Resolução (O Truque de Cauchy)&lt;/h3&gt;&#xA;&lt;p&gt;O segredo aqui é elevar a integral ao quadrado e mudar para &lt;strong&gt;coordenadas polares&lt;/strong&gt;. Se $I$ é a nossa integral, então $I^2$ pode ser escrita como:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

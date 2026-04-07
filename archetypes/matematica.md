@@ -7,6 +7,19 @@ categories: ["mathematics"]
 tags: ["algebra", "calculo"]
 math: true
 image: "cover.webp"
+--- SEÇÃO DE MONETIZAÇÃO ---
+monetization:
+  enabled: true
+  type: "affiliate" # opções: adsense, affiliate, sponsor
+  ad_slot: ""       # ID do bloco de anúncio se for AdSense
+  
+affiliate:
+  - store: "Amazon"
+    link: ""
+    best_deal: true
+  - store: "MercadoLivre"
+    link: ""
+    best_deal: false
 ---
 
 ### O Conceito

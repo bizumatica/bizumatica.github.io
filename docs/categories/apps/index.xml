@@ -1,19 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Apps on Bizumática</title>
-    <link>http://localhost:1313/categories/apps/</link>
-    <description>Recent content in Apps on Bizumática</description>
-    <generator>Hugo</generator>
-    <language>pt-br</language>
-    <lastBuildDate>Wed, 21 Jan 2026 10:00:00 -0300</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/apps/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Docker para todos!</title>
-      <link>http://localhost:1313/posts/docker-desmistificado-o-guia-para-quem-nao-e-de-ti/</link>
-      <pubDate>Wed, 21 Jan 2026 10:00:00 -0300</pubDate>
-      <guid>http://localhost:1313/posts/docker-desmistificado-o-guia-para-quem-nao-e-de-ti/</guid>
-      <description>&lt;h1 id=&#34;docker-desmistificado-o-guia-para-quem-não-é-de-ti&#34;&gt;Docker Desmistificado: O Guia para Quem Não é de TI&lt;/h1&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Quando ouvi falar de Docker pela primeira vez, imaginei contêineres de navio rodando no meu computador. A realidade, embora menos literal, é igualmente transformadora. É a ferramenta que resolve o clássico ‘funciona na minha máquina’ e que você provavelmente já usa, sem saber, quando acessa a internet.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Imagine que você quer compartilhar uma receita de bolo, mas não pode simplesmente enviar uma lista de ingredientes. Você precisa garantir que a outra pessoa tenha o forno certo, a batedeira, a forma, a temperatura exata… É cansativo. No mundo do software, esse problema era diário. &lt;strong&gt;Até que o Docker chegou&lt;/strong&gt;.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Apps on Bizumática</title><link>https://bizumatica.com.br/categories/apps/</link><description>Recent content in Apps on Bizumática</description><generator>Hugo</generator><language>pt-br</language><lastBuildDate>Wed, 21 Jan 2026 10:00:00 -0300</lastBuildDate><atom:link href="https://bizumatica.com.br/categories/apps/index.xml" rel="self" type="application/rss+xml"/><item><title>Docker para todos!</title><link>https://bizumatica.com.br/posts/docker-desmistificado-o-guia-para-quem-nao-e-de-ti/</link><pubDate>Wed, 21 Jan 2026 10:00:00 -0300</pubDate><guid>https://bizumatica.com.br/posts/docker-desmistificado-o-guia-para-quem-nao-e-de-ti/</guid><description>&lt;h1 id="docker-desmistificado-o-guia-para-quem-não-é-de-ti"&gt;Docker Desmistificado: O Guia para Quem Não é de TI&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Quando ouvi falar de Docker pela primeira vez, imaginei contêineres de navio rodando no meu computador. A realidade, embora menos literal, é igualmente transformadora. É a ferramenta que resolve o clássico ‘funciona na minha máquina’ e que você provavelmente já usa, sem saber, quando acessa a internet.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Imagine que você quer compartilhar uma receita de bolo, mas não pode simplesmente enviar uma lista de ingredientes. Você precisa garantir que a outra pessoa tenha o forno certo, a batedeira, a forma, a temperatura exata… É cansativo. No mundo do software, esse problema era diário. &lt;strong&gt;Até que o Docker chegou&lt;/strong&gt;.&lt;/p&gt;</description></item></channel></rss>

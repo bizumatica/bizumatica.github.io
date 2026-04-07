@@ -1,19 +1,2 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Sistemas-Operacionais on Bizumática</title>
-    <link>http://localhost:1313/categories/sistemas-operacionais/</link>
-    <description>Recent content in Sistemas-Operacionais on Bizumática</description>
-    <generator>Hugo</generator>
-    <language>pt-br</language>
-    <lastBuildDate>Tue, 13 Jan 2026 10:00:00 -0300</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/sistemas-operacionais/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>O Legado do Unix: A Árvore Genealógica que Sustenta o Mundo Moderno</title>
-      <link>http://localhost:1313/posts/historia-unix-sistemas-modernos/</link>
-      <pubDate>Tue, 13 Jan 2026 10:00:00 -0300</pubDate>
-      <guid>http://localhost:1313/posts/historia-unix-sistemas-modernos/</guid>
-      <description>&lt;p&gt;Se você está lendo este post agora, seja de um smartphone, de um MacBook ou de um PC com Linux, você está interagindo com o DNA de um projeto que começou há mais de 50 anos em um laboratório de telefonia. O &lt;strong&gt;Unix&lt;/strong&gt; não é apenas um sistema operacional antigo; ele é a fundação invisível da computação moderna.&lt;/p&gt;&#xA;&lt;p&gt;Hoje, no &lt;strong&gt;Bizumática&lt;/strong&gt;, vamos mergulhar na história do &amp;ldquo;Pai de Todos&amp;rdquo; e entender como ele se desmembrou nos sistemas que dominam o nosso dia a dia.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Sistemas-Operacionais on Bizumática</title><link>https://bizumatica.com.br/categories/sistemas-operacionais/</link><description>Recent content in Sistemas-Operacionais on Bizumática</description><generator>Hugo</generator><language>pt-br</language><lastBuildDate>Tue, 13 Jan 2026 10:00:00 -0300</lastBuildDate><atom:link href="https://bizumatica.com.br/categories/sistemas-operacionais/index.xml" rel="self" type="application/rss+xml"/><item><title>O Legado do Unix: A Árvore Genealógica que Sustenta o Mundo Moderno</title><link>https://bizumatica.com.br/posts/historia-unix-sistemas-modernos/</link><pubDate>Tue, 13 Jan 2026 10:00:00 -0300</pubDate><guid>https://bizumatica.com.br/posts/historia-unix-sistemas-modernos/</guid><description>&lt;p&gt;Se você está lendo este post agora, seja de um smartphone, de um MacBook ou de um PC com Linux, você está interagindo com o DNA de um projeto que começou há mais de 50 anos em um laboratório de telefonia. O &lt;strong&gt;Unix&lt;/strong&gt; não é apenas um sistema operacional antigo; ele é a fundação invisível da computação moderna.&lt;/p&gt;
+&lt;p&gt;Hoje, no &lt;strong&gt;Bizumática&lt;/strong&gt;, vamos mergulhar na história do &amp;ldquo;Pai de Todos&amp;rdquo; e entender como ele se desmembrou nos sistemas que dominam o nosso dia a dia.&lt;/p&gt;</description></item></channel></rss>

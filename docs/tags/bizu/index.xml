@@ -1,40 +1,13 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Bizu on Bizumática</title>
-    <link>http://localhost:1313/tags/bizu/</link>
-    <description>Recent content in Bizu on Bizumática</description>
-    <generator>Hugo</generator>
-    <language>pt-br</language>
-    <lastBuildDate>Thu, 02 Apr 2026 10:00:00 -0300</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/bizu/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Linux Kernel 7.O Que Muda Na Pratica</title>
-      <link>http://localhost:1313/posts/linux-kernel-7-o-que-muda-na-pratica/</link>
-      <pubDate>Thu, 02 Apr 2026 10:00:00 -0300</pubDate>
-      <guid>http://localhost:1313/posts/linux-kernel-7-o-que-muda-na-pratica/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;cover.webp&#34; alt=&#34;Clique para ver! ;) &#34;&gt;&#xA;&lt;em&gt;Legenda: Linux Kernel 7 O Que Muda Na Pratica&lt;/em&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;linux-kernel-70-a-nova-era-do-pinguim-chegou&#34;&gt;Linux Kernel 7.0: A Nova Era do Pinguim Chegou!&lt;/h1&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Se você usa Linux, seja no seu computador pessoal, no servidor da empresa ou até no seu celular Android, uma engrenagem invisível acaba de mudar de fase. O lançamento do &lt;strong&gt;Kernel Linux 7.0&lt;/strong&gt; não é apenas uma mudança de número; é o marco de uma computação mais segura, rápida e preparada para o hardware de última geração.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Docker para todos!</title>
-      <link>http://localhost:1313/posts/docker-desmistificado-o-guia-para-quem-nao-e-de-ti/</link>
-      <pubDate>Wed, 21 Jan 2026 10:00:00 -0300</pubDate>
-      <guid>http://localhost:1313/posts/docker-desmistificado-o-guia-para-quem-nao-e-de-ti/</guid>
-      <description>&lt;h1 id=&#34;docker-desmistificado-o-guia-para-quem-não-é-de-ti&#34;&gt;Docker Desmistificado: O Guia para Quem Não é de TI&lt;/h1&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Quando ouvi falar de Docker pela primeira vez, imaginei contêineres de navio rodando no meu computador. A realidade, embora menos literal, é igualmente transformadora. É a ferramenta que resolve o clássico ‘funciona na minha máquina’ e que você provavelmente já usa, sem saber, quando acessa a internet.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;Imagine que você quer compartilhar uma receita de bolo, mas não pode simplesmente enviar uma lista de ingredientes. Você precisa garantir que a outra pessoa tenha o forno certo, a batedeira, a forma, a temperatura exata… É cansativo. No mundo do software, esse problema era diário. &lt;strong&gt;Até que o Docker chegou&lt;/strong&gt;.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>O Legado do Unix: A Árvore Genealógica que Sustenta o Mundo Moderno</title>
-      <link>http://localhost:1313/posts/historia-unix-sistemas-modernos/</link>
-      <pubDate>Tue, 13 Jan 2026 10:00:00 -0300</pubDate>
-      <guid>http://localhost:1313/posts/historia-unix-sistemas-modernos/</guid>
-      <description>&lt;p&gt;Se você está lendo este post agora, seja de um smartphone, de um MacBook ou de um PC com Linux, você está interagindo com o DNA de um projeto que começou há mais de 50 anos em um laboratório de telefonia. O &lt;strong&gt;Unix&lt;/strong&gt; não é apenas um sistema operacional antigo; ele é a fundação invisível da computação moderna.&lt;/p&gt;&#xA;&lt;p&gt;Hoje, no &lt;strong&gt;Bizumática&lt;/strong&gt;, vamos mergulhar na história do &amp;ldquo;Pai de Todos&amp;rdquo; e entender como ele se desmembrou nos sistemas que dominam o nosso dia a dia.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>O Futuro Chegou: Pop!_OS 24.04 e a Revolução do COSMIC Desktop</title>
-      <link>http://localhost:1313/posts/lancamento-pop-os-24-04-cosmic/</link>
-      <pubDate>Thu, 18 Dec 2025 08:00:00 -0300</pubDate>
-      <guid>http://localhost:1313/posts/lancamento-pop-os-24-04-cosmic/</guid>
-      <description>&lt;p&gt;Após meses de expectativa e versões alpha/beta rigorosamente testadas, a &lt;strong&gt;System76&lt;/strong&gt; finalmente liberou a versão estável do &lt;strong&gt;Pop!_OS 24.04 LTS&lt;/strong&gt;. Este não é apenas mais um &amp;ldquo;update&amp;rdquo; de rotina; estamos falando de um marco histórico para o ecossistema Linux desktop.&lt;/p&gt;&#xA;&lt;p&gt;A grande novidade, como todos esperavam, é a estreia oficial da versão final do &lt;strong&gt;COSMIC DE&lt;/strong&gt;, o ambiente de desktop totalmente escrito em &lt;strong&gt;Rust&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;o-que-há-de-novo-no-pop_os-2404&#34;&gt;O que há de novo no Pop!_OS 24.04?&lt;/h2&gt;&#xA;&lt;p&gt;A transição do GNOME para o COSMIC próprio permitiu à System76 um controle sem precedentes sobre a performance e a personalização. Aqui estão os pontos principais que você precisa conferir:&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bizu on Bizumática</title><link>https://bizumatica.com.br/tags/bizu/</link><description>Recent content in Bizu on Bizumática</description><generator>Hugo</generator><language>pt-br</language><lastBuildDate>Thu, 02 Apr 2026 10:00:00 -0300</lastBuildDate><atom:link href="https://bizumatica.com.br/tags/bizu/index.xml" rel="self" type="application/rss+xml"/><item><title>Linux Kernel 7.O Que Muda Na Pratica</title><link>https://bizumatica.com.br/posts/linux-kernel-7-o-que-muda-na-pratica/</link><pubDate>Thu, 02 Apr 2026 10:00:00 -0300</pubDate><guid>https://bizumatica.com.br/posts/linux-kernel-7-o-que-muda-na-pratica/</guid><description>&lt;p&gt;&lt;img src="cover.webp" alt="Clique para ver! ;) "&gt;
+&lt;em&gt;Legenda: Linux Kernel 7 O Que Muda Na Pratica&lt;/em&gt;&lt;/p&gt;
+&lt;h1 id="linux-kernel-70-a-nova-era-do-pinguim-chegou"&gt;Linux Kernel 7.0: A Nova Era do Pinguim Chegou!&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Se você usa Linux, seja no seu computador pessoal, no servidor da empresa ou até no seu celular Android, uma engrenagem invisível acaba de mudar de fase. O lançamento do &lt;strong&gt;Kernel Linux 7.0&lt;/strong&gt; não é apenas uma mudança de número; é o marco de uma computação mais segura, rápida e preparada para o hardware de última geração.&lt;/p&gt;</description></item><item><title>Docker para todos!</title><link>https://bizumatica.com.br/posts/docker-desmistificado-o-guia-para-quem-nao-e-de-ti/</link><pubDate>Wed, 21 Jan 2026 10:00:00 -0300</pubDate><guid>https://bizumatica.com.br/posts/docker-desmistificado-o-guia-para-quem-nao-e-de-ti/</guid><description>&lt;h1 id="docker-desmistificado-o-guia-para-quem-não-é-de-ti"&gt;Docker Desmistificado: O Guia para Quem Não é de TI&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Quando ouvi falar de Docker pela primeira vez, imaginei contêineres de navio rodando no meu computador. A realidade, embora menos literal, é igualmente transformadora. É a ferramenta que resolve o clássico ‘funciona na minha máquina’ e que você provavelmente já usa, sem saber, quando acessa a internet.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Imagine que você quer compartilhar uma receita de bolo, mas não pode simplesmente enviar uma lista de ingredientes. Você precisa garantir que a outra pessoa tenha o forno certo, a batedeira, a forma, a temperatura exata… É cansativo. No mundo do software, esse problema era diário. &lt;strong&gt;Até que o Docker chegou&lt;/strong&gt;.&lt;/p&gt;</description></item><item><title>O Legado do Unix: A Árvore Genealógica que Sustenta o Mundo Moderno</title><link>https://bizumatica.com.br/posts/historia-unix-sistemas-modernos/</link><pubDate>Tue, 13 Jan 2026 10:00:00 -0300</pubDate><guid>https://bizumatica.com.br/posts/historia-unix-sistemas-modernos/</guid><description>&lt;p&gt;Se você está lendo este post agora, seja de um smartphone, de um MacBook ou de um PC com Linux, você está interagindo com o DNA de um projeto que começou há mais de 50 anos em um laboratório de telefonia. O &lt;strong&gt;Unix&lt;/strong&gt; não é apenas um sistema operacional antigo; ele é a fundação invisível da computação moderna.&lt;/p&gt;
+&lt;p&gt;Hoje, no &lt;strong&gt;Bizumática&lt;/strong&gt;, vamos mergulhar na história do &amp;ldquo;Pai de Todos&amp;rdquo; e entender como ele se desmembrou nos sistemas que dominam o nosso dia a dia.&lt;/p&gt;</description></item><item><title>O Futuro Chegou: Pop!_OS 24.04 e a Revolução do COSMIC Desktop</title><link>https://bizumatica.com.br/posts/lancamento-pop-os-24-04-cosmic/</link><pubDate>Thu, 18 Dec 2025 08:00:00 -0300</pubDate><guid>https://bizumatica.com.br/posts/lancamento-pop-os-24-04-cosmic/</guid><description>&lt;p&gt;Após meses de expectativa e versões alpha/beta rigorosamente testadas, a &lt;strong&gt;System76&lt;/strong&gt; finalmente liberou a versão estável do &lt;strong&gt;Pop!_OS 24.04 LTS&lt;/strong&gt;. Este não é apenas mais um &amp;ldquo;update&amp;rdquo; de rotina; estamos falando de um marco histórico para o ecossistema Linux desktop.&lt;/p&gt;
+&lt;p&gt;A grande novidade, como todos esperavam, é a estreia oficial da versão final do &lt;strong&gt;COSMIC DE&lt;/strong&gt;, o ambiente de desktop totalmente escrito em &lt;strong&gt;Rust&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2 id="o-que-há-de-novo-no-pop_os-2404"&gt;O que há de novo no Pop!_OS 24.04?&lt;/h2&gt;
+&lt;p&gt;A transição do GNOME para o COSMIC próprio permitiu à System76 um controle sem precedentes sobre a performance e a personalização. Aqui estão os pontos principais que você precisa conferir:&lt;/p&gt;</description></item></channel></rss>

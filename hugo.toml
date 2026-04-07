@@ -81,6 +81,12 @@ removePathAccents = true
   weight = 18
 
 [[menu.main]]
+  identifier = "foss"
+  name = "FOSS"
+  url = "/foss/"
+  weight = 19
+
+[[menu.main]]
   identifier = "search"
   name = "Buscar"
   url = "/search/"

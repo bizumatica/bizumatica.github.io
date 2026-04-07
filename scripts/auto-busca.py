@@ -83,16 +83,27 @@ def create_hugo_bundle(row):
     
     agora = datetime.now().strftime('%Y-%m-%dT%H:%M:%S-03:00')
     data_final = agora
+    corpo_existente = "" # Variável para salvar seu texto manual
 
-    # PRESERVAÇÃO DE DATA (Não sobe pro topo da Home)
+    # BLINDAGEM 3: PRESERVAÇÃO DE DADOS E CONTEÚDO MANUAL
     if os.path.exists(arquivo_path):
         try:
             with open(arquivo_path, 'r', encoding='utf-8') as f:
-                for line in f:
-                    if line.startswith('date:'):
+                conteudo_total = f.read()
+                
+            # Separa o Front Matter do Corpo do texto usando os delimitadores '---'
+            partes = conteudo_total.split('---', 2)
+            if len(partes) >= 3:
+                front_matter_antigo = partes[1]
+                corpo_existente = partes[2].lstrip() # Salva tudo que você escreveu!
+                
+                # Extrai a data original para não subir o post pro topo
+                for line in front_matter_antigo.split('\n'):
+                    if line.strip().startswith('date:'):
                         data_final = line.replace('date:', '').strip().strip("'").strip('"')
                         break
-        except: pass
+        except Exception as e:
+            print(f"      [!] Erro ao tentar preservar texto de {slug}: {e}")
 
     # IMAGEM
     dados_img = baixar_imagem(row.get('foto'), bundle_dir, slug)
@@ -102,7 +113,7 @@ def create_hugo_bundle(row):
     else:
         nome_img_final = f"prod-{slug}" if os.path.exists(os.path.join(bundle_dir, f"prod-{slug}.webp")) else ""
 
-    # --- BLINDAGEM 2: LÓGICA DE AFILIADOS EXTREMA ---
+    # LÓGICA DE AFILIADOS
     links = []
     melhor_loja = str(row.get('melhor_loja', '')).strip().lower()
     lojas = [('Amazon', 'link_afiliado'), ('MercadoLivre', 'link_ml'), ('AliExpress', 'link_ali'), ('Hotmart', 'link_hotmart')]
@@ -146,9 +157,16 @@ def create_hugo_bundle(row):
     }
 
     img_attr = f' img="{nome_img_final}"' if nome_img_final else ""
-    review = row.get('review_curto', '') if pd.notna(row.get('review_curto')) else ""
+    review_planilha = row.get('review_curto', '') if pd.notna(row.get('review_curto')) else ""
     
-    content = f"---\n{yaml.dump(front_matter, allow_unicode=True, sort_keys=False)}---\n\n{review}\n\n{{{{< compra{img_attr} >}}}}"
+    # DECISÃO FINAL DE CONTEÚDO:
+    # Se já tem texto manual no arquivo, usa ele. Se o arquivo é novo, usa a planilha.
+    if corpo_existente:
+        corpo_final = corpo_existente
+    else:
+        corpo_final = f"{review_planilha}\n\n{{{{< compra{img_attr} >}}}}"
+    
+    content = f"---\n{yaml.dump(front_matter, allow_unicode=True, sort_keys=False)}---\n\n{corpo_final}"
     
     with open(arquivo_path, 'w', encoding='utf-8') as f:
         f.write(content)

@@ -14,9 +14,9 @@ math: true
 </div>
 
 <div class="tags-container-home">
-    <a href="/categories/linux/" class="home-tag">Linux</a>
+    <a href="/posts/" class="home-tag">Linux</a>
     <span class="tag-separator">|</span>
-    <a href="/categories/foss/" class="home-tag">FOSS</a>
+    <a href="/foss/" class="home-tag">FOSS</a>
     <span class="tag-separator">|</span>
     <a href="/matematica/" class="home-tag">Matemática</a>
     <span class="tag-separator">|</span>

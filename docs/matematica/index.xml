@@ -1,4 +1,24 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Matematicas on Bizumática</title><link>https://bizumatica.com.br/matematica/</link><description>Recent content in Matematicas on Bizumática</description><generator>Hugo</generator><language>pt-br</language><lastBuildDate>Thu, 19 Mar 2026 10:00:00 -0300</lastBuildDate><atom:link href="https://bizumatica.com.br/matematica/index.xml" rel="self" type="application/rss+xml"/><item><title>Teorema de Binet-Cauchy: Determinantes em Matrizes Não Quadradas</title><link>https://bizumatica.com.br/matematica/teorema-de-binet-cauchy/</link><pubDate>Thu, 19 Mar 2026 10:00:00 -0300</pubDate><guid>https://bizumatica.com.br/matematica/teorema-de-binet-cauchy/</guid><description>&lt;p&gt;Se você já estudou Álgebra Linear, conhece a regra clássica: $\det(AB) = \det(A)\det(B)$. Mas e se as matrizes $A$ e $B$ não forem quadradas? É aqui que entra o elegante &lt;strong&gt;Teorema de Binet-Cauchy&lt;/strong&gt;.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Matematicas on Bizumática</title><link>https://bizumatica.com.br/matematica/</link><description>Recent content in Matematicas on Bizumática</description><generator>Hugo</generator><language>pt-br</language><lastBuildDate>Wed, 08 Apr 2026 14:40:00 -0300</lastBuildDate><atom:link href="https://bizumatica.com.br/matematica/index.xml" rel="self" type="application/rss+xml"/><item><title>Regras de Divisibilidade: do 2 ao 9</title><link>https://bizumatica.com.br/matematica/regras-de-divisibilidade/</link><pubDate>Wed, 08 Apr 2026 14:40:00 -0300</pubDate><guid>https://bizumatica.com.br/matematica/regras-de-divisibilidade/</guid><description>&lt;h3 id="o-conceito"&gt;O Conceito&lt;/h3&gt;
+&lt;p&gt;Você já precisou saber rapidamente se um número grande é par, ou se divide exatamente por 3? As &lt;strong&gt;regras de divisibilidade&lt;/strong&gt; são atalhos poderosos. Em vez de fazer a divisão inteira, basta analisar os dígitos do número — e em segundos você tem a resposta.&lt;/p&gt;
+&lt;p&gt;Formalmente, definimos:&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+&lt;div class="mat-box box-teorema" style="border-left: 5px solid var(--box-color, #0e1922); background: #0f0f0d; padding: 1rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;"&gt;
+ &lt;div class="box-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem; border-bottom: 1px solid #333; padding-bottom: 5px;"&gt;
+ &lt;span class="box-icon"&gt;📐&lt;/span&gt;
+ &lt;strong class="box-title" style="font-family: monospace; letter-spacing: 1px;"&gt;DEFINIÇÃO DE DIVISIBILIDADE&lt;/strong&gt;
+ &lt;/div&gt;
+ &lt;div class="box-content" style="font-size: 0.95rem; line-height: 1.6;"&gt;
+ &lt;p&gt;Dizemos que um número natural $a$ é &lt;strong&gt;divisível&lt;/strong&gt; por $b$ (com $b \neq 0$) quando existe um número natural $q$ tal que:
+&lt;/p&gt;</description></item><item><title>Teorema de Binet-Cauchy: Determinantes em Matrizes Não Quadradas</title><link>https://bizumatica.com.br/matematica/teorema-de-binet-cauchy/</link><pubDate>Thu, 19 Mar 2026 10:00:00 -0300</pubDate><guid>https://bizumatica.com.br/matematica/teorema-de-binet-cauchy/</guid><description>&lt;p&gt;Se você já estudou Álgebra Linear, conhece a regra clássica: $\det(AB) = \det(A)\det(B)$. Mas e se as matrizes $A$ e $B$ não forem quadradas? É aqui que entra o elegante &lt;strong&gt;Teorema de Binet-Cauchy&lt;/strong&gt;.&lt;/p&gt;
 &lt;h3 id="o-problema-das-matrizes-retangulares"&gt;O Problema das Matrizes Retangulares&lt;/h3&gt;
 &lt;p&gt;Imagine que $A$ é uma matriz $m \times n$ e $B$ é uma matriz $n \times m$. O produto $AB$ resultará em uma matriz quadrada $m \times m$. Como calcular esse determinante sem realizar toda a multiplicação exaustiva?&lt;/p&gt;</description></item><item><title>A Identidade De Euler: A Equação Mais Bela Da Matemática</title><link>https://bizumatica.com.br/matematica/a-identidade-de-euler-a-equacaoo-mais-bela-da-matematica/</link><pubDate>Wed, 11 Mar 2026 11:11:25 -0300</pubDate><guid>https://bizumatica.com.br/matematica/a-identidade-de-euler-a-equacaoo-mais-bela-da-matematica/</guid><description>&lt;p&gt;A &lt;strong&gt;Identidade de Euler&lt;/strong&gt; é frequentemente chamada de &amp;ldquo;a equação mais bonita da matemática&amp;rdquo; por sua capacidade de conectar, em uma expressão simples, cinco números fundamentais de diferentes áreas.&lt;/p&gt;
 $$e^{i\pi} + 1 = 0$$
@@ -65,25 +85,4 @@ $$I = \int_{-\infty}^{\infty} e^{-x^2} dx$$
  &lt;figcaption&gt; Foto do Canal&lt;/figcaption&gt;
 &lt;/figure&gt;
 &lt;p&gt;&lt;img src="../images/gcanal.png" alt="Geometria do Problema."&gt;
-&lt;em&gt;O problema&lt;/em&gt;&lt;/p&gt;</description></item><item><title>🧪 Teste de Estética e Funcionalidades</title><link>https://bizumatica.com.br/matematica/teste-estetica/</link><pubDate>Tue, 27 Jan 2026 00:00:00 +0000</pubDate><guid>https://bizumatica.com.br/matematica/teste-estetica/</guid><description>&lt;p&gt;Este post serve para validar se o novo &lt;code&gt;extended.css&lt;/code&gt; e os shortcodes estão funcionando corretamente no ambiente do &lt;strong&gt;Bizumática&lt;/strong&gt;.&lt;/p&gt;
-&lt;h2 id="1-teste-de-boxes-shortcodes"&gt;1. Teste de Boxes (Shortcodes)&lt;/h2&gt;
-&lt;p&gt;Vamos testar os três níveis de destaque que configuramos:&lt;/p&gt;
-
-
-
-
-
-
-
-
-
-
-&lt;div class="mat-box box-bizu" style="border-left: 5px solid var(--box-color, #0e1922); background: #0f0f0d; padding: 1rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;"&gt;
- &lt;div class="box-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem; border-bottom: 1px solid #333; padding-bottom: 5px;"&gt;
- &lt;span class="box-icon"&gt;💡&lt;/span&gt;
- &lt;strong class="box-title" style="font-family: monospace; letter-spacing: 1px;"&gt;Macete de Potência&lt;/strong&gt;
- &lt;/div&gt;
- &lt;div class="box-content" style="font-size: 0.95rem; line-height: 1.6;"&gt;
- &lt;p&gt;Para elevar ao quadrado números que terminam em 5:&lt;/p&gt;</description></item><item><title>Exemplo de Post com Math</title><link>https://bizumatica.com.br/matematica/exemplo-math/</link><pubDate>Thu, 18 Dec 2025 08:00:00 -0300</pubDate><guid>https://bizumatica.com.br/matematica/exemplo-math/</guid><description>&lt;div style="border-left: 5px solid #0e1922; background: #0f0f0d; padding: 1rem; margin: 1rem 0; border-radius: 0 8px 8px 0;"&gt;
- &lt;strong&gt;💡 Bizu:&lt;/strong&gt; $$\frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
-&lt;/div&gt;</description></item></channel></rss>
+&lt;em&gt;O problema&lt;/em&gt;&lt;/p&gt;</description></item></channel></rss>

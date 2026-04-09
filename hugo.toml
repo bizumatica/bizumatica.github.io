@@ -6,6 +6,7 @@ publishDir = "docs"
 enableEmoji = true
 
 # --- AJUSTES PARA GITHUB PAGES ---
+# Mantendo sua configuração original para compatibilidade com o deploy
 canonifyURLs = false
 relativeURLs = true
 removePathAccents = true
@@ -45,7 +46,6 @@ removePathAccents = true
       [markup.goldmark.extensions.passthrough]
         enable = true
         [markup.goldmark.extensions.passthrough.delimiters]
-          # Sintaxe otimizada para o Hugo interpretar os blocos de equações
           block = [['$$', '$$'], ['\\[', '\\]']]
           inline = [['$', '$'], ['\\(', '\\)']]
 
@@ -55,7 +55,7 @@ removePathAccents = true
     startLevel = 2
 
 # --- NAVEGAÇÃO (MENUS) ---
-# Padronizados com '/' final para melhor performance de carregamento
+# Estrutura otimizada para o robô do AdSense validar a navegação.
 [[menu.main]]
   identifier = "linux"
   name = "Linux"
@@ -97,3 +97,9 @@ removePathAccents = true
   name = "Sobre"
   url = "/about/"
   weight = 25
+
+[[menu.main]]
+  identifier = "privacidade"
+  name = "Privacidade"
+  url = "/privacidade/"
+  weight = 30

@@ -17,7 +17,7 @@ image: cover.webp
 ---
 
 ![Clique para ver! ;) ](cover.webp)
-*Legenda: Linux Kernel 7 O Que Muda Na Pratica*
+*Linux Kernel 7.0 - O Que Muda Na Prática*
 
 # Linux Kernel 7.0: A Nova Era do Pinguim Chegou!
 

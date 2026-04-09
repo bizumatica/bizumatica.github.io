@@ -1,7 +1,7 @@
 ---
 title: The Ultimate Linux Shell Scripting Guide
 date: '2026-04-04T19:24:01-03:00'
-last_check: '2026-04-07T18:16:56-03:00'
+last_check: '2026-04-09T19:15:52-03:00'
 draft: false
 slug: caps-lock-indicator
 type: equipamentos

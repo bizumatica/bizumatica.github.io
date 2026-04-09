@@ -7,7 +7,7 @@ description: "Post para validar KaTeX, Shortcodes e o novo CSS Tokyo Night."
 categories: ["Matemática", "Shell Scripting", "Bizus"]
 tags: ["hugo", "css", "katex", "deploy"]
 math: true
-draft: false
+draft: true
 ---
 
 Este post serve para validar se o novo `extended.css` e os shortcodes estão funcionando corretamente no ambiente do **Bizumática**.

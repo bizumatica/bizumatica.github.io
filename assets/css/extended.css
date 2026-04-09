@@ -137,7 +137,7 @@ figcaption, .post-content img + em, .post-content p img + em {
 /* --- 6. CIÊNCIA E MATEMÁTICA (KaTeX) --- */
 .katex-display, .katex {
     color: var(--neon-cyan) !important;
-    text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.3);
 }
 
 .katex-display {
@@ -175,7 +175,6 @@ figcaption, .post-content img + em, .post-content p img + em {
     max-width: 280px !important;
     height: auto !important;
 }
-/* Ajuste específico para a foto dentro do card de dados */
 .foto-produto {
     border: 3px solid var(--bizu-yellow) !important;
     max-width: 180px !important;
@@ -216,18 +215,8 @@ figcaption, .post-content img + em, .post-content p img + em {
 .apoie-methods { display: flex; flex-wrap: wrap; gap: 20px; }
 .apoie-card { flex: 1; min-width: 200px; display: flex; flex-direction: column; gap: 10px; }
 
-/* --- NOVOS DESTAQUES --- */
-.label-pix {
-    color: var(--neon-cyan) !important;
-    font-weight: bold;
-    text-shadow: 0 0 10px var(--neon-cyan);
-}
-
-.label-kofi {
-    color: var(--bizu-yellow) !important;
-    font-weight: bold;
-    text-shadow: 0 0 10px var(--bizu-yellow);
-}
+.label-pix { color: var(--neon-cyan) !important; font-weight: bold; text-shadow: 0 0 10px var(--neon-cyan); }
+.label-kofi { color: var(--bizu-yellow) !important; font-weight: bold; text-shadow: 0 0 10px var(--bizu-yellow); }
 
 .apoie-data {
     font-family: monospace; font-size: 0.85rem;
@@ -254,7 +243,7 @@ figcaption, .post-content img + em, .post-content p img + em {
     margin-top: 10px !important;
 }
 
-/* --- 10. MEDIA QUERIES (FINAL) --- */
+/* --- 10. MEDIA QUERIES E ANIMAÇÕES --- */
 @media (max-width: 600px) {
     .menu__inner { gap: 8px 12px !important; }
     .product-card { padding: 0.8rem !important; }
@@ -262,15 +251,12 @@ figcaption, .post-content img + em, .post-content p img + em {
 }
 
 @media (max-width: 480px) {
-    .tags-container-home { 
-        font-size: 0.75rem; gap: 5px; flex-wrap: wrap; justify-content: center;
-    }
+    .tags-container-home { font-size: 0.75rem; gap: 5px; flex-wrap: wrap; justify-content: center; }
     .tag-separator { display: none; }
     .hero-header h1 { font-size: 1.5rem !important; line-height: 1.2; }
     .apoie-methods { flex-direction: column; align-items: center; text-align: center; }
 }
 
-/* --- ANIMAÇÕES --- */
 .best-deal-glow { animation: pulse-glow 2s infinite; }
 @keyframes pulse-glow {
     0% { box-shadow: 0 0 5px rgba(80, 250, 123, 0.2); }
@@ -278,21 +264,42 @@ figcaption, .post-content img + em, .post-content p img + em {
     100% { box-shadow: 0 0 5px rgba(80, 250, 123, 0.2); }
 }
 
-/* --- SEPARADOR ESTILO TERMINAL (ANTI-QUEBRA MOBILE) --- */
 .terminal-line {
-    display: block;
-    width: 100%;
-    white-space: nowrap;   /* Impede que os pontos pulem para a linha de baixo */
-    overflow: hidden;      /* Corta o excesso no mobile sem criar barra de rolagem */
-    text-align: center;
-    color: var(--bizu-yellow);
-    font-family: var(--font-family);
-    letter-spacing: 2px;   /* Dá um respiro elegante entre os pontos */
-    opacity: 0.8;
-    margin: 15px 0;        /* Espaçamento vertical padrão */
-    user-select: none;     /* O usuário não seleciona a linha ao copiar o texto */
+    display: block; width: 100%; white-space: nowrap; overflow: hidden;
+    text-align: center; color: var(--bizu-yellow); font-family: var(--font-family);
+    letter-spacing: 2px; opacity: 0.8; margin: 15px 0; user-select: none;
 }
 
-html {
-  scroll-behavior: smooth;
+html { scroll-behavior: smooth; }
+
+/* --- 11. ADSENSE E MONETIZAÇÃO (PROTEÇÃO TOTAL) --- */
+
+/* Blindagem contra bordas amarelas e sombras herdadas de figures/images */
+ins.adsbygoogle, 
+.google-auto-placed,
+ins.adsbygoogle iframe {
+    border: none !important;
+    background: transparent !important;
+    text-decoration: none !important;
+    box-shadow: none !important;
+}
+
+/* Prevenção de CLS (Cumulative Layout Shift) e fundo dark */
+ins.adsbygoogle {
+    display: block !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+    margin: 20px auto !important;
+    background-color: var(--bg-color) !important;
+}
+
+/* Ajuste para Auto Ads não colarem no header ou elementos neon */
+.google-auto-placed {
+    margin: 30px 0 !important;
+    clear: both;
+}
+
+/* Esconder anúncios dentro de elementos sensíveis (KaTeX/Fórmulas) */
+.katex-display ins.adsbygoogle {
+    display: none !important;
 }

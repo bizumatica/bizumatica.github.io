@@ -4,6 +4,7 @@
     <div class="footer__nav">
       <a href="#" class="nav-btn btn-up">[ UP_TO_TOP ]</a>
       <a href="/" class="nav-btn btn-home">[ RETURN_HOME ]</a>
+      <a href="/privacy/" class="nav-btn btn-privacy">[ PRIVACY_POLICY ]</a>
       <a href="/arquivo/" class="nav-btn btn-logs">[ ALL_LOGS ]</a>
     </div>
 
@@ -21,7 +22,6 @@
   padding: 40px 0;
   border-top: 1px double #222;
   width: 100%;
-  /* REMOVIDO: opacity: 0.7 - Isso estava esmaecendo as cores */
 }
 
 .footer__inner {
@@ -45,15 +45,15 @@
   font-weight: bold;
   text-decoration: none !important;
   padding: 4px 10px;
-  /* Cores sólidas e vibrantes */
   transition: transform 0.1s ease;
 }
 
 .nav-btn:active { transform: scale(0.95); }
 
-/* Cores Tokyo Night Originais (Sem esmaecer) */
+/* Cores Tokyo Night */
 .btn-up { color: #50fa7b !important; border: 1px solid #50fa7b66 !important; }
 .btn-home { color: #EEC35E !important; border: 1px solid #EEC35E66 !important; }
+.btn-privacy { color: #ff79c6 !important; border: 1px solid #ff79c666 !important; }
 .btn-logs { color: #8be9fd !important; border: 1px solid #8be9fd66 !important; }
 
 .copyright {
@@ -62,12 +62,11 @@
   align-items: center;
   text-align: center;
   gap: 8px;
-  color: #888; /* Cinza neutro para o texto secundário */
+  color: #888;
   font-family: monospace;
   font-size: 0.85rem;
 }
 
-/* Links do Copyright - Usam a cor principal do tema sem transparência */
 .footer a {
   color: var(--theme-color);
   text-decoration: none;
@@ -75,6 +74,6 @@
 }
 
 .footer a:hover {
-  filter: brightness(1.2); /* Brilha ao passar o mouse */
+  filter: brightness(1.2);
 }
 </style>

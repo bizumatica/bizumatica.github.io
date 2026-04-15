@@ -12,6 +12,8 @@ Após meses de expectativa e versões alpha/beta rigorosamente testadas, a **Sys
 
 A grande novidade, como todos esperavam, é a estreia oficial da versão final do **COSMIC DE**, o ambiente de desktop totalmente escrito em **Rust**.
 
+{{< adsense >}}
+
 ## O que há de novo no Pop!_OS 24.04?
 
 A transição do GNOME para o COSMIC próprio permitiu à System76 um controle sem precedentes sobre a performance e a personalização. Aqui estão os pontos principais que você precisa conferir:

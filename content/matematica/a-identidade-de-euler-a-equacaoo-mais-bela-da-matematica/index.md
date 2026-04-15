@@ -29,6 +29,8 @@ $$e^{i\pi} + 1 = 0$$
 - **i**: Unidade imaginária (Álgebra Complexa)
 {{< /box >}}
 
+{{< adsense >}}
+
 ### A Origem: Fórmula de Euler
 
 A identidade é um caso particular da **Fórmula de Euler**, que estabelece a ponte entre funções exponenciais e trigonométricas:

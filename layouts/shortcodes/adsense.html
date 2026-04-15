@@ -1,2 +1,20 @@
-<div style="margin: 2rem 0; text-align: center;">
-    </div>
+{{ $slot := .Get "slot" | default "4043462063" }}
+
+<div class="ad-wrapper" style="margin: 2.5rem 0; display: flex; flex-direction: column; align-items: center;">
+    {{ if not hugo.IsServer }}
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-3733806324330520"
+             data-ad-slot="{{ $slot }}"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    {{ else }}
+        <div style="background: #1a1b27; border: 1px dashed #00ff41; color: #00ff41; padding: 1.5rem; font-family: 'Fira Code', monospace; width: 100%; max-width: 728px; text-align: center;">
+            <p style="margin: 0;">[ ⚡ AD_SYSTEM_STUB: SLOT {{ $slot }} ]</p>
+            <p style="font-size: 0.7rem; color: #ff79c6;">Status: READY_FOR_DEPLOY</p>
+        </div>
+    {{ end }}
+</div>

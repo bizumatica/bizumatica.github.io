@@ -72,3 +72,5 @@ Gostou deste tutorial? Confira o hardware que utilizamos para desenvolver e test
 {{ print `{{< compra name="Teclado Mecânico Low Profile" price="450" img="teclado" link="https://amzn.to/exemplo" >}}` }}
 
 ---
+
+<!-- Nota: este é o comando padrão: hugo new posts/meu-novo-teorema/index.md -->

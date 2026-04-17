@@ -42,7 +42,7 @@ O ciclo de dois anos se completou. O **Ubuntu 26.04 LTS** chega como o alicerce 
 
 A mudança mais polêmica e aguardada: os ícones. O Ubuntu abandonou os gradientes brilhantes por um design mais plano (*flat*) e moderno. As pastas agora possuem cores mais saturadas e bordas nítidas, facilitando a identificação em telas de alta resolução (4K/8K). No **Nautilus**, a sensação é de um sistema muito mais leve e integrado.
 
-![Interface do Ubuntu 26.04](cover.webp)
+![Interface do Ubuntu 26.04](ubuntu2604.webp)
 *O novo design do GNOME 50 rodando no Ubuntu 26.04 LTS.*
 
 <h2 id="performance">⚙️ Sob o Capô: Kernel e Performance</h2>

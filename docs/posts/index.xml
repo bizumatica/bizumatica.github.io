@@ -1,17 +1,32 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Bizumática</title><link>https://bizumatica.com.br/posts/</link><description>Recent content in Posts on Bizumática</description><generator>Hugo</generator><language>pt-br</language><lastBuildDate>Mon, 13 Apr 2026 10:00:00 -0300</lastBuildDate><atom:link href="https://bizumatica.com.br/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Ubuntu 26.04 LTS: Performance Sólida e a Nova Identidade Visual</title><link>https://bizumatica.com.br/posts/ubuntu-26-04-lts-novidades-e-performance/</link><pubDate>Mon, 13 Apr 2026 10:00:00 -0300</pubDate><guid>https://bizumatica.com.br/posts/ubuntu-26-04-lts-novidades-e-performance/</guid><description>&lt;p&gt;SEÇÃO DE MONETIZAÇÃO &amp;mdash;
-monetization:
-enabled: true
-type: &amp;ldquo;adsense&amp;rdquo;
-ad_slot: &amp;ldquo;3733806324330520&amp;rdquo;&lt;/p&gt;
-&lt;p&gt;affiliate:&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Bizumática</title><link>https://bizumatica.com.br/posts/</link><description>Recent content in Posts on Bizumática</description><generator>Hugo</generator><language>pt-br</language><lastBuildDate>Mon, 13 Apr 2026 10:00:00 -0300</lastBuildDate><atom:link href="https://bizumatica.com.br/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Ubuntu 26.04 LTS: Performance Sólida e a Nova Identidade Visual</title><link>https://bizumatica.com.br/posts/ubuntu-26-04-lts-novidades-e-performance/</link><pubDate>Mon, 13 Apr 2026 10:00:00 -0300</pubDate><guid>https://bizumatica.com.br/posts/ubuntu-26-04-lts-novidades-e-performance/</guid><description>&lt;h3 id="introdução"&gt;Introdução&lt;/h3&gt;
+&lt;p&gt;O ciclo de dois anos se completou. O &lt;strong&gt;Ubuntu 26.04 LTS&lt;/strong&gt; chega como o alicerce para a computação pessoal e servidores até a próxima década. Mas o que realmente salta aos olhos nesta versão não é apenas o novo Kernel, mas a coragem da Canonical em renovar a iconografia clássica — um &lt;strong&gt;&amp;ldquo;bizu&amp;rdquo; visual&lt;/strong&gt; que muda completamente a experiência do usuário.&lt;/p&gt;
+
+
+&lt;div class="ad-wrapper" style="margin: 2.5rem 0; display: flex; flex-direction: column; align-items: center;"&gt;
+ 
+ &lt;ins class="adsbygoogle"
+ style="display:block"
+ data-ad-client="ca-pub-3733806324330520"
+ data-ad-slot="4043462063"
+ data-ad-format="auto"
+ data-full-width-responsive="true"&gt;&lt;/ins&gt;
+ &lt;script&gt;
+ (adsbygoogle = window.adsbygoogle || []).push({});
+ &lt;/script&gt;
+ 
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;h3 id="-guia-de-navegação"&gt;📌 Guia de Navegação&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;store: &amp;ldquo;Amazon&amp;rdquo;
-link: &amp;ldquo;&lt;a href="https://amzn.to/exemplo-notebook-linux%22"&gt;https://amzn.to/exemplo-notebook-linux&amp;quot;&lt;/a&gt;
-best_deal: true&lt;/li&gt;
+&lt;li&gt;🎨 &lt;a href="#identidade-visual"&gt;A Nova Identidade Visual&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;⚙️ &lt;a href="#performance"&gt;Sob o Capô: Kernel e Performance&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;🚀 &lt;a href="#mao-na-massa"&gt;O Bizu Prático: Customizando via Terminal&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;🧭 &lt;a href="#veredito"&gt;O Veredito do Bizumática&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;📚 &lt;a href="#fontes"&gt;Fontes e Referências&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h3 id="introdução"&gt;Introdução&lt;/h3&gt;
-&lt;p&gt;O ciclo de dois anos se completou. O &lt;strong&gt;Ubuntu 26.04 LTS&lt;/strong&gt; chega como o alicerce para a computação pessoal e servidores até a próxima década. Mas o que realmente salta aos olhos nesta versão não é apenas o novo Kernel, mas a coragem da Canonical em renovar a iconografia clássica — um &amp;ldquo;bizu&amp;rdquo; visual que muda completamente a experiência do usuário.&lt;/p&gt;</description></item><item><title>Linux Kernel 7.O Que Muda Na Pratica</title><link>https://bizumatica.com.br/posts/linux-kernel-7-o-que-muda-na-pratica/</link><pubDate>Thu, 02 Apr 2026 10:00:00 -0300</pubDate><guid>https://bizumatica.com.br/posts/linux-kernel-7-o-que-muda-na-pratica/</guid><description>&lt;p&gt;&lt;img src="cover.webp" alt="Clique para ver! ;) "&gt;
+&lt;h2 id="identidade-visual"&gt;🎨 A Nova Identidade Visual: Adeus, Antigas Pastas&lt;/h2&gt;
+&lt;p&gt;A mudança mais polêmica e aguardada: os ícones. O Ubuntu abandonou os gradientes brilhantes por um design mais plano (&lt;em&gt;flat&lt;/em&gt;) e moderno. As pastas agora possuem cores mais saturadas e bordas nítidas, facilitando a identificação em telas de alta resolução (4K/8K). No &lt;strong&gt;Nautilus&lt;/strong&gt;, a sensação é de um sistema muito mais leve e integrado.&lt;/p&gt;</description></item><item><title>Linux Kernel 7.O Que Muda Na Pratica</title><link>https://bizumatica.com.br/posts/linux-kernel-7-o-que-muda-na-pratica/</link><pubDate>Thu, 02 Apr 2026 10:00:00 -0300</pubDate><guid>https://bizumatica.com.br/posts/linux-kernel-7-o-que-muda-na-pratica/</guid><description>&lt;p&gt;&lt;img src="cover.webp" alt="Clique para ver! ;) "&gt;
 &lt;em&gt;Linux Kernel 7.0 - O Que Muda Na Prática&lt;/em&gt;&lt;/p&gt;
 &lt;h1 id="linux-kernel-70-a-nova-era-do-pinguim-chegou"&gt;Linux Kernel 7.0: A Nova Era do Pinguim Chegou!&lt;/h1&gt;
 &lt;blockquote&gt;

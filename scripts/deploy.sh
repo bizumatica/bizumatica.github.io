@@ -2,109 +2,86 @@
 
 # ==============================================================================
 # Author: Julio Prata
-# Version: 3.7 (AdTech + Performance Optimized)
-# Description: Deploy com Auditoria de Ads, Sincronização e Gestão de Bundles.
+# Version: 3.8 (AdTech + Performance + Resilience)
 # ==============================================================================
 
 # GARANTIR QUE O SCRIPT EXECUTE NA RAIZ DO PROJETO
 cd "$(dirname "$0")/.."
 
-# Cores para o terminal (Estética Tokyo Night)
+# Cores Tokyo Night
 GREEN='\033[0;32m'
 CYAN='\033[0;36m'
 YELLOW='\033[1;33m'
 RED='\033[0;31m'
 NC='\033[0m'
 
-echo -e "${CYAN}--- [START] Deploy: Bizumática v3.7 ---${NC}"
+echo -e "${CYAN}--- [START] Deploy: Bizumática v3.8 ---${NC}"
 
-# 0. Sincronização de Dados e Imagens
+# 0. Sincronização e venv
 echo -e "${YELLOW}--> [0] Rodando automação Python (Sincronização)...${NC}"
+# Ativa venv se existir
+[ -d "venv" ] && source venv/bin/activate
+
 if python3 scripts/auto-busca.py; then
     echo -e "${GREEN}--> Sincronização: SUCESSO!${NC}"
 else
-    echo -e "${RED}--> ALERTA: Falha no Python. Prosseguindo com dados locais...${NC}"
+    echo -e "${RED}--> ALERTA: Falha no Python (Pandas instalado?). Prosseguindo local...${NC}"
 fi
 
-# 1. Limpeza Inteligente de Migração (Bundles)
+# 1. Limpeza de Bundles (Prevenção de Duplicatas)
 echo -e "${YELLOW}--> [1] Verificando integridade de Page Bundles...${NC}"
 rm -rf resources/_gen
-
 for section in content/equipamentos content/matematica content/posts; do
-    if [ -d "$section" ]; then
-        for dir in "$section"/*/; do
-            [ -d "$dir" ] || continue
-            base_name=$(basename "$dir")
-            old_file="${section}/${base_name}.md"
-            if [ -f "$old_file" ]; then
-                echo -e "${RED}--> Conflito detectado: Removendo arquivo legado: $old_file${NC}"
-                rm "$old_file"
-            fi
-        done
-    fi
+    [ -d "$section" ] || continue
+    find "$section" -maxdepth 1 -name "*.md" | while read -r old_file; do
+        base=$(basename "$old_file" .md)
+        if [ -d "$section/$base" ]; then
+            echo -e "${RED}--> Removendo conflito: $old_file (Pasta detectada)${NC}"
+            rm "$old_file"
+        fi
+    done
 done
 
-# 2. Auditoria de Monetização (Pre-build Check)
+# 2. Auditoria AdSense
 echo -e "${YELLOW}--> [2] Auditando inventário de AdSense...${NC}"
 if [ -f "./scripts/audit-ads.sh" ]; then
-    # Executa e filtra apenas os que faltam para manter o log limpo
-    ./scripts/audit-ads.sh | grep "MISS" || echo -e "${GREEN}--> Todos os posts auditados possuem Ads!${NC}"
-else
-    echo -e "${RED}--> ALERTA: Script de auditoria não encontrado em /scripts/audit-ads.sh${NC}"
+    ./scripts/audit-ads.sh | grep "MISS" || echo -e "${GREEN}--> Conteúdo 100% Monetizado!${NC}"
 fi
 
-# 3. Build Hugo (Produção)
-export HUGO_ENV="production"
+# 3. Build Hugo (Output em /docs para GitHub Pages)
 echo -e "${YELLOW}--> [3] Gerando build otimizado em /docs...${NC}"
-
 if hugo --gc --minify --cleanDestinationDir -d docs; then
     echo -e "${GREEN}--> Build Hugo: OK!${NC}"
 else
-    echo -e "${RED}--> ERRO CRÍTICO: Falha no build do Hugo.${NC}"
-    exit 1
+    echo -e "${RED}--> ERRO: Falha no Hugo.${NC}" && exit 1
 fi
 
-# 4. Verificação de Ativos Críticos (Fontes e Ads)
-echo -e "${YELLOW}--> [4] Verificando integridade dos ativos estáticos...${NC}"
-if [ -f "docs/ads.txt" ]; then
-    echo -e "${GREEN}--> ads.txt: Presente e pronto.${NC}"
+# 4. Verificação de Ativos (SEO & AdTech)
+echo -e "${YELLOW}--> [4] Verificando ativos críticos...${NC}"
+[ -f "docs/ads.txt" ] && echo -e "${GREEN}--> ads.txt: OK.${NC}" || echo -e "${RED}--> ERRO: ads.txt MISSING!${NC}"
+# Validação de quebra de linha no robots.txt
+if grep -q "Allow: /" docs/robots.txt; then
+    echo -e "${GREEN}--> robots.txt: Válido.${NC}"
 else
-    echo -e "${RED}--> ERRO: ads.txt sumiu do /docs! Verifique a pasta /static.${NC}"
+    echo -e "${RED}--> AVISO: robots.txt inválido para crawlers.${NC}"
 fi
 
-if [ -d "docs/fonts" ]; then
-    echo -e "${GREEN}--> Fontes Locais (.woff2): Integradas.${NC}"
-else
-    echo -e "${YELLOW}--> AVISO: Pasta /fonts não detectada. Verifique se baixou os arquivos.${NC}"
-fi
-
-# 5. Indexação de Busca (Pagefind)
-echo -e "${YELLOW}--> [5] Atualizando índice de busca (Pagefind)...${NC}"
-if npx pagefind --site docs --output-path docs/pagefind --quiet; then
-    echo -e "${GREEN}--> Pagefind: Índice atualizado!${NC}"
+# 5. Busca (Pagefind)
+echo -e "${YELLOW}--> [5] Atualizando índice Pagefind...${NC}"
+if npx --yes pagefind --site docs --quiet; then
+    echo -e "${GREEN}--> Pagefind: OK!${NC}"
     touch docs/.nojekyll
-else
-    echo -e "${RED}--> ALERTA: Falha ao gerar índice Pagefind.${NC}"
 fi
 
-# 6. Gestão de Commit e Push
+# 6. Git Push
 msg="Update Portal $(date +'%d/%m/%Y %H:%M:%S')"
-if [ $# -eq 1 ]; then msg="$1"; fi
+[ $# -eq 1 ] && msg="$1"
 
 if [[ -z $(git status -s) ]]; then
-    echo -e "${CYAN}--> Status: Tudo atualizado no GitHub. Nada a enviar.${NC}"
-    exit 0
-fi
-
-echo -e "${GREEN}--> [6] Sincronizando com GitHub...${NC}"
-git add . 
-git commit -m "$msg"
-git pull origin main --rebase --no-edit
-
-if git push origin main; then
-    echo -e "${CYAN}--- 🚀 [DONE] Bizumática v3.7 está online! ---${NC}"
-    echo -e "${YELLOW}Dica: Confira se as fórmulas KaTeX renderizaram em: https://bizumatica.com.br${NC}"
+    echo -e "${CYAN}--> Nada para commitar.${NC}"
 else
-    echo -e "${RED}--> ERRO: Falha no Push. Verifique conflitos manualmente.${NC}"
-    exit 1
+    echo -e "${GREEN}--> [6] Enviando para GitHub...${NC}"
+    git add . && git commit -m "$msg"
+    git pull origin main --rebase --no-edit
+    git push origin main && echo -e "${CYAN}--- 🚀 [DONE] Bizumática Online! ---${NC}"
 fi

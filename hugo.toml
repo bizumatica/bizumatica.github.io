@@ -1,5 +1,5 @@
 baseURL = "https://bizumatica.com.br/"
-languageCode = "pt-br"
+locale = "pt-br"
 title = "Bizumática"
 theme = "terminal"
 publishDir = "docs"

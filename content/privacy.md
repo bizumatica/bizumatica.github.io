@@ -1,9 +1,11 @@
 ---
+slug: "politica-de-privacidade"
 title: "Política de Privacidade"
 date: 2026-04-09
 draft: false
 layout: "page"
 ---
+slug: "politica-de-privacidade"
 
 ### 1. Coleta de Informações
 Nós coletamos informações para fornecer serviços melhores a todos os nossos usuários. O **Bizumática** pode coletar dados de duas formas:
@@ -32,4 +34,5 @@ Ao utilizar nosso site, você concorda com nossa política de privacidade.
 Se você tiver alguma dúvida sobre esta política, entre em contato através do e-mail: `julio@bizumatica.com.br`.
 
 ---
+slug: "politica-de-privacidade"
 *Última atualização: 09 de Abril de 2026.*

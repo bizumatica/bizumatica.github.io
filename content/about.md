@@ -1,10 +1,12 @@
 ---
-title: "Sobre: Julio Prata"
+slug: "sobre"
+title: "Sobre o Autor"
 date: 2025-12-05
 type: "page"
 layout: "single"
 math: true
 ---
+slug: "sobre"
 
 Olá! Eu sou o **Julio Prata**, nick`BackInBash` ⚡AC/DC⚡:smile:.
 

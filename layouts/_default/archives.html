@@ -50,7 +50,7 @@
     {{ $all_logs := where (where .Site.RegularPages "Section" "in" $secoes_permitidas) "Permalink" "!=" .Permalink }}
     
     <div style="margin-bottom: 30px; border-bottom: 1px solid #333; padding-bottom: 10px;">
-        <h1 style="color: #EEC35E; font-size: 1.2rem; margin: 0;">> [SCANNING_ALL_LOGS]... DONE.</h1>
+        <h1 style="color: #EEC35E; font-size: 1.2rem; margin: 0;">> [SCANNING_TODOS OS LOGS]... DONE.</h1>
         <p style="color: #555; font-size: 0.7rem; margin: 5px 0 0 0;">SISTEMA: {{ len $all_logs }} ENTRADAS VÁLIDAS.</p>
     </div>
     

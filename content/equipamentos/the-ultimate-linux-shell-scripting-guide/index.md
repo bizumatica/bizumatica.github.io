@@ -1,7 +1,7 @@
 ---
 title: The Ultimate Linux Shell Scripting Guide
 date: '2026-04-04T19:24:01-03:00'
-last_check: '2026-05-18T18:05:00-03:00'
+last_check: '2026-05-19T19:50:00-03:00'
 draft: false
 slug: ultimate-linux-shell-scripting-guide
 type: equipamentos
@@ -20,7 +20,7 @@ product:
 affiliate:
   - store: Amazon
     link: https://amzn.to/40ZIEbu
-    best_deal: false
+    best_deal: true
 ---
 
 Guia definitivo e atualizado para dominar automação no Linux, sendo indispensável para administradores de sistemas e desenvolvedores DevOps.
@@ -69,5 +69,7 @@ set -euo pipefail
 ```
 
 A exploração do gerenciamento avançado de arquivos de configuração, o parsing cirúrgico de saídas estruturadas no formato JSON utilizando o utilitário `jq`, e a integração do Shell com chamadas de rede e APIs REST via `curl` elevam este livro ao status de cabeceira técnica de engenharia. Para analistas de infraestrutura, administradores de sistemas (SysAdmins) e engenheiros de confiabilidade de sites (SREs), esta obra representa o investimento definitivo para atingir o nível máximo de maturidade operacional no desenvolvimento de ferramentas de linha de comando eficientes e resilientes.
+
+---
 
 {{< compra >}}

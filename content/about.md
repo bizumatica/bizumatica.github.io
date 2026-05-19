@@ -1,13 +1,11 @@
 ---
-slug: "sobre"
+slug: "about"
 title: "Sobre o Autor"
 date: 2025-12-05
 type: "page"
 layout: "single"
 math: true
 ---
-slug: "sobre"
-
 Olá! Eu sou o **Julio Prata**, nick`BackInBash` ⚡AC/DC⚡:smile:.
 
 Sou um entusiasta da tecnologia que acredita na liberdade do código e na disciplina do espírito.

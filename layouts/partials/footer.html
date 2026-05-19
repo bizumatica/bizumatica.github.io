@@ -3,9 +3,15 @@
     
     <div class="footer__nav">
       <a href="#" class="nav-btn btn-up">[ SUBIR AO TOPO ]</a>
-      <a href="/" class="nav-btn btn-home">[ VOLTAR AO INÍCIO ]</a>
-      <a href="/politica-de-privacidade/" class="nav-btn btn-privacy">[ POLÍTICA DE PRIVACIDADE ]</a>
-      <a href="/arquivo/" class="nav-btn btn-logs">[ TODOS OS LOGS ]</a>
+      <a href="{{ .Site.BaseURL }}" class="nav-btn btn-home">[ VOLTAR AO INÍCIO ]</a>
+      
+      {{ with .Site.GetPage "privacy.md" }}
+        <a href="{{ .Permalink }}" class="nav-btn btn-privacy">[ POLÍTICA DE PRIVACIDADE ]</a>
+      {{ end }}
+      
+      {{ with .Site.GetPage "logs.md" }}
+        <a href="{{ .Permalink }}" class="nav-btn btn-logs">[ TODOS OS LOGS ]</a>
+      {{ end }}
     </div>
 
     <div class="copyright">

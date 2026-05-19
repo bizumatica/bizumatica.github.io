@@ -1,0 +1,25 @@
+{{- $numero := .Get "numero" -}}
+{{- $titulo := .Get "titulo" -}}
+{{- $cor    := .Get "cor" | default "var(--primary, #00ffff)" -}}
+
+{{- /* Fallback Guard: Se o card for usado sozinho fora de um grid, ele injeta o CSS protetor */ -}}
+{{- if not (.Page.Scratch.Get "regras-css-loaded") -}}
+  {{- .Page.Scratch.Set "regras-css-loaded" true -}}
+  <style>
+    .custom-grid-regras { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+    .custom-card-regra { border-radius: 4px; border: 1px solid var(--card-color); background: color-mix(in srgb, var(--card-color) 5%, transparent); overflow: hidden; font-family: 'Courier New', Courier, monospace; margin-bottom: 1rem; }
+    .card-regra-header { background: color-mix(in srgb, var(--card-color) 20%, transparent); padding: 0.5rem 1rem; display: flex; align-items: center; gap: 10px; }
+    .card-regra-num, .card-regra-title { font-weight: bold; color: var(--card-color); text-transform: uppercase; font-size: 13px; }
+    .card-regra-body { padding: 0.75rem 1rem; font-size: 0.85rem; line-height: 1.6; color: var(--text-color, #ddd); }
+  </style>
+{{- end -}}
+
+<div class="custom-card-regra" style="--card-color: {{ $cor | safeCSS }};">
+  <div class="card-regra-header">
+    <span class="card-regra-num">[ {{ $numero }} ]</span>
+    <span class="card-regra-title">{{ $titulo }}</span>
+  </div>
+  <div class="card-regra-body">
+    {{ .Inner }}
+  </div>
+</div>

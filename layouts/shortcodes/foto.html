@@ -1,0 +1,36 @@
+{{- $src := .Get "src" -}}
+{{- $alt := .Get "alt" | default "Imagem do artigo" -}}
+{{- $legenda := .Get "legenda" -}}
+
+<figure class="artigo-foto-container">
+  <img src="{{ $src }}" alt="{{ $alt }}" class="artigo-foto" loading="lazy">
+  {{ if $legenda }}
+    <figcaption class="artigo-foto-legenda">:: [ {{ upper $legenda }} ] ::</figcaption>
+  {{ end }}
+</figure>
+
+<style>
+.artigo-foto-container {
+  margin: 2.5rem 0;
+  padding: 0;
+  text-align: center;
+}
+
+.artigo-foto {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid #222;
+  background-color: #16161e; /* Fundo interno caso a imagem tenha transparência */
+  padding: 6px;
+  display: block;
+  margin: 0 auto;
+}
+
+.artigo-foto-legenda {
+  margin-top: 10px;
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: #a9b1d6; /* Cinza do Tokyo Night */
+  letter-spacing: 0.5px;
+}
+</style>

@@ -6,4 +6,3 @@ draft: false
 layout: "archives"
 url: "/arquivo/"
 ---
-slug: "logs"

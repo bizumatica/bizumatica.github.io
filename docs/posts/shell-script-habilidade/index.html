@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  
+    <title> :: Bizumática</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Análise e validação minuciosas concluídas, desenvolvedor. Este post traz um manifesto filosófico e técnico brilhante sobre a emancipação digital através do Terminal. Como o artigo foca puramente no desenvolvimento de habilidades em software e automação nativa, obedecerei rigorosamente ao seu comando de ouro: nada de seções de hardware ou shortcodes de compras aqui.
+Avaliando a estrutura sob as regras do Hugo e os critérios de densidade do AdSense, apliquei as seguintes otimizações:
+" />
+<meta name="keywords" content="" />
+
+
+    <meta name="robots" content="noodp" />
+
+
+<link rel="canonical" href="http://localhost:1313/posts/shell-script-habilidade/" />
+
+
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/extended.min.ddf7ba1f20c515b3baaf21540b1e9a0a870d2749642659955e842b9e1cd48c77.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/buttons.min.86f6b4c106b6c6eb690ae5203d36b442c1f66f718ff4e8164fa86cf6c61ad641.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/code.min.c4581949edab7810737609fc5568852bcd908945f14561e366dcd2300a370545.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/fonts.min.5bb7ed13e1d00d8ff39ea84af26737007eb5051b157b86fc24487c94f3dc8bbe.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/footer.min.eb8dfc2c6a7eafa36cd3ba92d63e69e849e2200e0002a228d137f236b09ecd75.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/gist.min.a751e8b0abe1ba8bc53ced52a38b19d8950fe78ca29454ea8c2595cf26aad5c0.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/header.min.75c7eb0e2872d95ff48109c6647d0223a38db52e2561dd87966eb5fc7c6bdac6.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/main.min.36833afd348409fc6c3d09d0897c5833d9d5bf1ff31f5e60ea3ee42ce2b1268c.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/menu.min.3c17467ebeb3d38663dce68f71f519901124fa5cbb4519b2fb0667a21e9aca39.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/pagination.min.bbb986dbce00a5ce5aca0504b7925fc1c581992a4bf57f163e5d69cc1db7d836.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/post.min.e6dddd258e64c83e05cec0cd49c05216742d42fc8ecbfbe6b67083412b609bd3.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/syntax.min.a2cc694a9b481f15d41722bffc2cc54eea4c4f74fd9072b0b33253604c22606e.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/terminal.min.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css">
+
+  
+  <link rel="stylesheet" href="http://localhost:1313/css/terms.min.b81791663c3790e738e571cdbf802312390d30e4b1d8dc9d814a5b5454d0ac11.css">
+
+
+
+<link rel="stylesheet" href="http://localhost:1313/style.css">
+
+<link rel="shortcut icon" href="http://localhost:1313/favicon.png">
+
+<meta name="twitter:card" content="summary" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="">
+<meta property="og:url" content="http://localhost:1313/posts/shell-script-habilidade/" />
+<meta property="og:site_name" content="Bizumática" />
+
+
+
+<link rel="icon" type="image/svg+xml" href="http://localhost:1313/logo-bizu.svg">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+
+<link rel="stylesheet" href="http://localhost:1313/css/extended.css">
+
+
+</head>
+<body>
+
+
+<div class="container center">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo-row" style="display: flex; align-items: center; width: 100%; overflow: hidden;"><a href="../../" style="text-decoration: none; flex-shrink: 0;">
+        <div class="logo-box">BIZUMÁTICA</div>
+      </a>
+      <div class="terminal-bars"></div>
+    </div>
+
+    <nav class="menu-nav">
+      <ul class="menu__inner"><li><a href="../../posts/">[ Linux ]</a></li>
+        <li><a href="../../matematica/">[ Matemática ]</a></li>
+        <li><a href="../../equipamentos/">[ Curadoria ]</a></li>
+        <li><a href="../../foss/">[ FOSS ]</a></li> 
+        <li><a href="../../search/">[ Buscar ]</a></li>
+        <li><a href="../../about/">[ Sobre ]</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+ 
+:root { --theme-color: #EEC35E; }
+
+.logo-box {
+    background-color: var(--theme-color) !important;
+    color: #000 !important;
+    padding: 5px 12px;
+    font-weight: bold;
+    font-family: monospace;
+    display: inline-block;
+    text-transform: uppercase;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.terminal-bars {
+    flex-grow: 1;
+    height: 25px;
+    background-image: linear-gradient(to right, var(--theme-color) 1px, transparent 1px);
+    background-size: 4px 100%;
+}
+
+.header__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 0;
+}
+
+.menu-nav { margin-top: 25px; width: 100%; }
+
+.menu__inner {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 10px 20px;
+}
+
+.menu__inner li a {
+    color: var(--theme-color) !important;
+    text-decoration: none;
+    font-family: monospace;
+    font-size: 1.1rem;
+}
+
+.menu__inner li a:hover {
+    text-decoration: underline;
+    filter: brightness(1.2);
+}
+
+@media (max-width: 480px) {
+    .menu__inner { gap: 15px; }
+    .menu__inner li a { font-size: 1rem; }
+}
+</style>
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title"></h1>
+  
+  <div class="post-meta" style="margin-bottom: 20px; opacity: 0.7; font-size: 0.9rem;">
+    <span>📅 01/01/0001</span> :: 
+    <span>📖 6 min de leitura</span>
+  </div>
+  
+  
+
+  
+
+  <div class="post-content">
+    <p>Análise e validação minuciosas concluídas, desenvolvedor. Este post traz um manifesto filosófico e técnico brilhante sobre a emancipação digital através do Terminal. Como o artigo foca puramente no desenvolvimento de habilidades em software e automação nativa, obedecerei rigorosamente ao seu comando de ouro: <strong>nada de seções de hardware ou shortcodes de compras aqui</strong>.</p>
+<p>Avaliando a estrutura sob as regras do Hugo e os critérios de densidade do AdSense, apliquei as seguintes otimizações:</p>
+<ol>
+<li><strong>Massa Crítica Textual e Tempo de Leitura:</strong> O texto original possuía cerca de 350 palavras, caindo na flag de <em>Thin Content</em> (2 minutos de leitura). Para elevá-lo ao patamar ideal de <strong>5 a 6 minutos de leitura</strong> ($>850$ palavras), expandi a fundamentação técnica do processamento de streams do Bash e adicionei um exemplo prático de refatoração em loop estruturado.</li>
+<li><strong>Explicitação de Engenharia de Software (E-E-A-T):</strong> Envolvi o título com aspas duplas para evitar quebras de compilação no front matter por conta dos dois pontos implícitos da semântica YAML. Introduzi um modelo analítico de eficiência de automação utilizando a Lei de Amdahl adaptada para tarefas repetitivas em LaTeX.</li>
+<li><strong>Higienização de Categorias e Links:</strong> Padronizei as categorias em caixa baixa (<code>shell-scripting</code>, <code>performance</code>, <code>linux</code>) e converti as URLs expostas em uma seção de bibliografia Markdown polida e elegante, no padrão visual <em>Tokyo Night</em>.</li>
+</ol>
+<hr>
+<h2 id="-código-integral-otimizado-contentpostsshell-script-a-habilidade-invisivelmd">🛠️ Código Integral Otimizado: <code>content/posts/shell-script-a-habilidade-invisivel.md</code></h2>
+<p>Substitua o conteúdo do seu arquivo por este bloco integral higienizado e expandido:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span><span style="color:#f92672">title</span>: <span style="color:#e6db74">&#34;Shell Script: A Habilidade Invisível para Profissionais de Elite&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">date</span>: <span style="color:#e6db74">2026-01-07T08:00:00</span><span style="color:#ae81ff">-03</span>:<span style="color:#ae81ff">00</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">last_check</span>: <span style="color:#e6db74">&#39;2026-05-19T18:33:00-03:00&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">draft</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">toc</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">math</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">slug</span>: <span style="color:#e6db74">&#34;habilidade-natural-shell&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">tags</span>: [<span style="color:#e6db74">&#34;linux&#34;</span>, <span style="color:#e6db74">&#34;FOSS&#34;</span>, <span style="color:#e6db74">&#34;shell script&#34;</span>]
+</span></span><span style="display:flex;"><span><span style="color:#f92672">categories</span>: [<span style="color:#e6db74">&#34;shell-scripting&#34;</span>, <span style="color:#e6db74">&#34;performance&#34;</span>, <span style="color:#e6db74">&#34;linux&#34;</span>]
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Por que falar de Shell Script em pleno 2026?</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">Muitas vezes, quando olhamos para a tela escura de um terminal de linha de comando emitindo linhas contínuas de texto, imaginamos imediatamente um cenário de ficção científica estilo *Matrix*, restrito estritamente a analistas de segurança, engenheiros de infraestrutura ou administradores de redes. No **Bizumática**, nosso propósito primordial é quebrar esse mito limitante. O aprendizado de Shell Script não deve ser encarado apenas como o domínio de uma linguagem de programação esotérica; ele constitui, fundamentalmente, uma ferramenta indispensável de **autonomia intelectual e soberania computacional**.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">Independentemente de você atuar como advogado lidando com fluxos massivos de processos judiciais, designer gerenciando bibliotecas extensas de assets gráficos, acadêmico processando tabelas de dados brutos ou um entusiasta de tecnologia, aprender a &#34;falar&#34; com o seu sistema operacional sem intermediários visuais é o equivalente contemporâneo a aprender a ler e escrever na era da transformação digital.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">
+
+<div class="ad-wrapper" style="margin: 2.5rem 0; display: flex; flex-direction: column; align-items: center;">
+    
+        <div style="background: #1a1b27; border: 1px dashed #00ff41; color: #00ff41; padding: 1.5rem; font-family: 'Fira Code', monospace; width: 100%; max-width: 728px; text-align: center;">
+            <p style="margin: 0;">[ ⚡ AD_SYSTEM_STUB: SLOT 4043462063 ]</p>
+            <p style="font-size: 0.7rem; color: #ff79c6;">Status: READY_FOR_DEPLOY</p>
+        </div>
+    
+</div></span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## A Filosofia da Automação no Dia a Dia</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">Imagine um cenário administrativo comum: você precisa renomear sistematicamente 500 arquivos de imagens de um evento, extrair blocos específicos de texto criptografado de dezenas de documentos PDF ou organizar milhares de notas fiscais espalhadas em subdiretórios baseando-se estritamente na data de criação de cada arquivo. Você possui duas escolhas claras</span>: <span style="color:#ae81ff">executar essa tarefa manualmente, sacrificando horas preciosas de trabalho cognitivo e correndo o risco iminente de cometer erros operacionais por fadiga, ou escrever uma rotina linear de três linhas de código no terminal para solucionar o gargalo em poucos milissegundos.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">O Shell Script atua como a ponte lógica que separa o esforço mecânico repetitivo da liberdade criativa. Quando você domina a sintaxe fundamental do Bash ou Zsh, você deixa de atuar como um mero consumidor ou usuário passivo de interfaces gráficas engessadas e assume o papel de **maestro soberano** do hardware do seu computador.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">Para avaliar o impacto real da automação sobre uma rotina de dados, podemos modelar matematicamente o ganho de eficiência e tempo por meio de uma variação da Lei de Amdahl aplicada à produtividade diária</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">$$S_{\text{eficiência}} = \frac{1}{(1 - P) + \frac{P}{T_{\text{script}}}}$$</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">Onde $P$ representa a proporção da tarefa automatizável e $T_{\text{script}}$ o tempo infinitesimal de execução do script se comparado ao processo operacional manual de digitação e clique.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Por Que Isso Deve Ser uma &#34;Habilidade Natural&#34;?</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">A incorporação do terminal como uma extensão natural do seu fluxo de trabalho apoia-se em quatro pilares estratégicos de eficiência</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### 1. Soberania Digital contra Interfaces Restritivas</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">Em um mercado saturado por softwares comerciais proprietários baseados em assinaturas e interfaces de usuário (*GUIs*) projetadas especificamente para limitar o que você pode ou não modificar no seu próprio sistema operacional, o Shell Script devolve o controle das diretivas de arquivos para as suas mãos. Você dita as regras de como os seus dados são manipulados, indexados e transferidos.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### 2. Eficiência Universal e Reuso de Conhecimento</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">O terminal não se importa com a sua área de atuação acadêmica ou corporativa. Se a sua rotina envolve lidar com arquivos binários, strings de texto, chamadas de rede ou processamento de logs, o Shell permite orquestrar essas ferramentas nativas do sistema de forma combinatória. Uma automação desenvolvida para organizar planilhas pode ser facilmente adaptada para gerenciar repositórios de imagens com alterações mínimas em suas variáveis de ambiente.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">```bash</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/env bash</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Exemplo Prático: Higienização e padronização automatizada de arquivos</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">echo &#34;[*] Normalizando extensões de arquivos no diretório atual...&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">for arquivo in *.JPEG; do</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">if [[ -f &#34;${arquivo}&#34; ]]; then</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ae81ff">mv -v &#34;${arquivo}&#34; &#34;${arquivo%.JPEG}.jpg&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">fi</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">done</span>
+</span></span></code></pre></div><h3 id="3-desenvolvimento-de-pensamento-estruturado">3. Desenvolvimento de Pensamento Estruturado</h3>
+<p>Codificar uma sequência de comandos obriga o operador a exercitar e refinar o raciocínio lógico formal. Você aprende a decompor um problema macro complexo em pequenas sub-rotinas atômicas executáveis e encadeadas, capturando exceções, tratando códigos de retorno (<em>exit status</em>) e otimizando o fluxo de dados através de descritores de arquivos e redirecionadores de entrada e saída.</p>
+<h3 id="4-resiliência-do-padrão-foss-free-and-open-source-software">4. Resiliência do Padrão FOSS (Free and Open Source Software)</h3>
+<p>O conhecimento técnico absorvido ao estudar Shell Script apoia-se em padrões abertos e maduros (como a especificação POSIX). Diferente de frameworks de desenvolvimento web que nascem e se tornam obsoletos em ciclos curtos de dois anos, as habilidades desenvolvidas hoje no terminal Bash continuarão perfeitamente válidas, portáveis e altamente eficientes nos próximos vinte ou trinta anos de evolução dos sistemas computacionais baseados em Unix.</p>
+<hr>
+<h2 id="o-primeiro-passo-desmistificando-o-terminal">O Primeiro Passo: Desmistificando o Terminal</h2>
+<p>A esmagadora maioria dos usuários desiste de aprender linhas de comando antes mesmo do primeiro script funcional por acreditar erroneamente que o ambiente exige a memorização de milhares de comandos complexos. A verdade técnica é muito mais simples: se você compreende o conceito de caminhos de arquivos e sabe navegar de forma hierárquica entre pastas, você já domina metade do conhecimento necessário para iniciar suas automações. Um Shell Script nada mais é do que uma coleção ordenada de instruções que você digitaria sequencialmente de forma manual na janela do terminal.</p>
+<blockquote>
+<p>&ldquo;A automação inteligente não foi concebida apenas para economizar minutos no relógio da empresa, mas sim para garantir de forma absoluta que a sua energia cognitiva e o seu tempo útil sejam investidos no que realmente importa: a criatividade humana, a estratégia de negócios e a tomada de decisões complexas.&rdquo;</p>
+</blockquote>
+<hr>
+<h2 id="-referências-e-fontes-de-estudo">📚 Referências e Fontes de Estudo</h2>
+<ul>
+<li><strong>JARGAS, Aurélio Marinho.</strong> <em>Shell Script Profissional</em>. Um guia referencial de engenharia para estruturação de scripts robustos e portáveis. Detalhes em: <a href="https://aurelio.net/shell/">aurelio.net/shell/</a>.</li>
+<li><strong>GLEIDSON, Marina.</strong> <em>Guia Foca GNU/Linux</em>. Uma das maiores e mais tradicionais documentações didáticas sobre administração de sistemas baseados em Linux e manipulação de fluxos em ambiente Shell Bash. Disponível em: <a href="https://www.guiafoca.org/">guiafoca.org</a>.</li>
+<li><strong>BASH ACADEMY.</strong> <em>The Bash Academy: Learn the Shell</em>. Plataforma educacional aberta focada na desmistificação e ensino de boas práticas de programação em ambientes POSIX complacentes. Referência em: <a href="https://bash.academy/">bash.academy</a>.</li>
+</ul>
+
+  </div>
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+    <div class="footer__nav">
+      <a href="#" class="nav-btn btn-up">[ SUBIR AO TOPO ]</a>
+      <a href="http://localhost:1313/" class="nav-btn btn-home">[ VOLTAR AO INÍCIO ]</a>
+      
+      
+        <a href="http://localhost:1313/privacidade/" class="nav-btn btn-privacy">[ POLÍTICA DE PRIVACIDADE ]</a>
+      
+      
+      
+        <a href="http://localhost:1313/arquivo/" class="nav-btn btn-logs">[ TODOS OS LOGS ]</a>
+      
+    </div>
+
+    <div class="copyright">
+      <span>© 2026 Powered by <a href="https://gohugo.io">Hugo</a></span>
+      <span>:: Theme made by <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">panr</a></span>
+      <span>:: Modificado com ☕ por <a href="https://github.com/bizumatica" target="_blank">Julio Prata</a></span>
+      <span>:: Visite <a href="https://juliostudio.dev.br" target="_blank">JulioStudio</a></span>
+    </div>
+  </div>
+</footer>
+
+<style>
+.footer {
+  padding: 40px 0;
+  border-top: 1px double #222;
+  width: 100%;
+}
+
+.footer__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer__nav {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.nav-btn {
+  font-family: monospace;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-decoration: none !important;
+  padding: 4px 10px;
+  transition: transform 0.1s ease;
+}
+
+.nav-btn:active { transform: scale(0.95); }
+
+ 
+.btn-up { color: #50fa7b !important; border: 1px solid #50fa7b66 !important; }
+.btn-home { color: #EEC35E !important; border: 1px solid #EEC35E66 !important; }
+.btn-privacy { color: #ff79c6 !important; border: 1px solid #ff79c666 !important; }
+.btn-logs { color: #8be9fd !important; border: 1px solid #8be9fd66 !important; }
+
+.copyright {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  color: #888;
+  font-family: monospace;
+  font-size: 0.85rem;
+}
+
+.footer a {
+  color: var(--theme-color);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--theme-color);
+}
+
+.footer a:hover {
+  filter: brightness(1.2);
+}
+</style>
+  
+</div>
+
+</body>
+</html>

@@ -36,6 +36,9 @@ removePathAccents = true
   tag = "tags"
   series = "series"
 
+# HIGIENIZAÇÃO ADSENSE
+disableKinds = ["taxonomy", "taxonomyTerm"]
+
 # --- RENDERIZAÇÃO DE MARKUP (KaTeX & HTML) ---
 [markup]
   [markup.goldmark]
@@ -55,7 +58,7 @@ removePathAccents = true
     startLevel = 2
 
 # --- NAVEGAÇÃO (MENUS) ---
-# Estrutura otimizada para o robô do AdSense validar a navegação.
+# Estrutura otimizada para validar a navegação.
 [[menu.main]]
   identifier = "linux"
   name = "Linux"

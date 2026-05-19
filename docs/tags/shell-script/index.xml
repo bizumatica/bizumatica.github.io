@@ -1,19 +1,2 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Shell Script on Bizumática</title>
-    <link>http://localhost:1313/tags/shell-script/</link>
-    <description>Recent content in Shell Script on Bizumática</description>
-    <generator>Hugo</generator>
-    <language>pt-br</language>
-    <lastBuildDate>Wed, 07 Jan 2026 08:00:00 -0300</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/shell-script/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Shell Script: A Habilidade Invisível para Profissionais de Elite</title>
-      <link>http://localhost:1313/posts/habilidade-natural-shell/</link>
-      <pubDate>Wed, 07 Jan 2026 08:00:00 -0300</pubDate>
-      <guid>http://localhost:1313/posts/habilidade-natural-shell/</guid>
-      <description>&lt;h2 id=&#34;por-que-falar-de-shell-script-em-pleno-2026&#34;&gt;Por que falar de Shell Script em pleno 2026?&lt;/h2&gt;&#xA;&lt;p&gt;Muitas vezes, quando olhamos para a tela escura de um terminal de linha de comando emitindo linhas contínuas de texto, imaginamos imediatamente um cenário de ficção científica estilo &lt;em&gt;Matrix&lt;/em&gt;, restrito estritamente a analistas de segurança, engenheiros de infraestrutura ou administradores de redes. No &lt;strong&gt;Bizumática&lt;/strong&gt;, nosso propósito primordial é quebrar esse mito limitante. O aprendizado de Shell Script não deve ser encarado apenas como o domínio de uma linguagem de programação esotérica; ele constitui, fundamentalmente, uma ferramenta indispensável de &lt;strong&gt;autonomia intelectual e soberania computacional&lt;/strong&gt;.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Shell Script on Bizumática</title><link>https://bizumatica.com.br/tags/shell-script/</link><description>Recent content in Shell Script on Bizumática</description><generator>Hugo</generator><language>pt-br</language><lastBuildDate>Wed, 07 Jan 2026 08:00:00 -0300</lastBuildDate><atom:link href="https://bizumatica.com.br/tags/shell-script/index.xml" rel="self" type="application/rss+xml"/><item><title>Shell Script: A Habilidade Invisível para Profissionais de Elite</title><link>https://bizumatica.com.br/posts/habilidade-natural-shell/</link><pubDate>Wed, 07 Jan 2026 08:00:00 -0300</pubDate><guid>https://bizumatica.com.br/posts/habilidade-natural-shell/</guid><description>&lt;h2 id="por-que-falar-de-shell-script-em-pleno-2026"&gt;Por que falar de Shell Script em pleno 2026?&lt;/h2&gt;
+&lt;p&gt;Muitas vezes, quando olhamos para a tela escura de um terminal de linha de comando emitindo linhas contínuas de texto, imaginamos imediatamente um cenário de ficção científica estilo &lt;em&gt;Matrix&lt;/em&gt;, restrito estritamente a analistas de segurança, engenheiros de infraestrutura ou administradores de redes. No &lt;strong&gt;Bizumática&lt;/strong&gt;, nosso propósito primordial é quebrar esse mito limitante. O aprendizado de Shell Script não deve ser encarado apenas como o domínio de uma linguagem de programação esotérica; ele constitui, fundamentalmente, uma ferramenta indispensável de &lt;strong&gt;autonomia intelectual e soberania computacional&lt;/strong&gt;.&lt;/p&gt;</description></item></channel></rss>

@@ -1,24 +1,19 @@
 ---
 title: Steam Deck Oled 1TB Valve
 date: '2026-04-06T16:30:00-03:00'
-last_check: '2026-05-18T18:44:23-03:00'
+last_check: '2026-05-19T19:42:34-03:00'
 draft: false
 slug: steam-deck
 type: equipamentos
 product:
   name: Steam Deck Oled 1TB Valve
   current_price: 7599.0
-  pros:
-    - Painel OLED HDR com taxa de atualização de 90Hz e pretos puros.
-    - Sistema operacional baseado em Arch Linux com arquitetura imutável resiliente.
-    - Camada Proton com excelente eficiência de overhead na tradução de APIs.
-  cons:
-    - Gerenciamento nativo de pacotes de terceiros restrito ao ecossistema Flatpak.
-    - Dimensões físicas exigem acomodação ergonômica em sessões prolongadas.
+  pros: []
+  cons: []
 affiliate:
-  - store: Amazon
-    link: https://amzn.to/3Q8VBNT
-    best_deal: false
+- store: Amazon
+  link: https://amzn.to/3Q8VBNT
+  best_deal: false
 ---
 
 ### O Hardware que Mudou o Jogo

@@ -1,27 +1,26 @@
 ---
-title: Calculadora Grafica Texas Instruments TI-Nspire CX II CAS com Carregador
+title: Calculadora Grafica Texas Ti 84-Plus CE
 date: '2026-04-05T10:15:42-03:00'
-last_check: '2026-05-18T17:46:00-03:00'
+last_check: '2026-05-19T19:42:34-03:00'
 draft: false
-slug: ti-nspire-cx-ii
+slug: ti-nspire
 type: equipamentos
-math: true
 product:
-  name: Texas Instruments TI-Nspire CX II CAS + Power Kit
-  current_price: 1980.0
+  name: Calculadora Grafica Texas Ti 84-Plus CE
+  current_price: 1164.9
   pros:
-    - Motor algébrico CAS avançado para equações literais e cálculo simbólico exato.
-    - Programação nativa em Python em tela cheia com suporte a bibliotecas matemáticas.
-    - Interface intuitiva baseada em documentos de arquivos e abas dinâmicas.
-    - Acompanha adaptador de energia oficial contra oscilações e surtos de tensão.
+  - Tela antirreflexo impecável
+  - Desempenho excepcional
+  - Inteligência artificial útil
+  - Construção em titânio resistente
   cons:
-    - Curva de aprendizado acentuada para usuários iniciantes no ecossistema TI.
-    - Teclado alfabético separado em bloco inferior fixo padrão não-QWERTY.
-    - Investimento financeiro inicial considerável para o mercado nacional.
+  - Carregamento lento
+  - Tamanho avantajado
+  - Preço elevado
 affiliate:
-  - store: Amazon
-    link: https://www.amazon.com.br/Calculadora-Instruments-TI-Nspire-CAS-Power/dp/B0DNTW6SW1
-    best_deal: true
+- store: Amazon
+  link: https://amzn.to/4s0OMLE
+  best_deal: false
 ---
 
 A TI-Nspire CX II CAS representa o ápice da computação algébrica portátil, unindo um motor de cálculo simbólico literal a um kit de carregamento dedicado para garantir autonomia máxima em rotinas severas de engenharia.

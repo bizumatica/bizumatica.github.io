@@ -1,19 +1,2 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Aritmetica on Bizumática</title>
-    <link>http://localhost:1313/tags/aritmetica/</link>
-    <description>Recent content in Aritmetica on Bizumática</description>
-    <generator>Hugo</generator>
-    <language>pt-br</language>
-    <lastBuildDate>Wed, 08 Apr 2026 14:40:00 -0300</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/aritmetica/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Regras de Divisibilidade: do 2 ao 9 e a Matemática dos Atalhos Mentais</title>
-      <link>http://localhost:1313/matematica/regras-de-divisibilidade/</link>
-      <pubDate>Wed, 08 Apr 2026 14:40:00 -0300</pubDate>
-      <guid>http://localhost:1313/matematica/regras-de-divisibilidade/</guid>
-      <description>&lt;h2 id=&#34;o-conceito-e-a-importância-dos-critérios&#34;&gt;O Conceito e a Importância dos Critérios&lt;/h2&gt;&#xA;&lt;p&gt;Você certamente já se deparou com a necessidade prática de determinar, de forma rápida e precisa, se um número de magnitude elevada é par, se é composto por múltiplos exatos de 3 ou se pode ser segmentado perfeitamente por outros divisores inteiros. No cotidiano da computação, da criptografia e da aritmética elementar, as &lt;strong&gt;regras de divisibilidade&lt;/strong&gt; atuam como atalhos mentais de altíssima eficiência algorítmica. Em vez de submeter o operador ou a CPU à execução exaustiva de um algoritmo de divisão longa, basta inspecionar as propriedades intrínsecas dos dígitos do número sob análise — e, em frações de segundo, obtém-se o resto exato da operação.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Aritmetica on Bizumática</title><link>https://bizumatica.com.br/tags/aritmetica/</link><description>Recent content in Aritmetica on Bizumática</description><generator>Hugo</generator><language>pt-br</language><lastBuildDate>Wed, 08 Apr 2026 14:40:00 -0300</lastBuildDate><atom:link href="https://bizumatica.com.br/tags/aritmetica/index.xml" rel="self" type="application/rss+xml"/><item><title>Regras de Divisibilidade: do 2 ao 9 e a Matemática dos Atalhos Mentais</title><link>https://bizumatica.com.br/matematica/regras-de-divisibilidade/</link><pubDate>Wed, 08 Apr 2026 14:40:00 -0300</pubDate><guid>https://bizumatica.com.br/matematica/regras-de-divisibilidade/</guid><description>&lt;h2 id="o-conceito-e-a-importância-dos-critérios"&gt;O Conceito e a Importância dos Critérios&lt;/h2&gt;
+&lt;p&gt;Você certamente já se deparou com a necessidade prática de determinar, de forma rápida e precisa, se um número de magnitude elevada é par, se é composto por múltiplos exatos de 3 ou se pode ser segmentado perfeitamente por outros divisores inteiros. No cotidiano da computação, da criptografia e da aritmética elementar, as &lt;strong&gt;regras de divisibilidade&lt;/strong&gt; atuam como atalhos mentais de altíssima eficiência algorítmica. Em vez de submeter o operador ou a CPU à execução exaustiva de um algoritmo de divisão longa, basta inspecionar as propriedades intrínsecas dos dígitos do número sob análise — e, em frações de second, obtém-se o resto exato da operação.&lt;/p&gt;</description></item></channel></rss>

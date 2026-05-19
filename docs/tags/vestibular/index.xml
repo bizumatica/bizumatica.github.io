@@ -1,19 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Vestibular on Bizumática</title>
-    <link>http://localhost:1313/tags/vestibular/</link>
-    <description>Recent content in Vestibular on Bizumática</description>
-    <generator>Hugo</generator>
-    <language>pt-br</language>
-    <lastBuildDate>Wed, 11 Mar 2026 11:02:32 -0300</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/vestibular/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>A Fórmula De Bhaskara: A Jornada Da Equação Quadrática</title>
-      <link>http://localhost:1313/matematica/formula-de-bhaskara-jornada-da-equacao-quadratica/</link>
-      <pubDate>Wed, 11 Mar 2026 11:02:32 -0300</pubDate>
-      <guid>http://localhost:1313/matematica/formula-de-bhaskara-jornada-da-equacao-quadratica/</guid>
-      <description>&lt;p&gt;A &lt;strong&gt;fórmula de Bhaskara&lt;/strong&gt; é um dos conteúdos mais emblemáticos da matemática escolar brasileira. Mas você sabia que ela não foi descoberta por Bhaskara? E mais: no resto do mundo, ela é simplesmente chamada de &amp;ldquo;fórmula quadrática&amp;rdquo; .&lt;/p&gt;&#xA;$$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$&lt;p&gt;Vamos explorar a verdadeira história por trás dessa equação que resolve a forma geral $ax^2 + bx + c = 0$, com $a \neq 0$.&lt;/p&gt;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&lt;div class=&#34;mat-box box-bizu&#34; style=&#34;border-left: 5px solid var(--box-color, #0e1922); background: #0f0f0d; padding: 1rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;&#34;&gt;&#xA;    &lt;div class=&#34;box-header&#34; style=&#34;display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem; border-bottom: 1px solid #333; padding-bottom: 5px;&#34;&gt;&#xA;        &lt;span class=&#34;box-icon&#34;&gt;💡&lt;/span&gt;&#xA;        &lt;strong class=&#34;box-title&#34; style=&#34;font-family: monospace; letter-spacing: 1px;&#34;&gt;BIZU&lt;/strong&gt;&#xA;    &lt;/div&gt;&#xA;    &lt;div class=&#34;box-content&#34; style=&#34;font-size: 0.95rem; line-height: 1.6;&#34;&gt;&#xA;        &lt;p&gt;&lt;strong&gt;Os Protagonistas:&lt;/strong&gt;&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Vestibular on Bizumática</title><link>https://bizumatica.com.br/tags/vestibular/</link><description>Recent content in Vestibular on Bizumática</description><generator>Hugo</generator><language>pt-br</language><lastBuildDate>Wed, 11 Mar 2026 11:02:32 -0300</lastBuildDate><atom:link href="https://bizumatica.com.br/tags/vestibular/index.xml" rel="self" type="application/rss+xml"/><item><title>A Fórmula De Bhaskara: A Jornada Da Equação Quadrática</title><link>https://bizumatica.com.br/matematica/formula-de-bhaskara-jornada-da-equacao-quadratica/</link><pubDate>Wed, 11 Mar 2026 11:02:32 -0300</pubDate><guid>https://bizumatica.com.br/matematica/formula-de-bhaskara-jornada-da-equacao-quadratica/</guid><description>&lt;p&gt;A &lt;strong&gt;fórmula de Bhaskara&lt;/strong&gt; é um dos conteúdos mais emblemáticos da matemática escolar brasileira. Mas você sabia que ela não foi descoberta por Bhaskara? E mais: no resto do mundo, ela é simplesmente chamada de &amp;ldquo;fórmula quadrática&amp;rdquo; .&lt;/p&gt;
+$$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$&lt;p&gt;Vamos explorar a verdadeira história por trás dessa equação que resolve a forma geral $ax^2 + bx + c = 0$, com $a \neq 0$.&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+&lt;div class="mat-box box-bizu" style="border-left: 5px solid var(--box-color, #0e1922); background: #0f0f0d; padding: 1rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;"&gt;
+ &lt;div class="box-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem; border-bottom: 1px solid #333; padding-bottom: 5px;"&gt;
+ &lt;span class="box-icon"&gt;💡&lt;/span&gt;
+ &lt;strong class="box-title" style="font-family: monospace; letter-spacing: 1px;"&gt;BIZU&lt;/strong&gt;
+ &lt;/div&gt;
+ &lt;div class="box-content" style="font-size: 0.95rem; line-height: 1.6;"&gt;
+ &lt;p&gt;&lt;strong&gt;Os Protagonistas:&lt;/strong&gt;&lt;/p&gt;</description></item></channel></rss>

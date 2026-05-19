@@ -1,33 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Tutorial on Bizumática</title>
-    <link>http://localhost:1313/tags/tutorial/</link>
-    <description>Recent content in Tutorial on Bizumática</description>
-    <generator>Hugo</generator>
-    <language>pt-br</language>
-    <lastBuildDate>Thu, 02 Apr 2026 10:00:00 -0300</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/tutorial/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Linux Kernel 7.0: O Que Muda Na Prática?</title>
-      <link>http://localhost:1313/posts/linux-kernel-7-o-que-muda-na-pratica/</link>
-      <pubDate>Thu, 02 Apr 2026 10:00:00 -0300</pubDate>
-      <guid>http://localhost:1313/posts/linux-kernel-7-o-que-muda-na-pratica/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;cover.webp&#34; alt=&#34;Linux Kernel 7.0&#34;&gt;&#xA;&lt;em&gt;Linux Kernel 7.0 - O Que Muda Na Prática&lt;/em&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;linux-kernel-70-a-nova-era-do-pinguim-chegou&#34;&gt;Linux Kernel 7.0: A Nova Era do Pinguim Chegou!&lt;/h1&gt;&#xA;&lt;p&gt;Se você utiliza Linux diariamente em suas estações de trabalho, gerencia servidores em nuvens corporativas ou simplesmente opera um smartphone Android, saiba que uma engrenagem invisível de altíssima complexidade acaba de mudar de fase. O lançamento oficial do &lt;strong&gt;Kernel Linux 7.0&lt;/strong&gt; não representa apenas uma mudança incremental em sua numeração de versão; trata-se de um marco histórico de engenharia, inaugurando uma era de computação muito mais segura, rápida por design e estruturalmente preparada para os hardwares de última geração.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>O Futuro Chegou: Pop!_OS 24.04 e a Revolução do COSMIC Desktop</title>
-      <link>http://localhost:1313/posts/lancamento-pop-os-24-04-cosmic/</link>
-      <pubDate>Thu, 18 Dec 2025 08:00:00 -0300</pubDate>
-      <guid>http://localhost:1313/posts/lancamento-pop-os-24-04-cosmic/</guid>
-      <description>&lt;p&gt;Após longos meses de intensa expectativa, ciclos de desenvolvimento árduos e versões alpha e beta rigorosamente testadas pela comunidade internacional de código aberto, a &lt;strong&gt;System76&lt;/strong&gt; finalmente liberou a versão estável e oficial do &lt;strong&gt;Pop!_OS 24.04 LTS&lt;/strong&gt;. Este lançamento não deve ser interpretado como meramente mais um &amp;ldquo;update&amp;rdquo; incremental ou de rotina na árvore do sistema operacional; estamos falando, em termos práticos de engenharia, de um verdadeiro marco histórico para todo o ecossistema Linux voltado para computadores desktop.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>A Filosofia Open Source da Criação: Da Intuição ao Código</title>
-      <link>http://localhost:1313/posts/filosofia-open-source-da-criacao/</link>
-      <pubDate>Tue, 09 Dec 2025 18:00:00 -0300</pubDate>
-      <guid>http://localhost:1313/posts/filosofia-open-source-da-criacao/</guid>
-      <description>&lt;p&gt;Existe um momento quase sagrado e imensamente subestimado na rotina de qualquer desenvolvedor, escritor ou criador de conteúdo: o instante exato em que o cursor do terminal pisca de forma intermitente diante de um arquivo Markdown ou de um script Bash completamente vazio. É o &lt;code&gt;init&lt;/code&gt; mental, o processo de identificação número 1 (&lt;code&gt;PID 1&lt;/code&gt;), o marco zero absoluto de tudo o que está por vir. Nesse milissegundo inicial, antes que qualquer linha de código seja compilada ou qualquer comando seja disparado, o projeto existe de forma perfeitamente intacta e pura apenas dentro da sua imaginação.&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tutorial on Bizumática</title><link>https://bizumatica.com.br/tags/tutorial/</link><description>Recent content in Tutorial on Bizumática</description><generator>Hugo</generator><language>pt-br</language><lastBuildDate>Thu, 02 Apr 2026 10:00:00 -0300</lastBuildDate><atom:link href="https://bizumatica.com.br/tags/tutorial/index.xml" rel="self" type="application/rss+xml"/><item><title>Linux Kernel 7.0: O Que Muda Na Prática?</title><link>https://bizumatica.com.br/posts/linux-kernel-7-o-que-muda-na-pratica/</link><pubDate>Thu, 02 Apr 2026 10:00:00 -0300</pubDate><guid>https://bizumatica.com.br/posts/linux-kernel-7-o-que-muda-na-pratica/</guid><description>&lt;p&gt;&lt;img src="cover.webp" alt="Linux Kernel 7.0"&gt;
+&lt;em&gt;Linux Kernel 7.0 - O Que Muda Na Prática&lt;/em&gt;&lt;/p&gt;
+&lt;h1 id="linux-kernel-70-a-nova-era-do-pinguim-chegou"&gt;Linux Kernel 7.0: A Nova Era do Pinguim Chegou!&lt;/h1&gt;
+&lt;p&gt;Se você utiliza Linux diariamente em suas estações de trabalho, gerencia servidores em nuvens corporativas ou simplesmente opera um smartphone Android, saiba que uma engrenagem invisível de altíssima complexidade acaba de mudar de fase. O lançamento oficial do &lt;strong&gt;Kernel Linux 7.0&lt;/strong&gt; não representa apenas uma mudança incremental em sua numeração de versão; trata-se de um marco histórico de engenharia, inaugurando uma era de computação muito mais segura, rápida por design e estruturalmente preparada para os hardwares de última geração.&lt;/p&gt;</description></item><item><title>O Futuro Chegou: Pop!_OS 24.04 e a Revolução do COSMIC Desktop</title><link>https://bizumatica.com.br/posts/lancamento-pop-os-24-04-cosmic/</link><pubDate>Thu, 18 Dec 2025 08:00:00 -0300</pubDate><guid>https://bizumatica.com.br/posts/lancamento-pop-os-24-04-cosmic/</guid><description>&lt;p&gt;Após longos meses de intensa expectativa, ciclos de desenvolvimento árduos e versões alpha e beta rigorosamente testadas pela comunidade internacional de código aberto, a &lt;strong&gt;System76&lt;/strong&gt; finalmente liberou a versão estável e oficial do &lt;strong&gt;Pop!_OS 24.04 LTS&lt;/strong&gt;. Este lançamento não deve ser interpretado como meramente mais um &amp;ldquo;update&amp;rdquo; incremental ou de rotina na árvore do sistema operacional; estamos falando, em termos práticos de engenharia, de um verdadeiro marco histórico para todo o ecossistema Linux voltado para computadores desktop.&lt;/p&gt;</description></item><item><title>A Filosofia Open Source da Criação: Da Intuição ao Código</title><link>https://bizumatica.com.br/posts/filosofia-open-source-da-criacao/</link><pubDate>Tue, 09 Dec 2025 18:00:00 -0300</pubDate><guid>https://bizumatica.com.br/posts/filosofia-open-source-da-criacao/</guid><description>&lt;p&gt;Existe um momento quase sagrado e imensamente subestimado na rotina de qualquer desenvolvedor, escritor ou criador de conteúdo: o instante exato em que o cursor do terminal pisca de forma intermitente diante de um arquivo Markdown ou de um script Bash completamente vazio. É o &lt;code&gt;init&lt;/code&gt; mental, o processo de identificação número 1 (&lt;code&gt;PID 1&lt;/code&gt;), o marco zero absoluto de tudo o que está por vir. Nesse milissegundo inicial, antes que qualquer linha de código seja compilada ou qualquer comando seja disparado, o projeto existe de forma perfeitamente intacta e pura apenas dentro da sua imaginação.&lt;/p&gt;</description></item></channel></rss>

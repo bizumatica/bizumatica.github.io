@@ -1,7 +1,7 @@
 ---
 title: Steam Deck Oled 1TB Valve
 date: '2026-04-06T16:30:00-03:00'
-last_check: '2026-05-20T16:34:37-03:00'
+last_check: '2026-05-20T16:41:57-03:00'
 draft: false
 slug: steam-deck
 type: equipamentos

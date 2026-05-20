@@ -1,7 +1,7 @@
 ---
 title: Calculadora Grafica Texas Ti 84-Plus CE
 date: '2026-04-05T10:15:42-03:00'
-last_check: '2026-05-20T16:27:20-03:00'
+last_check: '2026-05-20T16:30:37-03:00'
 draft: false
 slug: ti-nspire
 type: equipamentos

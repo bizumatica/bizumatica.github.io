@@ -29,7 +29,13 @@ Guia definitivo e atualizado para dominar automação no Linux, sendo indispens�
 
 No ecossistema de infraestrutura de TI contemporâneo, onde conceitos de nuvem híbrida, microsserviços e orquestração de containers ditam as regras de escalabilidade, a habilidade de dominar o terminal Linux continua sendo o divisor de águas entre a operação manual ineficiente e a engenharia de sistemas de alta performance. O livro *"The Ultimate Linux Shell Scripting Guide"* surge como uma resposta robusta para profissionais que buscam consolidar conhecimentos profundos na linguagem interpretada Bash e nos padrões de portabilidade POSIX. Longe de ser apenas um manual introdutório de comandos sintáticos isolados, a obra funciona como um tratado de engenharia de software focado no ecossistema Unix, abordando desde a manipulação elementar de descritores de arquivos até a criação de rotinas complexas, concorrentes e tolerantes a falhas.
 
+{{< links >}}
+Ao considerar e adquirir equipamentos e publicações como este livro você ajuda a manter o portal independente 🙂
+{{< /links >}}
+
 A abordagem técnica do livro subverte a didática tradicional de documentações estáticas ao contextualizar cada comando dentro de cenários reais de administração de servidores de missão crítica. Compreender como variáveis de ambiente se comportam na árvore de subprocessos, entender o funcionamento do isolamento de escopo via `local` dentro de escopos fechados e aprender a gerenciar códigos de retorno (`exit codes`) são tratados na obra como fundamentos obrigatórios para qualquer automação que pretenda rodar de forma autônoma em ambientes de produção.
+
+{{< foto src="ultimate-shell.webp" alt="The Ultimate Linux Shell Scripting Guide" legenda="A enciclopédia do shell scripting" >}}
 
 ## A Tríade do Processamento de Texto: Sed, Awk e Grep na Prática
 

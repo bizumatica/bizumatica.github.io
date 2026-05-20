@@ -2,7 +2,7 @@
 
 # ==============================================================================
 # Author: Julio Prata
-# Version: 3.8 (AdTech + Performance + Resilience)
+# Version: 3.9 (AdTech + Performance + Scheduler Resilient)
 # ==============================================================================
 
 # GARANTIR QUE O SCRIPT EXECUTE NA RAIZ DO PROJETO
@@ -15,29 +15,41 @@ YELLOW='\033[1;33m'
 RED='\033[0;31m'
 NC='\033[0m'
 
-echo -e "${CYAN}--- [START] Deploy: Bizumática v3.8 ---${NC}"
+echo -e "${CYAN}--- [START] Deploy: Bizumática v3.9 ---${NC}"
 
-# 0. Sincronização e venv
-echo -e "${YELLOW}--> [0] Rodando automação Python (Sincronização)...${NC}"
+# 0. Sincronização, Agendamento e venv
+echo -e "${YELLOW}--> [0] Rodando automações Python...${NC}"
 # Ativa venv se existir
 [ -d "venv" ] && source venv/bin/activate
 
+# Executa primeiro o agendador de Leaf Bundles (Cron Local)
+if python3 scripts/schedule-release.py; then
+    echo -e "${GREEN}--> Cron de Agendados: PROCCESSADO!${NC}"
+else
+    echo -e "${RED}--> AVISO: Falha no script de agendamento. Prosseguindo...${NC}"
+fi
+
+# Executa a sincronização do Google Sheets
 if python3 scripts/auto-busca.py; then
-    echo -e "${GREEN}--> Sincronização: SUCESSO!${NC}"
+    echo -e "${GREEN}--> Sincronização API: SUCESSO!${NC}"
 else
     echo -e "${RED}--> ALERTA: Falha no Python (Pandas instalado?). Prosseguindo local...${NC}"
 fi
 
-# 1. Limpeza de Bundles (Prevenção de Duplicatas)
+# 1. Limpeza de Bundles (Prevenção de Duplicatas com Failsafe)
 echo -e "${YELLOW}--> [1] Verificando integridade de Page Bundles...${NC}"
 rm -rf resources/_gen
 for section in content/equipamentos content/matematica content/posts; do
     [ -d "$section" ] || continue
     find "$section" -maxdepth 1 -name "*.md" | while read -r old_file; do
         base=$(basename "$old_file" .md)
-        if [ -d "$section/$base" ]; then
-            echo -e "${RED}--> Removendo conflito: $old_file (Pasta detectada)${NC}"
+        # SÓ remove o .md avulso se a pasta existir E contiver um index.md legítimo dentro
+        if [ -d "$section/$base" ] && [ -f "$section/$base/index.md" ]; then
+            echo -e "${RED}--> Removendo conflito: $old_file (Mantendo o Leaf Bundle)${NC}"
             rm "$old_file"
+        elif [ -d "$section/$base" ]; then
+            echo -e "${YELLOW}--> [Aviso] Pasta vazia detectada para '$base'. Convertendo arquivo para index.md...${NC}"
+            mv "$old_file" "$section/$base/index.md"
         fi
     done
 done

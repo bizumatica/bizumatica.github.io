@@ -1,2 +1,4 @@
 venv/
 .pyenv/
+# Fila de posts agendados (Local Only)
+content/agendados/

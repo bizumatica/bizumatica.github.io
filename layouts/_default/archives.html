@@ -46,12 +46,12 @@
 </style>
 
 <div class="terminal-archive">
-    {{ $secoes_permitidas := slice "matematica" "equipamentos" "posts" "shell-scripting" }} <!-- se no futuro eu criar uma pasta /nova, basta adicionar "nova" no slice -->
-    {{ $all_logs := where (where .Site.RegularPages "Section" "in" $secoes_permitidas) "Permalink" "!=" .Permalink }}
+    {{/* VALIDAÇÃO AUTOMÁTICA: Seleciona todas as páginas de seções legítimas e ignora a própria página de arquivos */}}
+    {{ $all_logs := where (where .Site.RegularPages "Section" "!=" "") "Permalink" "!=" .Permalink }}
     
     <div style="margin-bottom: 30px; border-bottom: 1px solid #333; padding-bottom: 10px;">
         <h1 style="color: #EEC35E; font-size: 1.2rem; margin: 0;">> [SCANNING_TODOS OS LOGS]... DONE.</h1>
-        <p style="color: #555; font-size: 0.7rem; margin: 5px 0 0 0;">SISTEMA: {{ len $all_logs }} ENTRADAS VÁLIDAS.</p>
+        <p style="color: #555; font-size: 0.7rem; margin: 5px 0 0 0;">SISTEMA: {{ len $all_logs }} ENTRADAS VÁLIDAS ENCONTRADAS.</p>
     </div>
     
     <div class="entry-list">
@@ -60,11 +60,13 @@
                 <div class="meta-group">
                     <span class="log-date">[{{ .Date.Format "02/01/2006" }}]</span>
                     
+                    {{/* Fallback Estético: Se for uma seção nova e sem cor explícita, assume o Ciano do Tokyo Night (#8be9fd) */}}
                     {{ $color := "#8be9fd" }}
                     {{ if eq .Section "matematica" }}{{ $color = "#bd93f9" }}{{ end }}
                     {{ if eq .Section "equipamentos" }}{{ $color = "#50fa7b" }}{{ end }}
                     {{ if eq .Section "posts" }}{{ $color = "#ffb86c" }}{{ end }}
-                    {{ if eq .Section "shell-scripting" }}{{ $color = "#8be9fd" }}{{ end }} {{/* Verde Ciano */}}
+                    {{ if eq .Section "shell-scripting" }}{{ $color = "#8be9fd" }}{{ end }}
+                    {{ if eq .Section "foss" }}{{ $color = "#ff79c6" }}{{ end }}
                     
                     <span class="log-tag" style="color: {{ $color }};">
                         [{{ .Section | default "LOG" }}]

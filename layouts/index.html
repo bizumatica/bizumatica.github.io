@@ -6,7 +6,7 @@
             {{/* Título com gradiente e efeito terminal */}}
             <h1 class="post-title logo__text">{{ .Title | markdownify }}</h1>
             
-            {{/* O container hero-text ativa o cursor piscante (::before) no CSS */}}
+            {{/* O container hero-text activa o cursor piscante (::before) no CSS */}}
             <div class="post-content hero-text">
                 {{ .Content }}
             </div>
@@ -19,8 +19,8 @@
                 <h2 style="color: var(--bizu-yellow); margin-bottom: 20px;">> SISTEMA_LOG: POSTS_RECENTES</h2>
                 
                 <div class="recent-posts">
-                    {{/* Puxa os últimos 5 posts de seções específicas */}}
-                    {{ range (where .Site.RegularPages "Section" "in" (slice "posts" "matematica" "equipamentos" "shell-scripting") | first 5) }}
+                    {{/* ADIÇÃO CRÍTICA: Filtra por qualquer seção válida, ordena do mais recente para o mais antigo e limita em 5 */}}
+                    {{ range first 5 (where .Site.RegularPages "Section" "!=" "").ByDate.Reverse }}
                         <article class="post" style="margin-bottom: 15px; border-left: 2px solid var(--primary-color);">
                             <h3 class="post-title" style="font-size: 1.2rem;">
                                 <a href="{{ .Permalink }}" style="border: none;">> {{ .Title }}</a>

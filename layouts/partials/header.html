@@ -12,9 +12,10 @@
       <ul class="menu__inner">
         {{- /* Adicionada a barra "/" para evitar o erro de URLs grudadas */ -}}
         <li><a href="{{ "/posts/" | relURL }}">[ Linux ]</a></li>
+        <li><a href="{{ "/foss/" | relURL }}">[ FOSS ]</a></li>
         <li><a href="{{ "/matematica/" | relURL }}">[ Matemática ]</a></li>
         <li><a href="{{ "/equipamentos/" | relURL }}">[ Curadoria ]</a></li>
-        <li><a href="{{ "/foss/" | relURL }}">[ FOSS ]</a></li> 
+        <li><a href="{{ "/shell-scripting/" | relURL }}">[ Shell ]</a></li>
         <li><a href="{{ "/search/" | relURL }}">[ Buscar ]</a></li>
         <li><a href="{{ "/about/" | relURL }}">[ Sobre ]</a></li>
       </ul>
@@ -23,7 +24,6 @@
 </header>
 
 <style>
-/* ... (mantendo o CSS igual) ... */
 :root { --theme-color: #EEC35E; }
 
 .logo-box {
@@ -56,23 +56,38 @@
 
 .menu__inner {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap; /* VALIDAÇÃO 1: Trava a linha única no Desktop, impedindo o Sobre de cair */
     list-style: none;
     padding: 0;
     margin: 0;
-    gap: 10px 20px;
+    justify-content: space-between; /* Distribui os blocos aproveitando 100% da largura útil */
+    gap: 10px 10px; /* VALIDAÇÃO 2: Compactação segura do espaço vazio sem diminuir a fonte */
+}
+
+.menu__inner li {
+    flex: 0 0 auto; /* Impede que o navegador esmague ou encolha a largura dos links */
 }
 
 .menu__inner li a {
     color: var(--theme-color) !important;
     text-decoration: none;
     font-family: monospace;
-    font-size: 1.1rem;
+    font-size: 1.1rem; /* Mantém o tamanho original intacto e legível */
+    white-space: nowrap; /* Garante blindagem contra quebras internas do texto do link */
 }
 
 .menu__inner li a:hover {
     text-decoration: underline;
     filter: brightness(1.2);
+}
+
+/* VALIDAÇÃO 3: Ativa o modo responsivo elástico apenas abaixo de desktops padrão */
+@media (max-width: 915px) {
+    .menu__inner {
+        flex-wrap: wrap; /* Permite a quebra organizada em telas pequenas */
+        justify-content: flex-start;
+        gap: 12px 15px;
+    }
 }
 
 @media (max-width: 480px) {

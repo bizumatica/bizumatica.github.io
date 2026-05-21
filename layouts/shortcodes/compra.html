@@ -4,20 +4,23 @@
 {{- $cons := slice -}}
 {{- $buttons := slice -}}
 
-{{/* CASO 1: Se for uma recomendação específica via parâmetro (Post de Divisibilidade) */}}
+{{/* CASO 1: Se for uma recomendação específica via parâmetro (Post de Divisibilidade / PipeWire) */}}
 {{- if .Get "item" -}}
   {{- $itemKey := .Get "item" -}}
-  {{- $item := index .Page.Params.recommendations $itemKey -}}
-  {{- if $item -}}
-    {{- $prodName = $item.name -}}
-    {{- $prodPrice = $item.price -}}
-    {{- $buttons = $buttons | append (dict "link" $item.link "store" $item.store "best_deal" true) -}}
+  {{- if .Page.Params.recommendations -}}
+    {{- $recommendations := .Page.Params.recommendations -}}
+    {{- $item := index $recommendations $itemKey -}}
+    {{- if $item -}}
+      {{- $prodName = $item.name -}}
+      {{- $prodPrice = cast.ToFloat $item.price -}} {{/* CAST SEGURO PARA FLOAT */}}
+      {{- $buttons = $buttons | append (dict "link" $item.link "store" $item.store "best_deal" true) -}}
+    {{- end -}}
   {{- end -}}
 
 {{/* CASO 2: Se for o padrão de equipamento único com Ficha Técnica (Post da TI-84) */}}
 {{- else if .Page.Params.product -}}
   {{- $prodName = .Page.Params.product.name -}}
-  {{- $prodPrice = .Page.Params.product.current_price -}}
+  {{- $prodPrice = cast.ToFloat .Page.Params.product.current_price -}} {{/* CAST SEGURO PARA FLOAT */}}
   {{- $pros = .Page.Params.product.pros -}}
   {{- $cons = .Page.Params.product.cons -}}
   {{- if .Page.Params.affiliate -}}
@@ -34,8 +37,8 @@
   
   <div class="product-box__meta">
     <span class="product-box__name"><strong>Equipamento/Item:</strong> {{ $prodName }}</span>
-    {{ if gt $prodPrice 0 }}
-      <span class="product-box__price"><strong>Investimento Estimado:</strong> R$ {{ printf "%.2f" (float $prodPrice) }}</span>
+    {{ if gt $prodPrice 0.0 }}
+      <span class="product-box__price"><strong>Investimento Estimado:</strong> R$ {{ printf "%.2f" $prodPrice }}</span>
     {{ end }}
   </div>
 

@@ -1,25 +1,39 @@
 {{ define "main" }}
-<div class="post">
-  <h1 class="post-title">{{ .Title }}</h1>
+<article class="post h-entry" data-pagefind-body itemscope itemtype="http://schema.org/BlogPosting">
   
-  <div class="post-meta" style="margin-bottom: 20px; opacity: 0.7; font-size: 0.9rem;">
-    <span>📅 {{ .Date.Format "02/01/2006" }}</span> :: 
-    <span>📖 {{ .ReadingTime }} min de leitura</span>
-  </div>
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="headline">{{ .Title }}</h1>
+    
+    <div class="post-meta" style="margin-bottom: 20px; opacity: 0.7; font-size: 0.9rem;">
+      <span class="meta-item">
+        📅 <time class="dt-published" itemprop="datePublished" datetime="{{ .Date.Format "2006-01-02T15:04:05-07:00" }}">
+          {{ .Date.Format "02/01/2006" }}
+        </time>
+      </span>
+      <span class="meta-separator"> :: </span>
+      <span class="meta-item">
+        📖 <span>{{ .ReadingTime }} min de leitura</span>
+      </span>
+      <meta itemprop="author" content="{{ .Params.author | default .Site.Title }}">
+    </div>
+  </header>
   
   {{ if .Params.math }}
     {{ partial "math.html" . }}
   {{ end }}
 
   {{ if .Params.toc }}
-  <div class="toc" style="border: 1px dashed var(--theme-color); padding: 15px; margin-bottom: 30px;">
+  <nav class="toc" data-pagefind-ignore aria-label="Sumário do post" style="border: 1px dashed var(--theme-color); padding: 15px; margin-bottom: 30px;">
     <strong style="color: var(--theme-color);">📌 Conteúdo do Bizu:</strong>
-    {{ .TableOfContents }}
-  </div>
+    <div class="toc-body" itemprop="toc">
+      {{ .TableOfContents }}
+    </div>
+  </nav>
   {{ end }}
 
-  <div class="post-content">
+  <div class="post-content e-content" itemprop="articleBody">
     {{ .Content }}
   </div>
-</div>
+
+</article>
 {{ end }}

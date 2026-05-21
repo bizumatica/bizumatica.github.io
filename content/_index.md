@@ -5,7 +5,7 @@ math: true
 
 <div style="text-align: center; margin-bottom: 40px;">
 
-# <span style="background: linear-gradient(to right, #00ffff, #ff00ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Bem-vindo ao Bizumática</span>
+# <span style="background: linear-gradient(to right, #7aa2f7, #bb9af7); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Bem-vindo ao Bizumática</span>
 <div class="terminal-line">:::::::::::::::::::::::::::::</div>
 
 <div class="brand-header">
@@ -13,63 +13,46 @@ math: true
     <span class="brand-sigma">Σ</span>
 </div>
 
-<div class="tags-container-home">
-    <a href="/posts/" class="home-tag">Linux</a>
-    <span class="tag-separator">|</span>
-    <a href="/foss/" class="home-tag">FOSS</a>
-    <span class="tag-separator">|</span>
-    <a href="/matematica/" class="home-tag">Matemática</a>
-    <span class="tag-separator">|</span>
-    <a href="/equipamentos/" class="home-tag">Curadoria</a>
-    <span class="tag-separator">|</span>
-    <a href="/shell-scripting/" class="home-tag">Shell</a>
+<div class="tokyonight-wave">
+    <span class="wave-pulse"></span>
 </div>
 
 </div>
 
 <style>
-/* Corrige o aperto da Foto 2 */
-.tags-container-home {
+/* Estilização da Onda/Pulso Cyberpunk Tokyo Night */
+.tokyonight-wave {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap; /* O segredo: permite que os links pulem de linha no mobile */
-    gap: 10px;
-    padding: 0 10px;
+    margin: 25px auto 15px auto;
+    width: 180px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #7aa2f7, #bb9af7, transparent);
+    position: relative;
 }
 
-.home-tag {
-    color: #8be9fd;
-    text-decoration: none;
-    font-family: monospace;
-    white-space: nowrap; /* Impede que a palavra se quebre ao meio */
+.wave-pulse {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: #7aa2f7;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #7aa2f7, 0 0 15px #bb9af7;
+    animation: data-pulse 3s infinite ease-in-out;
 }
 
-.tag-separator {
-    color: #444;
-}
-
-/* No mobile, escondemos os separadores "|" para o layout ficar mais limpo se quebrar linha */
-@media (max-width: 600px) {
-    .tag-separator {
-        display: none;
-    }
-    .tags-container-home {
-        gap: 15px; /* Aumenta o espaço entre os botões no celular */
-    }
-    .home-tag {
-        border: 1px solid #8be9fd44;
-        padding: 4px 10px;
-        border-radius: 3px;
-        font-size: 0.9rem;
-    }
+@keyframes data-pulse {
+    0% { left: 0%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
 }
 
 .brand-header {
     font-size: 4rem;
     margin: 20px 0;
 }
-/* ... mantenha seus outros estilos do brand-header aqui ... */
 </style>
 
 <p class="introduction">
@@ -120,14 +103,4 @@ fi
 ## 💬 Contato e Redes
 
 * **Código Fonte:** [https://github.com/bizumatica/bizumatica.github.io](https://github.com/bizumatica/bizumatica.github.io)
-* **E-mail:** [julio.prata@proton.me](mailto:julio.prata@proton.me)
-
----
-
-<p align="center">
-<a href="https://bizumatica.github.io">
-<img src="https://visitor-badge.laobi.icu/badge?page_id=bizumatica.github.io&left_color=%23555555&right_color=%2301579B&left_text=Visitas" alt="Visitas">
-</a>
-</p>
-
-</div>
+* **E-mail:** [julio.prata@proton.me]()

@@ -1,52 +1,78 @@
-<span class="terminal-counter" id="bizu-counter-wrapper">
-  [ VISITAS: <span id="bizu-counter-value">
-    <img id="bizu-svg-counter" src="" alt="Contando..." style="vertical-align: middle; display: inline-block; margin-top: -2px; filter: contrast(110%);" />
-  </span> ]
+<span class="terminal-counter" id="bizu-counter-wrapper" style="display: none;">
+  <span class="terminal-label">📊 VISITAS </span>
+  <span class="terminal-bar">[▓▓▓▓░░░░]</span>
+  <span id="bizu-counter-value" class="terminal-value">------</span>
 </span>
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    const targetKey = "bizumatica.com.br";
-    const imgElement = document.getElementById("bizu-svg-counter");
+    const wrapper = document.getElementById("bizu-counter-wrapper");
+    const valueSpan = document.getElementById("bizu-counter-value");
+    
+    if (!wrapper || !valueSpan) return;
 
-    // 1. Tratamento para ambiente de desenvolvimento local
+    // 1. Ambiente local
     if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
-        if (imgElement) {
-            // Remove a imagem e injeta o texto de dev direto
-            const parent = imgElement.parentElement;
-            parent.innerText = "DEV_MODE";
-            parent.style.color = "#ff5555";
-        }
+        valueSpan.innerText = "DEV_MODE";
+        valueSpan.style.color = "#ff5555";
+        wrapper.style.display = "inline-flex";
         return;
     }
 
-    // 2. Injeta a URL do SVG diretamente na imagem em produção
-    // Customizado cirurgicamente com as cores do Tokyo Night (#16161e) para mesclar perfeitamente no seu box
-    if (imgElement) {
-        imgElement.src = `https://hitscounter.dev/api/count/incr/badge.svg?url=${targetKey}&count_bg=%2316161e&title_bg=%2316161e&title=&edge_flat=true&style=flat-square`;
-    }
+    // 2. Produção com API estável de texto puro
+    const targetKey = "bizumatica.com.br";
+    const apiEndpoint = `https://counter.api.gtech.icu/inc?site=${targetKey}`;
+
+    fetch(apiEndpoint)
+        .then(response => {
+            if (!response.ok) throw new Error();
+            return response.json();
+        })
+        .then(data => {
+            if (data && data.count !== undefined) {
+                valueSpan.innerText = data.count;
+            } else {
+                valueSpan.innerText = "ONLINE";
+            }
+            wrapper.style.display = "inline-flex";
+        })
+        .catch(() => {
+            valueSpan.innerText = "ONLINE";
+            valueSpan.style.color = "#7aa2f7"; 
+            wrapper.style.display = "inline-flex";
+        });
 });
 </script>
 
 <style>
 .terminal-counter {
     font-family: 'Fira Code', monospace;
-    font-size: 0.85rem;
+    font-size: 0.75rem; /* Reduzido de 0.85rem para alinhar com o rodapé */
     font-weight: bold;
-    color: #ff9e3b; /* Laranja Oficial Tokyo Night */
-    background: #16161e; /* Fundo Tokyo Night */
-    padding: 3px 8px;
-    border: 1px dashed #ff9e3b66;
+    background: #16161e; 
+    padding: 2px 6px; /* Bordas internas mais compactas */
+    border: 1px dashed #ff9e3b66; /* Volta o estilo tracejado clássico com cor suave */
     border-radius: 4px;
     letter-spacing: 0.5px;
-    box-shadow: 0 0 10px rgba(255, 158, 59, 0.05);
-    display: inline-block;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px; /* Ítens um pouco mais juntos */
+    margin-top: 5px;
 }
-/* Estilização interna para forçar o SVG a herdar o comportamento estético do terminal */
-#bizu-svg-counter {
-    max-height: 14px;
-    border: none !important;
-    padding: 0 !important;
-    background: transparent !important;
+
+.terminal-label {
+    color: #7aa2f7; 
+    font-size: 0.7rem; /* Deixa o texto interno proporcional */
+}
+
+.terminal-bar {
+    color: #414868; 
+    letter-spacing: -1px;
+}
+
+.terminal-value {
+    color: #ff9e3b; 
 }
 </style>

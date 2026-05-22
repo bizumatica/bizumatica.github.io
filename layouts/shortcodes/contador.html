@@ -16,11 +16,9 @@ document.addEventListener("DOMContentLoaded", function() {
         return; // Aborta a requisição real
     }
 
-    // 2. Chaves de identificação únicas e higienizadas baseadas no seu domínio
-    const targetUrl = window.location.origin + window.location.pathname;
-    // Usamos o serviço alternativo e estável 'api.countapi.io' ou 'hits.seeyoufarm.com' estruturado em JSON
-    // Para máxima compatibilidade e uptime em 2026, usamos a API aberta do SCY (Hits Proxy)
-    const apiEndpoint = `https://hits.seeyoufarm.com/api/count/incr/badge.json?url=${encodeURIComponent(targetUrl)}`;
+    // 2. Chave estática e higienizada para unificar a contagem e evitar falhas por variação de URL (ex: index.html)
+    const counterKey = "bizumatica-main-production";
+    const apiEndpoint = `https://hits.seeyoufarm.com/api/count/incr/badge.json?url=${counterKey}`;
 
     fetch(apiEndpoint)
         .then(response => {
@@ -28,24 +26,26 @@ document.addEventListener("DOMContentLoaded", function() {
             return response.json();
         })
         .then(data => {
-            // O serviço retorna a contagem estruturada ou injetada no value
-            // Tratamento regex caso o retorno seja um padrão de badge ou extração direta do valor numérico
-            if (data && data.value) {
-                document.getElementById("bizu-counter-value").innerText = data.value;
+            const valueSpan = document.getElementById("bizu-counter-value");
+            
+            // Validação dupla do retorno da API (campo numérico puro ou string de texto do badge)
+            if (data && data.value !== undefined) {
+                valueSpan.innerText = data.value;
             } else if (data && data.text) {
-                // Fallback para APIs que retornam string formatada (ex: "27103")
                 const count = data.text.match(/\d+/);
-                document.getElementById("bizu-counter-value").innerText = count ? count[0] : "ONLINE";
+                valueSpan.innerText = count ? count[0] : "ONLINE";
+            } else {
+                valueSpan.innerText = "ONLINE";
             }
+            
             document.getElementById("bizu-counter-wrapper").style.display = "inline-block";
         })
         .catch(err => {
             console.error("[Contador Bizumática] Erro na API de persistência:", err);
-            // Fallback elegante em modo texto purista de terminal
             const valueSpan = document.getElementById("bizu-counter-value");
             if (valueSpan) {
                 valueSpan.innerText = "STANDBY";
-                valueSpan.style.color = "#6272a4"; // Cinza Dracula/Tokyo Night
+                valueSpan.style.color = "#6272a4"; // Cinza Tokyo Night
             }
             document.getElementById("bizu-counter-wrapper").style.display = "inline-block";
         });

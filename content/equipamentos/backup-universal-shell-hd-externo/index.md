@@ -25,7 +25,7 @@ affiliate:
     best_deal: false
 ---
 
-No ambiente corporativo e no desenvolvimento de software, seguimos uma regra axiomática de segurança da informação: **"Quem tem um backup, não tem nenhum; quem tem dois, tem apenas um"**. Se os seus arquivos confidenciais, repositórios de código e logs sensíveis residem estritamente no armazenamento NVMe interno do seu notebook de trabalho, você está a uma pane elétrica na placa-mãe ou a uma falha crítica de sistema de arquivos (*filesystem corruption*) de um desastre operacional completo. 
+No ambiente corporativo e no desenvolvimento de software, seguimos uma regra axiomática de segurança da informação: **"Quem tem um backup, não tem nenhum; quem tem dois, tem apenas um"**. Se os seus arquivos confidenciais, repositórios de código e logs sensíveis residem estritamente no armazenamento NVMe interno do seu notebook de trabalho, você está a uma pane elétrica na placa-mãe ou a uma falha crítica de sistema de arquivos (*filesystem corruption*) de um desastre operacional completo.
 
 Abaixo, entregamos um script de automação Unix universal robusto e a revisão analítica do hardware ideal para profissionais de infraestrutura e exatas que não podem tolerar perdas de dados.
 

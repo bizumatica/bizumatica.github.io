@@ -104,3 +104,7 @@ fi
 
 * **Código Fonte:** [https://github.com/bizumatica/bizumatica.github.io](https://github.com/bizumatica/bizumatica.github.io)
 * **E-mail:** [julio.prata@proton.me]()
+
+<div style="text-align: center; margin-top: 30px;">
+    {{< contador >}}
+</div>

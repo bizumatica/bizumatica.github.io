@@ -19,8 +19,8 @@ document.addEventListener("DOMContentLoaded", function() {
     // 2. Chave baseada no seu domínio de produção oficial
     const targetKey = "bizumatica.com.br";
     
-    // Endpoint gerador de SVG indestrutível baseado no proxy do Seeyoufarm
-    const svgEndpoint = `https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=${targetKey}&count_bg=%2316161e&title_bg=%2316161e&style=flat`;
+    // ROTA ATUALIZADA: hitscounter.dev (Substituto oficial do antigo seeyoufarm)
+    const svgEndpoint = `https://hitscounter.dev/api/count/incr/badge.svg?url=${targetKey}&count_bg=%2316161e&title_bg=%2316161e&style=flat`;
 
     // Requisita o arquivo SVG em formato de texto isolado
     fetch(svgEndpoint)
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(svgText => {
             const valueSpan = document.getElementById("bizu-counter-value");
             
-            // Expressão regular cirúrgica para capturar o último bloco de texto do SVG (onde fica o número)
+            // Expressão regular para capturar o último bloco de texto do SVG (onde fica o número)
             const matches = svgText.match(/<text[^>]*>([\d\s,.]+)<\/text>/g);
             
             if (matches && matches.length > 0) {

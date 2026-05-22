@@ -1,58 +1,30 @@
-<span class="terminal-counter" id="bizu-counter-wrapper" style="display: none;">
-  [ VISITAS: <span id="bizu-counter-value">------</span> ]
+<span class="terminal-counter" id="bizu-counter-wrapper">
+  [ VISITAS: <span id="bizu-counter-value">
+    <img id="bizu-svg-counter" src="" alt="Contando..." style="vertical-align: middle; display: inline-block; margin-top: -2px; filter: contrast(110%);" />
+  </span> ]
 </span>
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    // 1. Evita contabilizar acessos durante testes locais
+    const targetKey = "bizumatica.com.br";
+    const imgElement = document.getElementById("bizu-svg-counter");
+
+    // 1. Tratamento para ambiente de desenvolvimento local
     if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") {
-        const wrapper = document.getElementById("bizu-counter-wrapper");
-        const valueSpan = document.getElementById("bizu-counter-value");
-        if (wrapper && valueSpan) {
-            valueSpan.innerText = "DEV_MODE";
-            valueSpan.style.color = "#ff5555";
-            wrapper.style.display = "inline-block";
+        if (imgElement) {
+            // Remove a imagem e injeta o texto de dev direto
+            const parent = imgElement.parentElement;
+            parent.innerText = "DEV_MODE";
+            parent.style.color = "#ff5555";
         }
         return;
     }
 
-    // 2. Chave baseada no seu domínio de produção oficial
-    const targetKey = "bizumatica.com.br";
-    
-    // ROTA ATUALIZADA: hitscounter.dev (Substituto oficial do antigo seeyoufarm)
-    const svgEndpoint = `https://hitscounter.dev/api/count/incr/badge.svg?url=${targetKey}&count_bg=%2316161e&title_bg=%2316161e&style=flat`;
-
-    // Requisita o arquivo SVG em formato de texto isolado
-    fetch(svgEndpoint)
-        .then(response => {
-            if (!response.ok) throw new Error("Falha ao ler o badge SVG");
-            return response.text();
-        })
-        .then(svgText => {
-            const valueSpan = document.getElementById("bizu-counter-value");
-            
-            // Expressão regular para capturar o último bloco de texto do SVG (onde fica o número)
-            const matches = svgText.match(/<text[^>]*>([\d\s,.]+)<\/text>/g);
-            
-            if (matches && matches.length > 0) {
-                // Pega a última ocorrência do elemento <text> que contém a contagem limpa
-                const rawCount = matches[matches.length - 1].replace(/<\/?[^>]+(>|$)/g, "").trim();
-                valueSpan.innerText = rawCount;
-            } else {
-                valueSpan.innerText = "ONLINE";
-            }
-            
-            document.getElementById("bizu-counter-wrapper").style.display = "inline-block";
-        })
-        .catch(err => {
-            console.error("[Contador Bizumática] Erro ao renderizar métricas:", err);
-            const valueSpan = document.getElementById("bizu-counter-value");
-            if (valueSpan) {
-                valueSpan.innerText = "STANDBY";
-                valueSpan.style.color = "#6272a4"; // Tom cinza Tokyo Night
-            }
-            document.getElementById("bizu-counter-wrapper").style.display = "inline-block";
-        });
+    // 2. Injeta a URL do SVG diretamente na imagem em produção
+    // Customizado cirurgicamente com as cores do Tokyo Night (#16161e) para mesclar perfeitamente no seu box
+    if (imgElement) {
+        imgElement.src = `https://hitscounter.dev/api/count/incr/badge.svg?url=${targetKey}&count_bg=%2316161e&title_bg=%2316161e&title=&edge_flat=true&style=flat-square`;
+    }
 });
 </script>
 
@@ -68,5 +40,13 @@ document.addEventListener("DOMContentLoaded", function() {
     border-radius: 4px;
     letter-spacing: 0.5px;
     box-shadow: 0 0 10px rgba(255, 158, 59, 0.05);
+    display: inline-block;
+}
+/* Estilização interna para forçar o SVG a herdar o comportamento estético do terminal */
+#bizu-svg-counter {
+    max-height: 14px;
+    border: none !important;
+    padding: 0 !important;
+    background: transparent !important;
 }
 </style>

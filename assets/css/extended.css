@@ -147,7 +147,6 @@ figcaption, .post-content img + em, .post-content p img + em {
 .terminal-bars {
     flex: 1; 
     height: 25px;
-    /* Usando border-bottom pontilhado para garantir a cor sólida var(--bizu-yellow) */
     background-image: radial-gradient(circle, var(--bizu-yellow) 1.5px, transparent 1.5px);
     background-size: 6px 6px;
     background-repeat: repeat-x;
@@ -253,3 +252,62 @@ ins.adsbygoogle img {
 
 html { scroll-behavior: smooth; }
 
+/* ==========================================================================
+   --- 11. SISTEMA AGNÓSTICO E ISOLADO DE TABELAS COMPACTAS ---
+   ========================================================================== */
+
+/* Regras Base / Comportamento de Desktop */
+.tabela-compacta {
+    width: 100% !important;
+    margin: 1.5rem 0 !important;
+    display: block !important;
+}
+
+.tabela-compacta table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    table-layout: auto !important;
+}
+
+/* Alocação cirúrgica para a primeira coluna impedir o "de de" no desktop */
+.tabela-compacta table th:first-child,
+.tabela-compacta table td:first-child {
+    min-width: 185px !important; 
+    white-space: normal !important;
+    word-break: keep-all !important; /* Salva palavras inteiras contra quebras silábicas */
+    hyphens: none !important;
+}
+
+/* Balanceamento das colunas de dados */
+.tabela-compacta table th:not(:first-child),
+.tabela-compacta table td:not(:first-child) {
+    width: 40% !important;
+    word-break: normal !important;
+}
+
+/* Ajustes Responsivos Dinâmicos (Mobile) */
+@media screen and (max-width: 768px) {
+    .tabela-compacta {
+        overflow-x: auto !important; /* Ativa scroll macio se a tela for muito pequena */
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .tabela-compacta table {
+        font-size: 0.72rem !important; /* Kerning e tamanho mono otimizados */
+        letter-spacing: -0.04em !important; 
+        line-height: 1.3 !important;
+    }
+    
+    .tabela-compacta table th:first-child,
+    .tabela-compacta table td:first-child {
+        min-width: 95px !important; /* Ajusta a largura da célula mãe para o mobile */
+    }
+
+    .tabela-compacta table th, 
+    .tabela-compacta table td {
+        padding: 5px 3px !important; /* Compressão de padding lateral */
+        white-space: normal !important;
+        word-break: keep-all !important; 
+        hyphens: none !important;
+    }
+}

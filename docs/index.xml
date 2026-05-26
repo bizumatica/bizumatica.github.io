@@ -1,4 +1,43 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bizumática</title><link>https://bizumatica.com.br/</link><description>Recent content on Bizumática</description><generator>Hugo</generator><language>pt-br</language><lastBuildDate>Fri, 22 May 2026 10:00:00 -0300</lastBuildDate><atom:link href="https://bizumatica.com.br/index.xml" rel="self" type="application/rss+xml"/><item><title>Debian 13.5 Stable: O Impacto Real da Nova Atualização de Robustez</title><link>https://bizumatica.com.br/posts/debian-13-5-stable-novidades-e-estabilidade/</link><pubDate>Fri, 22 May 2026 10:00:00 -0300</pubDate><guid>https://bizumatica.com.br/posts/debian-13-5-stable-novidades-e-estabilidade/</guid><description>&lt;h3 id="introdução"&gt;Introdução&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bizumática</title><link>https://bizumatica.com.br/</link><description>Recent content on Bizumática</description><generator>Hugo</generator><language>pt-br</language><lastBuildDate>Tue, 26 May 2026 16:50:00 -0300</lastBuildDate><atom:link href="https://bizumatica.com.br/index.xml" rel="self" type="application/rss+xml"/><item><title>O Guia Definitivo do Bash Seguro: ShellCheck, CI/CD e Defesa Contra Falhas Catastróficas</title><link>https://bizumatica.com.br/posts/guia-definitivo-bash-seguro-shellcheck-ci-cd/</link><pubDate>Tue, 26 May 2026 16:50:00 -0300</pubDate><guid>https://bizumatica.com.br/posts/guia-definitivo-bash-seguro-shellcheck-ci-cd/</guid><description>&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;LOG_LEVEL:&lt;/strong&gt; CRÍTICO&lt;br&gt;
+&lt;strong&gt;AMBIENTE:&lt;/strong&gt; Linux / Bash / CI/CD / Infraestrutura / Supply Chain&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;A automação em shell continua sendo uma peça central em deploys, rotinas de backup, provisionamento elástico, manutenção de servidores e tarefas complexas de observabilidade. O problema latente é que uma quantidade enorme de pipelines corporativos ainda depende de scripts Bash legados, escritos sem validação rigorosa de dados, sem tratamento consistente de exceções e sem análise estática. Tudo isso justamente em um cenário global em que ataques à cadeia de suprimentos (&lt;em&gt;software supply chain&lt;/em&gt;) ganharam peso estratégico devastador dentro da engenharia de software moderna.&lt;/p&gt;</description></item><item><title>A Engenharia do Rocky Linux 10: Migração para Koji, Suporte Nativo a RISC-V e a Matemática do Escalonamento de Compilação</title><link>https://bizumatica.com.br/foss/engenharia-rocky-linux-10-koji-riscv/</link><pubDate>Tue, 26 May 2026 15:00:00 -0300</pubDate><guid>https://bizumatica.com.br/foss/engenharia-rocky-linux-10-koji-riscv/</guid><description>&lt;h2 id="a-evolução-da-cadeia-de-suprimentos-supply-chain-no-enterprise-linux"&gt;A Evolução da Cadeia de Suprimentos (Supply Chain) no Enterprise Linux&lt;/h2&gt;
+&lt;p&gt;O lançamento do &lt;strong&gt;Rocky Linux 10&lt;/strong&gt; marca uma mudança de paradigma drástica na engenharia interna das distribuições de nível empresarial baseadas em código aberto (&lt;em&gt;FOSS&lt;/em&gt;). Após anos consolidando sua posição como o substituto espiritual do CentOS tradicional, a RESF (&lt;em&gt;Rocky Enterprise Software Foundation&lt;/em&gt;) reestruturou completamente sua infraestrutura de compilação.&lt;/p&gt;
+&lt;figure class="artigo-foto-container"&gt;
+ &lt;img src="prod-rocky-linux-10-enterprise.webp" alt="Rocky Linux 10.1" class="artigo-foto" loading="lazy"&gt;
+ 
+ &lt;figcaption class="artigo-foto-legenda"&gt;:: [ ROCKY LINUX 10.1 - GNOME ] ::&lt;/figcaption&gt;
+ 
+&lt;/figure&gt;
+
+&lt;style&gt;
+.artigo-foto-container {
+ margin: 2.5rem 0;
+ padding: 0;
+ text-align: center;
+}
+
+.artigo-foto {
+ max-width: 100%;
+ height: auto;
+ border: 1px solid #222;
+ background-color: #16161e; 
+ padding: 6px;
+ display: block;
+ margin: 0 auto;
+}
+
+.artigo-foto-legenda {
+ margin-top: 10px;
+ font-family: monospace;
+ font-size: 0.8rem;
+ color: #a9b1d6; 
+ letter-spacing: 0.5px;
+}
+&lt;/style&gt;
+&lt;p&gt;O projeto abandonou o sistema de build customizado &lt;em&gt;Peridot&lt;/em&gt; e migrou integralmente para o &lt;strong&gt;Koji&lt;/strong&gt;, o robusto e consagrado ecossistema de compilação utilizado historicamente pelo Fedora e pelo Red Hat Enterprise Linux (RHEL). Essa movimentação não foi estética: trata-se de uma decisão estratégica para blindar a integridade da &lt;em&gt;software supply chain&lt;/em&gt; contra ataques vetoriais e garantir previsibilidade absoluta na reprodução de pacotes binários estáveis por uma janela de suporte que se estende pelos próximos dez anos.&lt;/p&gt;</description></item><item><title>O Paradoxo do Trompete de Gabriel: A Matemática dos Limites Infinitos Aplicada à Otimização de Motores Gráficos</title><link>https://bizumatica.com.br/posts/paradoxo-trompete-gabriel-calculo-motores-graficos/</link><pubDate>Mon, 25 May 2026 16:00:00 -0300</pubDate><guid>https://bizumatica.com.br/posts/paradoxo-trompete-gabriel-calculo-motores-graficos/</guid><description>&lt;h2 id="o-desafio-crítico-da-geometria-infinitesimal"&gt;O Desafio Crítico da Geometria Infinitesimal&lt;/h2&gt;
+&lt;p&gt;No século XVII, muito antes do desenvolvimento formal do Cálculo Diferencial e Integral por Isaac Newton e Gottfried Leibniz, o físico e matemático italiano Evangelista Torricelli chocou a comunidade científica ocidental ao apresentar um paradoxo geométrico totalmente contraintuitivo. Torricelli demonstrou a existência de um sólido de revolução que possuía uma &lt;strong&gt;extensão infinita&lt;/strong&gt;, mas cujo &lt;strong&gt;volume era estritamente finito&lt;/strong&gt;. Esse sólido, conhecido historicamente como o &lt;strong&gt;Trompete de Gabriel&lt;/strong&gt; (ou Trompete de Torricelli), gerou profundas discussões filosóficas e teológicas sobre a natureza do infinito.&lt;/p&gt;</description></item><item><title>Debian 13.5 Stable: O Impacto Real da Nova Atualização de Robustez</title><link>https://bizumatica.com.br/posts/debian-13-5-stable-novidades-e-estabilidade/</link><pubDate>Fri, 22 May 2026 10:00:00 -0300</pubDate><guid>https://bizumatica.com.br/posts/debian-13-5-stable-novidades-e-estabilidade/</guid><description>&lt;h3 id="introdução"&gt;Introdução&lt;/h3&gt;
 &lt;p&gt;A comunidade Linux que prioriza a estabilidade absoluta no desktop recebeu um importante marco regulatório com o lançamento oficial do &lt;strong&gt;Debian 13.5&lt;/strong&gt;. A equipe de engenharia do projeto publicou esta nova atualização de manutenção para a sua atual árvore estável (codinome &lt;em&gt;Trixie&lt;/em&gt;), consolidando correções que eliminam falhas de segurança de dia zero (&lt;em&gt;zero-days&lt;/em&gt;) e bugs severos que comprometiam a usabilidade diária em ambientes corporativos e de desenvolvimento pessoal.&lt;/p&gt;
 &lt;p&gt;Diferente de outras distribuições que buscam o imediatismo de recursos visuais agressivos, o ecossistema Debian reafirma sua posição como o alicerce mais pioneiro e resiliente do ecossistema de código aberto.&lt;/p&gt;</description></item><item><title>Entendendo o PipeWire e WirePlumber: A Revolução do Áudio no Linux e a Matemática da Latência</title><link>https://bizumatica.com.br/foss/entendendo-pipewire-wireplumber/</link><pubDate>Thu, 21 May 2026 10:00:00 -0300</pubDate><guid>https://bizumatica.com.br/foss/entendendo-pipewire-wireplumber/</guid><description>&lt;h2 id="a-fragmentação-histórica-do-áudio-no-linux"&gt;A Fragmentação Histórica do Áudio no Linux&lt;/h2&gt;
 &lt;p&gt;Se você utiliza Linux há alguns anos, certamente já enfrentou a clássica dor de cabeça de configurar o subsistema de áudio. Historicamente, o ecossistema de software livre (&lt;em&gt;FOSS&lt;/em&gt;) sofria de uma profunda fragmentação arquitetural. De um lado, tínhamos o &lt;strong&gt;PulseAudio&lt;/strong&gt;, projetado para o usuário final doméstico, capaz de gerenciar múltiplos aplicativos e saídas Bluetooth de forma dinâmica, mas incapaz de entregar baixa latência. Do outro, o &lt;strong&gt;JACK&lt;/strong&gt; (&lt;em&gt;JACK Audio Connection Kit&lt;/em&gt;), a ferramenta padrão para engenheiros de som e músicos, que oferecia latência ultrabaixa e roteamento profissional, porém com uma configuração extremamente rígida que costumava quebrar o áudio do navegador ou do sistema comum.&lt;/p&gt;</description></item><item><title>Workstations Xeon: O 'Bizu' do Hardware de Elite a Preço de Custo</title><link>https://bizumatica.com.br/posts/laptops-xeon-linux-performance-custo-beneficio/</link><pubDate>Tue, 12 May 2026 16:00:00 -0300</pubDate><guid>https://bizumatica.com.br/posts/laptops-xeon-linux-performance-custo-beneficio/</guid><description>&lt;h3 id="introdução"&gt;Introdução&lt;/h3&gt;

@@ -22,8 +22,7 @@ O **Steam Deck** não é apenas um console portátil voltado ao entretenimento c
 
 A transição para a versão OLED refinou significativamente a arquitetura do sistema. O dado de engenharia mais relevante foi a redução do processo de fabricação do chip para 6nm, o que reduziu a dissipação térmica em regime de estresse e estendeu substancialmente a autonomia da bateria. Agora, o hardware gerencia cargas de processamento intensas (jogos AAA e cargas de compilação locais) mantendo temperaturas internas estáveis e frequências de clock consistentes, mitigando completamente o estrangulamento térmico (*thermal throttling*).
 
-![Steam Deck em operação](cover.webp)
-*O Steam Deck OLED exibindo cores vibrantes em um painel de 90Hz.*
+{{< foto src="cover.webp" alt="Steam Deck em operação" legenda="O Steam Deck OLED exibindo cores vibrantes em um painel de 90Hz." >}}
 
 ### SteamOS: O Poder do Arch Linux no Bolso
 
@@ -31,8 +30,7 @@ O coração lógico do dispositivo reside no **SteamOS 3.x**. Em uma decisão ar
 
 O grande segredo do sucesso e da altíssima taxa de compatibilidade do sistema é o **Proton**. Longe de ser um emulador tradicional ou uma máquina virtual pesada, o Proton atua como uma camada de compatibilidade altamente sofisticada baseada em WINE. Ele intercepta as chamadas de sistema Win32 e traduz instruções de vídeo DirectX (11 e 12) para a API de baixo nível Vulkan em tempo real, utilizando bibliotecas avançadas como DXVK e VKD3D-Proton. O resultado prático dessa engenharia é que binários complexos projetados exclusivamente para o ecossistema Windows rodam sobre o kernel Linux com mínima perda de desempenho, apresentando, em cenários específicos, taxas de quadros superiores às do sistema original devido à menor sobrecarga de processos em segundo plano do subsistema Linux.
 
-![Modo Desktop do SteamOS](desktop-mode.webp)
-*O "lado PC" do Deck: KDE Plasma rodando no modo desktop.*
+{{< foto src="desktop-mode.webp" alt="Modo Desktop do SteamOS" legenda="O Lado PC do Deck: KDE Plasma rodando no modo desktop." >}}
 
 ### Por que escolher este modelo?
 

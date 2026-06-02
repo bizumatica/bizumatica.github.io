@@ -6,7 +6,7 @@ draft: false
 slug: bash-scripting-seguro-set-euo-pipefail-devops
 categories: ["automation", "devops"]
 tags: ["bash", "linux", "automation", "sysadmin", "infrastructure", "reliability"]
-math: true
+math: false
 image: "prod-pro-linux-sysadmin-book.webp"
 product:
     name: "Livro Pro Linux System Administration (Apress)"

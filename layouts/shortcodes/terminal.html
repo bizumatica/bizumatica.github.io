@@ -1,0 +1,106 @@
+{{- $lang := .Get "lang" | default (.Get 0) | default "bash" -}}
+{{- $titulo := .Get "titulo" | default (.Get 1) | default "" -}}
+{{- $options := .Get "options" | default "" -}}
+
+<div class="custom-terminal-window">
+  <div class="terminal-window-header">
+    <div class="terminal-window-buttons">
+      <span class="t-btn t-close"></span>
+      <span class="t-btn t-minimize"></span>
+      <span class="t-btn t-expand"></span>
+    </div>
+    {{- if $titulo -}}
+      <div class="terminal-window-title">{{ $titulo }}</div>
+    {{- end -}}
+  </div>
+  <div class="terminal-window-body">
+    {{- highlight (trim .Inner "\n\r") $lang $options -}}
+  </div>
+</div>
+
+{{- if not (.Page.Scratch.Get "terminal-css-loaded") -}}
+  {{- .Page.Scratch.Set "terminal-css-loaded" true -}}
+  <style>
+    .custom-terminal-window {
+      margin: 2rem 0;
+      background: #1e1e24 !important; /* Cor estável escura de fundo */
+      border: 1px solid #3e4451 !important;
+      border-radius: 6px !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+      overflow: hidden !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .terminal-window-header {
+      background: #21252b !important;
+      padding: 0.65rem 1rem !important;
+      display: flex !important;
+      align-items: center !important;
+      position: relative !important;
+      border-bottom: 1px solid #181a1f !important;
+      height: 34px !important;
+      box-sizing: border-box !important;
+    }
+    .terminal-window-buttons {
+      display: flex !important;
+      gap: 6px !important;
+      align-items: center !important;
+      z-index: 2;
+    }
+    .t-btn {
+      width: 10px !important;
+      height: 10px !important;
+      border-radius: 50% !important;
+      display: inline-block !important;
+    }
+    .t-close { background: #ff5f56 !important; }
+    .t-minimize { background: #ffbd2e !important; }
+    .t-expand { background: #27c93f !important; }
+    
+    .terminal-window-title {
+      position: absolute !important;
+      left: 50% !important;
+      transform: translateX(-50%) !important;
+      font-family: Consolas, Monaco, monospace !important;
+      font-size: 0.75rem !important;
+      color: #9da5b4 !important;
+      font-weight: 600 !important;
+      white-space: nowrap !important;
+      z-index: 1;
+    }
+    .terminal-window-body {
+      box-sizing: border-box !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      background: #1e1e24 !important;
+    }
+    /* Limpeza total de regras de herança do tema do site */
+    .terminal-window-body .highlight {
+      margin: 0 !important;
+      padding: 0 !important;
+      background: transparent !important;
+    }
+    .terminal-window-body pre {
+      margin: 0 !important;
+      padding: 1.25rem !important;
+      background: #1e1e24 !important; 
+      overflow-x: auto !important; /* Rolagem lateral interna isolada apenas para códigos longos */
+      white-space: pre !important; 
+      font-family: 'Fira Code', Consolas, Monaco, monospace !important;
+      font-size: 0.85rem !important;
+      line-height: 1.5 !important;
+      box-sizing: border-box !important;
+      width: 100% !important;
+    }
+    .terminal-window-body code {
+      font-family: inherit !important;
+      font-size: inherit !important;
+      color: #abb2bf !important;
+      background: transparent !important;
+      padding: 0 !important;
+      border-radius: 0 !important;
+      border: none !important;
+    }
+  </style>
+{{- end -}}

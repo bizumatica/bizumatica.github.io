@@ -13,7 +13,7 @@ else
     exit 1
 fi
 
-# Pasta onde ficam os posts (ajuste se usar outras pastas como 'content/matematica')
+# Pasta onde ficam os posts (ajuste se necessario)
 POSTS_DIR="content"
 
 echo "🚀 Iniciando otimização em [$POSTS_DIR] usando [$CONVERTER]..."

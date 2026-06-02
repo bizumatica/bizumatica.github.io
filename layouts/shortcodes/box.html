@@ -7,6 +7,8 @@
 {{ if eq $tipo "aviso" }}{{ $icon = "⚠️" }}{{ end }}
 {{ if eq $tipo "check" }}{{ $icon = "✅" }}{{ end }}
 {{ if eq $tipo "link" }}{{ $icon = "🔗" }}{{ end }}
+{{ if eq $tipo "atencao" }}{{ $icon = "🧐" }}{{ end }}
+
 
 <div class="mat-box box-{{ $tipo }}" style="border-left: 5px solid var(--box-color, #0e1922); background: #0f0f0d; padding: 1rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
     <div class="box-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem; border-bottom: 1px solid #333; padding-bottom: 5px;">

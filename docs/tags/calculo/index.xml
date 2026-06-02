@@ -10,6 +10,8 @@ $$e^{i\pi} + 1 = 0$$
 
 
 
+
+
 &lt;div class="mat-box box-bizu" style="border-left: 5px solid var(--box-color, #0e1922); background: #0f0f0d; padding: 1rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;"&gt;
  &lt;div class="box-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem; border-bottom: 1px solid #333; padding-bottom: 5px;"&gt;
  &lt;span class="box-icon"&gt;💡&lt;/span&gt;
@@ -20,6 +22,8 @@ $$e^{i\pi} + 1 = 0$$
 &lt;h3 id="o-problema"&gt;O Problema&lt;/h3&gt;
 &lt;p&gt;Queremos calcular o valor da área sob a curva da função gaussiana em toda a reta real:&lt;/p&gt;
 $$I = \int_{-\infty}^{\infty} e^{-x^2} dx$$
+
+
 
 
 

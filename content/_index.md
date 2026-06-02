@@ -78,7 +78,7 @@ No <strong>Bizumática</strong>, exploramos a intersecção entre o código aber
 
 ### Dica de Ouro: Backup Universal em Shell
 
-```bash
+{{< terminal lang="bash" titulo="backup.sh" >}}
 #!/bin/bash
 # Backup Universal - Bizumática
 ORIGEM="$HOME/documentos"
@@ -94,7 +94,7 @@ else
     exit 1
 fi
 
-```
+{{< /terminal >}}
 
 ## 🌟 Apoie o Projeto Bizumática
 

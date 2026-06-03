@@ -1,17 +1,17 @@
 baseURL = "https://bizumatica.com.br/"
-locale = "pt-br"
+locale = "pt-br" # Corrigido para zerar o WARN do Hugo v0.158.0+
 title = "Bizumática"
 theme = "terminal"
 publishDir = "docs"
 enableEmoji = true
 
 # --- HIGIENIZAÇÃO NATIVA CONTRA PÁGINAS FANTASMAS ---
-# Limpa a pasta docs antes de criar novos arquivos, eliminando lixos do passado
 cleanDestinationDir = true
 
-# --- AJUSTES PARA GITHUB PAGES ---
+# --- AJUSTES OTIMIZADOS PARA GITHUB PAGES + AMBIENTE LOCAL ---
+# Desativamos o canonify e o relative para que o Hugo use caminhos absolutos baseados no host atual (funciona tanto no localhost quanto na web)
 canonifyURLs = false
-relativeURLs = true
+relativeURLs = false
 removePathAccents = true
 
 [params]
@@ -33,13 +33,12 @@ removePathAccents = true
   anchor = "smart"
 
 # --- TAXONOMIAS ---
-# Reativadas para manter a integridade dos links do tema Terminal
 [taxonomies]
   category = "categories"
   tag = "tags"
   series = "series"
 
-# --- RENDERIZAÇÃO DE MARKUP (KaTeX & HTML) ---
+# --- RENDERIZAÇÃO DE MARKUP (KaTeX Ultra Rápido & HTML) ---
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
@@ -79,7 +78,7 @@ removePathAccents = true
 [[menu.main]]
   identifier = "shell-scripting"
   name = "Shell"
-  url = "/shell-scripting/"
+  url = "/categories/shell-scripting/" 
   weight = 18
 
 [[menu.main]]

@@ -193,23 +193,27 @@
 }
 </style>
 
-{{/* Script Assíncrono para Injetar o IP Público do Usuário */}}
+{{/* Script Inquebrável com Cloudflare Trace Bypass (Imune a AdBlockers) */}}
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    fetch('https://api.ipify.org?format=json')
-        .then(response => {
-            if (!response.ok) throw new Error('Network error');
-            return response.json();
-        })
-        .then(data => {
-            const ipSpan = document.getElementById('user-ip');
-            if (ipSpan && data.ip) {
-                ipSpan.textContent = data.ip;
+    fetch('https://www.cloudflare.com/cdn-cgi/trace')
+        .then(response => response.text())
+        .then(text => {
+            // O endpoint do Cloudflare retorna dados textuais em linhas (ex: ip=192.168.0.1)
+            const lines = text.split('\n');
+            const ipLine = lines.find(line => line.startsWith('ip='));
+            if (ipLine) {
+                const userIp = ipLine.split('=')[1].trim();
+                const ipSpan = document.getElementById('user-ip');
+                if (ipSpan) {
+                    ipSpan.textContent = userIp;
+                }
             }
         })
         .catch(error => {
-            // Silencioso: Se houver bloqueio ou falha, o HTML mantém o '127.0.0.1' nativo
-            console.log('IP fetch omitted or blocked. Using local interface.');
+            // Fallback elegante caso esteja completamente offline
+            const ipSpan = document.getElementById('user-ip');
+            if (ipSpan) ipSpan.textContent = '127.0.0.1';
         });
 });
 </script>

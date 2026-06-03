@@ -13,8 +13,7 @@ math: true
 <div class="tokyonight-wave">
     <span class="wave-pulse"></span>
 </div>
-<!-- Alterado de PORT: 1313 para IP dinâmico com fallback em localhost -->
-<div class="terminal-line" style="opacity: 0.4; font-size: 0.8rem; margin-bottom: 25px;">[ SYSTEM STATUS: ONLINE // IP: <span id="user-ip">127.0.0.1</span> ]</div>
+<div class="terminal-line" style="opacity: 0.4; font-size: 0.8rem; margin-bottom: 25px;">[ SYSTEM STATUS: ONLINE // IP: <span id="user-ip">0.0.0.0</span> ]</div>
 
 <div class="terminal-command-wrapper" style="text-align: center;">
     <span class="terminal-prompt">guest@bizumatica:~$</span> <span class="terminal-command">cat sobre_nos.md</span>
@@ -46,7 +45,7 @@ No <strong>Bizumática</strong>, exploramos a intersecção entre o código aber
 <div class="terminal-directory-grid">
     <div class="dir-item">
         <span class="dir-perm">drwxr-xr-x</span> 
-        <a href="/categories/shell-scripting/">./Shell_Scripting_e_Automacao</a>
+        <a href="/shell-scripting/">./Shell_Scripting_e_Automacao</a>
     </div>
     <div class="dir-item">
         <span class="dir-perm">drwxr-xr-x</span> 

@@ -1,8 +1,8 @@
 <header class="header">
   <div class="header__inner">
     <div class="header__logo-row" style="display: flex; align-items: center; width: 100%; overflow: hidden;">
-      {{- /* Link da Logo apontando para a raiz absoluta */ -}}
-      <a href="{{ "/" | relURL }}" style="text-decoration: none; flex-shrink: 0;">
+      {{- /* Link da Logo apontando para a raiz absoluta inquebrável */ -}}
+      <a href="{{ "/" | absURL }}" style="text-decoration: none; flex-shrink: 0;">
         <div class="logo-box">BIZUMÁTICA</div>
       </a>
       <div class="terminal-bars"></div>
@@ -10,24 +10,23 @@
 
     <nav class="menu-nav">
       <ul class="menu__inner">
-        {{- /* Adicionada a barra "/" para evitar o erro de URLs grudadas */ -}}
-        <li><a href="{{ "/posts/" | relURL }}">[ Linux ]</a></li>
-        <li><a href="{{ "/foss/" | relURL }}">[ FOSS ]</a></li>
-        <li><a href="{{ "/matematica/" | relURL }}">[ Matemática ]</a></li>
-        <li><a href="{{ "/equipamentos/" | relURL }}">[ Curadoria ]</a></li>
-        <li><a href="{{ "/shell-scripting/" | relURL }}">[ Shell ]</a></li>
-        <li><a href="{{ "/search/" | relURL }}">[ Buscar ]</a></li>
-        <li><a href="{{ "/about/" | relURL }}">[ Sobre ]</a></li>
+        {{- /* Links corrigidos com absURL e caminhos idênticos ao hugo.toml */ -}}
+        <li><a href="{{ "/posts/" | absURL }}">[ Linux ]</a></li>
+        <li><a href="{{ "/foss/" | absURL }}">[ FOSS ]</a></li>
+        <li><a href="{{ "/matematica/" | absURL }}">[ Matemática ]</a></li>
+        <li><a href="{{ "/equipamentos/" | absURL }}">[ Curadoria ]</a></li>
+        <li><a href="{{ "/shell-scripting/" | absURL }}">[ Shell ]</a></li>
+        <li><a href="{{ "/search/" | absURL }}">[ Buscar ]</a></li>
+        <li><a href="{{ "/about/" | absURL }}">[ Sobre ]</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
 <style>
-:root { --theme-color: #EEC35E; }
-
+/* Forçando a cor dourada original para garantir consistência em qualquer ambiente */
 .logo-box {
-    background-color: var(--theme-color) !important;
+    background-color: #EEC35E !important;
     color: #000 !important;
     padding: 5px 12px;
     font-weight: bold;
@@ -41,7 +40,7 @@
 .terminal-bars {
     flex-grow: 1;
     height: 25px;
-    background-image: linear-gradient(to right, var(--theme-color) 1px, transparent 1px);
+    background-image: linear-gradient(to right, #EEC35E 1px, transparent 1px);
     background-size: 4px 100%;
 }
 
@@ -56,12 +55,12 @@
 
 .menu__inner {
     display: flex;
-    flex-wrap: nowrap; /* VALIDAÇÃO 1: Trava a linha única no Desktop, impedindo o Sobre de cair */
+    flex-wrap: nowrap; /* Trava a linha única no Desktop, impedindo o 'Sobre' de cair */
     list-style: none;
     padding: 0;
     margin: 0;
     justify-content: space-between; /* Distribui os blocos aproveitando 100% da largura útil */
-    gap: 10px 10px; /* VALIDAÇÃO 2: Compactação segura do espaço vazio sem diminuir a fonte */
+    gap: 10px 10px; /* Compactação segura do espaço vazio sem diminuir a fonte */
 }
 
 .menu__inner li {
@@ -69,7 +68,7 @@
 }
 
 .menu__inner li a {
-    color: var(--theme-color) !important;
+    color: #EEC35E !important;
     text-decoration: none;
     font-family: monospace;
     font-size: 1.1rem; /* Mantém o tamanho original intacto e legível */
@@ -81,7 +80,7 @@
     filter: brightness(1.2);
 }
 
-/* VALIDAÇÃO 3: Ativa o modo responsivo elástico apenas abaixo de desktops padrão */
+/* Ativa o modo responsivo elástico apenas abaixo de desktops padrão */
 @media (max-width: 915px) {
     .menu__inner {
         flex-wrap: wrap; /* Permite a quebra organizada em telas pequenas */

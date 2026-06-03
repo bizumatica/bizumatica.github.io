@@ -3,41 +3,195 @@
         
         {{/* Bloco Principal: Hero / Boas-vindas */}}
         <div class="post" data-pagefind-body>
-            {{/* Título com gradiente e efeito terminal */}}
-            <h1 class="post-title logo__text">{{ .Title | markdownify }}</h1>
+            {{ if .Title }}
+                <div class="terminal-centered-header">
+                    <h1 class="post-title logo__text" style="color: var(--primary-color); font-family: monospace; display: inline-block; margin-bottom: 10px;">{{ .Title }}</h1>
+                    <div class="terminal-line" style="margin: 0 auto 20px auto;">:::::::::::::::::::::::::::::</div>
+                </div>
+            {{ end }}
             
-            {{/* O container hero-text activa o cursor piscante (::before) no CSS */}}
             <div class="post-content hero-text">
                 {{ .Content }}
             </div>
         </div>
 
-        {{/* Listagem de Posts Recentes (Abaixo do Manifesto) */}}
+        {{/* Listagem de Posts Recentes */}}
         {{ if .IsHome }}
             <div data-pagefind-ignore>
-                <hr style="border: 1px dashed #333; margin: 40px 0;">
-                <h2 style="color: var(--bizu-yellow); margin-bottom: 20px;">> SISTEMA_LOG: POSTS_RECENTES</h2>
+                <hr class="terminal-divider">
+                <h2 class="section-logs-title">> SISTEMA_LOG: POSTS_RECENTES</h2>
                 
-                <div class="recent-posts">
-                    {{/* ADIÇÃO CRÍTICA: Filtra por qualquer seção válida, ordena do mais recente para o mais antigo e limita em 5 */}}
+                <div class="recent-posts-container">
                     {{ range first 5 (where .Site.RegularPages "Section" "!=" "").ByDate.Reverse }}
-                        <article class="post" style="margin-bottom: 15px; border-left: 2px solid var(--primary-color);">
-                            <h3 class="post-title" style="font-size: 1.2rem;">
-                                <a href="{{ .Permalink }}" style="border: none;">> {{ .Title }}</a>
+                        <article class="recent-post-card">
+                            <h3 class="recent-post-title">
+                                <a href="{{ .Permalink }}">> {{ .Title }}</a>
                             </h3>
-                            <div class="post-meta" style="font-size: 0.8rem; opacity: 0.8;">
+                            <div class="recent-post-meta">
                                 <time>{{ .Date.Format "02/01/2006" }}</time>
-                                <span class="header-metadata" style="color: var(--primary-color);"> | {{ .Section | upper }}</span>
+                                <span class="recent-post-section"> | {{ .Section | upper }}</span>
                             </div>
                         </article>
                     {{ end }}
                 </div>
                 
-                {{/* Botão para ver tudo */}}
-                <div style="margin-top: 20px;">
-                    <a href="/arquivo/" class="btn-compra" style="display: inline-block; text-decoration: none;">VER_TODOS_OS_LOGS</a>
-                </div>
+                {{/* BOTÃO DUPLICADO REMOVIDO DAQUI POR COMPLETO */}}
             </div>
         {{ end }}
     </main>
+
+<style>
+/* Estruturas Globais de Centralização */
+.terminal-centered-header {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.terminal-command-wrapper {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    font-family: monospace;
+    font-size: 1.1rem;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 6px 14px;
+    border-radius: 4px;
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.terminal-prompt {
+    color: #9ece6a; /* Verde Tokyo Night */
+    font-weight: bold;
+}
+.terminal-command {
+    color: #e0af68; /* Amarelo Tokyo Night */
+}
+
+/* Grid Impecável do Sumário (Previne Quebras de Linha) */
+.terminal-directory-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 12px;
+    margin: 20px 0;
+    font-family: monospace;
+}
+.dir-item {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 10px 14px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    white-space: nowrap; /* Impede a quebra de texto interna */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.dir-item a {
+    border: none !important;
+    text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.dir-perm {
+    color: #f7768e; /* Rosa Tokyo Night */
+    margin-right: 12px;
+    flex-shrink: 0; /* Impede que as permissões esmaguem no mobile */
+}
+
+/* Divisores e Seções */
+.terminal-divider {
+    border: none;
+    border-top: 1px dashed #333;
+    margin: 50px 0 40px 0;
+}
+.section-logs-title {
+    color: var(--bizu-yellow); 
+    margin-bottom: 25px;
+    font-family: monospace;
+    text-align: center;
+}
+
+/* Cards de Posts Recentes */
+.recent-posts-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.recent-post-card {
+    padding: 12px 18px;
+    border-left: 3px solid var(--primary-color);
+    background: rgba(0, 0, 0, 0.15);
+    transition: all 0.2s ease-in-out;
+}
+.recent-post-card:hover {
+    background: rgba(122, 162, 247, 0.05);
+    box-shadow: inset 5px 0 0 0 #bb9af7;
+    transform: translateX(4px);
+}
+.recent-post-title {
+    font-size: 1.1rem;
+    margin: 0 0 5px 0 !important;
+}
+.recent-post-title a {
+    border: none !important;
+    text-decoration: none;
+}
+.recent-post-meta {
+    font-size: 0.8rem; 
+    opacity: 0.7;
+    font-family: monospace;
+}
+.recent-post-section {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* Efeitos da Animação do Logo */
+.tokyonight-wave {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 25px auto 15px auto;
+    width: 180px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #7aa2f7, #bb9af7, transparent);
+    position: relative;
+}
+.wave-pulse {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: #7aa2f7;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #7aa2f7, 0 0 15px #bb9af7;
+    animation: data-pulse 3s infinite ease-in-out;
+}
+@keyframes data-pulse {
+    0% { left: 0%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+}
+.brand-header {
+    font-size: 4rem;
+    margin: 20px 0;
+}
+
+/* Ajustes Estritos para o Modo Mobile */
+@media (max-width: 768px) {
+    .terminal-directory-grid {
+        grid-template-columns: 1fr; /* Força uma coluna limpa no mobile */
+    }
+    .dir-item {
+        font-size: 0.85rem; /* Ajusta tamanho da fonte para não estourar telas pequenas */
+        overflow-x: auto; /* Permite scroll horizontal caso o dispositivo seja ultra estreito */
+    }
+    .terminal-command-wrapper {
+        font-size: 0.9rem;
+        padding: 6px 10px;
+    }
+}
+</style>
 {{ end }}

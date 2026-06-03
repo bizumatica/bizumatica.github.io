@@ -5,8 +5,11 @@ theme = "terminal"
 publishDir = "docs"
 enableEmoji = true
 
+# --- HIGIENIZAÇÃO NATIVA CONTRA PÁGINAS FANTASMAS ---
+# Limpa a pasta docs antes de criar novos arquivos, eliminando lixos do passado
+cleanDestinationDir = true
+
 # --- AJUSTES PARA GITHUB PAGES ---
-# Mantendo sua configuração original para compatibilidade com o deploy
 canonifyURLs = false
 relativeURLs = true
 removePathAccents = true
@@ -16,7 +19,6 @@ removePathAccents = true
   centerTheme = true
   animatedTheme = true
   favicon = "favicon.png"
-  # O terminal theme carrega customCSS automaticamente de assets/css/
   customCSS = ["css/extended.css"]
 
   [params.Logo]
@@ -31,19 +33,17 @@ removePathAccents = true
   anchor = "smart"
 
 # --- TAXONOMIAS ---
+# Reativadas para manter a integridade dos links do tema Terminal
 [taxonomies]
   category = "categories"
   tag = "tags"
   series = "series"
 
-# HIGIENIZAÇÃO ADSENSE
-disableKinds = ["taxonomy", "taxonomyTerm"]
-
 # --- RENDERIZAÇÃO DE MARKUP (KaTeX & HTML) ---
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
-      unsafe = true # Essencial para renderizar HTML/Shortcodes nos posts
+      unsafe = true 
     
     [markup.goldmark.extensions]
       [markup.goldmark.extensions.passthrough]
@@ -58,7 +58,6 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
     startLevel = 2
 
 # --- NAVEGAÇÃO (MENUS) ---
-# Estrutura otimizada para validar a navegação.
 [[menu.main]]
   identifier = "linux"
   name = "Linux"

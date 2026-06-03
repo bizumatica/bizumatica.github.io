@@ -1,12 +1,9 @@
 ---
-title: ""
+title: "root@bizumatica:~#"
 math: true
 ---
 
-<div style="text-align: center; margin-bottom: 40px;">
-
-# <span style="background: linear-gradient(to right, #7aa2f7, #bb9af7); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Bem-vindo ao Bizumática</span>
-<div class="terminal-line">:::::::::::::::::::::::::::::</div>
+<div class="terminal-centered-header">
 
 <div class="brand-header">
     <span class="brand-letter">B</span>
@@ -16,46 +13,15 @@ math: true
 <div class="tokyonight-wave">
     <span class="wave-pulse"></span>
 </div>
+<div class="terminal-line" style="opacity: 0.4; font-size: 0.8rem; margin-bottom: 25px;">[ SYSTEM STATUS: ONLINE // PORT: 1313 ]</div>
+
+<div class="terminal-command-wrapper">
+    <span class="terminal-prompt">guest@bizumatica:~$</span> <span class="terminal-command">cat sobre_nos.md</span>
+</div>
 
 </div>
 
-<style>
-/* Estilização da Onda/Pulso Cyberpunk Tokyo Night */
-.tokyonight-wave {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 25px auto 15px auto;
-    width: 180px;
-    height: 2px;
-    background: linear-gradient(to right, transparent, #7aa2f7, #bb9af7, transparent);
-    position: relative;
-}
-
-.wave-pulse {
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    background-color: #7aa2f7;
-    border-radius: 50%;
-    box-shadow: 0 0 8px #7aa2f7, 0 0 15px #bb9af7;
-    animation: data-pulse 3s infinite ease-in-out;
-}
-
-@keyframes data-pulse {
-    0% { left: 0%; opacity: 0; }
-    10% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { left: 100%; opacity: 0; }
-}
-
-.brand-header {
-    font-size: 4rem;
-    margin: 20px 0;
-}
-</style>
-
-<p class="introduction">
+<p class="introduction" style="margin-top: 25px;">
 No <strong>Bizumática</strong>, exploramos a intersecção entre o código aberto e a lógica pura. Aqui você encontrará análises técnicas, automação com Shell Script e insights práticos sobre o ecossistema Linux. Nosso foco é desmistificar a tecnologia para que você a domine com autonomia, provando que a 
 <span class="math-term">$\mu\alpha\theta\eta\mu\alpha\tau\iota\kappa\alpha$</span> e o terminal falam a mesma língua: a da elegância e da eficiência.
 </p>
@@ -66,17 +32,48 @@ No <strong>Bizumática</strong>, exploramos a intersecção entre o código aber
 >
 > *A identidade de Euler une os cinco números mais importantes da matemática em uma única igualdade. Uma inspiração!*
 
-## 📖 Sumário de Conteúdos
+---
 
-1. [🛠️ Shell Scripting & Automação](/categories/shell-scripting/)
-2. [🐧 O Ecossistema Linux](/posts/)
-3. [📱 Análise de Aplicativos](/categories/apps/)
-4. [📰 Lançamentos e Notícias](/categories/noticias/)
-5. [🧮 Matemática](/matematica/)
+<div class="terminal-centered-header">
+    <div class="terminal-command-wrapper">
+        <span class="terminal-prompt">guest@bizumatica:~$</span> <span class="terminal-command">ls -la /conteudos</span>
+    </div>
+</div>
 
-## ⚙️ Shell Scripting & Automação
+<h2 style="text-align: center; margin-bottom: 25px;">📖 Diretório do Sistema</h2>
 
-### Dica de Ouro: Backup Universal em Shell
+<div class="terminal-directory-grid">
+    <div class="dir-item">
+        <span class="dir-perm">drwxr-xr-x</span> 
+        <a href="/categories/shell-scripting/">./Shell_Scripting_e_Automacao</a>
+    </div>
+    <div class="dir-item">
+        <span class="dir-perm">drwxr-xr-x</span> 
+        <a href="/posts/">./Ecossistema_Linux</a>
+    </div>
+    <div class="dir-item">
+        <span class="dir-perm">drwxr-xr-x</span> 
+        <a href="/categories/apps/">./Analise_de_Aplicativos</a>
+    </div>
+    <div class="dir-item">
+        <span class="dir-perm">drwxr-xr-x</span> 
+        <a href="/categories/noticias/">./Lancamentos_e_Noticias</a>
+    </div>
+    <div class="dir-item">
+        <span class="dir-perm">drwxr-xr-x</span> 
+        <a href="/matematica/">./Matematica_Pura</a>
+    </div>
+</div>
+
+---
+
+<div class="terminal-centered-header">
+    <div class="terminal-command-wrapper">
+        <span class="terminal-prompt">guest@bizumatica:~$</span> <span class="terminal-command">tail -n 20 dica_de_ouro.sh</span>
+    </div>
+</div>
+
+## ⚙️ Automação em Destaque
 
 {{< terminal lang="bash" titulo="backup.sh" >}}
 #!/bin/bash
@@ -93,8 +90,9 @@ else
     echo "❌ Erro: Falha ao gerar o backup."
     exit 1
 fi
-
 {{< /terminal >}}
+
+---
 
 ## 🌟 Apoie o Projeto Bizumática
 
@@ -102,9 +100,9 @@ fi
 
 ## 💬 Contato e Redes
 
-* **Código Fonte:** [https://github.com/bizumatica/bizumatica.github.io](https://github.com/bizumatica/bizumatica.github.io)
-* **E-mail:** [julio.prata@proton.me]()
+* **Código Fonte:** [github.com/bizumatica](https://github.com/bizumatica/bizumatica.github.io)
+* **E-mail:** [julio.prata@proton.me](mailto:julio.prata@proton.me)
 
-<div style="text-align: center; margin-top: 30px;">
+<div style="text-align: center; margin-top: 40px;">
     {{< contador >}}
 </div>

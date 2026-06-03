@@ -15,7 +15,7 @@ product:
     img: "prolinuxbook"
 affiliate:
   - store: Amazon
-    link: "https://amzn.to/3Rba76Z"
+    link: "https://amzn.to/4fjYfLs"
     best_deal: true
 ---
 

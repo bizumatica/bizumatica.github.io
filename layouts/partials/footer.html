@@ -5,11 +5,16 @@
       <a href="#" class="nav-btn btn-up">[ SUBIR AO TOPO ]</a>
       <a href="{{ .Site.BaseURL }}" class="nav-btn btn-home">[ VOLTAR AO INÍCIO ]</a>
       
-      {{ with .Site.GetPage "privacy.md" }}
+      {{- /* Correção de busca de caminhos lógicos para Page Bundles no Hugo */ -}}
+      {{ with .Site.GetPage "/privacidade" }}
         <a href="{{ .Permalink }}" class="nav-btn btn-privacy">[ POLÍTICA DE PRIVACIDADE ]</a>
       {{ end }}
+
+      {{ with .Site.GetPage "/termos-de-uso" }}
+        <a href="{{ .Permalink }}" class="nav-btn btn-terms">[ TERMOS DE USO ]</a>
+      {{ end }}
       
-      {{ with .Site.GetPage "logs.md" }}
+      {{ with .Site.GetPage "/logs" }}
         <a href="{{ .Permalink }}" class="nav-btn btn-logs">[ TODOS OS LOGS ]</a>
       {{ end }}
     </div>
@@ -42,7 +47,7 @@
   display: flex;
   justify-content: center;
   gap: 15px;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Indispensável para a quebra de linha responsiva em mobile */
 }
 
 .nav-btn {
@@ -56,10 +61,11 @@
 
 .nav-btn:active { transform: scale(0.95); }
 
-/* Cores Tokyo Night */
+/* Cores Tokyo Night / Dracula */
 .btn-up { color: #50fa7b !important; border: 1px solid #50fa7b66 !important; }
 .btn-home { color: #EEC35E !important; border: 1px solid #EEC35E66 !important; }
 .btn-privacy { color: #ff79c6 !important; border: 1px solid #ff79c666 !important; }
+.btn-terms { color: #ffb86c !important; border: 1px solid #ffb86c66 !important; } /* Orange/Rules */
 .btn-logs { color: #8be9fd !important; border: 1px solid #8be9fd66 !important; }
 
 .copyright {

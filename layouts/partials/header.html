@@ -1,6 +1,6 @@
 <header class="header">
   <div class="header__inner">
-    <div class="header__logo-row" style="display: flex; align-items: center; width: 100%; overflow: hidden;">
+    <div class="header__logo-row">
       {{- /* Link da Logo apontando para a raiz absoluta inquebrável */ -}}
       <a href="{{ "/" | absURL }}" style="text-decoration: none; flex-shrink: 0;">
         <div class="logo-box">BIZUMÁTICA</div>
@@ -8,16 +8,16 @@
       <div class="terminal-bars"></div>
     </div>
 
-    <nav class="menu-nav">
+    <nav class="menu-nav" aria-label="Navegação Principal">
       <ul class="menu__inner">
-        {{- /* Links corrigidos com absURL e caminhos idênticos ao hugo.toml */ -}}
-        <li><a href="{{ "/posts/" | absURL }}">[ Linux ]</a></li>
-        <li><a href="{{ "/foss/" | absURL }}">[ FOSS ]</a></li>
-        <li><a href="{{ "/matematica/" | absURL }}">[ Matemática ]</a></li>
-        <li><a href="{{ "/equipamentos/" | absURL }}">[ Curadoria ]</a></li>
-        <li><a href="{{ "/shell-scripting/" | absURL }}">[ Shell ]</a></li>
-        <li><a href="{{ "/search/" | absURL }}">[ Buscar ]</a></li>
-        <li><a href="{{ "/about/" | absURL }}">[ Sobre ]</a></li>
+        {{- /* Links corrigidos com absURL e acessibilidade injetada via ARIA */ -}}
+        <li><a href="{{ "/linux/" | absURL }}" aria-label="Seção Linux">[ Linux ]</a></li>
+        <li><a href="{{ "/foss/" | absURL }}" aria-label="Seção FOSS">[ FOSS ]</a></li>
+        <li><a href="{{ "/matematica/" | absURL }}" aria-label="Seção Matemática">[ Matemática ]</a></li>
+        <li><a href="{{ "/curadoria/" | absURL }}" aria-label="Seção Curadoria">[ Curadoria ]</a></li>
+        <li><a href="{{ "/shell-scripting/" | absURL }}" aria-label="Seção Shell Scripting">[ Shell ]</a></li>
+        <li><a href="{{ "/search/" | absURL }}" aria-label="Página de Busca">[ Buscar ]</a></li>
+        <li><a href="{{ "/sobre/" | absURL }}" aria-label="Sobre o Autor">[ Sobre ]</a></li>
       </ul>
     </nav>
   </div>
@@ -25,6 +25,13 @@
 
 <style>
 /* Forçando a cor dourada original para garantir consistência em qualquer ambiente */
+.header__logo-row {
+    display: flex; 
+    align-items: center; 
+    width: 100%; 
+    overflow: hidden;
+}
+
 .logo-box {
     background-color: #EEC35E !important;
     color: #000 !important;
@@ -39,6 +46,7 @@
 
 .terminal-bars {
     flex-grow: 1;
+    min-width: 30px; /* Garante que a barra nunca seja esmagada a zero no mobile */
     height: 25px;
     background-image: linear-gradient(to right, #EEC35E 1px, transparent 1px);
     background-size: 4px 100%;
@@ -59,8 +67,8 @@
     list-style: none;
     padding: 0;
     margin: 0;
-    justify-content: space-between; /* Distribui os blocos aproveitando 100% da largura útil */
-    gap: 10px 10px; /* Compactação segura do espaço vazio sem diminuir a fonte */
+    justify-content: flex-start; /* Alinhamento à esquerda com espaçamento fixo e seguro */
+    gap: 10px 24px; /* Aumentado o gap horizontal para evitar colisão em notebooks */
 }
 
 .menu__inner li {
@@ -81,7 +89,7 @@
 }
 
 /* Ativa o modo responsivo elástico apenas abaixo de desktops padrão */
-@media (max-width: 915px) {
+@media (max-width: 960px) { /* Ajustado de 915px para 960px para dar margem de segurança */
     .menu__inner {
         flex-wrap: wrap; /* Permite a quebra organizada em telas pequenas */
         justify-content: flex-start;

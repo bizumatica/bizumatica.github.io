@@ -1,25 +1,29 @@
 # ==============================================================================
-# BIZUMÁTICA - POLÍTICA DE INDEXAÇÃO E ADSENSE
+# BIZUMÁTICA - POLÍTICA DE INDEXAÇÃO E ADSENSE (OTIMIZADO)
 # ==============================================================================
 
 User-agent: Mediapartners-Google
 Disallow: /tags/
 Disallow: /categories/
-Disallow: /search/
+Allow: /search/
 Allow: /
 
 User-agent: *
-# Bloqueia listagens magras que causam recusa no AdSense
+# Evita indexação de listagens pequenas ou redundantes
 Disallow: /tags/
 Disallow: /categories/
-Disallow: /search/
 
-# Permite indexação total dos conteúdos densos e valiosos
+# Libera a página de busca para o robô testar o link do menu, mas evita indexar queries vazias
+Allow: /search/
+
+# Permite indexação total dos conteúdos
 Allow: /
-Allow: /posts/
+Allow: /linux/
 Allow: /shell-scripting/
 Allow: /matematica/
 Allow: /foss/
-Allow: /equipamentos/
+Allow: /curadoria/
+Allow: /sobre/
+Allow: /termos-de-uso/
 
 Sitemap: https://bizumatica.com.br/sitemap.xml

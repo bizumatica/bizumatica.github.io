@@ -2,7 +2,7 @@
 
 # ==============================================================================
 # Author: Julio Prata (BackInBash)
-# Version: 4.1 (Validated & Refined - Leaf Bundle Automator)
+# Version: 4.3 (Shielded Leaf Bundle Automator - Anti-_index)
 # ==============================================================================
 
 # GARANTIR QUE O SCRIPT EXECUTE NA RAIZ DO PROJETO
@@ -15,7 +15,7 @@ YELLOW='\033[1;33m'
 RED='\033[0;31m'
 NC='\033[0m'
 
-echo -e "${CYAN}--- [START] Deploy Simplificado: Bizumática v4.1 ---${NC}"
+echo -e "${CYAN}--- [START] Deploy Simplificado: Bizumática v4.3 ---${NC}"
 
 # 0. Processamento de Agendados Locais (Apenas se a venv e o script existirem)
 if [ -d "venv" ] && [ -f "scripts/schedule-release.py" ]; then
@@ -45,7 +45,7 @@ for section in content/curadoria content/foss content/linux content/matematica c
             mkdir -p "$target_dir"
             mv "$old_file" "$target_index"
         fi
-    done < <(find "$section" -maxdepth 1 -name "*.md")
+    done < <(find "$section" -maxdepth 1 -name "*.md" ! -name "index.md" ! -name "_index.md")
 done
 
 # 2. Auditoria AdSense e AdTech
@@ -92,7 +92,7 @@ else
     
     echo -e "${YELLOW}--> Sincronizando com a branch main remota (--rebase)...${NC}"
     if git pull origin main --rebase --no-edit; then
-        git push origin main && echo -e "${CYAN}--- 🚀 [DONE] Bizumática Online e Atualizado! ---${NC}"
+        git push origin main && echo -e "${CYAN}--- 🚀 [DONE] Bizumática Online e Atualizado (v4.3)! ---${NC}"
     else
         echo -e "${RED}--> ERRO CRÍTICO: Conflito detectado no Git Pull Rebase. Resolva manualmente.${NC}"
         exit 1

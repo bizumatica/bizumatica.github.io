@@ -2,7 +2,7 @@
 
 # ==============================================================================
 # Author: Julio Prata (BackInBash)
-# Version: 3.13 (Production Ready - Tree Aligned & Leaf Bundle Unified)
+# Version: 4.1 (Validated & Refined - Leaf Bundle Automator)
 # ==============================================================================
 
 # GARANTIR QUE O SCRIPT EXECUTE NA RAIZ DO PROJETO
@@ -15,31 +15,19 @@ YELLOW='\033[1;33m'
 RED='\033[0;31m'
 NC='\033[0m'
 
-echo -e "${CYAN}--- [START] Deploy: Bizumática v3.13 ---${NC}"
+echo -e "${CYAN}--- [START] Deploy Simplificado: Bizumática v4.1 ---${NC}"
 
-# 0. Sincronização, Agendamento e Ambiente Virtual (venv)
-echo -e "${YELLOW}--> [0] Rodando automações Python...${NC}"
-[ -d "venv" ] && source venv/bin/activate
-
-# Executa o agendador de Leaf Bundles
-if python3 scripts/schedule-release.py; then
-    echo -e "${GREEN}--> Cron de Agendados: PROCESSADO!${NC}"
-else
-    echo -e "${RED}--> AVISO: Falha no script de agendamento. Prosseguindo...${NC}"
+# 0. Processamento de Agendados Locais (Apenas se a venv e o script existirem)
+if [ -d "venv" ] && [ -f "scripts/schedule-release.py" ]; then
+    echo -e "${YELLOW}--> [0] Executando rotina de agendamento local...${NC}"
+    source venv/bin/activate
+    python3 scripts/schedule-release.py || echo -e "${RED}--> AVISO: Falha no script de agendamento. Prosseguindo...${NC}"
 fi
 
-# Executa a sincronização com a API do Google Sheets
-if python3 scripts/auto-busca.py; then
-    echo -e "${GREEN}--> Sincronização API: SUCESSO!${NC}"
-else
-    echo -e "${RED}--> ALERTA: Falha no Python. Prosseguindo local...${NC}"
-fi
-
-# 1. Verificação de Integridade e Higienização de Bundles
-echo -e "${YELLOW}--> [1] Auditando Page Bundles e evitando colisões...${NC}"
+# 1. Verificação de Integridade e Higienização de Bundles (Failsafe Re-engineered)
+echo -e "${YELLOW}--> [1] Auditando Page Bundles e convertendo arquivos soltos...${NC}"
 rm -rf resources/_gen
 
-# Seções reais mapeadas no disco do Bizumática
 for section in content/curadoria content/foss content/linux content/matematica content/shell-scripting; do
     [ -d "$section" ] || continue
     
@@ -49,20 +37,13 @@ for section in content/curadoria content/foss content/linux content/matematica c
         target_dir="$section/$base"
         target_index="$target_dir/index.md"
         
-        # CASO 1: O arquivo solto é um resquício duplicado de um Leaf Bundle que já existe
         if [ -f "$target_index" ]; then
-            echo -e "${RED}--> [Limpeza] Removendo arquivo duplicado da raiz: $old_file (Leaf Bundle preservado)${NC}"
+            echo -e "${RED}--> [Limpeza] Removendo duplicata redundante na raiz: $old_file${NC}"
             rm "$old_file"
-            
-        # CASO 2: A pasta do post existe mas está vazia ou sem o index.md correspondente
-        elif [ -d "$target_dir" ]; then
-            if [ -z "$(ls -A "$target_dir")" ]; then
-                echo -e "${YELLOW}--> Pasta vazia detectada para '$base'. Convertendo arquivo solto...${NC}"
-                mv "$old_file" "$target_index"
-            else
-                echo -e "${YELLOW}--> [Aviso] Pasta '$base' contém mídias sem index.md. Injetando com segurança...${NC}"
-                mv -n "$old_file" "$target_index"
-            fi
+        else
+            echo -e "${GREEN}--> [Bundle] Convertendo arquivo solto em Leaf Bundle: $base${NC}"
+            mkdir -p "$target_dir"
+            mv "$old_file" "$target_index"
         fi
     done < <(find "$section" -maxdepth 1 -name "*.md")
 done
@@ -98,7 +79,7 @@ if npx --yes pagefind --site docs --quiet; then
     touch docs/.nojekyll
 fi
 
-# 6. Pipeline Git com Verificação de Estado e Rebase Seguro
+# 6. Pipeline Git Seguro
 msg="Update Portal $(date +'%d/%m/%Y %H:%M:%S')"
 [ $# -eq 1 ] && msg="$1"
 
@@ -109,11 +90,11 @@ else
     git add .
     git commit -m "$msg"
     
-    echo -e "${YELLOW}--> Sincronizando com a branch main (--rebase)...${NC}"
+    echo -e "${YELLOW}--> Sincronizando com a branch main remota (--rebase)...${NC}"
     if git pull origin main --rebase --no-edit; then
         git push origin main && echo -e "${CYAN}--- 🚀 [DONE] Bizumática Online e Atualizado! ---${NC}"
     else
-        echo -e "${RED}--> ERRO CRÍTICO: Conflito detectado no Git Pull Rebase. Resolva manualmente executando 'git rebase --continue'.${NC}"
+        echo -e "${RED}--> ERRO CRÍTICO: Conflito detectado no Git Pull Rebase. Resolva manualmente.${NC}"
         exit 1
     fi
 fi

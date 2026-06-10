@@ -26,6 +26,9 @@ removePathAccents = true
     logoHomeLink = "/"
     logoCursorStyle = "block"
 
+  [params.adsense]
+    client = "ca-pub-3733806324330520"
+
 # --- PROCESSAMENTO DE IMAGENS ---
 [imaging]
   resampleFilter = "lanczos"

@@ -1,0 +1,50 @@
+# ==========================================
+# BANCO DE DADOS CENTRAL DE AFILIADOS / BIZUMÁTICA
+# Arquivo: data/produtos.toml
+# Chamada no Markdown: {{< compra id="NOME_DO_BLOCO" >}}
+# ==========================================
+
+[thinkpadl14]
+name = "Notebook Lenovo ThinkPad L14 Gen 4 (Recomendado para Debian Stable)"
+current_price = 3300.00
+img = "debian135.webp"
+link = "https://meli.la/2sDEK7h"
+loja = "MercadoLivre"
+pros = [
+  "Estabilidade absoluta e suporte out-of-the-box para o Kernel LTS.",
+  "Reconhecimento imediato de firmwares open-source e drivers estáveis.",
+  "Chassi robusto militar condizente com a filosofia de resiliência do Debian."
+]
+cons = [
+  "Requer ativação manual do repositório non-free para codecs proprietários específicos."
+]
+
+[prolinux]
+name = "Livro Pro Linux System Administration (Apress)"
+current_price = 330.00
+img = "pro-linux-sysadmin-book.webp"
+link = "https://amzn.to/4fjYfLs"
+loja = "Amazon"
+pros = [
+  "Referência canônica de engenharia de sistemas cobrindo automação profunda.",
+  "Didática cirúrgica voltada para engenheiros DevOps e SysAdmins."
+]
+cons = [
+  "Disponível predominantemente em língua inglesa.",
+  "O custo físico de importação reflete o posicionamento premium da editora."
+]
+
+[intelx520]
+name = "Placa de Rede Intel X520-DA2 Dual-Port 10GbE SFP+"
+current_price = 570.50
+img = "intelx520.webp"
+link = "https://amzn.to/3RzUg3u"
+loja = "Amazon"
+pros = [
+  "Oferece conectividade ultrarrápida de 10 Gbps por porta com suporte nativo.",
+  "Suporte avançado a virtualização de hardware (SR-IOV e VMDq)."
+]
+cons = [
+  "Não acompanha transceptores ópticos SFP+ na caixa.",
+  "Exige um slot PCI Express x8 mecânico livre na placa-mãe."
+]

@@ -1,32 +1,35 @@
 #!/usr/bin/env python3
 # ==============================================================================
-# Author: Julio Prata
-# Version: 3.12 (Isolated Global Backup + Multi-Format Front Matter Engine)
+# Author: Julio Prata (BackInBash)
+# Version: 4.2 (Production Ready - Real Tree Sync & Bulletproof Regex)
 # ==============================================================================
 import os
 import re
 import shutil
 from datetime import datetime
 
-# Configuração dos Diretórios Base do Hugo
+# Configuração dos Diretórios Base do Hugo (Alinhamento Real com o Disco)
 FILA_DIR = "content/agendados"
 BACKUP_GLOBAL_DIR = ".deploy_backups"  # Isola os backups fora de content/
 
+# Sintonizado exatamente com as pastas reais do comando tree do Bizumática
 SECOES = {
-    "posts": "content/posts",
+    "linux": "content/linux",
+    "foss": "content/foss",
     "matematica": "content/matematica",
-    "equipamentos": "content/equipamentos"
+    "curadoria": "content/curadoria",
+    "shell-scripting": "content/shell-scripting"
 }
 
 # Garante a existência das pastas estruturais localmente
 os.makedirs(FILA_DIR, exist_ok=True)
 os.makedirs(BACKUP_GLOBAL_DIR, exist_ok=True)
 
-# Data atual do sistema para a esteira de CI/CD (Ambiente 2026)
+# Data atual do sistema para a esteira de CI/CD
 hoje = datetime.now()
 
-print(f"--> [Cron] Analisando Leaf Bundles e Ativos de Mídia (foto.html)...")
-print(f"--> [Cron] Data Atual de Verificação: {hoje.strftime('%d/%m/%Y')}\n")
+print(f"--> [Cron] Analisando Leaf Bundles e Ativos de Mídia (v4.2)...")
+print(f"--> [Cron] Data Atual de Verificação: {hoje.strftime('%d/%m/%Y %H:%M:%S')}\n")
 
 # Processa cada pasta (Leaf Bundle) na fila de agendamento
 for nome_pasta in os.listdir(FILA_DIR):
@@ -45,7 +48,7 @@ for nome_pasta in os.listdir(FILA_DIR):
     with open(arquivo_index, "r", encoding="utf-8") as f:
         conteudo = f.read()
 
-    # Isolar o Front Matter para validação estrita (Prevenção de mutação no corpo do post)
+    # Isolar o Front Matter para validação estrita
     front_matter = ""
     is_toml = False
     is_yaml = False
@@ -62,7 +65,7 @@ for nome_pasta in os.listdir(FILA_DIR):
     else:
         front_matter = conteudo  # Fallback tolerante
 
-    # Regex híbrida: Captura 'key: value' (YAML) e 'key = value' (TOML) limpando ruídos
+    # Regex híbrida: Captura 'key: value' e 'key = value'
     match_date = re.search(r"date\s*[:=]\s*['\"]?([^'\"]+)", front_matter)
     match_type = re.search(r"type\s*[:=]\s*['\"]?([^'\"\s]+)", front_matter)
     
@@ -76,63 +79,63 @@ for nome_pasta in os.listdir(FILA_DIR):
         data_post = datetime.strptime(data_limpa, "%Y-%m-%d")
         
         if data_post <= hoje:
-            # 1. Contabiliza ativos de mídia vinculados ao shortcode customizado foto.html
+            # 1. Contabiliza ativos de mídia vinculados
             arquivos_pasta = os.listdir(caminho_pasta)
             ativos_midia = [arq for arq in arquivos_pasta if arq.lower().endswith(('.webp', '.png', '.jpg', '.jpeg', '.gif'))]
             qtd_midia = len(ativos_midia)
             
-            print(f"  [+] Liberando: {nome_pasta} | Data: {data_limpa}")
-            print(f"      └─ Ativos para foto.html detectados: {qtd_midia} arquivo(s) de imagem.")
+            print(f"  [+] Liberando: {nome_pasta} | Data do Post: {data_limpa}")
+            print(f"      └─ Ativos de imagem detectados no bundle: {qtd_midia}")
             
-            # 2. Altera o estado do rascunho de 'true' para 'false' injetando o dialeto correto
+            # 2. Altera o estado do rascunho com Regex Insensível a maiúsculas/minúsculas e aspas (Failsafe)
             if is_toml:
-                front_matter_modificado = re.sub(r"draft\s*=\s*true", "draft = false", front_matter)
+                front_matter_modificado = re.sub(r"draft\s*=\s*['\"]?true['\"]?", "draft = false", front_matter, flags=re.IGNORECASE)
                 conteudo_modificado = f"+++{front_matter_modificado}+++{partes_toml[2]}"
             elif is_yaml:
-                front_matter_modificado = re.sub(r"draft\s*:\s*true", "draft: false", front_matter)
+                front_matter_modificado = re.sub(r"draft\s*:\s*['\"]?true['\"]?", "draft: false", front_matter, flags=re.IGNORECASE)
                 conteudo_modificado = f"---{front_matter_modificado}---{partes_yaml[2]}"
             else:
-                conteudo_modificado = re.sub(r"draft\s*[:=]\s*true", "draft: false", conteudo, count=1)
+                conteudo_modificado = re.sub(r"draft\s*[:=]\s*['\"]?true['\"]?", "draft: false", conteudo, count=1, flags=re.IGNORECASE)
                 
             with open(arquivo_index, "w", encoding="utf-8") as f:
                 f.write(conteudo_modificado)
             
-            # 3. Roteamento inteligente tolerante a múltiplos formatos de metadados
-            destino_secao = SECOES["posts"]  # Destino padrão seguro
+            # 3. Roteamento inteligente alinhado com o ecossistema real do Bizumática
+            destino_secao = SECOES["linux"]  # Fallback padrão real alterado de 'posts' para 'linux'
             
             if match_type:
                 tipo = match_type.group(1).lower().strip("'\" ")
                 if tipo in SECOES:
                     destino_secao = SECOES[tipo]
             else:
-                # Fallback analítico baseado no bloco do Front Matter completo
+                # Verificação inteligente baseada no bloco de metadados completo
                 front_matter_lower = front_matter.lower()
                 if "matematica" in front_matter_lower or "matemática" in front_matter_lower:
                     destino_secao = SECOES["matematica"]
-                elif "equipamentos" in front_matter_lower:
-                    destino_secao = SECOES["equipamentos"]
+                elif "curadoria" in front_matter_lower:
+                    destino_secao = SECOES["curadoria"]
+                elif "foss" in front_matter_lower:
+                    destino_secao = SECOES["foss"]
+                elif "shell" in front_matter_lower:
+                    destino_secao = SECOES["shell-scripting"]
             
             caminho_destino = os.path.join(destino_secao, nome_pasta)
             
-            # 4. Isolamento Total do Escopo Git: Encaminha colisões para .deploy_backups/
+            # 4. Isolamento Total contra Colisões: Move versões antigas para .deploy_backups/
             if os.path.exists(caminho_destino):
                 backup_dir = os.path.join(BACKUP_GLOBAL_DIR, f"{nome_pasta}_backup")
-                
-                # Destrói rotações obsoletas anteriores antes de criar o backup novo
                 if os.path.exists(backup_dir):
                     shutil.rmtree(backup_dir)
-                    
-                # Move o item antigo do Hugo diretamente para a zona neutra fora de content/
                 shutil.move(caminho_destino, backup_dir)
-                print(f"      [!] Colisão detectada! Versão anterior movida para: {backup_dir}")
+                print(f"      [!] Colisão! Versão de produção anterior movida para: {backup_dir}")
                 
-            # 5. Escrita limpa do Bundle e expurgo da esteira de entrada
+            # 5. Escrita limpa do Bundle e expurgo da esteira de entrada (Fila local)
             shutil.copytree(caminho_pasta, caminho_destino, dirs_exist_ok=True)
             shutil.rmtree(caminho_pasta)
             print(f"      └─ Bundle distribuído com sucesso para: {caminho_destino}\n")
             
         else:
-            print(f"  [-] Retido em cache: {nome_pasta} (Agendado para: {data_limpa})")
+            print(f"  [-] Retido no fichário: {nome_pasta} (Liberará em: {data_limpa})")
             
     except Exception as e:
         print(f"  [ERRO] Falha crítica ao processar o bundle '{nome_pasta}': {e}")

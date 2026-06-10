@@ -1,22 +1,27 @@
 ---
 title: "A Engenharia do Rocky Linux 10: Migração para Koji, Suporte Nativo a RISC-V e a Matemática do Escalonamento de Compilação"
 date: 2026-05-26T15:00:00-03:00
-last_check: '2026-05-25T15:15:00-03:00'
+last_check: "2026-05-26T16:15:00-03:00"
 draft: false
-slug: engenharia-rocky-linux-10-koji-riscv
-categories: ["foss"]
+slug: "engenharia-rocky-linux-10-koji-riscv"
+type: "foss"
+categories: ["foss", "linux", "enterprise"]
 tags: ["linux", "rocky-linux", "sysadmin", "enterprise", "riscv", "devops"]
 math: true
 image: "prod-rocky-linux-10-enterprise.webp"
 product:
-    name: "Placa de Rede Intel X520-DA2 Dual-Port 10GbE SFP+"
-    current_price: 570
-    pros: [Oferece conectividade ultrarrápida de 10 Gbps por porta com suporte total e nativo aos drivers in-tree do kernel do Rocky Linux 10 e RHEL. Apresenta suporte avançado a virtualização de hardware (SR-IOV e VMDq), reduzindo drasticamente o overhead de CPU em servidores de hospedagem e hipervisores Proxmox/KVM. A arquitetura SFP+ permite o uso de cabos direct-attach (DAC) de baixo custo ou transceptores ópticos para longas distâncias.]
-    cons: [Não acompanha transceptores ópticos SFP+ na caixa, exigindo a compra separada dos módulos GBIC de acordo com a sua infraestrutura de fibra. O formato de barramento exige um slot PCI Express x8 mecânico livre, inviabilizando a instalação em servidores antigos de perfil extremamente baixo sem o adaptador correto. Aquecimento ligeiramente elevado sob carga máxima contínua se o chassi do servidor não possuir um fluxo de ar forçado eficiente.]
-    img: "intelx520"
+  name: "Placa de Rede Intel X520-DA2 Dual-Port 10GbE SFP+"
+  current_price: 570.0
+  pros:
+    - "Oferece conectividade ultrarrápida de 10 Gbps por porta com suporte total e nativo aos drivers in-tree."
+    - "Apresenta suporte avançado a virtualização de hardware (SR-IOV e VMDq), reduzindo overhead de CPU."
+  cons:
+    - "Não acompanha transceptores ópticos SFP+ na caixa, exigindo a compra separada dos módulos."
+    - "O formato de barramento exige um slot PCI Express x8 mecânico livre, impedindo uso em chassis antigos."
+  img: "intelx520.webp"
 affiliate:
-  - store: Amazon
-    link: https://amzn.to/3RzUg3u
+  - store: "Amazon"
+    link: "https://amzn.to/3RzUg3u"
     best_deal: true
 ---
 
@@ -24,7 +29,7 @@ affiliate:
 
 O lançamento do **Rocky Linux 10** marca uma mudança de paradigma drástica na engenharia interna das distribuições de nível empresarial baseadas em código aberto (*FOSS*). Após anos consolidando sua posição como o substituto espiritual do CentOS tradicional, a RESF (*Rocky Enterprise Software Foundation*) reestruturou completamente sua infraestrutura de compilação.
 
-{{< foto src="prod-rocky-linux-10-enterprise.webp" alt="Rocky Linux 10.1" legenda="Rocky Linux 10.1 - Gnome" >}}
+{{< foto src="prod-rocky-linux-10-enterprise.webp" alt="Rocky Linux 10.1" legenda="Interface gráfica padrão do ambiente corporativo estável do Rocky Linux 10." >}}
 
 O projeto abandonou o sistema de build customizado *Peridot* e migrou integralmente para o **Koji**, o robusto e consagrado ecossistema de compilação utilizado historicamente pelo Fedora e pelo Red Hat Enterprise Linux (RHEL). Essa movimentação não foi estética: trata-se de uma decisão estratégica para blindar a integridade da *software supply chain* contra ataques vetoriais e garantir previsibilidade absoluta na reprodução de pacotes binários estáveis por uma janela de suporte que se estende pelos próximos dez anos.
 
@@ -56,10 +61,10 @@ Com o amadurecimento das matrizes de código do ecossistema Enterprise Linux, as
 
 | Critério Técnico | Rocky Linux 10 (RESF) | AlmaLinux 10 (Benfeitora) |
 | :--- | :--- | :--- |
-| **Motor de Build** | Koji (Alinhamento nativo com o padrão Fedora/RHEL) | Albs (AlmaLinux Build System - Sistema próprio em nuvem) |
-| **Arquiteturas Emergentes** | Suporte Nativo a RISC-V (`riscv64`) e hardware aberto | Foco restrito a x86_64, ARM64, s390x e ppc64le |
-| **Isolamento de Build** | Ambientes limpos via `mock` isolados de rede | Contenerização elástica distribuída |
-| **Alinhamento de Kernel** | Kernel Corporativo com retrocompatibilidade estável | Kernel Otimizado com foco em mitigação agressiva |
+| **Motor de Build** | Koji (Alinhamento nativo com o padrão RHEL) | Albs (Sistema próprio de automação em nuvem) |
+| **Arquiteturas** | Suporte Nativo a RISC-V (`riscv64`) estável | Foco restrito a x86_64, ARM64, s390x e ppc64le |
+| **Isolamento** | Ambientes limpos via `mock` isolados de rede | Contenerização elástica distribuída |
+| **Alinhamento** | Kernel Corporativo com retrocompatibilidade total | Kernel Otimizado com foco em mitigação agressiva |
 
 </div>
 
@@ -105,4 +110,4 @@ Ao considerar adquirir o equipamento ou o livro indicado, você ajuda o portal a
 
 {{< foto src="intelx520.webp" alt="Placa de Rede Intel X520-DA2 Dual-Port 10GbE" legenda="Placa de rede de alta performance homologada para Rocky Linux 10" >}}
 
-{{< compra >}}
+{{< compra img="intelx520.webp" >}}

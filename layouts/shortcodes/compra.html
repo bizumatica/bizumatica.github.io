@@ -1,193 +1,99 @@
-{{- $prodName := "" -}}
-{{- $prodPrice := 0.0 -}}
-{{- $pros := slice -}}
-{{- $cons := slice -}}
-{{- $buttons := slice -}}
+{{- $id := .Get "id" -}}
+{{- $prod := dict -}}
 
-{{/* CASO 1: Se for uma recomendação específica via parâmetro (Post de Divisibilidade / PipeWire) */}}
-{{- if .Get "item" -}}
-  {{- $itemKey := .Get "item" -}}
-  {{- if .Page.Params.recommendations -}}
-    {{- $recommendations := .Page.Params.recommendations -}}
-    {{- $item := index $recommendations $itemKey -}}
-    {{- if $item -}}
-      {{- $prodName = $item.name -}}
-      {{- $prodPrice = cast.ToFloat $item.price -}} {{/* CAST SEGURO PARA FLOAT */}}
-      {{- $buttons = $buttons | append (dict "link" $item.link "store" $item.store "best_deal" true) -}}
-    {{- end -}}
+{{- if $id -}}
+  {{- if isset .Site.Data "produtos" -}}
+    {{- $prod = index .Site.Data.produtos $id -}}
   {{- end -}}
-
-{{/* CASO 2: Se for o padrão de equipamento único com Ficha Técnica (Post da TI-84) */}}
 {{- else if .Page.Params.product -}}
-  {{- $prodName = .Page.Params.product.name -}}
-  {{- $prodPrice = cast.ToFloat .Page.Params.product.current_price -}} {{/* CAST SEGURO PARA FLOAT */}}
-  {{- $pros = .Page.Params.product.pros -}}
-  {{- $cons = .Page.Params.product.cons -}}
-  {{- if .Page.Params.affiliate -}}
-    {{- range .Page.Params.affiliate -}}
-      {{- $buttons = $buttons | append (dict "link" .link "store" .store "best_deal" .best_deal) -}}
-    {{- end -}}
-  {{- end -}}
+  {{- $prod = .Page.Params.product -}}
+{{- else if .Page.Params.produto -}}
+  {{- $prod = .Page.Params.produto -}}
 {{- end -}}
 
-{{/* RENDERIZAÇÃO COERENTE COM A ESTÉTICA TOKYO NIGHT */}}
-{{- if $prodName -}}
-<div class="product-box">
-  <h2 class="product-box__title">:: [ FICHA TÉCNICA & VEREDITO ] ::</h2>
+{{- if and $prod (reflect.IsMap $prod) (gt (len $prod) 0) -}}
   
-  <div class="product-box__meta">
-    <span class="product-box__name"><strong>Equipamento/Item:</strong> {{ $prodName }}</span>
-    {{ if gt $prodPrice 0.0 }}
-      <span class="product-box__price"><strong>Investimento Estimado:</strong> R$ {{ printf "%.2f" $prodPrice }}</span>
-    {{ end }}
-  </div>
+  {{- $nome := $prod.name -}}
+  {{- $preco := $prod.current_price -}}
+  
+  {{- $link := "" -}}
+  {{- if $prod.link -}}
+    {{- $link = $prod.link -}}
+  {{- else if and .Page.Params.affiliate (gt (len .Page.Params.affiliate) 0) -}}
+    {{- $link = (index .Page.Params.affiliate 0).link -}}
+  {{- end -}}
 
-  {{/* Renderiza a grade de vantagens apenas se elas existirem no contexto */}}
-  {{ if or $pros $cons }}
-  <div class="product-box__grid">
-    {{ with $pros }}
-    <div class="product-box__column product-box__column--pros">
-      <span class="product-box__subtitle">[ VANTAGENS COMPUTACIONAIS ]</span>
-      <ul>
-        {{ range . }}
-          <li><span class="icon-plus">+</span> {{ . }}</li>
-        {{ end }}
-      </ul>
+  {{- $loja := "Amazon" -}}
+  {{- if $prod.loja -}}
+    {{- $loja = $prod.loja -}}
+  {{- else if and .Page.Params.affiliate (gt (len .Page.Params.affiliate) 0) -}}
+    {{- $loja = (index .Page.Params.affiliate 0).store | default "Amazon" -}}
+  {{- end -}}
+
+  {{- $img_src := "" -}}
+  {{- if $prod.img -}}
+    {{- $img_src = printf "/images/%s" $prod.img -}}
+    {{- if not (findRE "\\." $prod.img) -}}
+      {{- $img_src = printf "/images/%s.webp" $prod.img -}}
+    {{- end -}}
+  {{- end -}}
+
+  <div class="my-8 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden bg-white dark:bg-slate-950 shadow-sm transition-all hover:shadow-md">
+    <div class="p-6 flex flex-col md:flex-row gap-6 items-center">
+      
+      {{- if $img_src -}}
+      <div class="w-32 h-32 flex-shrink-0 flex items-center justify-center bg-slate-50 dark:bg-slate-900 rounded-lg p-2">
+        <img src="{{ $img_src }}" alt="{{ $nome }}" class="max-w-full max-h-full object-contain" loading="lazy">
+      </div>
+      {{- end -}}
+
+      <div class="flex-1 w-full text-center md:text-left">
+        <span class="text-xs font-mono uppercase tracking-wider text-emerald-600 dark:text-emerald-400 font-bold block mb-1">
+          Melhor Oferta na {{ $loja }}
+        </span>
+        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2 leading-tight">
+          {{ $nome }}
+        </h3>
+        <div class="text-3xl font-mono font-bold text-slate-900 dark:text-white mb-4">
+          R$ {{ if printf "%T" $preco | eq "float64" }}{{ replace (printf "%.2f" $preco) "." "," }}{{ else }}{{ replace (printf "%v" $preco) "." "," }}{{ end }}
+        </div>
+        
+        {{- if $link -}}
+        <a href="{{ $link | safeURL }}" target="_blank" rel="noopener noreferrer" class="inline-block w-full md:w-auto text-center bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-8 rounded-lg transition-colors shadow-sm hover:shadow">
+          Ver Preço na {{ $loja }}
+        </a>
+        {{- end -}}
+      </div>
     </div>
-    {{ end }}
 
-    {{ with $cons }}
-    <div class="product-box__column product-box__column--cons">
-      <span class="product-box__subtitle">[ LIMITAÇÕES / GARGALOS ]</span>
-      <ul>
-        {{ range . }}
-          <li><span class="icon-minus">-</span> {{ . }}</li>
-        {{ end }}
-      </ul>
+    {{- if or $prod.pros $prod.cons -}}
+    <div class="border-t border-slate-100 dark:border-slate-900 bg-slate-50 dark:bg-slate-900/40 p-6 text-sm grid grid-cols-1 md:grid-cols-2 gap-6">
+      
+      {{- if $prod.pros -}}
+      <div>
+        <span class="font-bold text-emerald-700 dark:text-emerald-400 flex items-center gap-2 mb-3">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+          Prós
+        </span>
+        <ul class="space-y-2 text-slate-600 dark:text-slate-400">
+          {{ range $prod.pros }}<li class="flex items-start"><span class="mr-2 text-emerald-500">•</span> <span>{{ . }}</span></li>{{ end }}
+        </ul>
+      </div>
+      {{- end -}}
+      
+      {{- if $prod.cons -}}
+      <div>
+        <span class="font-bold text-rose-700 dark:text-rose-400 flex items-center gap-2 mb-3">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+          Contras
+        </span>
+        <ul class="space-y-2 text-slate-600 dark:text-slate-400">
+          {{ range $prod.cons }}<li class="flex items-start"><span class="mr-2 text-rose-500">•</span> <span>{{ . }}</span></li>{{ end }}
+        </ul>
+      </div>
+      {{- end -}}
+
     </div>
-    {{ end }}
+    {{- end -}}
   </div>
-  {{ end }}
-
-  {{ if $buttons }}
-  <div class="product-box__actions">
-    {{ range $buttons }}
-      <a href="{{ .link }}" target="_blank" rel="noopener noreferrer" class="buy-btn {{ if .best_deal }}buy-btn--best{{ end }}">
-        {{ if .best_deal }}
-          [ ADQUIRIR VIA {{ upper .store }} (MELHOR OFERTA) ]
-        {{ else }}
-          [ VER PREÇO NA {{ upper .store }} ]
-        {{ end }}
-      </a>
-    {{ end }}
-  </div>
-  {{ end }}
-</div>
-
-<style>
-.product-box {
-  margin: 40px 0;
-  padding: 25px;
-  border: 1px solid #222;
-  background-color: #1a1b26; /* Fundo Tokyo Night Night */
-  font-family: monospace;
-}
-
-.product-box__title {
-  color: #ff9e64 !important; /* Laranja Tokyo Night */
-  font-size: 1.1rem !important;
-  margin-top: 0 !important;
-  margin-bottom: 20px !important;
-  border-bottom: 1px dashed #222;
-  padding-bottom: 10px;
-}
-
-.product-box__meta {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: 20px;
-  font-size: 0.9rem;
-}
-
-.product-box__name { color: #c0caf5; }
-.product-box__price { color: #e0af68; } /* Amarelo técnico */
-
-.product-box__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  margin-bottom: 25px;
-}
-
-.product-box__column {
-  padding: 15px;
-  border: 1px solid #222;
-  background-color: #16161e;
-}
-
-.product-box__subtitle {
-  display: block;
-  font-size: 0.85rem;
-  font-weight: bold;
-  margin-bottom: 12px;
-}
-
-.product-box__column--pros .product-box__subtitle { color: #9ece6a; } /* Verde Tokyo */
-.product-box__column--cons .product-box__subtitle { color: #f7768e; } /* Vermelho Tokyo */
-
-.product-box__column ul {
-  list-style: none !important;
-  padding-left: 0 !important;
-  margin: 0 !important;
-  font-size: 0.85rem;
-}
-
-.product-box__column li {
-  margin-bottom: 8px;
-  line-height: 1.4;
-  color: #a9b1d6;
-}
-
-.icon-plus { color: #9ece6a; font-weight: bold; }
-.icon-minus { color: #f7768e; font-weight: bold; }
-
-.product-box__actions {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.buy-btn {
-  display: block;
-  text-align: center;
-  padding: 12px;
-  font-size: 0.9rem;
-  font-weight: bold;
-  text-decoration: none !important;
-  border: 1px solid #222;
-  transition: all 0.15s ease;
-}
-
-.buy-btn--best {
-  color: #1a1b26 !important;
-  background-color: #ff9e64 !important; /* Botão principal destacado */
-  border-color: #ff9e64 !important;
-}
-
-.buy-btn:not(.buy-btn--best) {
-  color: #bb9af3 !important; /* Roxo Tokyo */
-  border-color: #bb9af344 !important;
-}
-
-.buy-btn:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.1);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-}
-
-.buy-btn:active {
-  transform: translateY(0);
-}
-</style>
 {{- end -}}

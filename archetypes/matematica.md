@@ -1,59 +1,30 @@
 ---
 title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
+last_check: {{ .Date }}
 draft: true
-description: "Uma análise profunda sobre {{ replace .Name "-" " " }} e suas aplicações práticas."
-categories: ["mathematics"]
-tags: ["algebra", "calculo"]
-math: true
+slug: "{{ .Name }}"
+categories: ["matematica"]
+tags: ["matematica"]
 image: "cover.webp"
---- SEÇÃO DE MONETIZAÇÃO ---
-monetization:
-  enabled: true
-  type: "affiliate" # opções: adsense, affiliate, sponsor
-  ad_slot: ""       # ID do bloco de anúncio se for AdSense
-  
-affiliate:
-  - store: "Amazon"
-    link: ""
-    best_deal: true
-  - store: "MercadoLivre"
-    link: ""
-    best_deal: false
 ---
 
-### O Conceito
+## Introdução Teórica
 
-Introduza o problema aqui. Utilize LaTeX para definições formais:
-$$\text{Exemplo: } \det(A) = \sum \sigma(p) \prod a_{i, p_i}$$
+Escreva aqui o panorama geral do conceito matemático ou computacional.
 
-![Visualização de Apoio](cover.webp)
-*Legenda da imagem principal.*
+$$A = \sum_{i=0}^{n} a_i b_i$$
 
-### Desenvolvimento e Provas
+## Demonstração Prática
 
-{{< box tipo="teorema" titulo="DEFINIÇÃO" >}}
-Descreva o teorema ou propriedade aqui.
-{{< /box >}}
-
-### Aplicação no Mundo Real
-
-Como isso se aplica em Computação, Engenharia ou Terminal Linux?
-
-{{< bizu >}}
-**Bizu de Ouro:** O segredo para entender este conceito é...
-{{< /bizu >}}
+Desenvolva a aplicação prática do algoritmo matemático ou teorema.
 
 ---
 
-## Ferramentas e Referências
+## Onde Comprar (Melhores Preços)
+
 {{< links >}}
-Para dominar este assunto, recomendo estas ferramentas e bibliotecas:
+Texto balizado contendo chamada para ações de conversão e monetização.
 {{< /links >}}
 
-{{< compra name="Calculadora Sugerida" price="000" img="ti" link="#" >}}
-{{< compra name="Livro de Referência" price="000" img="livro" link="#" >}}
-
----
-
-<!-- Nota: este é o comando padrão: hugo new matematica/meu-novo-teorema/index.md -->
+{{< compra img="product-cover.webp" >}}

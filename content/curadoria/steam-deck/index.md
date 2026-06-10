@@ -1,24 +1,33 @@
 ---
-title: Steam Deck Oled 1TB Valve
-date: '2026-04-06T16:30:00-03:00'
-last_check: '2026-05-22T17:41:55-03:00'
+title: "Steam Deck OLED 1TB Valve"
+date: "2026-04-06T16:30:00-03:00"
+last_check: "2026-05-22T17:41:55-03:00"
 draft: false
-slug: steam-deck
-type: equipamentos
+slug: "steam-deck"
+type: "curadoria"
 product:
-  name: Steam Deck Oled 1TB Valve
+  name: "Steam Deck OLED 1TB Valve"
   current_price: 7599.0
-  pros: []
-  cons: []
+  pros:
+    - "Tela OLED HDR de 90Hz de altíssima fidelidade e pretos absolutos"
+    - "Processo de fabricação de 6nm reduzindo consumo e throttling térmico"
+    - "Camada Proton traduzindo chamadas DirectX para Vulkan nativamente"
+  cons:
+    - "Partição raiz imutável restringe o gerenciamento clássico via pacman"
+    - "Dimensões físicas avantajadas reduzem a portabilidade extrema"
+product_specs:
+  cpu: "AMD APU 6nm (4 núcleos / 8 threads Zen 2)"
+  gpu: "8 RDNA 2 CUs"
+  os: "SteamOS 3 (Base Arch Linux)"
 affiliate:
-- store: Amazon
-  link: https://amzn.to/3Q8VBNT
-  best_deal: false
+  - store: "Amazon"
+    link: "https://amzn.to/3Q8VBNT"
+    best_deal: true
 ---
 
 ### O Hardware que Mudou o Jogo
 
-O **Steam Deck** não é apenas um console portátil voltado ao entretenimento casual; sob a ótica da engenharia de hardware, ele representa uma verdadeira estação de trabalho Linux disfarçada em um formato compacto e altamente eficiente. Equipado com uma APU customizada da AMD (codinome Sephiroth, utilizando arquiteturas Zen 2 e RDNA 2), o dispositivo entrega uma curva de performance por Watt extremamente otimizada, capaz de rivalizar com notebooks tradicionais que operam sob footprints energéticos muito mais agressivos. 
+O **Steam Deck** não é apenas um console portátil voltado ao entretenimento casual; sob a ótica da engenharia de hardware, ele representa uma verdadeira estação de trabalho Linux disfarçada em um formato compacto e altamente eficiente. Equipado com uma APU customizada da AMD (codinome Sephiroth, utilizando acrobatas de arquitetura Zen 2 e RDNA 2), o dispositivo entrega uma curva de performance por Watt extremamente otimizada, capaz de rivalizar com notebooks tradicionais que operam sob footprints energéticos muito mais agressivos. 
 
 A transição para a versão OLED refinou significativamente a arquitetura do sistema. O dado de engenharia mais relevante foi a redução do processo de fabricação do chip para 6nm, o que reduziu a dissipação térmica em regime de estresse e estendeu substancialmente a autonomia da bateria. Agora, o hardware gerencia cargas de processamento intensas (jogos AAA e cargas de compilação locais) mantendo temperaturas internas estáveis e frequências de clock consistentes, mitigando completamente o estrangulamento térmico (*thermal throttling*).
 
@@ -50,7 +59,7 @@ O grande segredo do sucesso e da altíssima taxa de compatibilidade do sistema �
 Para iniciar a viagem ao mundo do Steam Deck, recomendo esse portátil da Valve, e você ainda ajuda o portal 🙂:
 {{< /links >}}
 
-{{< compra img="cover" >}}
+{{< compra img="cover.webp" >}}
 
 {{< bizu >}}
 **Bizu do Linuxer:** Se você quer instalar apps fora da Steam Store, use o **Flatpak** no modo Desktop através da central Discover. O sistema de arquivos da partição raiz (`/`) é mantido estritamente imutável (read-only) para garantir a estabilidade de longo prazo do console em atualizações atômicas. Por esse motivo, o gerenciador clássico `pacman` não funcionará por padrão, a menos que você opte por desativar o modo de leitura-apenas do sistema de arquivos via terminal (o que desprotege a árvore de diretórios principal contra corrupção lógica).

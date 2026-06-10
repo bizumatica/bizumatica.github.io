@@ -2,21 +2,24 @@
 title: "O Algoritmo do Cálculo Mental: Dominando as Regras de Divisibilidade"
 date: 2026-06-03T16:00:00-03:00
 draft: false
-slug: regras-de-divisibilidade-matematica-basica
+slug: "regras-de-divisibilidade-matematica-basica"
 categories: ["matematica"]
 tags: ["calculo-mental", "aritmetica", "algoritmos", "logica"]
 image: "livro.webp"
 product:
-    name: "Calculadora Científica Casio ClassWiz & O Homem que Calculava"
-    current_price: 180
-    pros: [Ferramentas essenciais para consolidação do raciocínio lógico e matemático. A Casio ClassWiz oferece precisão cirúrgica para validação de equações complexas com visor de alta resolução. O livro de Malba Tahan funciona como o manual definitivo de algoritmos mentais e truques aritméticos milenares.]
-    cons: [A dependência excessiva do hardware da calculadora pode mitigar o treino do cálculo mental bruto se usada precocemente. O livro possui foco em romance pedagógico, podendo parecer lúdico para quem busca apenas tabelas de fórmulas cruas.]
-    img: "livro"
+  name: "Calculadora Científica Casio ClassWiz & O Homem que Calculava"
+  current_price: 180.0
+  pros:
+    - "Casio ClassWiz oferece altíssima precisão para validação de equações complexas."
+    - "O livro de Malba Tahan funciona como um manual definitivo de lógica lúdica."
+  cons:
+    - "A dependência precoce da calculadora pode mitigar o treino do cálculo mental bruto."
+  img: "livro.webp"
 affiliate:
-  - store: Amazon (Livro)
+  - store: "Amazon (Livro)"
     link: "https://amzn.to/43LP3bz"
     best_deal: true
-  - store: Amazon (Casio)
+  - store: "Amazon (Casio)"
     link: "https://amzn.to/4x70eJv"
     best_deal: false
 ---
@@ -157,11 +160,11 @@ O algoritmo do número $7$ baseia-se no isolamento do último dígito por meio d
 
 $$N = 10a + b$$
 
-Queremos provar que $7 \mid (10a + b) \iff 7 \mid (a - 2b)$. Como o máximo divisor comum entre $10$ e $7$ é $\gcd(10, 7) = 1$, podemos multiplicar a expressão por um inverso modular sem alterar a propriedade de divisibilidade. Multipliquamos a equação por $-2$:
+Queremos provar que $7 \mid (10a + b) \iff 7 \mid (a - 2b)$. Como o máximo divisor comum entre $10$ e $7$ é $\gcd(10, 7) = 1$, podemos multiplicar a expression por um inverso modular sem alterar a propriedade de divisibilidade. Multiplicamos a equação por $-2$:
 
 $$-2 \cdot (10a + b) = -20a - 2b$$
 
-Analisando o coeficiente $-20$ sob o módulo $7$, vemos que $-20 \equiv 1 \pmod 7$ (pois $-20 - 1 = -21$, e $7 \mid -21$). Substituindo o coeficiente:
+Analisando o coeficiente $-20$ sob o módulo $7$, vemos que $-20 a \equiv 1a \pmod 7$ (pois $-20 - 1 = -21$, e $7 \mid -21$). Substituindo o coeficiente:
 
 $$-20a - 2b \equiv 1a - 2b \pmod 7 = a - 2b$$
 
@@ -181,6 +184,6 @@ Mesmo que o cálculo mental seja uma ferramenta formidável para arquitetar lóg
 Para expandir substancialmente seu arcabouço cognitivo e dominar com maestria a gerência de cálculos matemáticos e lógicos, é fundamental investir em insumos que unam o rigor conceitual à eficiência prática. Ao adquirir os itens recomendados através dos nossos links balizados, você fomenta a continuidade intelectual e a produção de materiais densos neste portal:
 {{< /links >}}
 
-{{< foto src="livro.webp" alt="Fundamentos de matemática elementar - Volume 1: Conjuntos e funções" legenda="Fundamentos de matemática elementar - Volume 1: Conjuntos e funções" >}}
+{{< foto src="livro.webp" alt="O Homem que Calculava por Malba Tahan" legenda="Capa da obra literária clássica O Homem que Calculava." >}}
 
-{{< compra >}}
+{{< compra img="livro.webp" >}}

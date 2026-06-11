@@ -1,80 +1,93 @@
-# 🚀 Bizumática - Portal de Conteúdo & Curadoria
+# 🛠️ Bizumática - Developer & Architecture Docs
 
-O **Bizumática** é um ecossistema estático baseado em Hugo, focado em educação tecnológica e curadoria de equipamentos. O projeto utiliza uma arquitetura de **SEO Programático** para gerar páginas de afiliados automaticamente a partir de dados externos.
+![Architecture](https://img.shields.io/badge/Architecture-Leaf_Bundles_v4.3-BA1650?logo=hugo&logoColor=white)
+![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub_Actions-2088FF?logo=githubactions&logoColor=white)
+![Shell Script](https://img.shields.io/badge/Shell_Script-Bash_v4.3_Shielded-4EAA25?logo=gnu-bash&logoColor=white)
+![Environment](https://img.shields.io/badge/Python-3.10%2B_Venv-3776AB?logo=python&logoColor=white)
 
-## 🛠️ Arquitetura do Sistema
-
-### 1. Fluxo de Dados (Data Pipeline)
-
-1. **Fonte:** Google Sheets (camada de gerenciamento de produtos).
-2. **Processamento:** `auto-busca.py` (Script Python com `pandas` e `pyyaml`).
-3. **Geração:** O script consome o CSV (Nuvem ou Local) e gera arquivos Markdown em `content/equipamentos/`.
-4. **Build:** O Hugo processa os arquivos usando o shortcode `{{< compra >}}` e metadados do Front Matter.
-
-### 2. Estrutura de Diretórios Chave
-
-* `archetypes/`: Moldes para `equipamentos.md` e `matematica.md`.
-* `content/`: Conteúdo bruto (Equipamentos, Matemática e Posts).
-* `layouts/shortcodes/`: Componentes funcionais (`compra.html`, `bizu.html`).
-* `static/`: Ativos estáticos e o arquivo `CNAME` para o domínio `bizumatica.com.br`.
-* `docs/`: Pasta de saída para o deploy (GitHub Pages).
+Este documento detalha as especificações de engenharia de software, o pipeline de dados automatizado e as travas de segurança implementadas a partir da **versão 4.3** do ciclo de automação do portal.
 
 ---
 
-## 🏗️ Operação & Deploy
+## 📐 Especificação de Arquitetura de Conteúdo `[v4.3]`
 
-### Pré-requisitos
+O Bizumática utiliza estritamente o padrão de **Leaf Bundles** do Hugo para garantir o isolamento e a portabilidade de ativos (imagens, diagramas e códigos) de cada artigo.
 
-* Hugo (versão Extended recomendada)
-* Python 3.x + `pandas`, `pyyaml`, `requests`
-* Node.js (para o `pagefind`)
+### Regras de Ouro do Diretório `content/`
 
-### Ciclo de Atualização
+1.  **Proibição Absoluta de Arquivos Soltos:** Nenhum artigo deve existir como `.md` solto diretamente nas pastas de seções. Cada artigo possui sua própria pasta.
+2.  **Leaf Bundles Atômicos:** O ponto de entrada de um artigo dentro de sua subpasta é obrigatoriamente chamado `index.md`.
+3.  **Branch Bundles Puros:** Arquivos `_index.md` pertencem exclusivamente à raiz das seções para fins de listagem nativa de categorias do Hugo. 
 
-Para adicionar produtos ou atualizar o site, basta rodar o script de deploy blindado:
-
-```bash
-chmod +x deploy.sh
-./deploy.sh "Mensagem do commit"
+```text
+content/
+├── curadoria/
+│   ├── _index.md                    <-- Correto (Branch Bundle)
+│   └── steam-deck/
+│       ├── index.md                 <-- Correto (Leaf Bundle)
+│       └── cover.webp               <-- Ativo isolado
+└── _index.md                        <-- Capa do Portal
 
 ```
 
-O `deploy.sh` executa automaticamente:
-
-1. Sincronização via `auto-busca.py`.
-2. Limpeza de builds antigos.
-3. Minificação e Build do Hugo em `/docs`.
-4. Indexação de busca via Pagefind.
-5. Push para o repositório remoto.
+> ⚠️ **TRAVA ANTIFALHA:** É expressamente proibida a criação da estrutura `pasta/_index/index.md`. Esse comportamento legado quebrava o encadeamento de links internos e foi mitigado na versão 4.3.
 
 ---
 
-## 📊 Estrutura da Planilha (CSV)
+## 🔄 O Pipeline de CI/CD em Nuvem `[deploy.yml v4.3]`
 
-Para a automação funcionar, a fonte de dados deve conter as seguintes colunas:
-`slug`, `nome`, `preco`, `link_afiliado`, `pros`, `cons`, `review_curto`.
+O Bizumática opera sob um modelo de **Automação Total em Nuvem** via GitHub Actions. O desenvolvedor local foca exclusivamente na escrita do conteúdo, enquanto a infraestrutura do GitHub gerencia a integridade, compilação e publicação.
 
----
+### Fluxo de Execução da Esteira Remota
 
-## 🎨 Identidade Visual
+Ao receber um `git push` na branch `main` ou atingir o gatilho do `cron` diário (06:00 UTC), o servidor executa sequencialmente:
 
-* **Tema:** Terminal (Retro-hacker).
-* **Customizações:** Localizadas em `assets/css/extended.css`.
-* **Componente de Conversão:** O card de compra utiliza estética neon com efeito de profundidade para maximizar o CTR (Click-Through Rate).
-
----
-
-## 📈 Estratégia de Dividendos
-
-O site foi projetado para:
-
-1. **Baixo Custo Fixo:** Hospedagem gratuita no GitHub Pages + DNS Cloudflare.
-2. **Alta Performance:** SSG (Static Site Generation) para atingir nota máxima no Google PageSpeed.
-3. **Google Ads Ready:** Páginas de destino ultra-específicas geradas programaticamente para reduzir o CPC.
+1. **📥 Checkout:** Clonagem completa do histórico de commits para alimentar as variáveis temporais do Hugo.
+2. **🥋 Higienização Automática (v4.3):** Aplica a trava de busca dupla via `find` para ignorar `index.md` e `_index.md`, movendo apenas arquivos novos/soltos para suas respectivas subpastas em formato Leaf Bundle.
+3. **🛠️ Setup Engine:** Instalação sob demanda do Hugo Extended e Node.js (v20).
+4. **🏗️ Hugo Build:** Compilação com otimização, minificação agressiva e limpeza de destinos antigos diretamente na pasta `/docs`.
+5. **⚙️ SEO Compliance:** Validação via scripts de barreira dos ativos `ads.txt` e `robots.txt` antes de prosseguir.
+6. **🔍 Pagefind Indexing:** Geração automatizada do índice em WebAssembly para busca interna.
+7. **🚀 Git Commit Back:** O `GitHub Action Bot` consolida os arquivos gerados pela máquina e faz o push de volta para a branch remota utilizando a flag `[skip ci]` para prevenir loops de execução.
 
 ---
 
-**Mantenedor:** Julio Prata
-**Versão da Automação:** 2.3
+## 📋 Requisitos do Ambiente de Desenvolvimento
+
+Para rodar o ecossistema completo de desenvolvimento e geração de dados localmente:
+
+* **Hugo Extended** (`>= 0.140.0`) para testes locais em `hugo server`.
+* **Python 3.10+** instalado com ambiente virtual em `./venv` (necessário apenas para a operação do script `auto-busca.py` e rotinas de ingestão de tabelas).
+
+### Inicializando Dependências do Python
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+pip install pandas pyyaml requests
+
+```
 
 ---
+
+## 🚨 Troubleshooting Local & Resolução de Conflitos
+
+Como a esteira em nuvem reconstrói a pasta `/docs` e o índice do Pagefind a cada execução, podem ocorrer pequenos descompassos de histórico local caso o seu repositório local fique desatualizado.
+
+**Protocolo de Sincronização Homologado:**
+Antes de iniciar um novo lote de postagens, garanta que sua máquina está espelhando a nuvem executando:
+
+```bash
+# Limpa rastros locais gerados por builds antigos
+rm -rf docs/ resources/_gen/
+
+# Traz as atualizações higienizadas que a GitHub Action consolidou
+git pull origin main --rebase
+
+```
+
+---
+
+**Versão da Arquitetura Interna:** 4.3
+
+![Static Badge](https://img.shields.io/badge/pipeline-status-%23FF9F7A?logo=githubactions&logoColor=white) ![Static Badge](https://img.shields.io/badge/serverless-100%25-%23056C5C?logo=serverless&logoColor=white) ![Static Badge](https://img.shields.io/badge/cloud-protected-orange?logo=icloud&logoColor=white)

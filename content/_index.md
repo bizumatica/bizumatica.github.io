@@ -49,7 +49,7 @@ No <strong>Bizumática</strong>, exploramos a intersecção entre o código aber
     </div>
     <div class="dir-item">
         <span class="dir-perm">drwxr-xr-x</span> 
-        <a href="/posts/">./Ecossistema_Linux</a>
+        <a href="/linux/">./Ecossistema_Linux</a>
     </div>
     <div class="dir-item">
         <span class="dir-perm">drwxr-xr-x</span> 

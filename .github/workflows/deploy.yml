@@ -1,4 +1,4 @@
-name: Pipeline de Deploy Bizumática (v4.1)
+name: Pipeline de Deploy Bizumática (v4.3 - Shielded)
 
 on:
   push:
@@ -23,7 +23,7 @@ jobs:
           submodules: true
           fetch-depth: 0 # Traz todo o histórico de commits para cálculo de datas do Hugo
 
-      - name: 🥋 Higienização Nativa de Bundles (Passo 1 do Bash)
+      - name: 🥋 Higienização Nativa de Bundles (v4.3 Shielded)
         run: |
           for section in content/curadoria content/foss content/linux content/matematica content/shell-scripting; do
               [ -d "$section" ] || continue
@@ -39,7 +39,7 @@ jobs:
                       mkdir -p "$target_dir"
                       mv "$old_file" "$target_index"
                   fi
-              done < <(find "$section" -maxdepth 1 -name "*.md")
+              done < <(find "$section" -maxdepth 1 -name "*.md" ! -name "index.md" ! -name "_index.md")
           done
 
       - name: 🛠️ Configurar Hugo Extended
@@ -74,8 +74,8 @@ jobs:
           if [[ -n $(git status -s) ]]; then
             git add .
             # A flag [skip ci] impede que este commit dispare loops infinitos na própria esteira
-            git commit -m "chore(deploy): build e indexação automatizados [skip ci]"
-            git pull origin main --rebase --no-edit
+            git commit -m "chore(deploy): build e indexação automatizados v4.3 [skip ci]"
+            git pull origin main --rebase -X theirs --no-edit
             git push origin main
           else
             echo "Nenhuma modificação estrutural pendente. Infraestrutura atualizada."

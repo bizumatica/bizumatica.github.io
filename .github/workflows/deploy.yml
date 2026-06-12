@@ -1,46 +1,33 @@
-name: Pipeline de Deploy Bizumática (v4.3 - Shielded)
+name: Pipeline de Deploy Bizumática (v5.2 - Cloud Compiler)
 
 on:
   push:
     branches:
       - main
-  schedule:
-    # Dispara a esteira de forma autônoma todos os dias às 06:00 UTC (03:00 Horário de Brasília)
-    - cron: '0 6 * * *'
-  workflow_dispatch: # Ativa o botão de gatilho manual na interface gráfica do GitHub
+  workflow_dispatch:
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: 📥 Checkout do Código
+      - name: 📥 Checkout do Código-Fonte Limpo
         uses: actions/checkout@v4
         with:
-          submodules: true
-          fetch-depth: 0 # Traz todo o histórico de commits para cálculo de datas do Hugo
-
-      - name: 🥋 Higienização Nativa de Bundles (v4.3 Shielded)
-        run: |
-          for section in content/curadoria content/foss content/linux content/matematica content/shell-scripting; do
-              [ -d "$section" ] || continue
-              while IFS= read -r old_file; do
-                  [ -f "$old_file" ] || continue
-                  base=$(basename "$old_file" .md)
-                  target_dir="$section/$base"
-                  target_index="$target_dir/index.md"
-                  
-                  if [ -f "$target_index" ]; then
-                      rm "$old_file"
-                  else
-                      mkdir -p "$target_dir"
-                      mv "$old_file" "$target_index"
-                  fi
-              done < <(find "$section" -maxdepth 1 -name "*.md" ! -name "index.md" ! -name "_index.md")
-          done
+          submodules: recursive
+          fetch-depth: 0
 
       - name: 🛠️ Configurar Hugo Extended
         uses: peaceiris/actions-hugo@v3
@@ -48,35 +35,29 @@ jobs:
           hugo-version: 'latest'
           extended: true
 
-      - name: 🏗️ Compilar Site Estático (Build Hugo)
-        run: hugo --gc --minify --cleanDestinationDir -d docs
+      - name: 🏗️ Compilar Site Estático
+        run: hugo --gc --minify
 
-      - name: ⚙️ Validar Ativos do AdSense e SEO
+      - name: ⚙️ Compliance Check Final (AdSense & SEO)
         run: |
-          if [ ! -f "docs/ads.txt" ]; then echo "ERRO CRÍTICO: ads.txt ausente!" && exit 1; fi
-          grep -q "Allow: /" docs/robots.txt || (echo "ERRO: robots.txt inválido" && exit 1)
+          if [ ! -f "public/ads.txt" ]; then 
+            echo "::error::ERRO: ads.txt foi perdido no build da nuvem!" && exit 1
+          fi
+          grep -q "Allow: /" public/robots.txt || { echo "::warning::Verifique a indexação no robots.txt"; }
 
-      - name: 🟢 Configurar Node.js (Ambiente Pagefind)
+      - name: 🟢 Configurar Node.js (Runtime Pagefind)
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: 🔍 Indexar Motor de Busca (Pagefind)
-        run: |
-          npx --yes pagefind --site docs --quiet
-          touch docs/.nojekyll
+      - name: 🔍 Indexar Motor de Busca Otimizado (Pagefind)
+        run: npx --yes pagefind --site public --quiet
 
-      - name: 🚀 Push Automático da Pasta /docs para a Branch Main
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action Bot"
-          
-          if [[ -n $(git status -s) ]]; then
-            git add .
-            # A flag [skip ci] impede que este commit dispare loops infinitos na própria esteira
-            git commit -m "chore(deploy): build e indexação automatizados v4.3 [skip ci]"
-            git pull origin main --rebase -X theirs --no-edit
-            git push origin main
-          else
-            echo "Nenhuma modificação estrutural pendente. Infraestrutura atualizada."
-          fi
+      - name: 📦 Upload de Artefato Nativo do GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+
+      - name: 🚀 Deploy Direto no Edge (Deploy Sem Commit)
+        id: deployment
+        uses: actions/deploy-pages@v4

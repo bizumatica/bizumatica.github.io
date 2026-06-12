@@ -1,5 +1,25 @@
+# ==========================================
+# GITHUB REPOSITORY ISOLATION (v5.2)
+# ==========================================
+
+# 1. Ambientes Virtuais e Scripts Locais
 venv/
 .pyenv/
-# Fila de posts agendados (Local Only)
+*.pyc
+__pycache__/
+
+# 2. Work in Progress & Fila (Estritamente Local)
 content/agendados/
 .deploy_backups/
+
+# 3. Artefatos de Build e Compilação (Essencial!)
+# Impede que os builds locais subam para o repositório
+docs/
+public/
+resources/
+.hugo_build.lock
+
+# 4. Metadados de Sistema e IDE
+.DS_Store
+.vscode/
+.idea/

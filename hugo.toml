@@ -1,19 +1,28 @@
+# ==============================================================================
+# CONFIGURAÇÃO CORE DO SITE (GLOBAL)
+# ==============================================================================
 baseURL = "https://bizumatica.com.br/"
-locale = "pt-br" # Corrigido para zerar o WARN do Hugo v0.158.0+
 title = "Bizumática"
 theme = "terminal"
-publishDir = "docs"
+locale = "pt-br"
 enableEmoji = true
 
+# Garante que o Hugo mapeie a pasta static da raiz global para o AdSense/SEO
+staticDir = ["static"]
+
 # --- HIGIENIZAÇÃO NATIVA CONTRA PÁGINAS FANTASMAS ---
+# Limpa arquivos órfãos antigos da pasta de destino a cada novo build
 cleanDestinationDir = true
 
-# --- AJUSTES OTIMIZADOS PARA GITHUB PAGES + AMBIENTE LOCAL ---
-# Desativamos o canonify e o relative para que o Hugo use caminhos absolutos baseados no host atual (funciona tanto no localhost quanto na web)
+# --- TRATAMENTO DE URLS E SEO ---
+# Mantemos desativados para que o Hugo use caminhos absolutos baseados no host ativo
 canonifyURLs = false
 relativeURLs = false
 removePathAccents = true
 
+# ==============================================================================
+# PARÂMETROS DO TEMA (TERMINAL CUSTOMIZADO)
+# ==============================================================================
 [params]
   themeColor = "orange"
   centerTheme = true
@@ -29,23 +38,34 @@ removePathAccents = true
   [params.adsense]
     client = "ca-pub-3733806324330520"
 
-# --- PROCESSAMENTO DE IMAGENS ---
+# ==============================================================================
+# PROCESSAMENTO E OTIMIZAÇÃO DE IMAGENS
+# ==============================================================================
 [imaging]
   resampleFilter = "lanczos"
   quality = 85
   anchor = "smart"
 
-# --- TAXONOMIAS ---
+# ==============================================================================
+# TAXONOMIAS (ORGANIZAÇÃO DE CONTEÚDO)
+# ==============================================================================
 [taxonomies]
   category = "categories"
   tag = "tags"
   series = "series"
 
-# --- RENDERIZAÇÃO DE MARKUP (KaTeX Ultra Rápido & HTML) ---
+# ==============================================================================
+# RENDERIZAÇÃO DE MARKUP (KaTeX Ultra Rápido & HTML SEGURO)
+# ==============================================================================
 [markup]
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+    ordered = false
+
   [markup.goldmark]
     [markup.goldmark.renderer]
-      unsafe = true 
+      unsafe = true # Obrigatório para renderizar shortcodes HTML customizados (como o seu compra.html)
     
     [markup.goldmark.extensions]
       [markup.goldmark.extensions.passthrough]
@@ -54,22 +74,19 @@ removePathAccents = true
           block = [['$$', '$$'], ['\\[', '\\]']]
           inline = [['$', '$'], ['\\(', '\\)']]
 
-  [markup.tableOfContents]
-    endLevel = 3
-    ordered = false
-    startLevel = 2
-
-# --- NAVEGAÇÃO (MENUS) ---
+# ==============================================================================
+# ESTRUTURA DO MENU PRINCIPAL (NAVEGAÇÃO)
+# ==============================================================================
 [[menu.main]]
   identifier = "linux"
   name = "Linux"
-  url = "/posts/"
+  url = "/linux/"
   weight = 10
 
 [[menu.main]]
   identifier = "curadoria"
   name = "Curadoria"
-  url = "/equipamentos/"
+  url = "/curadoria/"
   weight = 12
 
 [[menu.main]]
@@ -81,7 +98,7 @@ removePathAccents = true
 [[menu.main]]
   identifier = "shell-scripting"
   name = "Shell"
-  url = "/categories/shell-scripting/" 
+  url = "/shell-scripting/" 
   weight = 18
 
 [[menu.main]]
@@ -97,9 +114,9 @@ removePathAccents = true
   weight = 20
 
 [[menu.main]]
-  identifier = "about"
+  identifier = "sobre"
   name = "Sobre"
-  url = "/about/"
+  url = "/sobre/"
   weight = 25
 
 [[menu.main]]

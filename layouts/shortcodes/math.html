@@ -1,0 +1,53 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
+
+{{- $id := printf "math-%d" now.UnixNano -}}
+
+<div id="container-{{ $id }}" class="hugo-math-container" style="margin: 2rem 0; text-align: center; width: 100%; overflow-x: auto; font-size: 1.25rem; color: inherit;"></div>
+
+<textarea id="raw-{{ $id }}" style="display: none !important;">{{ .Inner }}</textarea>
+
+<script>
+  (function() {
+    function renderFormula() {
+      var texContainer = document.getElementById("raw-{{ $id }}");
+      var targetElement = document.getElementById("container-{{ $id }}");
+      if (!texContainer || !targetElement) return;
+
+      var tex = texContainer.value.trim();
+      
+      // Limpeza inteligente: remove os $$ ou $ caso o usuário digite por costume
+      if (tex.substring(0, 2) === "$$" && tex.substring(tex.length - 2) === "$$") {
+        tex = tex.substring(2, tex.length - 2);
+      } else if (tex.charAt(0) === "$" && tex.charAt(tex.length - 1) === "$") {
+        tex = tex.substring(1, tex.length - 1);
+      }
+
+      try {
+        window.katex.render(tex, targetElement, {
+          displayMode: true,
+          throwOnError: false
+        });
+      } catch (err) {
+        targetElement.textContent = tex;
+        console.error("Erro no KaTeX:", err);
+      }
+    }
+
+    // Gerenciador de carregamento assíncrono seguro contra travamentos
+    if (window.katex) {
+      renderFormula();
+    } else {
+      if (!document.getElementById("katex-core-script")) {
+        var script = document.createElement("script");
+        script.id = "katex-core-script";
+        script.src = "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js";
+        script.crossOrigin = "anonymous";
+        script.onload = function() {
+          document.dispatchEvent(new Event("katexScriptLoaded"));
+        };
+        document.head.appendChild(script);
+      }
+      document.addEventListener("katexScriptLoaded", renderFormula);
+    }
+  })();
+</script>

@@ -32,11 +32,11 @@ jobs:
       - name: 🛠️ Configurar Hugo Extended
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: 'latest'
+          hugo-version: '0.161.1' # Travado na sua versão local
           extended: true
 
       - name: 🏗️ Compilar Site Estático
-        run: hugo --gc --minify
+        run: hugo --gc --minify --cleanDestinationDir
 
       - name: ⚙️ Compliance Check Final (AdSense & SEO)
         run: |
@@ -51,7 +51,7 @@ jobs:
           node-version: '20'
 
       - name: 🔍 Indexar Motor de Busca Otimizado (Pagefind)
-        run: npx --yes pagefind --site public --quiet
+        run: npx --yes pagefind --site public
 
       - name: 📦 Upload de Artefato Nativo do GitHub Pages
         uses: actions/upload-pages-artifact@v3

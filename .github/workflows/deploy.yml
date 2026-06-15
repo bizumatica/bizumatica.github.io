@@ -1,4 +1,4 @@
-name: Pipeline de Deploy Bizumática (v6.0 - Cloudflare Edge Compiler)
+name: Pipeline de Deploy Bizumática (Retorno ao GitHub Pages)
 
 on:
   push:
@@ -6,13 +6,8 @@ on:
       - main
   workflow_dispatch:
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
-
 permissions:
-  contents: read
-  deployments: write
+  contents: write
 
 jobs:
   build-and-deploy:
@@ -34,12 +29,11 @@ jobs:
       - name: 🏗️ Compilar Site Estático
         run: hugo --gc --minify --cleanDestinationDir --buildDrafts
 
-      - name: ⚙️ Compliance Check Final (AdSense & SEO)
+      - name: ⚙️ Compliance Check Final
         run: |
           if [ ! -f "public/ads.txt" ]; then 
-            echo "::error::ERRO: ads.txt foi perdido no build da nuvem!" && exit 1
+            echo "::error::ERRO: ads.txt não foi gerado pelo Hugo!" && exit 1
           fi
-          grep -q "Allow: /" public/robots.txt || { echo "::warning::Verifique a indexação no robots.txt"; }
 
       - name: 🟢 Configurar Node.js (Runtime Pagefind)
         uses: actions/setup-node@v4
@@ -47,11 +41,11 @@ jobs:
           node-version: '22'
 
       - name: 🔍 Indexar Motor de Busca Otimizado (Pagefind)
-        run: "npx --yes pagefind --site public || echo 'Aviso: Sem elementos indexáveis no Pagefind por enquanto.'"
+        run: "npx --yes pagefind --site public || echo 'Ignorando alertas do Pagefind.'"
 
-      - name: 🚀 Deploy Direto no Edge da Cloudflare
-        uses: cloudflare/wrangler-action@v3
+      - name: 🚀 Deploy para GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: npx wrangler pages deploy public --project-name="bizumatica"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          force_orphan: true

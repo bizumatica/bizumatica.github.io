@@ -1,23 +1,23 @@
 # 🛠️ Bizumática - Developer & Architecture Docs
 
-![Architecture](https://img.shields.io/badge/Architecture-Leaf_Bundles_v4.3-BA1650?logo=hugo&logoColor=white)
-![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub_Actions-2088FF?logo=githubactions&logoColor=white)
-![Shell Script](https://img.shields.io/badge/Shell_Script-Bash_v4.3_Shielded-4EAA25?logo=gnu-bash&logoColor=white)
+![Architecture](https://img.shields.io/badge/Architecture-Leaf_Bundles_v6.0-BA1650?logo=hugo&logoColor=white)
+![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub_Actions_%26_Cloudflare-2088FF?logo=cloudflare&logoColor=orange)
+![Shell Script](https://img.shields.io/badge/Shell_Script-Bash_v6.0_Shielded-4EAA25?logo=gnu-bash&logoColor=white)
 ![Environment](https://img.shields.io/badge/Python-3.10%2B_Venv-3776AB?logo=python&logoColor=white)
 
-Este documento detalha as especificações de engenharia de software, o pipeline de dados automatizado e as travas de segurança implementadas a partir da **versão 4.3** do ciclo de automação do portal.
+Este documento detalha as especificações de engenharia de software, o pipeline de dados automatizado e as travas de segurança implementadas a partir da **versão 6.0** do ciclo de automação do portal.
 
 ---
 
-## 📐 Especificação de Arquitetura de Conteúdo `[v4.3]`
+## 📐 Especificação de Arquitetura de Conteúdo `[v6.0]`
 
 O Bizumática utiliza estritamente o padrão de **Leaf Bundles** do Hugo para garantir o isolamento e a portabilidade de ativos (imagens, diagramas e códigos) de cada artigo.
 
 ### Regras de Ouro do Diretório `content/`
 
-1.  **Proibição Absoluta de Arquivos Soltos:** Nenhum artigo deve existir como `.md` solto diretamente nas pastas de seções. Cada artigo possui sua própria pasta.
-2.  **Leaf Bundles Atômicos:** O ponto de entrada de um artigo dentro de sua subpasta é obrigatoriamente chamado `index.md`.
-3.  **Branch Bundles Puros:** Arquivos `_index.md` pertencem exclusivamente à raiz das seções para fins de listagem nativa de categorias do Hugo. 
+1. **Proibição Absoluta de Arquivos Soltos:** Nenhum artigo deve existir como `.md` solto diretamente nas pastas de seções. Cada artigo possui sua própria pasta.
+2. **Leaf Bundles Atômicos:** O ponto de entrada de um artigo dentro de sua subpasta é obrigatoriamente chamado `index.md`.
+3. **Branch Bundles Puros:** Arquivos `_index.md` pertencem exclusivamente à raiz das seções para fins de listagem nativa de categorias do Hugo. 
 
 ```text
 content/
@@ -30,25 +30,24 @@ content/
 
 ```
 
-> ⚠️ **TRAVA ANTIFALHA:** É expressamente proibida a criação da estrutura `pasta/_index/index.md`. Esse comportamento legado quebrava o encadeamento de links internos e foi mitigado na versão 4.3.
+> ⚠️ **TRAVA ANTIFALHA:** É expressamente proibida a criação da estrutura `pasta/_index/index.md`. Esse comportamento legado quebrava o encadeamento de links internos e foi permanentemente mitigado.
 
 ---
 
-## 🔄 O Pipeline de CI/CD em Nuvem `[deploy.yml v4.3]`
+## 🔄 O Pipeline de CI/CD no Edge `[deploy.yml v6.0]`
 
-O Bizumática opera sob um modelo de **Automação Total em Nuvem** via GitHub Actions. O desenvolvedor local foca exclusivamente na escrita do conteúdo, enquanto a infraestrutura do GitHub gerencia a integridade, compilação e publicação.
+O Bizumática opera sob um modelo de **Automação Híbrida de Alta Performance**. O GitHub Actions atua como o motor de compilação e compliance, enquanto a Cloudflare Pages atua como a rede global de distribuição (Edge CDN) via Direct Upload.
 
 ### Fluxo de Execução da Esteira Remota
 
-Ao receber um `git push` na branch `main` ou atingir o gatilho do `cron` diário (06:00 UTC), o servidor executa sequencialmente:
+Ao receber um `git push` na branch `main` ou ser disparado manualmente via `workflow_dispatch`, o servidor executa sequencialmente:
 
 1. **📥 Checkout:** Clonagem completa do histórico de commits para alimentar as variáveis temporais do Hugo.
-2. **🥋 Higienização Automática (v4.3):** Aplica a trava de busca dupla via `find` para ignorar `index.md` e `_index.md`, movendo apenas arquivos novos/soltos para suas respectivas subpastas em formato Leaf Bundle.
-3. **🛠️ Setup Engine:** Instalação sob demanda do Hugo Extended e Node.js (v20).
-4. **🏗️ Hugo Build:** Compilação com otimização, minificação agressiva e limpeza de destinos antigos diretamente na pasta `/docs`.
-5. **⚙️ SEO Compliance:** Validação via scripts de barreira dos ativos `ads.txt` e `robots.txt` antes de prosseguir.
-6. **🔍 Pagefind Indexing:** Geração automatizada do índice em WebAssembly para busca interna.
-7. **🚀 Git Commit Back:** O `GitHub Action Bot` consolida os arquivos gerados pela máquina e faz o push de volta para a branch remota utilizando a flag `[skip ci]` para prevenir loops de execução.
+2. **🛠️ Setup Engine Extended:** Instalação travada do Hugo Extended (`v0.161.1`) e inicialização do ambiente Node.js (`v22`).
+3. **🏗️ Hugo Compiler:** Compilação com otimização, minificação agressiva e higienização nativa de destinos antigos direcionados para a pasta temporária `./public`.
+4. **⚙️ Compliance Check Final:** Validação via scripts de barreira estritos dos ativos `ads.txt` e `robots.txt`. O pipeline aborta imediatamente com código de erro se o arquivo de anúncios do AdSense for perdido.
+5. **🔍 Pagefind Indexing:** Injeção automatizada do motor de busca otimizado em WebAssembly baseado na pasta de build atual.
+6. **🚀 Direct Upload Serverless (Zero Commit-Back):** O pipeline utiliza a action oficial da Cloudflare para transmitir a pasta `./public` gerada diretamente para mais de 300 data centers globais de forma atômica. **Não há mais poluição de histórico ou commits de bots** na branch `main`, eliminando riscos de loops de execução e mantendo o repositório 100% limpo.
 
 ---
 
@@ -56,8 +55,8 @@ Ao receber um `git push` na branch `main` ou atingir o gatilho do `cron` diário
 
 Para rodar o ecossistema completo de desenvolvimento e geração de dados localmente:
 
-* **Hugo Extended** (`>= 0.140.0`) para testes locais em `hugo server`.
-* **Python 3.10+** instalado com ambiente virtual em `./venv` (necessário apenas para a operação do script `auto-busca.py` e rotinas de ingestão de tabelas).
+* **Hugo Extended** (`v0.161.1`) para testes locais e paridade estrita com o compilador da nuvem via `hugo server`.
+* **Python 3.10+** instalado com ambiente virtual em `./venv` (necessário para scripts auxiliares de automação de busca e tratamento de dados).
 
 ### Inicializando Dependências do Python
 
@@ -72,22 +71,23 @@ pip install pandas pyyaml requests
 
 ## 🚨 Troubleshooting Local & Resolução de Conflitos
 
-Como a esteira em nuvem reconstrói a pasta `/docs` e o índice do Pagefind a cada execução, podem ocorrer pequenos descompassos de histórico local caso o seu repositório local fique desatualizado.
+Como a esteira agora envia os arquivos diretamente para a infraestrutura serverless da Cloudflare sem gerar novos commits de volta para o GitHub, o seu ambiente local tornou-se incrivelmente estável e livre de conflitos de histórico (`diverged branches`).
 
 **Protocolo de Sincronização Homologado:**
-Antes de iniciar um novo lote de postagens, garanta que sua máquina está espelhando a nuvem executando:
+Se você realizar testes de build locais e quiser limpar os arquivos temporários gerados pela sua máquina para garantir que eles não entrem no controle de versão por engano, execute:
 
 ```bash
-# Limpa rastros locais gerados por builds antigos
-rm -rf docs/ resources/_gen/
+# Remove pastas de compilação local e hashes de cache do Hugo
+rm -rf public/ resources/_gen/
 
-# Traz as atualizações higienizadas que a GitHub Action consolidou
-git pull origin main --rebase
+# Garante paridade limpa antes de iniciar um novo artigo
+git pull origin main
 
 ```
-
 ---
 
-**Versão da Arquitetura Interna:** 4.3
+**Versão da Arquitetura Interna:** 6.0
 
 ![Static Badge](https://img.shields.io/badge/pipeline-status-%23FF9F7A?logo=githubactions&logoColor=white) ![Static Badge](https://img.shields.io/badge/serverless-100%25-%23056C5C?logo=serverless&logoColor=white) ![Static Badge](https://img.shields.io/badge/cloud-protected-orange?logo=icloud&logoColor=white)
+
+```

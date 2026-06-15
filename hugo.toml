@@ -65,7 +65,7 @@ removePathAccents = true
 
   [markup.goldmark]
     [markup.goldmark.renderer]
-      unsafe = true # Obrigatório para renderizar shortcodes HTML customizados (como o seu compra.html)
+      unsafe = true # Obrigatório para renderizar shortcodes HTML customizados (como o compra.html)
     
     [markup.goldmark.extensions]
       [markup.goldmark.extensions.passthrough]

@@ -1,4 +1,4 @@
-name: Pipeline de Deploy Bizumática (v5.2 - Cloud Compiler)
+name: Pipeline de Deploy Bizumática (v6.0 - Cloudflare Edge Compiler)
 
 on:
   push:
@@ -12,14 +12,10 @@ concurrency:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
+  deployments: write # Alterado para permitir que o GitHub crie o ambiente de deploy na Cloudflare
 
 jobs:
   build-and-deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     
     steps:
@@ -32,7 +28,7 @@ jobs:
       - name: 🛠️ Configurar Hugo Extended
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: '0.161.1' # Travado na versão local
+          hugo-version: '0.161.1' # Mantido exatamente na minha versão estável
           extended: true
 
       - name: 🏗️ Compilar Site Estático
@@ -48,16 +44,16 @@ jobs:
       - name: 🟢 Configurar Node.js (Runtime Pagefind)
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22' # Atualizado para 22 para sumir com o aviso amarelo de depreciação do GitHub
 
       - name: 🔍 Indexar Motor de Busca Otimizado (Pagefind)
         run: npx --yes pagefind --site public
 
-      - name: 📦 Upload de Artefato Nativo do GitHub Pages
-        uses: actions/upload-pages-artifact@v3
+      - name: 🚀 Deploy Direto no Edge da Cloudflare
+        uses: cloudflare/pages-action@v1
         with:
-          path: ./public
-
-      - name: 🚀 Deploy Direto no Edge (Deploy Sem Commit)
-        id: deployment
-        uses: actions/deploy-pages@v4
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: 'bizumatica' # Nome exato que dei painel da Cloudflare
+          directory: './public'
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}

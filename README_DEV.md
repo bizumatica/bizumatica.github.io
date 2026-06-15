@@ -86,7 +86,7 @@ git pull origin main
 ```
 ---
 
-**Versão da Arquitetura Interna:** 6.0
+**Versão da Arquitetura Interna:** 6.0 
 
 ![Static Badge](https://img.shields.io/badge/pipeline-status-%23FF9F7A?logo=githubactions&logoColor=white) ![Static Badge](https://img.shields.io/badge/serverless-100%25-%23056C5C?logo=serverless&logoColor=white) ![Static Badge](https://img.shields.io/badge/cloud-protected-orange?logo=icloud&logoColor=white)
 

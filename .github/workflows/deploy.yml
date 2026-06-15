@@ -47,7 +47,7 @@ jobs:
           node-version: '22'
 
       - name: 🔍 Indexar Motor de Busca Otimizado (Pagefind)
-        run: npx --yes pagefind --site public || echo "Aviso: Sem elementos indexáveis no Pagefind por enquanto."
+        run: "npx --yes pagefind --site public || echo 'Aviso: Sem elementos indexáveis no Pagefind por enquanto.'"
 
       - name: 🚀 Deploy Direto no Edge da Cloudflare
         uses: cloudflare/wrangler-action@v3

@@ -25,11 +25,19 @@
 
   {{- $link_ml := $prod.link_mercadolivre | default "" -}}
 
+  {{- /* LÓGICA DE BUSCA DE IMAGEM ATUALIZADA */ -}}
   {{- $img_src := "" -}}
   {{- if $prod.img -}}
-    {{- $img_src = printf "/images/%s" $prod.img -}}
-    {{- if not (findRE "\\." $prod.img) -}}
-      {{- $img_src = printf "/images/%s.webp" $prod.img -}}
+    {{- /* 1. Tenta buscar no Leaf Bundle do post (pasta atual) */ -}}
+    {{- $local_img := .Page.Resources.GetMatch $prod.img -}}
+    {{- if $local_img -}}
+      {{- $img_src = $local_img.RelPermalink -}}
+    {{- else -}}
+      {{- /* 2. Fallback para a pasta /static/images/ global */ -}}
+      {{- $img_src = printf "/images/%s" $prod.img -}}
+      {{- if not (findRE "\\." $prod.img) -}}
+        {{- $img_src = printf "/images/%s.webp" $prod.img -}}
+      {{- end -}}
     {{- end -}}
   {{- end -}}
 

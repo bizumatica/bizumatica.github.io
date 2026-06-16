@@ -48,3 +48,18 @@ cons = [
   "Não acompanha transceptores ópticos SFP+ na caixa.",
   "Exige um slot PCI Express x8 mecânico livre na placa-mãe."
 ]
+
+[beelinkminis12]
+name = "Beelink Mini PC MINIS 12 com processador N95 DDR4 RAM 256G SSD"
+current_price = 2465.00
+img = "beelink-minis12.webp"
+link = "https://amzn.to/4vS2QJE"
+loja = "Amazon"
+pros = [
+  "Processador Intel N100 de altíssima eficiência com TDP de apenas 6W.",
+  "Excelente densidade de recursos com 8GB RAM DDR4 e SSD de 256GB.",
+  "Fator de forma ultra-compacto, ideal para servidores de borda (Edge Computing) e homelabs com Void Linux."
+]
+cons = [
+  "Limitado para virtualização densa ou aplicações que exijam alta performance gráfica."
+]

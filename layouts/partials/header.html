@@ -63,12 +63,12 @@
 
 .menu__inner {
     display: flex;
-    flex-wrap: nowrap; /* Trava a linha única no Desktop, impedindo o 'Sobre' de cair */
+    flex-wrap: wrap !important; /* MUDANÇA CRÍTICA: Agora ele quebra para baixo se não houver espaço */
     list-style: none;
     padding: 0;
     margin: 0;
-    justify-content: flex-start; /* Alinhamento à esquerda com espaçamento fixo e seguro */
-    gap: 10px 24px; /* Aumentado o gap horizontal para evitar colisão em notebooks */
+    justify-content: flex-start;
+    gap: 10px 24px; 
 }
 
 .menu__inner li {

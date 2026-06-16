@@ -32,8 +32,6 @@ No <strong>Bizumática</strong>, exploramos a intersecção entre o código aber
 >
 > *A identidade de Euler une os cinco números mais importantes da matemática em uma única igualdade. Uma inspiração!*
 
----
-
 <div class="terminal-centered-header" style="text-align: center;">
     <div class="terminal-command-wrapper">
         <span class="terminal-prompt">guest@bizumatica:~$</span> <span class="terminal-command">ls -la /conteudos</span>

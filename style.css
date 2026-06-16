@@ -1,0 +1,30 @@
+/* Ataca o link, o span e o ID de uma vez só */
+.logo a, 
+.logo a .logo__text, 
+.logo__text, 
+#title {
+    background: linear-gradient(45deg, #00f2ff, #ff00ff) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    
+    /* Força a transparência para o degradê aparecer */
+    color: transparent !important;
+    -webkit-text-fill-color: transparent !important;
+    
+    display: inline-block !important;
+    text-decoration: none !important;
+}
+
+/* Garante que ao passar o mouse (hover) ele não mude de cor */
+.logo a:hover, 
+.logo a:focus {
+    background: linear-gradient(45deg, #00f2ff, #ff00ff) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
+}
+
+/* Cursor combinando */
+.logo__cursor {
+    background-color: #ff00ff !important;
+}

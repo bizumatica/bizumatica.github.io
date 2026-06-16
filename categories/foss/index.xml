@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Foss on Bizumática</title><link>https://bizumatica.com.br/categories/foss/</link><description>Recent content in Foss on Bizumática</description><generator>Hugo</generator><language>pt-br</language><lastBuildDate>Tue, 26 May 2026 15:00:00 -0300</lastBuildDate><atom:link href="https://bizumatica.com.br/categories/foss/index.xml" rel="self" type="application/rss+xml"/><item><title>A Engenharia do Rocky Linux 10: Migração para Koji, Suporte Nativo a RISC-V e a Matemática do Escalonamento de Compilação</title><link>https://bizumatica.com.br/foss/engenharia-rocky-linux-10-koji-riscv/</link><pubDate>Tue, 26 May 2026 15:00:00 -0300</pubDate><guid>https://bizumatica.com.br/foss/engenharia-rocky-linux-10-koji-riscv/</guid><description>&lt;h2 id="a-evolução-da-cadeia-de-suprimentos-supply-chain-no-enterprise-linux"&gt;A Evolução da Cadeia de Suprimentos (Supply Chain) no Enterprise Linux&lt;/h2&gt;
+&lt;p&gt;O lançamento do &lt;strong&gt;Rocky Linux 10&lt;/strong&gt; marca uma mudança de paradigma drástica na engenharia interna das distribuições de nível empresarial baseadas em código aberto (&lt;em&gt;FOSS&lt;/em&gt;). Após anos consolidando sua posição como o substituto espiritual do CentOS tradicional, a RESF (&lt;em&gt;Rocky Enterprise Software Foundation&lt;/em&gt;) reestruturou completamente sua infraestrutura de compilação.&lt;/p&gt;
+&lt;figure class="artigo-foto-container"&gt;
+ &lt;img src="prod-rocky-linux-10-enterprise.webp" alt="Rocky Linux 10.1" class="artigo-foto" loading="lazy"&gt;
+ 
+ &lt;figcaption class="artigo-foto-legenda"&gt;:: [ INTERFACE GRÁFICA PADRÃO DO AMBIENTE CORPORATIVO ESTÁVEL DO ROCKY LINUX 10. ] ::&lt;/figcaption&gt;
+ 
+&lt;/figure&gt;
+
+&lt;style&gt;
+.artigo-foto-container {
+ margin: 2.5rem 0;
+ padding: 0;
+ text-align: center;
+}
+
+.artigo-foto {
+ max-width: 100%;
+ height: auto;
+ border: 1px solid #222;
+ background-color: #16161e; 
+ padding: 6px;
+ display: block;
+ margin: 0 auto;
+}
+
+.artigo-foto-legenda {
+ margin-top: 10px;
+ font-family: monospace;
+ font-size: 0.8rem;
+ color: #a9b1d6; 
+ letter-spacing: 0.5px;
+}
+&lt;/style&gt;
+&lt;p&gt;O projeto abandonou o sistema de build customizado &lt;em&gt;Peridot&lt;/em&gt; e migrou integralmente para o &lt;strong&gt;Koji&lt;/strong&gt;, o robusto e consagrado ecossistema de compilação utilizado historicamente pelo Fedora e pelo Red Hat Enterprise Linux (RHEL). Essa movimentação não foi estética: trata-se de uma decisão estratégica para blindar a integridade da &lt;em&gt;software supply chain&lt;/em&gt; contra ataques vetoriais e garantir previsibilidade absoluta na reprodução de pacotes binários estáveis por uma janela de suporte que se estende pelos próximos dez anos.&lt;/p&gt;</description></item><item><title>Entendendo o PipeWire e WirePlumber: A Revolução do Áudio no Linux e a Matemática da Latência</title><link>https://bizumatica.com.br/foss/entendendo-pipewire-wireplumber/</link><pubDate>Thu, 21 May 2026 10:00:00 -0300</pubDate><guid>https://bizumatica.com.br/foss/entendendo-pipewire-wireplumber/</guid><description>&lt;h2 id="a-fragmentação-histórica-do-áudio-no-linux"&gt;A Fragmentação Histórica do Áudio no Linux&lt;/h2&gt;
+&lt;p&gt;Se você utiliza Linux há alguns anos, certamente já enfrentou a clássica dor de cabeça de configurar o subsistema de áudio. Historicamente, o ecossistema de software livre (&lt;em&gt;FOSS&lt;/em&gt;) sofria de uma profunda fragmentação arquitetural. De um lado, tínhamos o &lt;strong&gt;PulseAudio&lt;/strong&gt;, projetado para o usuário final doméstico, capaz de gerenciar múltiplos aplicativos e saídas Bluetooth de forma dinâmica, mas incapaz de entregar baixa latência. Do outro, o &lt;strong&gt;JACK&lt;/strong&gt; (&lt;em&gt;JACK Audio Connection Kit&lt;/em&gt;), a ferramenta padrão para engenheiros de som e músicos, que oferecia latência ultrabaixa e roteamento profissional, porém com uma configuração extremamente rígida que costumava quebrar o áudio do navegador ou do sistema comum.&lt;/p&gt;</description></item></channel></rss>

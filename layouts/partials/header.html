@@ -5,26 +5,25 @@
       <a href="{{ "/" | absURL }}" style="text-decoration: none; flex-shrink: 0;">
         <div class="logo-box">BIZUMÁTICA</div>
       </a>
+      <!-- Div que renderiza o padrão serrilhado clássico de barras verticais -->
       <div class="terminal-bars"></div>
     </div>
 
     <nav class="menu-nav" aria-label="Navegação Principal">
       <ul class="menu__inner">
-        {{- /* Links corrigidos com absURL e acessibilidade injetada via ARIA */ -}}
+        {{- /* Links distribuídos simetricamente de ponta a ponta */ -}}
         <li><a href="{{ "/linux/" | absURL }}" aria-label="Seção Linux">[ Linux ]</a></li>
         <li><a href="{{ "/foss/" | absURL }}" aria-label="Seção FOSS">[ FOSS ]</a></li>
         <li><a href="{{ "/matematica/" | absURL }}" aria-label="Seção Matemática">[ Matemática ]</a></li>
         <li><a href="{{ "/curadoria/" | absURL }}" aria-label="Seção Curadoria">[ Curadoria ]</a></li>
         <li><a href="{{ "/shell-scripting/" | absURL }}" aria-label="Seção Shell Scripting">[ Shell ]</a></li>
         <li><a href="{{ "/search/" | absURL }}" aria-label="Página de Busca">[ Buscar ]</a></li>
-        <li><a href="{{ "/sobre/" | absURL }}" aria-label="Sobre o Autor">[ Sobre ]</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
 <style>
-/* Forçando a cor dourada original para garantir consistência em qualquer ambiente */
 .header__logo-row {
     display: flex; 
     align-items: center; 
@@ -44,12 +43,16 @@
     cursor: pointer;
 }
 
+/* AJUSTADO: Aumento vertical do serrilhado (FOTO: image_36d82b.png) */
 .terminal-bars {
     flex-grow: 1;
-    min-width: 30px; /* Garante que a barra nunca seja esmagada a zero no mobile */
-    height: 25px;
+    min-width: 40px;
+    height: 32px; /* Aumentado verticalmente para dar mais presença ao serrilhado */
+    /* Mantém o padrão pixel-perfect de linhas paralelas rígidas */
     background-image: linear-gradient(to right, #EEC35E 1px, transparent 1px);
-    background-size: 4px 100%;
+    background-size: 4px 100%; 
+    background-repeat: repeat-x;
+    align-self: center; /* Garante que ele fique centralizado verticalmente com a logo */
 }
 
 .header__inner {
@@ -59,28 +62,36 @@
     padding: 20px 0;
 }
 
-.menu-nav { margin-top: 25px; width: 100%; }
+.menu-nav { 
+    margin-top: 25px; 
+    width: 100%; 
+}
 
 .menu__inner {
     display: flex;
-    flex-wrap: wrap !important; /* MUDANÇA CRÍTICA: Agora ele quebra para baixo se não houver espaço */
+    flex-wrap: wrap !important; 
     list-style: none;
     padding: 0;
     margin: 0;
-    justify-content: flex-start;
-    gap: 10px 24px; 
+    width: 100%;
+    /* Distribuição elástica e responsiva de ponta a ponta */
+    justify-content: space-between; 
+    gap: 12px 10px; 
 }
 
 .menu__inner li {
-    flex: 0 0 auto; /* Impede que o navegador esmague ou encolha a largura dos links */
+    flex: 0 1 auto;
+    text-align: center;
 }
 
 .menu__inner li a {
     color: #EEC35E !important;
     text-decoration: none;
     font-family: monospace;
-    font-size: 1.1rem; /* Mantém o tamanho original intacto e legível */
-    white-space: nowrap; /* Garante blindagem contra quebras internas do texto do link */
+    font-size: 1.1rem; 
+    white-space: nowrap; 
+    display: inline-block;
+    transition: filter 0.2s ease;
 }
 
 .menu__inner li a:hover {
@@ -88,17 +99,31 @@
     filter: brightness(1.2);
 }
 
-/* Ativa o modo responsivo elástico apenas abaixo de desktops padrão */
-@media (max-width: 960px) { /* Ajustado de 915px para 960px para dar margem de segurança */
+/* Media Queries para adaptação elástica do espaço */
+@media (max-width: 960px) {
     .menu__inner {
-        flex-wrap: wrap; /* Permite a quebra organizada em telas pequenas */
-        justify-content: flex-start;
-        gap: 12px 15px;
+        justify-content: space-between; 
+        gap: 14px 8px;
+    }
+}
+
+@media (max-width: 640px) {
+    .menu__inner {
+        justify-content: space-around; 
+        gap: 16px 10px;
+    }
+    .menu__inner li a { 
+        font-size: 1.05rem; 
     }
 }
 
 @media (max-width: 480px) {
-    .menu__inner { gap: 15px; }
-    .menu__inner li a { font-size: 1rem; }
+    .menu__inner { 
+        justify-content: space-between;
+        gap: 15px 5px; 
+    }
+    .menu__inner li a { 
+        font-size: 0.95rem; 
+    }
 }
 </style>

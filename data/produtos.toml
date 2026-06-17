@@ -63,3 +63,18 @@ pros = [
 cons = [
   "Limitado para virtualização densa ou aplicações que exijam alta performance gráfica."
 ]
+
+[comolinuxfunciona]
+name = "Como o Linux funciona: O que todo superusuário deveria saber"
+current_price = 88.00
+img = "como-funciona-linux.webp"
+link = "https://amzn.to/4w1hcI1"
+loja = "Amazon"
+pros = [
+  "Abordagem profunda de baixo nível, cobrindo desde o processo de boot até o gerenciamento do kernel.",
+  "Essencial para entender a transição de subsistemas e o funcionamento do espaço de usuário (user space).",
+  "Linguagem didática e direta, ideal para administradores de sistemas, desenvolvedores e entusiastas de open-source."
+]
+cons = [
+  "Por focar fortemente em conceitos estruturais e linha de comando, pode ser denso para iniciantes absolutos no ecossistema."
+]

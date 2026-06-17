@@ -1,6 +1,6 @@
 ---
 title: "Void Linux: A Primazia da Simplicidade Independente e o Poder do Runit"
-date: 2026-06-16
+date: 2026-06-16T09:00:00-03:00
 last_check: 2026-06-16
 draft: false
 slug: "linux-voidlinux"

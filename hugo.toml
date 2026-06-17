@@ -3,12 +3,22 @@
 # ==============================================================================
 baseURL = "https://bizumatica.com.br/"
 title = "Bizumática"
-theme = "terminal"
+theme = "terminal" # Mantido o nome original para casar com a sua pasta local
 locale = "pt-br"
 enableEmoji = true
 
-# Garante que o Hugo mapeie a pasta static da raiz global para o AdSense/SEO
-staticDir = ["static"]
+# --- MAPEAMENTO E PRIORIDADE DE MÓDULOS ---
+# Força o motor do Hugo (local e na nuvem) a dar prioridade total aos seus arquivos da raiz
+[module]
+  [[module.mounts]]
+    source = "content"
+    target = "content"
+  [[module.mounts]]
+    source = "layouts"
+    target = "layouts"
+  [[module.mounts]]
+    source = "static"
+    target = "static"
 
 # --- HIGIENIZAÇÃO NATIVA CONTRA PÁGINAS FANTASMAS ---
 # Limpa arquivos órfãos antigos da pasta de destino a cada novo build

@@ -27,7 +27,7 @@ jobs:
           extended: true
 
       - name: 🏗️ Compilar Site Estático
-        run: hugo --gc --minify --cleanDestinationDir --buildDrafts
+        run: hugo --gc --minify --cleanDestinationDir
 
       - name: ⚙️ Compliance Check Final
         run: |
@@ -38,14 +38,15 @@ jobs:
       - name: 🟢 Configurar Node.js (Runtime Pagefind)
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '22' # Mantido 22, mas compatível com v4
 
       - name: 🔍 Indexar Motor de Busca Otimizado (Pagefind)
         run: "npx --yes pagefind --site public || echo 'Ignorando alertas do Pagefind.'"
 
       - name: 🚀 Deploy para GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
-          force_orphan: true
+          # Alterado para false para permitir commits incrementais e invalidar cache de CDN
+          force_orphan: false

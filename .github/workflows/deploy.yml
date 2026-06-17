@@ -1,4 +1,4 @@
-name: Pipeline de Deploy Bizumática (Retorno ao GitHub Pages)
+name: Pipeline de Deploy Bizumática (Nativo)
 
 on:
   push:
@@ -6,21 +6,34 @@ on:
       - main
   workflow_dispatch:
 
+# Permissões estritas exigidas pelo novo GitHub Pages nativo
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+# Garante que não haja dois deploys atropelando um ao outro
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     
+    # Define o ambiente de deploy para o GitHub rastrear o link
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
     steps:
-      - name: 📥 Checkout do Código-Fonte Limpo
+      - name: 📥 Checkout do Código-Fonte
         uses: actions/checkout@v4
         with:
           submodules: recursive
           fetch-depth: 0
 
-      - name: 🛠️ Configurar Hugo Extended
+      - name: 🛠️ Configurar Hugo
         uses: peaceiris/actions-hugo@v3
         with:
           hugo-version: '0.161.1'
@@ -38,15 +51,17 @@ jobs:
       - name: 🟢 Configurar Node.js (Runtime Pagefind)
         uses: actions/setup-node@v4
         with:
-          node-version: '22' # Mantido 22, mas compatível com v4
+          node-version: '22'
 
       - name: 🔍 Indexar Motor de Busca Otimizado (Pagefind)
-        run: "npx --yes pagefind --site public || echo 'Ignorando alertas do Pagefind.'"
+        run: npx --yes pagefind --site public || echo 'Ignorando alertas do Pagefind.'
+
+      # === A GRANDE MUDANÇA ESTÁ AQUI ===
+      - name: 📦 Upload do Artefato (GitHub Pages Nativo)
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
 
       - name: 🚀 Deploy para GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-          # Alterado para false para permitir commits incrementais e invalidar cache de CDN
-          force_orphan: false
+        id: deployment
+        uses: actions/deploy-pages@v4

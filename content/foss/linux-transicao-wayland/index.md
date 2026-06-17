@@ -18,7 +18,7 @@ Grandes distribuições de peso corporativo, como Fedora e Ubuntu, lideram um mo
 
 Para Administradores de Sistemas (SysAdmins) e desenvolvedores, ignorar essa mudança é aceitar o risco de quebras severas em ambientes de produção. Fluxos de trabalho baseados em automação visual, acessibilidade e monitoramento multiplataforma exigem readequação imediata.
 
-{{< foto src="wayland-architecture.webp" alt="Diagrama de Arquitetura do Protocolo Wayland vs X11" legenda="A simplificação do pipeline gráfico: o compositor Wayland assume o papel central e elimina intermediários redundantes." >}}
+{{< foto src="wayx11.webp" alt="Diagrama de Arquitetura do Protocolo Wayland vs X11" legenda="A simplificação do pipeline gráfico: o compositor Wayland assume o papel central e elimina intermediários redundantes." >}}
 
 A técnica sem planejamento gera imprevisibilidade operacional. Diante da maturidade técnica alcançada pelo protocolo Wayland, a comunidade migra em ritmo acelerado para um modelo de renderização mais seguro, fluido e isolado.
 

@@ -150,6 +150,6 @@ Com efeito, os profissionais que anteciparem essa migração e dominarem as nova
 Para expandir seu conhecimento e dominar a gerência de ecossistemas Linux de nível corporativo, é fundamental investir em literaturas que unam teoria e prática de campo. Ao adquirir os livros recomendados pelos nossos links, você apoia a produção de novos conteúdos técnicos neste portal:
 {{< /links >}}
 
-{{< foto src="cover.webp" alt="Como o Linux funciona: O que todo superusuário deveria saber" legenda="O Linux não tenta esconder as partes importantes – ele permite que você tenha um controle completo de seu computador." >}}
+{{< foto src="cover.webp" alt="Seção X11" legenda="Do X11 ao Wayland: mudança gradual." >}}
 
 {{< compra id="comolinuxfunciona" >}}

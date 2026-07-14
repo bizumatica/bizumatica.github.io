@@ -1,0 +1,148 @@
+{{- $titulo := .Get "titulo" -}}
+{{- $autor := .Get "autor" | default "Autor Desconhecido" -}}
+{{- $tipo := .Get "tipo" | default "Guia" -}}
+{{- $nivel := .Get "nivel" | default "Todos" -}}
+{{- $link := .Get "link" -}}
+{{- $cor := .Get "cor" | default "#05d9e8" -}}
+
+{{- if not (.Page.Scratch.Get "recomenda-css-loaded") -}}
+  {{- .Page.Scratch.Set "recomenda-css-loaded" true -}}
+  <style>
+    .bizu-recomenda {
+      position: relative;
+      background: #0f1115;
+      border: 1px solid #1a1d24;
+      border-left: 4px solid var(--rec-color);
+      border-radius: 4px;
+      padding: 1.25rem;
+      margin: 1.75rem 0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    }
+    .rec-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      border-bottom: 1px solid #1a1d24;
+      padding-bottom: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+    .rec-meta-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .rec-icon {
+      color: var(--rec-color);
+      display: flex;
+      align-items: center;
+    }
+    .rec-title-wrap {
+      display: flex;
+      flex-direction: column;
+    }
+    .rec-label {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #666;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .rec-title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #fff;
+      line-height: 1.2;
+    }
+    .rec-badges {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .rec-badge {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.65rem;
+      padding: 2px 8px;
+      border-radius: 3px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      color: #888;
+      text-transform: uppercase;
+    }
+    .rec-badge-highlight {
+      border-color: var(--rec-color-alpha);
+      color: var(--rec-color);
+      background: var(--rec-color-alpha-bg);
+    }
+    .rec-body {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #ccc;
+      margin-bottom: 1rem;
+    }
+    .rec-body p {
+      margin: 0;
+    }
+    .rec-footer {
+      display: flex;
+      justify-content: flex-end;
+    }
+    .rec-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.75rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--rec-color);
+      padding: 6px 14px;
+      border-radius: 3px;
+      text-decoration: none;
+      transition: filter 0.2s ease, transform 0.1s ease;
+    }
+    .rec-button:hover {
+      filter: brightness(1.1);
+      transform: translateY(-1px);
+      color: #000 !important; /* Contrasto alto no hover estilo terminal */
+      text-decoration: none !important;
+    }
+    @media (max-width: 600px) {
+      .rec-header { flex-direction: column; align-items: flex-start; }
+      .rec-badges { margin-top: 0.25rem; }
+    }
+  </style>
+{{- end -}}
+
+<div class="bizu-recomenda" style="--rec-color: {{ $cor | safeCSS }}; --rec-color-alpha: {{ $cor | safeCSS }}40; --rec-color-alpha-bg: {{ $cor | safeCSS }}10;">
+  <div class="rec-header">
+    <div class="rec-meta-left">
+      <div class="rec-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+      </div>
+      <div class="rec-title-wrap">
+        <span class="rec-label">RECOMENDAÇÃO DE LEITURA</span>
+        <span class="rec-title">{{ $titulo }}</span>
+      </div>
+    </div>
+    <div class="rec-badges">
+      <span class="rec-badge">✍️ {{ $autor }}</span>
+      <span class="rec-badge rec-badge-highlight">🏷️ {{ $tipo }}</span>
+      <span class="rec-badge">🎚️ {{ $nivel }}</span>
+    </div>
+  </div>
+  <div class="rec-body">
+    {{- .Inner | markdownify -}}
+  </div>
+  {{- if $link -}}
+  <div class="rec-footer">
+    <a href="{{ $link | safeURL }}" target="_blank" rel="noopener noreferrer" class="rec-button">
+      Acessar Material ➜
+    </a>
+  </div>
+  {{- end -}}
+</div>

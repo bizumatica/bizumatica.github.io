@@ -1,0 +1,159 @@
+{{- $headers := .Get "headers" -}}
+{{- $aligns := .Get "aligns" | default "" -}}
+{{- $headerList := split $headers "," -}}
+{{- $alignList := split $aligns "," -}}
+{{- /* Cor padrão: Laranja Retrô (#ff9d00) ou a cor que você passar no shortcode */ -}}
+{{- $cor_custom := .Get "cor" | default "#ff9d00" -}}
+{{- $tableId := printf "tbl-%s" (printf "%s-%s" .Page.RelPermalink .Inner | md5 | truncate 8 "") -}}
+
+<style>
+  :root {
+    --azul-toquio: #05d9e8; /* Paleta Bizumática: Azul Tóquio Neon */
+  }
+
+  .bizu-table-wrapper {
+    width: 100%;
+    margin: 2rem 0;
+    border: 1px solid #1a1d24;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #0b0c0f; /* Fundo original escuro */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  }
+  
+  .bizu-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.9rem;
+    background: transparent;
+  }
+  
+  .bizu-table th {
+    background: #0f1115;
+    color: var(--table-accent) !important; /* Laranja Retrô ou Verde da sua escolha */
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 1rem;
+    border-bottom: 2px solid #1a1d24;
+    font-size: 0.8rem;
+  }
+  
+  .bizu-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #14161d;
+    color: #ccc;
+    line-height: 1.5;
+  }
+  
+  /* AZUL TÓQUIO: Destaca termos em negrito */
+  .bizu-table td strong, 
+  .bizu-table td b {
+    color: var(--azul-toquio) !important;
+    font-weight: bold;
+  }
+
+  .bizu-table tr:last-child td { border-bottom: none; }
+  .bizu-table tr:hover td { background: rgba(255, 255, 255, 0.01); }
+  
+  .txt-l { text-align: left; }
+  .txt-c { text-align: center; }
+  .txt-r { text-align: right; }
+
+  /* RESPONSIVIDADE COM ESTÉTICA IMPECÁVEL */
+  @media (max-width: 768px) {
+    .bizu-table-wrapper {
+      border: 1px solid #1a1d24 !important;
+      background: #0b0c0f !important;
+    }
+
+    .bizu-table, 
+    .bizu-table thead, 
+    .bizu-table tbody, 
+    .bizu-table th, 
+    .bizu-table td, 
+    .bizu-table tr {
+      display: block !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+      border: none !important;
+      background: none !important;
+    }
+
+    .bizu-table thead {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0,0,0,0) !important;
+    }
+
+    .bizu-table tr {
+      border-bottom: 2px solid #1a1d24 !important;
+      padding: 0.5rem 0 !important;
+    }
+    .bizu-table tr:last-child {
+      border-bottom: none !important;
+    }
+
+    .bizu-table td {
+      display: grid !important;
+      grid-template-columns: 40% 60% !important;
+      align-items: center !important;
+      border-bottom: 1px dotted #14161d !important;
+      padding: 0.75rem 1.25rem !important;
+      text-align: right !important;
+    }
+    .bizu-table td:last-child {
+      border-bottom: none !important;
+    }
+
+    /* Rótulo esquerdo no Mobile herdando a cor exata do Cabeçalho */
+    .bizu-table td::before {
+      content: attr(data-col) !important;
+      display: inline-block !important;
+      font-family: 'Courier New', Courier, monospace !important;
+      font-weight: bold !important;
+      color: var(--table-accent) !important;
+      font-size: 0.7rem !important;
+      text-transform: uppercase !important;
+      letter-spacing: 1px !important;
+      text-align: left !important;
+      padding-right: 10px !important;
+      white-space: normal !important;
+    }
+  }
+</style>
+
+<div class="bizu-table-wrapper" id="{{ $tableId }}" style="--table-accent: {{ $cor_custom | safeCSS }};">
+  <table class="bizu-table">
+    <thead>
+      <tr>
+        {{- range $index, $header := $headerList -}}
+          {{- $align := index $alignList $index | default "l" -}}
+          <th class="txt-{{ $align }}">{{ trim $header " " }}</th>
+        {{- end -}}
+      </tr>
+    </thead>
+    <tbody>
+      {{- .Inner | markdownify | safeHTML -}}
+    </tbody>
+  </table>
+</div>
+
+<script>
+  (function() {
+    const table = document.getElementById("{{ $tableId }}");
+    if (!table) return;
+    const headers = Array.from(table.querySelectorAll("thead th")).map(th => th.textContent.trim());
+    table.querySelectorAll("tbody tr").forEach(row => {
+      row.querySelectorAll("td").forEach((cell, index) => {
+        if (headers[index]) cell.setAttribute("data-col", headers[index]);
+      });
+    });
+  })();
+</script>

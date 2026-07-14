@@ -1,0 +1,122 @@
+{{- $titulo := .Get "titulo" | default "Análise de Performance" -}}
+{{- $label1 := .Get "label1" | default "Antes" -}}
+{{- $valor1 := .Get "valor1" -}}
+{{- $label2 := .Get "label2" | default "Depois" -}}
+{{- $valor2 := .Get "valor2" -}}
+{{- $metric := .Get "metric" | default "%" -}}
+{{- $cor1   := .Get "cor1" | default "#ff2a6d" -}}
+{{- $cor2   := .Get "cor2" | default "#05d9e8" -}}
+
+{{- if not (.Page.Scratch.Get "benchmark-css-loaded") -}}
+  {{- .Page.Scratch.Set "benchmark-css-loaded" true -}}
+  <style>
+    .bizu-benchmark-container {
+      border: 1px solid #1a1d24;
+      background: #0b0c0f;
+      border-radius: 6px;
+      padding: 1.25rem;
+      margin: 1.5rem 0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      font-family: 'Courier New', Courier, monospace;
+    }
+    .benchmark-title {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #888;
+      border-bottom: 1px solid #1a1d24;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .benchmark-title::before {
+      content: "⚡ BENCHMARK_ANALYSIS";
+      font-weight: bold;
+      color: #ff9d00;
+      margin-right: 10px;
+    }
+    .benchmark-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    @media (max-width: 600px) {
+      .benchmark-grid { grid-template-columns: 1fr; gap: 1rem; }
+    }
+    .benchmark-column {
+      background: #0f1115;
+      border: 1px solid #1a1d24;
+      border-radius: 4px;
+      padding: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .benchmark-column::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 100%;
+      background: var(--col-color);
+    }
+    .benchmark-label {
+      font-size: 0.8rem;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .benchmark-value-wrapper {
+      display: flex;
+      align-items: baseline;
+      margin-top: 0.25rem;
+    }
+    .benchmark-value {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--col-color);
+      line-height: 1;
+    }
+    .benchmark-metric {
+      font-size: 0.9rem;
+      color: #555;
+      margin-left: 0.25rem;
+    }
+    .benchmark-footer {
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: #888;
+      border-top: 1px dotted #222;
+      padding-top: 0.5rem;
+      line-height: 1.5;
+    }
+  </style>
+{{- end -}}
+
+<div class="bizu-benchmark-container">
+  <div class="benchmark-title"><span>{{ $titulo }}</span></div>
+  <div class="benchmark-grid">
+    <div class="benchmark-column" style="--col-color: {{ $cor1 | safeCSS }};">
+      <span class="benchmark-label">{{ $label1 }}</span>
+      <div class="benchmark-value-wrapper">
+        <span class="benchmark-value">{{ $valor1 }}</span>
+        <span class="benchmark-metric">{{ $metric }}</span>
+      </div>
+    </div>
+    <div class="benchmark-column" style="--col-color: {{ $cor2 | safeCSS }};">
+      <span class="benchmark-label">{{ $label2 }}</span>
+      <div class="benchmark-value-wrapper">
+        <span class="benchmark-value">{{ $valor2 }}</span>
+        <span class="benchmark-metric">{{ $metric }}</span>
+      </div>
+    </div>
+  </div>
+  {{- if .Inner -}}
+  <div class="benchmark-footer">
+    {{ .Inner | markdownify }}
+  </div>
+  {{- end -}}
+</div>

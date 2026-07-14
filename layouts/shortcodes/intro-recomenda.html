@@ -1,0 +1,19 @@
+{{- $tag := .Get "tag" | default "CURADORIA_EDITORIAL" -}}
+{{- $icone := .Get "icone" | default "📚" -}}
+
+<div class="editorial-disclosure" style="border: 1px dashed #333; background: #0b0c0f; padding: 1.2rem; margin: 2rem 0 1rem 0; border-radius: 6px; font-family: 'Courier New', Courier, monospace; position: relative;">
+    <span style="position: absolute; top: -11px; left: 15px; background: #0b0c0f; padding: 0 10px; font-size: 0.75rem; color: #666; letter-spacing: 1px; font-weight: bold;">
+        // {{ $tag | upper }}
+    </span>
+    
+    <div style="display: flex; align-items: flex-start; gap: 15px;">
+        <span style="font-size: 1.5rem; line-height: 1;">{{ $icone }}</span>
+        <div style="font-size: 0.85rem; color: #aaa; line-height: 1.6; font-family: inherit;">
+            {{ if .Inner }}
+                {{ .Inner | markdownify }}
+            {{ else }}
+                <strong>Curadoria Bizumática:</strong> Filtramos o ruído da internet para indicar apenas materiais de alta densidade técnica e relevância histórica. <strong>Recomendamos fortemente a leitura do material abaixo:</strong>
+            {{ end }}
+        </div>
+    </div>
+</div>

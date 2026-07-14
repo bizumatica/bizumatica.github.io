@@ -12,7 +12,9 @@ math: true
 
 ### Introdução
 
-A sofisticação muitas vezes se disfarça de obviedade. No vasto teatro das distribuições Linux, onde sistemas imutáveis fulguram como a promessa do amanhã e sistemas minimalistas demandam devoção monástica, o Linux Mint é frequentemente rotulado de forma simplista: uma mera porta de entrada para iniciantes. 
+A sofisticação muitas vezes se disfarça de obviedade. No vasto teatro das distribuições Linux, onde sistemas imutáveis fulguram como a promessa do amanhã e sistemas minimalistas demandam devoção monástica, o Linux Mint é frequentemente rotulado de forma simplista: uma mera porta de entrada para iniciantes.
+
+{{< foto src="cover.webp" alt="Linux Mint - Cinnamon" legenda="Linux Mint - Cinnamon" >}}
 
 Não obstante, esse julgamento apressado oculta uma engenharia pragmática de altíssimo nível. A busca incessante pela novidade tecnológica costuma cobrar seu preço em instabilidade operacional. O verdadeiro poder do Linux Mint não reside na reinvenção perpétua da roda, mas na garantia de que ela jamais cessará de girar de forma previsível e eficiente.
 
@@ -140,6 +142,8 @@ Para ilustrar a discrepância de atrito na configuração, analisemos a experiê
 ### <a name="cinnamon-desktop"></a>🖥️ Cinnamon Desktop: Interface Tradicional, Performance Moderna
 
 O Cinnamon não é uma mera emulação nostálgica da interface clássica do Windows. Trata-se, com efeito, de um projeto moderno construído sob um arcabouço lógico focado em ergonomia cognitiva e respeito à memória muscular do profissional. Ele evita as firulas visuais que drenam os ciclos da CPU.
+
+{{< foto src="zena.webp" alt="Linux Mint Zena" legenda="Linux Mint Zena" >}}
 
 Enquanto ambientes de desktop modernos demandam volumosos recursos de hardware para processar animações triviais, o Cinnamon mantém-se incrivelmente leve. Ele consome uma fração da memória RAM se comparado ao GNOME contemporâneo ou ao Windows 11.
 

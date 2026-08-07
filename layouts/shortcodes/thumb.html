@@ -1,0 +1,121 @@
+{{- /* 
+  Shortcode: {{< thumb src="imagem.jpg" pos="left" legenda="Miniatura" alt="Texto Alt" >}}
+  Sintaxe Simplificada (Posicional): {{< thumb "imagem.jpg" "right" "Legenda" >}}
+  
+  Parâmetros:
+    - src / [0]: Caminho da imagem, URL externa ou recurso local (fallback: .Page.Params.image)
+    - pos / [1]: Alinhamento (left | right | center) - Default: "left"
+    - legenda / [2]: Texto de legenda sob a moldura
+    - alt / [3]: Texto alternativo para acessibilidade (fallback: .Page.Title)
+*/ -}}
+
+{{- $srcRaw := .Get "src" | default (.Get 0) | default .Page.Params.image -}}
+{{- $pos := .Get "pos" | default (.Get 1) | default "left" -}}
+{{- $legenda := .Get "legenda" | default (.Get 2) -}}
+{{- $alt := .Get "alt" | default (.Get 3) | default .Page.Title -}}
+
+{{- /* Resolução de Imagem: Suporte a Page Resources e Assets Globais */ -}}
+{{- $src := "" -}}
+{{- if $srcRaw -}}
+  {{- if hasPrefix $srcRaw "http" -}}
+    {{- $src = $srcRaw -}}
+  {{- else -}}
+    {{- $res := .Page.Resources.GetMatch $srcRaw -}}
+    {{- if not $res -}}
+      {{- $res = resources.Get $srcRaw -}}
+    {{- end -}}
+    {{- if $res -}}
+      {{- $src = $res.RelPermalink -}}
+    {{- else -}}
+      {{- $src = $srcRaw -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if $src -}}
+<figure class="thumb-bizu-container thumb-align-{{ $pos }}">
+  <div class="thumb-bizu-frame">
+    <img 
+      src="{{ $src }}" 
+      alt="{{ $alt }}" 
+      class="thumb-bizu-img" 
+      loading="lazy" 
+      decoding="async"
+      width="280"
+      height="157"
+      onerror="this.onerror=null;this.src='/images/fallback-thumb.webp';"
+    >
+  </div>
+  {{ if $legenda }}
+    <figcaption class="thumb-bizu-legenda">:: [ {{ $legenda }} ] ::</figcaption>
+  {{ end }}
+</figure>
+
+{{- /* Trava de Injeção Única de CSS via Page Scratch (Zero Duplicação) */ -}}
+{{- if not (.Page.Scratch.Get "thumb_css_loaded") -}}
+  {{- .Page.Scratch.Set "thumb_css_loaded" true -}}
+  <style>
+  /* Reset & Container da Thumbnail */
+  .thumb-bizu-container {
+    margin: 0.5rem 0 1rem 0;
+    padding: 0;
+    max-width: 280px;
+    width: 100%;
+  }
+
+  /* Alinhamentos & Flutuação Layout */
+  .thumb-align-left {
+    float: left;
+    margin-right: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .thumb-align-right {
+    float: right;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .thumb-align-center {
+    float: none;
+    margin: 1.5rem auto;
+    text-align: center;
+  }
+
+  /* Moldura Estética Bizumática (Tokyo Night) */
+  .thumb-bizu-frame {
+    background-color: #16161e;
+    border: 1px solid #222;
+    padding: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  }
+
+  .thumb-bizu-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    display: block;
+  }
+
+  .thumb-bizu-legenda {
+    margin-top: 6px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 0.7rem;
+    color: #a9b1d6;
+    letter-spacing: 0.5px;
+    text-align: center;
+    text-transform: uppercase; /* Otimização: substitui função Go template no render */
+  }
+
+  /* Breakpoint Mobile: Cancela o Float para prevenir overflow */
+  @media (max-width: 640px) {
+    .thumb-bizu-container {
+      float: none !important;
+      max-width: 100% !important;
+      margin: 1.5rem 0 !important;
+    }
+  }
+  </style>
+{{- end -}}
+{{- end -}}

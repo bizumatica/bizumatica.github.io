@@ -1,0 +1,23 @@
+apostol-calc1:
+  titulo: "Calculus, Vol. 1: One-Variable Calculus"
+  autor: "Tom M. Apostol"
+  tipo: "Livro Didático"
+  nivel: "Avançado"
+  link: "https://openlibrary.org/isbn/9780471000051"
+  cor: "#05d9e8"
+
+euler-introductio:
+  titulo: "Introductio in Analysin Infinitorum"
+  autor: "Leonhard Euler"
+  tipo: "Obra Histórica"
+  nivel: "Avançado"
+  link: "https://openlibrary.org/isbn/9780387968247"
+  cor: "#ff2a6d"
+
+needham-vca:
+  titulo: "Visual Complex Analysis"
+  autor: "Tristan Needham"
+  tipo: "Livro Didático"
+  nivel: "Intermediário"
+  link: "https://openlibrary.org/isbn/9780198534464"
+  cor: "#05d9e8"

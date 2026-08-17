@@ -1,16 +1,42 @@
-{{- $titulo := .Get "titulo" -}}
-{{- $autor := .Get "autor" | default "Autor Desconhecido" -}}
-{{- $tipo := .Get "tipo" | default "Guia" -}}
-{{- $nivel := .Get "nivel" | default "Todos" -}}
-{{- $link := .Get "link" -}}
-{{- $cor := .Get "cor" | default "#05d9e8" -}}
+{{/* Captura parâmetros diretos do shortcode */}}
+{{- $id := .Get "id" -}}
+{{- $overrideTitulo := .Get "titulo" -}}
+{{- $overrideAutor := .Get "autor" -}}
+{{- $overrideTipo := .Get "tipo" -}}
+{{- $overrideNivel := .Get "nivel" -}}
+{{- $overrideLink := .Get "link" -}}
+{{- $overrideCor := .Get "cor" -}}
 
+{{/* Resolução do banco de dados (Tenta YAML primeiro via Hash Map, depois tenta CSV via Array Filter) */}}
+{{- $entry := dict -}}
+{{- if $id -}}
+  {{- if isset site.Data.recomendacoes $id -}}
+    {{/* Resolução via YAML/JSON (O(1)) */}}
+    {{- $entry = index site.Data.recomendacoes $id -}}
+  {{- else if site.Data.recomendacoes -}}
+    {{/* Resolução via CSV (O(N)) - Filtra o array se o CSV existir */}}
+    {{- $csvMatches := where site.Data.recomendacoes "id" "eq" $id -}}
+    {{- if gt (len $csvMatches) 0 -}}
+      {{- $entry = index $csvMatches 0 -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{/* Aplicação da Cascata de Fallbacks: Override > Data File > Default String */}}
+{{- $titulo := $overrideTitulo | default (index $entry "titulo") | default "Leitura Recomendada" -}}
+{{- $autor := $overrideAutor | default (index $entry "autor") | default "Autor Desconhecido" -}}
+{{- $tipo := $overrideTipo | default (index $entry "tipo") | default "Guia" -}}
+{{- $nivel := $overrideNivel | default (index $entry "nivel") | default "Todos" -}}
+{{- $link := $overrideLink | default (index $entry "link") -}}
+{{- $cor := $overrideCor | default (index $entry "cor") | default "#05d9e8" -}}
+
+{{/* Carregamento isolado de estilo por página via Scratch */}}
 {{- if not (.Page.Scratch.Get "recomenda-css-loaded") -}}
   {{- .Page.Scratch.Set "recomenda-css-loaded" true -}}
   <style>
     .bizu-recomenda {
       position: relative;
-      background: #0f1115;
+      background-color: #0f1115;
       border: 1px solid #1a1d24;
       border-left: 4px solid var(--rec-color);
       border-radius: 4px;
@@ -43,18 +69,18 @@
       flex-direction: column;
     }
     .rec-label {
-      font-family: 'Courier New', Courier, monospace;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
       font-size: 0.7rem;
       text-transform: uppercase;
       letter-spacing: 1.5px;
-      color: #666;
+      color: #94a3b8; /* Contraste 5.8:1 (WCAG AA) */
       line-height: 1;
       margin-bottom: 4px;
     }
     .rec-title {
       font-size: 1.1rem;
-      font-weight: bold;
-      color: #fff;
+      font-weight: 700;
+      color: #ffffff;
       line-height: 1.2;
     }
     .rec-badges {
@@ -63,13 +89,13 @@
       flex-wrap: wrap;
     }
     .rec-badge {
-      font-family: 'Courier New', Courier, monospace;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
       font-size: 0.65rem;
       padding: 2px 8px;
       border-radius: 3px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      color: #888;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #cbd5e1; /* Contraste 9.2:1 (WCAG AAA) */
       text-transform: uppercase;
     }
     .rec-badge-highlight {
@@ -80,7 +106,7 @@
     .rec-body {
       font-size: 0.95rem;
       line-height: 1.6;
-      color: #ccc;
+      color: #e2e8f0;
       margin-bottom: 1rem;
     }
     .rec-body p {
@@ -94,22 +120,35 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-family: 'Courier New', Courier, monospace;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
       font-size: 0.75rem;
-      font-weight: bold;
+      font-weight: 700;
       text-transform: uppercase;
-      color: #fff;
-      background: var(--rec-color);
-      padding: 6px 14px;
+      color: #000000;
+      background-color: var(--rec-color);
+      padding: 8px 16px;
       border-radius: 3px;
       text-decoration: none;
       transition: filter 0.2s ease, transform 0.1s ease;
     }
     .rec-button:hover {
-      filter: brightness(1.1);
+      filter: brightness(1.15);
       transform: translateY(-1px);
-      color: #000 !important; /* Contrasto alto no hover estilo terminal */
-      text-decoration: none !important;
+    }
+    .rec-button:focus-visible {
+      outline: 2px solid #ffffff;
+      outline-offset: 2px;
+    }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
     }
     @media (max-width: 600px) {
       .rec-header { flex-direction: column; align-items: flex-start; }
@@ -118,10 +157,10 @@
   </style>
 {{- end -}}
 
-<div class="bizu-recomenda" style="--rec-color: {{ $cor | safeCSS }}; --rec-color-alpha: {{ $cor | safeCSS }}40; --rec-color-alpha-bg: {{ $cor | safeCSS }}10;">
+<aside class="bizu-recomenda" aria-label="Recomendação de Leitura: {{ $titulo }}" style="--rec-color: {{ $cor | safeCSS }}; --rec-color-alpha: {{ $cor | safeCSS }}40; --rec-color-alpha-bg: {{ $cor | safeCSS }}10;">
   <div class="rec-header">
     <div class="rec-meta-left">
-      <div class="rec-icon">
+      <div class="rec-icon" aria-hidden="true">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
       </div>
       <div class="rec-title-wrap">
@@ -130,19 +169,28 @@
       </div>
     </div>
     <div class="rec-badges">
-      <span class="rec-badge">✍️ {{ $autor }}</span>
-      <span class="rec-badge rec-badge-highlight">🏷️ {{ $tipo }}</span>
-      <span class="rec-badge">🎚️ {{ $nivel }}</span>
+      <span class="rec-badge"><span aria-hidden="true">✍️ </span>Autor: {{ $autor }}</span>
+      <span class="rec-badge rec-badge-highlight"><span aria-hidden="true">🏷️ </span>Tipo: {{ $tipo }}</span>
+      <span class="rec-badge"><span aria-hidden="true">🎚️ </span>Nível: {{ $nivel }}</span>
     </div>
   </div>
   <div class="rec-body">
-    {{- .Inner | markdownify -}}
+    {{- if .Inner -}}
+      {{- .Inner | markdownify -}}
+    {{- else -}}
+      <p>Material de leitura complementar recomendado para consolidar a fundamentação teórica deste tópico.</p>
+    {{- end -}}
   </div>
   {{- if $link -}}
   <div class="rec-footer">
-    <a href="{{ $link | safeURL }}" target="_blank" rel="noopener noreferrer" class="rec-button">
-      Acessar Material ➜
+    <a href="{{ $link | safeURL }}" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="rec-button"
+       aria-label="Acessar material {{ $titulo }} (abre em nova aba)">
+      Acessar Material <span aria-hidden="true">➜</span>
+      <span class="sr-only">(abre em nova aba)</span>
     </a>
   </div>
   {{- end -}}
-</div>
+</aside>

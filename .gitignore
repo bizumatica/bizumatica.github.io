@@ -23,3 +23,7 @@ resources/
 .DS_Store
 .vscode/
 .idea/
+
+# 5. Relatórios de auditoria e artefatos de runtime
+reports/
+*.csv

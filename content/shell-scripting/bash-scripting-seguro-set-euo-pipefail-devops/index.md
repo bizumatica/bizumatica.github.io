@@ -8,20 +8,6 @@ type: "shell-scripting"
 categories: ["shell-scripting", "linux", "automation", "devops"]
 tags: ["bash", "linux", "automation", "sysadmin", "infrastructure", "reliability"]
 image: "pro-linux-sysadmin-book.webp"
-product:
-  name: "Livro Pro Linux System Administration (Apress)"
-  current_price: 330.0
-  pros:
-    - "Referência canônica de engenharia cobrindo automação corporativa profunda."
-    - "Aborda padrões avançados de tratamento de falhas em servidores críticos."
-  cons:
-    - "Disponível predominantemente em língua inglesa, exigindo proficiência técnica."
-    - "O custo reflete o posicionamento premium de literaturas da editora Apress."
-  img: "pro-linux-sysadmin-book.webp"
-affiliate:
-  - store: "Amazon"
-    link: "https://amzn.to/4fjYfLs"
-    best_deal: true
 ---
 
 ## A Cultura da Negligência e o Custo do Silêncio Operacional
@@ -206,10 +192,6 @@ if __name__ == "__main__":
 
 A busca incessante por automações eficientes e pipelines ágeis jamais deve eclipsar o entendimento profundo dos fundamentos do sistema operacional. O domínio absoluto das flags de controle de estado do interpretador Bash representa apenas o primeiro — e mais vital — degrau na consolidação de uma carreira técnica voltada à engenharia de infraestruturas inabaláveis e à governança impecável de dados institucionais.
 
-{{< links >}}
-Para expandir substancialmente seu arcabouço cognitivo e dominar com maestria a gerência de ecossistemas Linux de nível corporativo, é fundamental investir em literaturas que unam o rigor teórico à prática implacável de campo. Ao adquirir a literatura recomendada pelos nossos links balizados, você fomenta a continuidade intelectual e a produção de materiais densos neste portal:
-{{< /links >}}
-
-{{< foto src="pro-linux-sysadmin-book.webp" alt="Livro Pro Linux System Administration" legenda="A bíblia técnica absoluta para engenharia de sistemas resilientes sob metodologias DevOps modernas." >}}
-
-{{< compra img="pro-linux-sysadmin-book.webp" >}}
+{{< recomenda id="robbins-classic-shell" >}}
+Robbins e Beebe tratam com profundidade o comportamento nativo do interpretador diante de falhas — POSIX, portabilidade entre shells e as armadilhas de código de saída que fundamentam por que `set -euo pipefail` existe. Leitura de referência para quem quer entender a mecânica interna do shell além do que este post cobre.
+{{< /recomenda >}}

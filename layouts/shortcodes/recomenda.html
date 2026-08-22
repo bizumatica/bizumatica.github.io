@@ -5,6 +5,7 @@
 {{- $overrideTipo := .Get "tipo" -}}
 {{- $overrideNivel := .Get "nivel" -}}
 {{- $overrideLink := .Get "link" -}}
+{{- $overrideIsbn := .Get "isbn" -}}
 {{- $overrideCor := .Get "cor" -}}
 
 {{/* Resolução do banco de dados (Tenta YAML primeiro via Hash Map, depois tenta CSV via Array Filter) */}}
@@ -27,8 +28,36 @@
 {{- $autor := $overrideAutor | default (index $entry "autor") | default "Autor Desconhecido" -}}
 {{- $tipo := $overrideTipo | default (index $entry "tipo") | default "Guia" -}}
 {{- $nivel := $overrideNivel | default (index $entry "nivel") | default "Todos" -}}
-{{- $link := $overrideLink | default (index $entry "link") -}}
-{{- $cor := $overrideCor | default (index $entry "cor") | default "#05d9e8" -}}
+{{- $isbn := $overrideIsbn | default (index $entry "isbn") -}}
+
+{{/* Cor por hash determinístico do id — paleta Cyberpunk / Tokyo Night */}}
+{{- $paletteCor := "" -}}
+{{- if $id -}}
+  {{- $palette := slice "#7aa2f7" "#bb9af7" "#7dcfff" "#9ece6a" "#e0af68" "#f7768e" "#05d9e8" "#ff2a6d" -}}
+  {{- $hashHex := crypto.MD5 $id -}}
+  {{- $firstChar := substr $hashHex 0 1 -}}
+  {{- $hexToIdx := dict "0" 0 "1" 1 "2" 2 "3" 3 "4" 4 "5" 5 "6" 6 "7" 7 "8" 0 "9" 1 "a" 2 "b" 3 "c" 4 "d" 5 "e" 6 "f" 7 -}}
+  {{- $idx := index $hexToIdx $firstChar -}}
+  {{- $paletteCor = index $palette $idx -}}
+{{- end -}}
+{{- $cor := $overrideCor | default (index $entry "cor") | default $paletteCor | default "#05d9e8" -}}
+
+{{/* Link: override manual > derivado do ISBN > vazio (sem botão) */}}
+{{- $entryLink := index $entry "link" -}}
+{{- $link := "" -}}
+{{- if $overrideLink -}}
+  {{- $link = $overrideLink -}}
+{{- else if $entryLink -}}
+  {{- $link = $entryLink -}}
+{{- else if $isbn -}}
+  {{- $link = printf "https://openlibrary.org/isbn/%s" $isbn -}}
+{{- end -}}
+
+{{/* Capa: derivada do ISBN via Covers API (Open Library), tamanho Médio */}}
+{{- $capa := "" -}}
+{{- if $isbn -}}
+  {{- $capa = printf "https://covers.openlibrary.org/b/isbn/%s-M.jpg" $isbn -}}
+{{- end -}}
 
 {{/* Carregamento isolado de estilo por página via Scratch */}}
 {{- if not (.Page.Scratch.Get "recomenda-css-loaded") -}}
@@ -103,11 +132,43 @@
       color: var(--rec-color);
       background: var(--rec-color-alpha-bg);
     }
+    .rec-body-wrap {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+    .rec-cover-wrap {
+      flex-shrink: 0;
+      width: 72px;
+      height: 108px;
+      border-radius: 3px;
+      overflow: hidden;
+      background: #1a1d24;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
+    }
+    .rec-cover-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .rec-cover-fallback {
+      display: none;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      color: var(--rec-color);
+      opacity: 0.5;
+    }
     .rec-body {
       font-size: 0.95rem;
       line-height: 1.6;
       color: #e2e8f0;
-      margin-bottom: 1rem;
+      flex: 1;
+      min-width: 0;
     }
     .rec-body p {
       margin: 0;
@@ -153,6 +214,7 @@
     @media (max-width: 600px) {
       .rec-header { flex-direction: column; align-items: flex-start; }
       .rec-badges { margin-top: 0.25rem; }
+      .rec-cover-wrap { width: 56px; height: 84px; }
     }
   </style>
 {{- end -}}
@@ -174,18 +236,39 @@
       <span class="rec-badge"><span aria-hidden="true">🎚️ </span>Nível: {{ $nivel }}</span>
     </div>
   </div>
-  <div class="rec-body">
-    {{- if .Inner -}}
-      {{- .Inner | markdownify -}}
-    {{- else -}}
-      <p>Material de leitura complementar recomendado para consolidar a fundamentação teórica deste tópico.</p>
+
+  <div class="rec-body-wrap">
+    {{- if $capa -}}
+    <div class="rec-cover-wrap">
+      <img
+        src="{{ $capa | safeURL }}"
+        alt="Capa do livro {{ $titulo }}"
+        class="rec-cover-img"
+        width="72"
+        height="108"
+        loading="lazy"
+        decoding="async"
+        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+      >
+      <div class="rec-cover-fallback" aria-hidden="true">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+      </div>
+    </div>
     {{- end -}}
+    <div class="rec-body">
+      {{- if .Inner -}}
+        {{- .Inner | markdownify -}}
+      {{- else -}}
+        <p>Material de leitura complementar recomendado para consolidar a fundamentação teórica deste tópico.</p>
+      {{- end -}}
+    </div>
   </div>
+
   {{- if $link -}}
   <div class="rec-footer">
-    <a href="{{ $link | safeURL }}" 
-       target="_blank" 
-       rel="noopener noreferrer" 
+    <a href="{{ $link | safeURL }}"
+       target="_blank"
+       rel="noopener noreferrer"
        class="rec-button"
        aria-label="Acessar material {{ $titulo }} (abre em nova aba)">
       Acessar Material <span aria-hidden="true">➜</span>

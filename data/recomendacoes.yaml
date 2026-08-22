@@ -3,7 +3,7 @@ apostol-calc1:
   autor: "Tom M. Apostol"
   tipo: "Livro Didático"
   nivel: "Avançado"
-  link: "https://openlibrary.org/isbn/9780471000051"
+  isbn: "9780471000051"
   cor: "#05d9e8"
 
 euler-introductio:
@@ -11,7 +11,7 @@ euler-introductio:
   autor: "Leonhard Euler"
   tipo: "Obra Histórica"
   nivel: "Avançado"
-  link: "https://openlibrary.org/isbn/9780387968247"
+  isbn: "9780387968247"
   cor: "#ff2a6d"
 
 needham-vca:
@@ -19,5 +19,19 @@ needham-vca:
   autor: "Tristan Needham"
   tipo: "Livro Didático"
   nivel: "Intermediário"
-  link: "https://openlibrary.org/isbn/9780198534464"
+  isbn: "9780198534464"
   cor: "#05d9e8"
+
+knuth-taocp2:
+  titulo: "The Art of Computer Programming, Vol. 2: Seminumerical Algorithms"
+  autor: "Donald E. Knuth"
+  tipo: "Livro Didático"
+  nivel: "Avançado"
+  isbn: "9780201896848"
+
+robbins-classic-shell:
+  titulo: "Classic Shell Scripting"
+  autor: "Arnold Robbins & Nelson H. F. Beebe"
+  tipo: "Livro Didático"
+  nivel: "Intermediário"
+  isbn: "9780596005955"

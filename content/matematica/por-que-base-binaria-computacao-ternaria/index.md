@@ -7,16 +7,6 @@ categories: ["matematica"]
 tags: ["matematica", "hardware", "teoria-da-informacao", "python"]
 image: "cover.webp"
 math: true
-# --- SEÇÃO DE MONETIZAÇÃO / AFILIADOS ---
-recommendations:
-  patterson:
-    title: "Organização e Projeto de Computadores"
-    author: "David A. Patterson & John L. Hennessy"
-    link: "https://amzn.to/exemplo-patterson"
-  tanenbaum:
-    title: "Sistemas Operacionais Modernos"
-    author: "Andrew S. Tanenbaum"
-    link: "https://amzn.to/exemplo-tanenbaum"
 ---
 
 A ubiquidade do sistema binário nos microprocessadores modernos induz a uma falsa premissa: a de que a base 2 é a única opção matematicamente viável para o processamento de dados. **Não obstante**, a hegemonia do bit não decorre de uma perfeição numérica absoluta, mas de um compromisso histórico entre a **física dos semicondutores** e a **simplicidade da lógica booleana**.
@@ -60,7 +50,11 @@ A base teoricamente perfeita é a constante de Euler ($e$). Avaliando os inteiro
 - **Base 2 (Binário):** $f(2) = \frac{2}{\ln(2)} \approx 2,8854$
 - **Base 3 (Ternário):** $f(3) = \frac{3}{\ln(3)} \approx 2,7307$
 
-{{< benchmark titulo="Ganho de Eficiência de Hardware" valor=" 5,3%" legenda="A Base 3 (Ternário) é 5,3% mais eficiente que a Base 2 no armazenamento e custo de linhas de memória." >}}{{< /benchmark >}}
+A base teoricamente perfeita é a constante de Euler ($e$). Avaliando os inteiros mais próximos:
+
+{{< benchmark titulo="Economia do Radix: Base 2 vs. Base 3" label1="Base 2 (Binário)" valor1="2,8854" label2="Base 3 (Ternário)" valor2="2,7307" metric="" cor1="#ff2a6d" cor2="#05d9e8" >}}
+A Base 3 (Ternário) é 5,3% mais eficiente que a Base 2 no armazenamento e custo de linhas de memória.
+{{< /benchmark >}}
 
 ---
 
@@ -69,12 +63,13 @@ A base teoricamente perfeita é a constante de Euler ($e$). Avaliando os inteiro
 Entre todas as alternativas ao binário, o **Ternário Balanceado** representa o ápice da elegância matemática. Em vez de utilizar os dígitos $\{0, 1, 2\}$, o sistema utiliza os valores $\{-1, 0, +1\}$.
 
 {{< foto src="setun-computer.webp" alt="O computador ternário soviético Setun desenvolvido na Universidade de Moscou em 1958" legenda="O computador ternário soviético Setun desenvolvido na Universidade de Moscou em 1958">}}
+
 ### As Vantagens Algébricas do Ternário Balanceado
 
 1. **Simetria Nativa de Sinal:** A representação de números negativos não exige bit de sinal extra ou Complemento de 2.
 2. **Subtração Idêntica à Adição:** Para subtrair, basta inverter a polaridade dos trits ($+\leftrightarrow -$) e somar.
 
-{{< terminal titulo="Comparativo de Representação Numérica" >}}
+{{< terminal lang="bash" titulo="Comparativo de Representação Numérica" >}}
 Decimal  | Binário (8-bit) | Ternário Balanceado (+, 0, -)
 ---------|-----------------|------------------------------
   5      | 00000101        | + - -  (9 - 3 - 1 = 5)
@@ -89,7 +84,7 @@ Decimal  | Binário (8-bit) | Ternário Balanceado (+, 0, -)
 
 ## Validação Algorítmica em Python
 
-```python
+{{< terminal lang="python" titulo="scripts/python/radix_economy.py" >}}
 #!/usr/bin/env python3
 """
 Bizumática - Motor de Análise de Economia de Radix e Ternário Balanceado.
@@ -98,43 +93,42 @@ Bizumática - Motor de Análise de Economia de Radix e Ternário Balanceado.
 import math
 
 def decimal_para_ternario_balanceado(n: int) -> str:
-    """Converte um inteiro decimal para representação em Ternário Balanceado (-, 0, +)."""
-    if n == 0:
-        return "0"
-    
-    trits = []
-    temp = n
-    mapa_trits = {-1: "-", 0: "0", 1: "+"}
-    
-    while temp != 0:
-        remainder = temp % 3
-        temp = temp // 3
-        
-        if remainder == 2:
-            remainder = -1
-            temp += 1
-        elif remainder == -2:
-            remainder = 1
-            temp -= 1
-            
-        trits.append(mapa_trits[remainder])
-        
-    return "".join(reversed(trits))
+"""Converte um inteiro decimal para representação em Ternário Balanceado (-, 0, +)."""
+if n == 0:
+return "0"
 
-if __name__ == "__main__":
-    print(f"Decimal: 2026 => Ternário Balanceado: {decimal_para_ternario_balanceado(2026)}")
+trits = []
+temp = n
+mapa_trits = {-1: "-", 0: "0", 1: "+"}
 
-```
+while temp != 0:
+    remainder = temp % 3
+    temp = temp // 3
+    
+    if remainder == 2:
+        remainder = -1
+        temp += 1
+    elif remainder == -2:
+        remainder = 1
+        temp -= 1
+        
+    trits.append(mapa_trits[remainder])
+    
+return "".join(reversed(trits))
+
+if **name** == "**main**":
+print(f"Decimal: 2026 => Ternário Balanceado: {decimal_para_ternario_balanceado(2026)}")
+{{< /terminal >}}
 
 ---
 
 ## Leituras Recomendadas de Arquitetura
 
-Para se aprofundar na transição entre eletrônica digital e teoria do hardware:
+Para se aprofundar na transição entre a matemática da representação numérica e a formalização computacional:
 
-{{< links key="patterson" >}}{{< /links >}}
-
-{{< foto src="algebra-moderna-iezzi.webp" alt="A obra Álgebra Moderna apresenta os principais fundamentos da álgebra abstrata com foco no ensino superior" legenda="A obra Álgebra Moderna apresenta os principais fundamentos da álgebra abstrata com foco no ensino superior">}}
+{{< recomenda id="knuth-taocp2" >}}
+A seção 4.1 deste volume é a fonte primária da economia do radix e do ternário balanceado desenvolvidos neste post — Knuth formaliza a base $e$ como radix ótimo teórico e trata a representação ternária balanceada com o mesmo rigor algébrico usado aqui.
+{{< /recomenda >}}
 
 ---
 

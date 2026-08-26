@@ -1,0 +1,27 @@
+{{- $title := .Get "title" | default (.Get 0) | default "Bizumática - Shell, Linux & Matemática" -}}
+{{- $cmd := .Get "cmd" | default (.Get 1) | default "cat sobre_nos.md" -}}
+<div class="terminal-hero-window">
+  <div class="hero-bar">
+    <div class="hero-controls">
+      <span class="term-dot red"></span>
+      <span class="term-dot yellow"></span>
+      <span class="term-dot green"></span>
+    </div>
+    <div class="hero-title-text">{{ $title }}</div>
+  </div>
+  <div class="hero-body">
+    <div class="brand-header">
+      <span class="brand-letter">B</span>
+      <span class="brand-sigma">Σ</span>
+    </div>
+    <div class="tokyonight-wave">
+      <span class="wave-pulse"></span>
+    </div>
+    <div class="terminal-line">[ SYSTEM STATUS: ONLINE // IP: <span id="user-ip">127.0.0.1</span> ]</div>
+    <div class="terminal-command-pill">
+      <span class="prompt-user" aria-hidden="true">guest@bizumatica</span>
+      <span class="prompt-symbol" aria-hidden="true">:~$</span>
+      <code class="prompt-cmd">{{ $cmd }}</code>
+    </div>
+  </div>
+</div>

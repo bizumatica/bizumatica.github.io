@@ -4,7 +4,10 @@ date: 2026-03-18T18:15:07-03:00
 last_check: '2026-05-19T17:50:00-03:00'
 draft: false
 slug: "backup-universal-shell-sandisk"
-type: "equipamentos"
+math: true
+noindex: true
+aliases:
+  - /curadoria/backup-universal-shell-sandisk/
 product:
   name: "SanDisk SSD Portátil 1TB - Até 800 MB/s, USB-C, USB 3.2 Gen 2"
   current_price: 549.90

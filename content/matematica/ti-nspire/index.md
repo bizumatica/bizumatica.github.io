@@ -1,12 +1,15 @@
 ---
-title: Calculadora Grafica Texas Ti 84-Plus CE
+title: Calculadora Grafica Texas Ti Nspire
 date: '2026-04-05T10:15:42-03:00'
 last_check: '2026-05-22T17:41:55-03:00'
 draft: false
 slug: ti-nspire
-type: equipamentos
+math: true
+noindex: true
+aliases:
+  - /curadoria/ti-nspire/
 product:
-  name: Calculadora Grafica Texas Ti 84-Plus CE
+  name: Calculadora Grafica Texas Ti Nspire
   current_price: 1164.9
   pros:
   - Tela antirreflexo impecável

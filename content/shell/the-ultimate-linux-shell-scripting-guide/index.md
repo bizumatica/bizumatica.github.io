@@ -3,8 +3,11 @@ title: The Ultimate Linux Shell Scripting Guide
 date: '2026-04-04T19:24:01-03:00'
 last_check: '2026-05-19T19:50:00-03:00'
 draft: false
-slug: ultimate-linux-shell-scripting-guide
-type: equipamentos
+slug: "ultimate-linux-shell-scripting-guide"
+math: true
+noindex: true
+aliases:
+  - /curadoria/ultimate-linux-shell-scripting-guide/
 product:
   name: The Ultimate Linux Shell Scripting Guide
   current_price: 284.00

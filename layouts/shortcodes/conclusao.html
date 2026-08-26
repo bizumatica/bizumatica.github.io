@@ -1,0 +1,43 @@
+{{- $titulo := .Get "titulo" | default "Conclusão" -}}
+{{- $tituloFontes := .Get "tituloFontes" | default "Referências & Fontes" -}}
+{{- $fontesRaw := .Get "fontes" -}}
+{{- $cor := .Get "cor" | default "#05d9e8" -}}
+
+{{/* Tratamento de quebras literais \n e formatação de listas no Hugo */}}
+{{- $fontesTratadas := "" -}}
+{{- if $fontesRaw -}}
+  {{- $s := $fontesRaw -}}
+  {{- $s = replace $s "\\n*" "<br>• " -}}
+  {{- $s = replace $s "\\n-" "<br>• " -}}
+  {{- $s = replace $s "\\n" "<br>" -}}
+  {{- $fontesTratadas = $s -}}
+{{- end -}}
+
+<div class="bizu-conclusao" style="border-left: 4px solid {{ $cor }}; background: rgba(255, 255, 255, 0.03); border-radius: 8px; margin: 2rem 0; padding: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+  
+  <div class="bizu-conclusao-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 0.75rem;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{ $cor }}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
+      <path d="m9 12 2 2 4-4"></path>
+    </svg>
+    <h3 style="margin: 0; font-size: 1.25rem; font-weight: 700; color: {{ $cor }}; letter-spacing: 0.5px; text-transform: uppercase;">
+      {{ $titulo }}
+    </h3>
+  </div>
+  
+  <div class="bizu-conclusao-body" style="font-size: 1rem; line-height: 1.7; color: rgba(255, 255, 255, 0.9);">
+    {{ .Page.RenderString .Inner }}
+  </div>
+
+  {{ with $fontesTratadas }}
+  <div class="bizu-conclusao-fontes" style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px dashed rgba(255, 255, 255, 0.15);">
+    <h4 style="margin: 0 0 0.5rem 0; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: rgba(255, 255, 255, 0.5); font-weight: 600;">
+      {{ $tituloFontes }}
+    </h4>
+    <div class="fontes-conteudo" style="font-size: 0.9rem; color: rgba(255, 255, 255, 0.85); line-height: 1.6;">
+      {{ $.Page.RenderString . }}
+    </div>
+  </div>
+  {{ end }}
+
+</div>

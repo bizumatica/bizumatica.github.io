@@ -6,6 +6,7 @@ title = "Bizumática"
 theme = "terminal" # Mantido o nome original para casar com a sua pasta local
 locale = "pt-br"
 enableEmoji = true
+removePathAccents = true
 
 # --- MAPEAMENTO E PRIORIDADE DE MÓDULOS ---
 # Força o motor do Hugo (local e na nuvem) a dar prioridade total aos seus arquivos da raiz

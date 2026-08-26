@@ -1,0 +1,98 @@
+{{- $title := .Get "title" -}}
+{{- $cmd := .Get "cmd" -}}
+{{- $hero := .Get "hero" | default false -}}
+{{- $variant := .Get "variant" | default (.Get "style" | default "terminal") -}}
+
+{{- if not .IsNamedParams -}}
+{{- if eq (len .Params) 1 -}}
+{{- $cmd = .Get 0 -}}
+{{- else if ge (len .Params) 2 -}}
+{{- $title = .Get 0 -}}
+{{- $cmd = .Get 1 -}}
+{{- end -}}
+{{- end -}}
+
+{{- if and (not $title) (not $hero) $cmd (eq $variant "terminal") -}}
+<div class="terminal-command-pill" role="region" aria-label="Comando: {{ $cmd }}">
+  <span class="prompt-user">guest@bizumatica</span><span class="prompt-symbol">:~$</span>
+  <code class="prompt-cmd">{{ $cmd }}</code>
+</div>
+{{- else -}}
+<div class="terminal-window term-variant-{{ $variant }} {{ if $hero }}is-hero{{ end }}" role="region">
+
+  <div class="term-title-bar"
+    style="display: flex; align-items: center; justify-content: space-between; padding: 0.4rem 0.8rem;">
+
+    {{- if eq $variant "terminal" -}}
+    <div class="term-controls" aria-hidden="true">
+      <span class="term-dot red"></span>
+      <span class="term-dot yellow"></span>
+      <span class="term-dot green"></span>
+    </div>
+    <div class="term-title-text">
+      {{- if $hero -}}bizumatica:~#{{- else -}}{{ $title | default "Bizumática" }}{{- end -}}
+    </div>
+
+    {{- else if or (eq $variant "editor") (eq $variant "code") -}}
+    <div style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; font-family: monospace;">
+      <span style="opacity: 0.7;">📄</span>
+      <span style="color: var(--neon-cyan, #7dcfff); font-weight: 600;">{{ $title | default "script.sh" }}</span>
+    </div>
+    <div style="font-size: 0.7rem; opacity: 0.4; font-family: monospace;">UTF-8</div>
+
+    {{- else if eq $variant "browser" -}}
+    <div style="display: flex; gap: 6px; opacity: 0.5; font-size: 0.75rem;">
+      <span>◀</span><span>▶</span><span>↻</span>
+    </div>
+    <div
+      style="background: rgba(0,0,0,0.3); padding: 2px 12px; border-radius: 12px; font-size: 0.75rem; font-family: monospace; color: #7dcfff; display: flex; align-items: center; gap: 6px; border: 1px solid rgba(255,255,255,0.05);">
+      <span style="font-size: 0.65rem; color: var(--neon-green, #9ece6a);">🔒</span> {{ $title | default
+      "https://bizumatica.io" }}
+    </div>
+
+    {{- else if or (eq $variant "clean") (eq $variant "card") -}}
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <span
+        style="width: 8px; height: 8px; border-radius: 50%; background: var(--neon-cyan, #7dcfff); box-shadow: 0 0 6px var(--neon-cyan, #7dcfff);"></span>
+      <strong style="font-family: monospace; letter-spacing: 1px; font-size: 0.85rem; color: #c0caf5;">{{ $title |
+        default "DIRETÓRIO // CONTEÚDOS" }}</strong>
+    </div>
+
+    {{- else -}}
+    <div class="term-title-text">{{ $title | default "Bizumática" }}</div>
+    {{- end -}}
+
+  </div>
+
+  {{- if or $hero $cmd .Inner -}}
+  <div class="term-body">
+    {{- if $hero -}}
+    <div class="brand-header">
+      <span class="brand-letter">B</span>
+      <span class="brand-sigma">Σ</span>
+    </div>
+    <div class="tokyonight-wave">
+      <span class="wave-pulse"></span>
+    </div>
+    <div class="terminal-line">[ SYSTEM STATUS: ONLINE // IP: <span id="user-ip">127.0.0.1</span> ]</div>
+    {{- end -}}
+
+    {{- if $cmd -}}
+    <div class="terminal-command-pill">
+      <span class="prompt-user">guest@bizumatica</span><span class="prompt-symbol">:~$</span>
+      <code class="prompt-cmd">{{ $cmd }}</code>
+    </div>
+    {{- end -}}
+
+    {{- if .Inner -}}
+    {{- $lang := .Get "lang" -}}
+    {{- if $lang -}}
+    {{ highlight (trim .Inner "\n\r") $lang "" }}
+    {{- else -}}
+    {{ .Inner | markdownify }}
+    {{- end -}}
+    {{- end -}}
+  </div>
+  {{- end -}}
+</div>
+{{- end -}}

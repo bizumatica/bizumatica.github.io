@@ -1,0 +1,18 @@
+<div class="terminal-directory-grid tokyonight-theme">
+  {{- $dirs := slice 
+      (dict "slug" "shell"      "label" "./Shell_Scripting_e_Automacao")
+      (dict "slug" "linux"      "label" "./Ecossistema_Linux")
+      (dict "slug" "apps"       "label" "./Analise_de_Aplicativos")
+      (dict "slug" "foss"       "label" "./Software_Livre_e_FOSS")
+      (dict "slug" "matematica" "label" "./Matematica_Pura")
+  -}}
+
+  {{- range $dirs }}
+    <div class="dir-item">
+      <span class="dir-perm">drwxr-xr-x</span> 
+      <a href="{{ printf "/%s/" .slug | relURL }}">
+        {{- .label -}}
+      </a>
+    </div>
+  {{- end }}
+</div>

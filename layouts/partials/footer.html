@@ -1,44 +1,47 @@
-<footer class="footer">
+<footer class="footer" role="contentinfo">
   <div class="footer__inner">
     
-    <div class="footer__nav">
-      <a href="#" class="nav-btn btn-up">[ SUBIR AO TOPO ]</a>
-      <a href="{{ .Site.BaseURL }}" class="nav-btn btn-home">[ VOLTAR AO INÍCIO ]</a>
-      
-      {{- /* Resolução dinâmica da seção Sobre deslocada para o rodapé */ -}}
-      {{ with .Site.GetPage "/sobre" }}
-        <a href="{{ .Permalink }}" class="nav-btn btn-about">[ SOBRE ]</a>
-      {{ end }}
+    <nav class="footer__nav" aria-label="Navegação do Rodapé">
+      {{/* Subir ao topo nativo com fallback HTML + Smooth Scroll CSS */}}
+      <a href="#top" class="nav-btn btn-up" aria-label="Subir ao topo da página">
+        [ SUBIR AO TOPO ]
+      </a>
 
-      {{- /* Política de Privacidade */ -}}
-      {{ with .Site.GetPage "/privacidade" }}
-        <a href="{{ .Permalink }}" class="nav-btn btn-privacy">[ POLÍTICA DE PRIVACIDADE ]</a>
-      {{ end }}
+      {{/* Home Link idiomático usando a API da árvore de páginas do Hugo */}}
+      <a href="{{ site.Home.RelPermalink }}" class="nav-btn btn-home">
+        [ VOLTAR AO INÍCIO ]
+      </a>
 
-      {{- /* Termos de Uso diferenciado com tom Red/Coral de regras */ -}}
-      {{ with .Site.GetPage "/termos-de-uso" }}
-        <a href="{{ .Permalink }}" class="nav-btn btn-terms">[ TERMOS DE USO ]</a>
+      {{/* Iteração do Menu do Rodapé garantindo resolução de URL segura */}}
+      {{ if .Site.Menus.footer }}
+        {{ range .Site.Menus.footer }}
+          {{ $url := .URL | relLangURL }}
+          <a href="{{ $url }}" class="nav-btn btn-{{ .Identifier }}" title="{{ .Name }}">
+            [ {{ .Name | upper }} ]
+          </a>
+        {{ end }}
       {{ end }}
-      
-      {{- /* Todos os Logs */ -}}
-      {{ with .Site.GetPage "/logs" }}
-        <a href="{{ .Permalink }}" class="nav-btn btn-logs">[ TODOS OS LOGS ]</a>
-      {{ end }}
-    </div>
+    </nav>
 
     <div class="copyright">
-      <span>© {{ now.Format "2006" }} Powered by <a href="https://gohugo.io">Hugo</a></span>
-      <span>:: Theme made by <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">panr</a></span>
-      <span>:: Modificado com ☕ e 🪵 por <a href="https://github.com/bizumatica" target="_blank">Julio Prata</a></span>
-      <span>:: Visite <a href="https://juliostudio.dev.br" target="_blank">JulioStudio</a></span>
+      <span>© {{ now.Format "2006" }} Powered by <a href="https://gohugo.io" target="_blank" rel="noopener noreferrer">Hugo</a></span>
+      <span>:: Theme made by <a href="https://github.com/panr/hugo-theme-terminal" target="_blank" rel="noopener noreferrer">panr</a></span>
+      <span>:: Modificado com ☕ e 🪵 por <a href="https://github.com/bizumatica" target="_blank" rel="noopener noreferrer">Julio Prata</a></span>
+      <span>:: Visite <a href="https://juliostudio.dev.br" target="_blank" rel="noopener noreferrer">JulioStudio</a></span>
     </div>
+
   </div>
 </footer>
 
 <style>
+/* Habilita rolagem suave nativa para o link #top sem degradar o INP da Main Thread */
+html {
+  scroll-behavior: smooth;
+}
+
 .footer {
   padding: 40px 0;
-  border-top: 1px double #222;
+  border-top: 1px double #333;
   width: 100%;
 }
 
@@ -54,28 +57,44 @@
   display: flex;
   justify-content: center;
   gap: 15px;
-  flex-wrap: wrap; /* Garante a quebra limpa vista na imagem image_37b265.png */
+  flex-wrap: wrap;
 }
 
+/* Reset de estilo para os Botões de Navegação */
 .nav-btn {
+  background: transparent;
   font-family: monospace;
   font-size: 0.85rem;
   font-weight: bold;
   text-decoration: none !important;
+  border-bottom: none !important; /* Previne conflito com estilo genéricos de links */
   padding: 4px 10px;
+  cursor: pointer;
+  box-sizing: border-box;
+  display: inline-block;
   transition: transform 0.1s ease, filter 0.2s ease;
 }
 
-.nav-btn:active { transform: scale(0.95); }
-.nav-btn:hover { filter: brightness(1.2); }
+.nav-btn:active { 
+  transform: scale(0.95); 
+}
 
-/* Paleta Refatorada e Diferenciada - Padrão Dracula/Tokyo Night */
-.btn-up      { color: #50fa7b !important; border: 1px solid #50fa7b66 !important; } /* Verde */
-.btn-home    { color: #ffb86c !important; border: 1px solid #ffb86c66 !important; } /* Amarelo/Laranja Quente */
-.btn-about   { color: #bd93f9 !important; border: 1px solid #bd93f966 !important; } /* Roxo Terminal */
-.btn-privacy { color: #ff79c6 !important; border: 1px solid #ff79c666 !important; } /* Rosa */
-.btn-terms   { color: #ff5555 !important; border: 1px solid #ff555566 !important; } /* DIFERENCIADO: Vermelho/Coral */
-.btn-logs    { color: #8be9fd !important; border: 1px solid #8be9fd66 !important; } /* Ciano */
+.nav-btn:hover { 
+  filter: brightness(1.25); 
+}
+
+.nav-btn:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+
+/* Cores e Bordas por Identifier (Paleta Dracula / High-Contrast WCAG 2.2) */
+.btn-up            { color: #50fa7b !important; border: 1px solid #50fa7b !important; } /* Verde High-Contrast */
+.btn-home          { color: #ffb86c !important; border: 1px solid #ffb86c !important; } /* Laranja Quente */
+.btn-sobre         { color: #bd93f9 !important; border: 1px solid #bd93f9 !important; } /* Roxo/Violeta */
+.btn-privacidade   { color: #ff79c6 !important; border: 1px solid #ff79c6 !important; } /* Magenta/Rosa Original Dracula */
+.btn-termos-de-uso  { color: #ff5555 !important; border: 1px solid #ff5555 !important; } /* Vermelho/Coral */
+.btn-logs          { color: #8be9fd !important; border: 1px solid #8be9fd !important; } /* Ciano/Aqua */
 
 .copyright {
   display: flex;
@@ -83,18 +102,27 @@
   align-items: center;
   text-align: center;
   gap: 8px;
-  color: #888;
+  color: #a0a0a0;
   font-family: monospace;
   font-size: 0.85rem;
 }
 
-.footer a {
-  color: var(--theme-color);
-  text-decoration: none;
-  border-bottom: 1px dashed var(--theme-color);
+/* Aplica estilo sublinhado apenas para os links do Copyright, isolando dos .nav-btn */
+.copyright a {
+  color: #a0a0a0;                           /* Tom cinza discreto em repouso */
+  text-decoration: none !important;        /* Remoção total de sublinhas e bordas */
+  border-bottom: none !important;
+  transition: color 0.2s ease, filter 0.2s ease;
 }
 
-.footer a:hover {
-  filter: brightness(1.2);
+.copyright a:hover {
+  color: var(--theme-color, #ff79c6);      /* Acende a cor do tema apenas no hover */
+  filter: brightness(1.25);
+}
+
+.copyright a:focus-visible {
+  color: var(--theme-color, #ff79c6);
+  outline: 2px dashed var(--theme-color, #ff79c6);
+  outline-offset: 2px;
 }
 </style>

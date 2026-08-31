@@ -1,0 +1,36 @@
+{{- $indexData := slice -}}
+{{- $pages := where site.RegularPages "Params.searchhidden" "!=" true -}}
+
+{{- range $pages -}}
+  {{/* Garantia estrutural de Slice para categorias */}}
+  {{- $rawCategories := .Params.categories | default (slice) -}}
+  {{- $categories := $rawCategories -}}
+  {{- if not (reflect.IsSlice $rawCategories) -}}
+    {{- $categories = slice $rawCategories -}}
+  {{- end -}}
+
+  {{/* Garantia estrutural de Slice para tags */}}
+  {{- $rawTags := .Params.tags | default (slice) -}}
+  {{- $tags := $rawTags -}}
+  {{- if not (reflect.IsSlice $rawTags) -}}
+    {{- $tags = slice $rawTags -}}
+  {{- end -}}
+
+  {{/* Sanitização de texto para busca rápida sem estourar payload */}}
+  {{- $cleanSummary := .Summary | plainify | htmlUnescape | strings.TrimSpace -}}
+  {{- $cleanContent := .Plain | plainify | htmlUnescape | strings.TrimSpace | truncate 300 -}}
+
+  {{- $item := dict
+    "title"       .Title
+    "date"        (.Date.Format "2006-01-02")
+    "permalink"   .RelPermalink
+    "summary"     $cleanSummary
+    "content"     $cleanContent
+    "categories"  $categories
+    "tags"        $tags
+  -}}
+
+  {{- $indexData = $indexData | append $item -}}
+{{- end -}}
+
+{{- $indexData | jsonify (dict "indent" "  ") -}}

@@ -1,0 +1,45 @@
+{{/* 
+  Partial: editorial-authority-links.html
+  Propósito: Cluster de autoridade com Schema.org ItemList e A11y auditada
+*/}}
+{{ $related := .Site.RegularPages.Related . | first 3 }}
+
+{{ if $related }}
+<aside class="editorial-cluster-block mt-12 pt-6 border-t border-gray-800" aria-label="Artigos relacionados sobre este tópico">
+  <h2 class="text-xl font-bold text-gray-100 mb-4 flex items-center gap-2">
+    <span class="text-orange-500 select-none" aria-hidden="true">⚡</span>
+    <span>Aprofunde seu Conhecimento Técnico</span>
+  </h2>
+
+  <ol class="space-y-4 p-0 m-0 list-none" itemscope itemtype="https://schema.org/ItemList">
+    <meta itemprop="numberOfItems" content="{{ len $related }}" />
+    <meta itemprop="itemListOrder" content="https://schema.org/ItemListOrderDescending" />
+
+    {{ range $index, $page := $related }}
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="m-0 bg-neutral-900 border border-gray-800 rounded-lg p-4 hover:border-orange-500/50 transition-colors duration-200">
+      <meta itemprop="position" content="{{ add $index 1 }}" />
+      <a href="{{ $page.RelPermalink }}" itemprop="url" class="no-underline group block">
+        <span itemprop="name" class="text-lg font-semibold text-gray-200 group-hover:text-orange-400 transition-colors">
+          {{ $page.Title }}
+        </span>
+        {{ with $page.Description }}
+          <p class="text-sm text-gray-400 mt-1 mb-2 line-clamp-2 leading-relaxed">{{ . }}</p>
+        {{ end }}
+        <div class="flex items-center gap-4 text-xs text-gray-400 font-mono">
+          <span class="flex items-center gap-1">
+            <span aria-hidden="true">📅</span>
+            <time datetime="{{ $page.Date.Format "2006-01-02T15:04:05Z07:00" }}">
+              {{ $page.Date.Format "02/01/2006" }}
+            </time>
+          </span>
+          <span class="flex items-center gap-1">
+            <span aria-hidden="true">⏱️</span>
+            <span>{{ $page.ReadingTime }} min de leitura</span>
+          </span>
+        </div>
+      </a>
+    </li>
+    {{ end }}
+  </ol>
+</aside>
+{{ end }}

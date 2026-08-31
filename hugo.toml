@@ -3,54 +3,76 @@
 # ==============================================================================
 baseURL = "https://bizumatica.com.br/"
 title = "Bizumática"
-theme = "terminal" # Mantido o nome original para casar com a sua pasta local
-locale = "pt-br"
+theme = "terminal"
+
+# Idioma e Localização (Mapeamento rigoroso BCP 47 - Hugo v0.158.0+)
+defaultContentLanguage = "pt-br"
+locale = "pt-BR"
 enableEmoji = true
+
+[languages]
+  [languages.pt-br]
+    title = "Bizumática"
+    label = "Português"
+    locale = "pt-BR"
+    weight = 1
+
+# Tratamento de URLs e Higienização de Build
 removePathAccents = true
-
-# --- MAPEAMENTO E PRIORIDADE DE MÓDULOS ---
-# Força o motor do Hugo (local e na nuvem) a dar prioridade total aos seus arquivos da raiz
-[module]
-  [[module.mounts]]
-    source = "content"
-    target = "content"
-  [[module.mounts]]
-    source = "layouts"
-    target = "layouts"
-  [[module.mounts]]
-    source = "static"
-    target = "static"
-
-# --- HIGIENIZAÇÃO NATIVA CONTRA PÁGINAS FANTASMAS ---
-# Limpa arquivos órfãos antigos da pasta de destino a cada novo build
 cleanDestinationDir = true
+enableRobotsTXT = true
 
-# --- TRATAMENTO DE URLS E SEO ---
-# Mantemos desativados para que o Hugo use caminhos absolutos baseados no host ativo
+# Preservação de URLs Absolutas (Invariante no SEO & AdSense)
 canonifyURLs = false
 relativeURLs = false
-removePathAccents = true
 
 # ==============================================================================
-# PARÂMETROS DO TEMA (TERMINAL CUSTOMIZADO)
+# TIPOS DE MÍDIA E FORMATOS DE SAÍDA (Obrigatório para API de Busca)
+# ==============================================================================
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  page = ["HTML"]
+  section = ["HTML", "RSS"]
+
+[mediaTypes]
+  [mediaTypes."application/json"]
+    suffixes = ["json"]
+
+[outputFormats]
+  [outputFormats.JSON]
+    mediaType = "application/json"
+    baseName = "index"
+    isPlainText = true
+
+# ==============================================================================
+# PARÂMETROS DO TEMA TERMINAL & ADTECH
 # ==============================================================================
 [params]
+  # ESSENCIAL PARA O TEMA TERMINAL: Define qual seção do content/ alimenta a Home
+  contentTypeName = "posts"
+  
   themeColor = "orange"
   centerTheme = true
   animatedTheme = true
   favicon = "favicon.png"
   customCSS = ["css/extended.css"]
 
+  # Exibição de Data nos Posts
+  showMenu = true
+  showReadingTime = true
+  showTableOfContents = true
+
   [params.Logo]
     logoText = "Bizumática"
     logoHomeLink = "/"
     logoCursorStyle = "block"
 
+  # AdTech / Monetização Google AdSense
   [params.adsense]
     client = "ca-pub-3733806324330520"
 
 # ==============================================================================
-# PROCESSAMENTO E OTIMIZAÇÃO DE IMAGENS
+# PROCESSAMENTO DE IMAGENS (LCP OPTIMIZATION PIPELINE)
 # ==============================================================================
 [imaging]
   resampleFilter = "lanczos"
@@ -58,7 +80,7 @@ removePathAccents = true
   anchor = "smart"
 
 # ==============================================================================
-# TAXONOMIAS (ORGANIZAÇÃO DE CONTEÚDO)
+# TAXONOMIAS (Evita Thin Content / Taxonomias Fantasmas)
 # ==============================================================================
 [taxonomies]
   category = "categories"
@@ -66,7 +88,48 @@ removePathAccents = true
   series = "series"
 
 # ==============================================================================
-# RENDERIZAÇÃO DE MARKUP (KaTeX Ultra Rápido & HTML SEGURO)
+# ENGINE DE CONTEÚDO RELACIONADO (MATRIZ TF-IDF EM SSG)
+# ==============================================================================
+[related]
+  threshold = 50
+  includeNewer = true
+  toLower = true
+
+  [[related.indices]]
+    name = "categories"
+    weight = 100
+
+  [[related.indices]]
+    name = "series"
+    weight = 80
+
+  [[related.indices]]
+    name = "tags"
+    weight = 50
+
+  [[related.indices]]
+    name = "date"
+    weight = 10
+
+# ==============================================================================
+# CONFIGURAÇÃO DE SITEMAP
+# ==============================================================================
+[sitemap]
+  filename = "sitemap.xml"
+  priority = 0.8
+
+# ==============================================================================
+# PRIVACIDADE E CONFORMIDADE (GDPR / GOOGLE ADSENSE POLICY)
+# ==============================================================================
+[privacy]
+  [privacy.googleAnalytics]
+    anonymizeIP = true
+    disable = false
+  [privacy.youtube]
+    privacyEnhanced = true
+
+# ==============================================================================
+# RENDERIZAÇÃO DE MARKUP (KaTeX + HTML Seguro + Atributos Goldmark)
 # ==============================================================================
 [markup]
   [markup.tableOfContents]
@@ -75,9 +138,13 @@ removePathAccents = true
     ordered = false
 
   [markup.goldmark]
+    [markup.goldmark.parser]
+      [markup.goldmark.parser.attribute]
+        title = true
+
     [markup.goldmark.renderer]
-      unsafe = true # Obrigatório para renderizar shortcodes HTML customizados (como o compra.html)
-    
+      unsafe = true
+
     [markup.goldmark.extensions]
       [markup.goldmark.extensions.passthrough]
         enable = true
@@ -86,7 +153,7 @@ removePathAccents = true
           inline = [['$', '$'], ['\\(', '\\)']]
 
 # ==============================================================================
-# ESTRUTURA DO MENU PRINCIPAL (NAVEGAÇÃO)
+# MENU PRINCIPAL (NAVBAR SUPERIOR - CATEGORIAS TÉCNICAS E BUSCA)
 # ==============================================================================
 [[menu.main]]
   identifier = "linux"
@@ -95,43 +162,58 @@ removePathAccents = true
   weight = 10
 
 [[menu.main]]
-  identifier = "curadoria"
-  name = "Curadoria"
-  url = "/curadoria/"
-  weight = 12
+  identifier = "foss"
+  name = "FOSS"
+  url = "/foss/"
+  weight = 15
 
 [[menu.main]]
   identifier = "matematica"
   name = "Matemática"
   url = "/matematica/"
-  weight = 15
-
-[[menu.main]]
-  identifier = "shell-scripting"
-  name = "Shell"
-  url = "/shell-scripting/" 
-  weight = 18
-
-[[menu.main]]
-  identifier = "foss"
-  name = "FOSS"
-  url = "/foss/"
-  weight = 19
-
-[[menu.main]]
-  identifier = "search"
-  name = "Buscar"
-  url = "/search/"
   weight = 20
 
 [[menu.main]]
-  identifier = "sobre"
-  name = "Sobre"
-  url = "/sobre/"
+  identifier = "apps"
+  name = "Apps"
+  url = "/apps/"
   weight = 25
 
 [[menu.main]]
-  identifier = "privacidade"
-  name = "Privacidade"
-  url = "/privacidade/"
+  identifier = "shell"
+  name = "Shell"
+  url = "/shell/" 
   weight = 30
+
+[[menu.main]]
+  identifier = "buscar"
+  name = "Buscar"
+  url = "/buscar/"
+  weight = 35
+
+# ==============================================================================
+# MENU SECUNDÁRIO (RODAPÉ / FOOTER - INSTITUCIONAL & PÁGINAS LEGAIS)
+# ==============================================================================
+[[menu.footer]]
+  identifier = "sobre"
+  name = "Sobre"
+  url = "/sobre/"
+  weight = 10
+
+[[menu.footer]]
+  identifier = "privacidade"
+  name = "Política de Privacidade"
+  url = "/privacidade/"
+  weight = 20
+
+[[menu.footer]]
+  identifier = "termos-de-uso"
+  name = "Termos de Uso"
+  url = "/termos-de-uso/"
+  weight = 30
+
+[[menu.footer]]
+  identifier = "logs"
+  name = "Todos os Logs"
+  url = "/logs/"
+  weight = 40

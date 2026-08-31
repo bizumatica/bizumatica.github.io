@@ -2,8 +2,8 @@
 {{- $prod := dict -}}
 
 {{- if $id -}}
-  {{- if isset .Site.Data "produtos" -}}
-    {{- $prod = index .Site.Data.produtos $id -}}
+  {{- if isset site.Data "produtos" -}}
+    {{- $prod = index site.Data.produtos $id -}}
   {{- end -}}
 {{- else if .Page.Params.product -}}
   {{- $prod = .Page.Params.product -}}

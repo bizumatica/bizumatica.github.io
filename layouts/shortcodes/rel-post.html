@@ -1,30 +1,24 @@
 {{/* 
   Shortcode: rel-post.html
-  Propósito: Injeção contextual de link interno com resolução estrita e fallback seguro
+  Propósito: Injeção contextual de link interno com resolução estrita e fallback seguro.
   Uso: {{< rel-post path="posts/comando-find.md" anchor="Aprenda o comando Find" >}}
 */}}
-{{ $path := .Get "path" }}
-{{ $anchor := .Get "anchor" }}
+{{- $path := .Get "path" -}}
+{{- $anchor := .Get "anchor" -}}
 
-{{/* Resolução segura do caminho da página chamadora para logs de erro */}}
-{{ $currentPageContext := .Page.RelPermalink }}
-{{ with .Page.File }}
-  {{ $currentPageContext = .Path }}
-{{ end }}
+{{- $currentPageContext := .Page.RelPermalink -}}
+{{- with .Page.File -}}
+  {{- $currentPageContext = .Path -}}
+{{- end -}}
 
-{{ if not $path }}
-  {{ errorf "[rel-post] Parâmetro 'path' ausente no arquivo: %s" $currentPageContext }}
-{{ end }}
+{{- if not $path -}}
+  {{- errorf "[rel-post] Parâmetro 'path' ausente no arquivo: %s" $currentPageContext -}}
+{{- end -}}
 
-{{/* Garante que a busca no GetPage funcione com ou sem barra inicial */}}
-{{ $normalizedPath := $path }}
-{{ if not (hasPrefix $path "/") }}
-  {{ $normalizedPath = printf "/%s" $path }}
-{{ end }}
+{{- $normalizedPath := $path | printf "/%s" | strings.TrimPrefix "//" -}}
+{{- $targetPage := .Page.GetPage $normalizedPath -}}
 
-{{ $targetPage := .Page.GetPage $normalizedPath }}
-
-{{ if $targetPage }}
+{{- if $targetPage -}}
   <div class="my-6 p-4 border-l-4 border-orange-500 bg-neutral-900 rounded-r-lg shadow-md font-sans">
     <span class="text-xs uppercase tracking-wider text-orange-400 font-bold block mb-1">
       📌 Leitura Correlata Recomendada
@@ -42,6 +36,6 @@
       <p class="text-xs text-gray-400 mt-1 mb-0 line-clamp-2 leading-relaxed">{{ . }}</p>
     {{ end }}
   </div>
-{{ else }}
-  {{ errorf "[rel-post] Target não encontrado para o path '%s' invocado em: %s" $path $currentPageContext }}
-{{ end }}
+{{- else -}}
+  {{- errorf "[rel-post] Target não encontrado para o path '%s' invocado em: %s" $path $currentPageContext -}}
+{{- end -}}

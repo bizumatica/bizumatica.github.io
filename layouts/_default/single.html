@@ -1,6 +1,11 @@
 {{ define "main" }}
-<article class="post h-entry" data-pagefind-body itemscope itemtype="http://schema.org/BlogPosting">
+<article class="post h-entry" data-pagefind-body itemscope itemtype="https://schema.org/BlogPosting">
   
+  {{/* Metadados invisíveis para Schema.org / Google Rich Results */}}
+  <meta itemprop="mainEntityOfPage" content="{{ .Permalink }}">
+  <meta itemprop="dateModified" content="{{ .Lastmod.Format "2006-01-02T15:04:05-07:00" }}">
+  <a class="u-url" href="{{ .Permalink }}" hidden></a>
+
   <header class="post-header">
     <h1 class="post-title p-name" itemprop="headline">{{ .Title }}</h1>
     
@@ -14,7 +19,9 @@
       <span class="meta-item">
         📖 <span>{{ .ReadingTime }} min de leitura</span>
       </span>
-      <meta itemprop="author" content="{{ .Params.author | default .Site.Title }}">
+      <span itemprop="author" itemscope itemtype="https://schema.org/Person" class="p-author h-card">
+        <meta itemprop="name" content="{{ .Params.author | default site.Title }}">
+      </span>
     </div>
   </header>
   
@@ -22,10 +29,13 @@
     {{ partial "math.html" . }}
   {{ end }}
 
+  {{/* Sumário (TOC) - Estilo Tokyo Night Cyan */}}
   {{ if .Params.toc }}
-  <nav class="toc" data-pagefind-ignore aria-label="Sumário do post" style="border: 1px dashed var(--theme-color); padding: 15px; margin-bottom: 30px;">
-    <strong style="color: var(--theme-color);">📌 Conteúdo do Bizu:</strong>
-    <div class="toc-body" itemprop="toc">
+  <nav class="toc" data-pagefind-ignore aria-label="Sumário do post" style="border: 1px solid #7dcfff; border-left: 4px solid #7dcfff; padding: 15px; margin-bottom: 30px; background: rgba(125, 207, 255, 0.03); border-radius: 4px;">
+    <strong style="color: #7dcfff; font-family: monospace; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;">
+      <span aria-hidden="true">🧭</span> [toc.map] :: Conteúdo do Bizu
+    </strong>
+    <div class="toc-body" itemprop="toc" style="margin-top: 10px;">
       {{ .TableOfContents }}
     </div>
   </nav>
@@ -34,6 +44,15 @@
   <div class="post-content e-content" itemprop="articleBody">
     {{ .Content }}
   </div>
+
+  {{/* 1. Coleta os artigos relacionados via TF-IDF */}}
+  {{ $relatedPages := .Site.RegularPages.Related . | first 3 }}
+  
+  {{/* 2. Injeta o partial de relacionados enviando o contexto e os posts encontrados */}}
+  {{ partial "related-auto.html" (dict "context" . "related" $relatedPages) }}
+
+  {{/* 3. Injeta o partial de autoridade enviando o contexto e o array de exclusão */}}
+  {{ partial "editorial-authority-links.html" (dict "context" . "exclude" $relatedPages) }}
 
 </article>
 {{ end }}

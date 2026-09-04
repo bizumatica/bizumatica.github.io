@@ -1,45 +1,56 @@
-{{/* 
-  Partial: editorial-authority-links.html
-  Propósito: Cluster de autoridade com Schema.org ItemList e A11y auditada
-*/}}
-{{ $related := .Site.RegularPages.Related . | first 3 }}
+{{/* layouts/partials/editorial-authority-links.html */}}
+{{ $ctx := .context }}
+{{ $excludePages := .exclude | default slice }}
 
-{{ if $related }}
-<aside class="editorial-cluster-block mt-12 pt-6 border-t border-gray-800" aria-label="Artigos relacionados sobre este tópico">
-  <h2 class="text-xl font-bold text-gray-100 mb-4 flex items-center gap-2">
-    <span class="text-orange-500 select-none" aria-hidden="true">⚡</span>
-    <span>Aprofunde seu Conhecimento Técnico</span>
-  </h2>
+{{/* Build do vetor de exclusão (Atual + Relacionados Exibidos) */}}
+{{ $excludePermalinks := slice $ctx.Permalink }}
+{{ range $excludePages }}
+  {{ $excludePermalinks = $excludePermalinks | append .Permalink }}
+{{ end }}
 
-  <ol class="space-y-4 p-0 m-0 list-none" itemscope itemtype="https://schema.org/ItemList">
-    <meta itemprop="numberOfItems" content="{{ len $related }}" />
-    <meta itemprop="itemListOrder" content="https://schema.org/ItemListOrderDescending" />
+{{/* 1. Tenta buscar na mesma Seção */}}
+{{ $sectionPages := where $ctx.Site.RegularPages "Section" $ctx.Section }}
+{{ $filteredCluster := slice }}
+{{ range $sectionPages }}
+  {{ if not (in $excludePermalinks .Permalink) }}
+    {{ $filteredCluster = $filteredCluster | append . }}
+  {{ end }}
+{{ end }}
 
-    {{ range $index, $page := $related }}
-    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="m-0 bg-neutral-900 border border-gray-800 rounded-lg p-4 hover:border-orange-500/50 transition-colors duration-200">
-      <meta itemprop="position" content="{{ add $index 1 }}" />
-      <a href="{{ $page.RelPermalink }}" itemprop="url" class="no-underline group block">
-        <span itemprop="name" class="text-lg font-semibold text-gray-200 group-hover:text-orange-400 transition-colors">
-          {{ $page.Title }}
-        </span>
-        {{ with $page.Description }}
-          <p class="text-sm text-gray-400 mt-1 mb-2 line-clamp-2 leading-relaxed">{{ . }}</p>
-        {{ end }}
-        <div class="flex items-center gap-4 text-xs text-gray-400 font-mono">
-          <span class="flex items-center gap-1">
-            <span aria-hidden="true">📅</span>
-            <time datetime="{{ $page.Date.Format "2006-01-02T15:04:05Z07:00" }}">
-              {{ $page.Date.Format "02/01/2006" }}
-            </time>
-          </span>
-          <span class="flex items-center gap-1">
-            <span aria-hidden="true">⏱️</span>
-            <span>{{ $page.ReadingTime }} min de leitura</span>
-          </span>
-        </div>
-      </a>
-    </li>
+{{/* 2. Fallback: Se a Seção não preencher 3 itens, busca no site globalmente */}}
+{{ if lt (len $filteredCluster) 3 }}
+  {{ range $ctx.Site.RegularPages }}
+    {{ if and (not (in $excludePermalinks .Permalink)) (not (in $filteredCluster .)) }}
+      {{ $filteredCluster = $filteredCluster | append . }}
     {{ end }}
-  </ol>
+  {{ end }}
+{{ end }}
+
+{{ $authorityPages := $filteredCluster | first 3 }}
+
+{{ with $authorityPages }}
+<aside class="editorial-authority-wrapper" data-pagefind-ignore aria-label="Cluster de Autoridade Editorial" style="margin-top: 25px; contain: content;">
+  <div style="border: 1px solid #bb9af7; border-left: 4px solid #f7768e; padding: 16px; border-radius: 4px; background: rgba(187, 154, 247, 0.04);">
+    <header style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+      <span style="font-size: 1.1rem;" aria-hidden="true">🛡️</span>
+      <strong style="color: #f7768e; font-family: monospace; font-size: 0.95rem; letter-spacing: 0.5px;">
+        [cluster.auth] :: PILARES DE AUTORIDADE EDITORIAL:
+      </strong>
+    </header>
+    <ol style="padding-left: 20px; margin: 0;">
+      {{ range . }}
+        <li style="margin-bottom: 10px; font-size: 0.9rem;">
+          <a href="{{ .RelPermalink }}" style="color: var(--theme-color, #f8f8f2); text-decoration: underline; font-weight: 500;" aria-label="Aprofunde em: {{ .Title }}">
+            {{ .Title }}
+          </a>
+          <div style="font-size: 0.8rem; opacity: 0.6; margin-top: 2px; font-family: monospace;">
+            <span>📅 {{ .Date.Format "02/01/2006" }}</span>
+            <span style="margin: 0 4px;">::</span>
+            <span>📖 {{ .ReadingTime }} min de leitura</span>
+          </div>
+        </li>
+      {{ end }}
+    </ol>
+  </div>
 </aside>
 {{ end }}

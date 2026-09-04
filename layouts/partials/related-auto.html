@@ -1,0 +1,27 @@
+{{/* layouts/partials/related-auto.html */}}
+{{ $related := .related }}
+{{ with $related }}
+<aside class="related-posts-wrapper" data-pagefind-ignore aria-label="Artigos Relacionados Dinâmicos" style="margin-top: 35px; contain: content;">
+  <div style="border: 1px solid #ff9e64; border-left: 4px solid #ff9e64; padding: 16px; border-radius: 4px; background: rgba(255, 158, 100, 0.04);">
+    <header style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+      <span style="font-size: 1.1rem;" aria-hidden="true">📡</span>
+      <strong style="color: #ff9e64; font-family: monospace; font-size: 0.95rem; letter-spacing: 0.5px;">
+        [sys.rel] :: CONEXÕES DE CONTEÚDO (TF-IDF):
+      </strong>
+    </header>
+    <ul style="list-style: none; padding: 0; margin: 0;">
+      {{ range . }}
+        <li style="margin-bottom: 10px; font-size: 0.9rem; display: flex; align-items: baseline; gap: 6px;">
+          <span style="color: #ff9e64; font-family: monospace; opacity: 0.8;" aria-hidden="true">&gt;</span>
+          <a href="{{ .RelPermalink }}" style="color: var(--theme-color, #f8f8f2); text-decoration: underline; font-weight: 500;" aria-label="Leia o artigo: {{ .Title }}">
+            {{ .Title }}
+          </a>
+          <span style="opacity: 0.5; font-size: 0.78rem; font-family: monospace; white-space: nowrap;">
+            [{{ .Date.Format "02/01/2006" }}]
+          </span>
+        </li>
+      {{ end }}
+    </ul>
+  </div>
+</aside>
+{{ end }}

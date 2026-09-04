@@ -20,24 +20,27 @@ Chegados a 2026, é forçoso reconhecer que a disputa entre Flatpak, Snap e AppI
 
 A divergência primária entre os três formatos universais não se dá na forma como os arquivos são compactados, mas no **arcabouço de restrição de privilégios** aplicado no momento da inicialização do processo.
 
-{{< grid-regras >}}
-  {{< card-regra numero="01" titulo="FLATPAK (BUBBLEWRAP & PORTALS)" cor="#05d9e8" >}}
-<p>Utiliza namespaces do Kernel Linux via <code>bubblewrap</code> para construir <em>sandboxes</em> estritas. O isolamento de rede, IPC e sistema de arquivos é ativado por padrão.</p>
-<p>O acesso a recursos do hospedeiro não prescinde da autorização mediada por <strong>XDG Desktop Portals</strong>, garantindo controle granular pelo usuário.</p>
-  {{< /card-regra >}}
+{{% grid-regras %}}
+  {{% card-regra numero="01" titulo="FLATPAK (BUBBLEWRAP & PORTALS)" cor="#05d9e8" %}}
+Utiliza namespaces do Kernel Linux via `bubblewrap` para construir *sandboxes* estritas. O isolamento de rede, IPC e sistema de arquivos é ativado por padrão.
 
-  {{< card-regra numero="02" titulo="SNAP (APPARMOR & CGROUPS)" cor="#ff2a6d" >}}
-<p>Projetado com o ecossistema Server e IoT em mente, apoia-se no <strong>AppArmor</strong> da Canonical para confinamento obrigatório do sistema (MAC).</p>
-<p>Apesar da rigidez do perfil <em>strict</em>, sua eficácia fora do ecossistema Ubuntu depende criticamente do suporte de módulos de segurança no kernel hospedeiro.</p>
-  {{< /card-regra >}}
+O acesso a recursos do hospedeiro não prescinde da autorização mediada por **XDG Desktop Portals**, garantindo controle granular pelo usuário.
+  {{% /card-regra %}}
 
-  {{< card-regra numero="03" titulo="APPIMAGE (PORTABILIDADE PURA)" cor="#ffbd2e" >}}
-<p>Prioriza a autonomia executável. Por ser essencialmente uma imagem de disco SquashFS montada via <strong>FUSE</strong>, não implementa camada nativa de confinamento.</p>
-<p>O aplicativo executa com as mesmas permissões do usuário que o invocou, delegando o isolamento a ferramentas externas como o <code>firejail</code>.</p>
-  {{< /card-regra >}}
-{{< /grid-regras >}}
+  {{% card-regra numero="02" titulo="SNAP (APPARMOR & CGROUPS)" cor="#ff2a6d" %}}
+Projetado com o ecossistema Server e IoT em mente, apoia-se no **AppArmor** da Canonical para confinamento obrigatório do sistema (MAC).
 
-Sob a ótica da engenharia de segurança, o isolamento do Flatpak através de unshare de namespaces (`user`, `net`, `mnt`, `pid`) reduz drasticamente a superfície de ataque em aplicações expostas à web. Por conseguinte, vetores de exploração baseados em escalada local de privilégios encontram barreiras rigorosas antes mesmo de atingirem a memória do hospedeiro.
+Apesar da rigidez do perfil *strict*, sua eficácia fora do ecossistema Ubuntu depende criticamente do suporte de módulos de segurança no kernel hospedeiro.
+  {{% /card-regra %}}
+
+  {{% card-regra numero="03" titulo="APPIMAGE (PORTABILIDADE PURA)" cor="#ffbd2e" %}}
+Prioriza a autonomia executável. Por ser essencialmente uma imagem de disco SquashFS montada via **FUSE**, não implementa camada nativa de confinamento.
+
+O aplicativo executa com as mesmas permissões do usuário que o invocou, delegando o isolamento a ferramentas externas como o `firejail`.
+  {{% /card-regra %}}
+{{% /grid-regras %}}
+
+Sob a ótica da engenharia de segurança, o isolamento do Flatpak através de `unshare` de namespaces (`user`, `net`, `mnt`, `pid`) reduz drasticamente a superfície de ataque em aplicações expostas à web. Por conseguinte, vetores de exploração baseados em escalada local de privilégios encontram barreiras rigorosas antes mesmo de atingirem a memória do hospedeiro.
 
 {{< bizu tipo="atencao" titulo="VULNERABILIDADES DE EXECUÇÃO EM BINÁRIOS AUTÔNOMOS" >}}
 Aplicativos distribuídos via **AppImage** que não passam por auditoria externa executam comandos diretamente no *namespace* do usuário. Caso o binário esteja comprometido, ele terá acesso irrestrito às chaves SSH em `~/.ssh` e às sessões ativas do navegador.
@@ -72,21 +75,41 @@ Em contrapartida, o Snap mantém revisões antigas de cada pacote montadas seque
 
 A primazia do Flatpak no desktop corporativo decorre da granularidade com que se pode auditar, restringir e revogar acessos a dados sensíveis. A linha de comando oferece controle absoluto sobre a tabela de privilégios de qualquer aplicativo instalado no sistema.
 
-{{< term-box title="MAN // DIRETÓRIO DO SISTEMA" cmd="ls -la /conteudos" variant="clean" >}}
+{{< term-box title="TERMINAL // GESTÃO DE PERMISSÕES FLATPAK" cmd="flatpak override" variant="clean" >}}
 ### 1. Auditar as permissões declaradas pelo manifesto do aplicativo
-```flatpak info --show-permissions com.brave.Browser```
+```bash
+flatpak info --show-permissions com.brave.Browser
+
+```
 
 ### 2. Revogar o acesso global ao sistema de arquivos (home) do usuário
-```flatpak override --user --nofilesystem=home com.brave.Browser```
+
+```bash
+flatpak override --user --nofilesystem=home com.brave.Browser
+
+```
 
 ### 3. Restringir o acesso apenas a um diretório de trabalho sanitizado
-```flatpak override --user --filesystem=/home/usuario/Documentos/Projetos com.brave.Browser```
+
+```bash
+flatpak override --user --filesystem=/home/usuario/Documentos/Projetos com.brave.Browser
+
+```
 
 ### 4. Desativar a comunicação com a rede (Socket de Internet)
-```flatpak override --user --nosocket=network com.brave.Browser```
+
+```bash
+flatpak override --user --nosocket=network com.brave.Browser
+
+```
 
 ### 5. Listar todas as alterações de permissões impostas pelo administrador
-```flatpak override --show com.brave.Browser```
+
+```bash
+flatpak override --show com.brave.Browser
+
+```
+
 {{< /term-box >}}
 
 Assim, para administradores que demandam uma interface gráfica intuitiva para inspeção imediata dos privilégios dos aplicativos, a ferramenta **Flatseal** consolidou-se como o padrão de auditoria visual para ajustar *overrides* globais ou individuais sem a necessidade de editar arquivos de configuração manualmente em `~/.local/share/flatpak/overrides`.
@@ -98,86 +121,96 @@ Assim, para administradores que demandam uma interface gráfica intuitiva para i
 O script a seguir permite que administradores de sistemas analisem com precisão quais ecossistemas de empacotamento estão ativos no ambiente e meçam o impacto de pacotes instalados no armazenamento do hospedeiro:
 
 {{< terminal lang="python" titulo="auditor_conformidade.py" >}}
-
 #!/usr/bin/env python3
-##########
+"""
 Bizumática - Ferramenta de Análise e Auditoria de Pacotes Universais no Linux.
-##########
+"""
 
 import os
 import shutil
 import subprocess
 from typing import Dict, List, Optional
 
-
 def executar_comando(comando: List[str]) -> Optional[str]:
-    """Executa um comando de sistema e retorna a saída formatada de forma segura."""
-    try:
-        resultado = subprocess.run(
-            comando, capture_output=True, text=True, check=True
-        )
-        return resultado.stdout.strip()
-    except (subprocess.CalledProcessError, FileNotFoundError):
-        return None
-
+"""Executa um comando de sistema e retorna a saída formatada de forma segura."""
+try:
+resultado = subprocess.run(
+comando, capture_output=True, text=True, check=True
+)
+return resultado.stdout.strip()
+except (subprocess.CalledProcessError, FileNotFoundError):
+return None
 
 def obter_tamanho_diretorio(caminho: str) -> float:
-    """Calcula o tamanho total de um diretório em Megabytes (MB)."""
-    total = 0
-    if not os.path.exists(caminho):
-        return 0.0
-    for root, _, files in os.walk(caminho):
-        for f in files:
-            fp = os.path.join(root, f)
-            if not os.path.islink(fp):
-                total += os.path.getsize(fp)
-    return round(total / (1024 * 1024), 2)
-
+"""Calcula o tamanho total de um diretório em Megabytes (MB) tratando erros de permissão."""
+total = 0.0
+if not os.path.exists(caminho):
+return 0.0
+try:
+for root, _, files in os.walk(caminho):
+for f in files:
+fp = os.path.join(root, f)
+try:
+if not os.path.islink(fp):
+total += os.path.getsize(fp)
+except (PermissionError, FileNotFoundError):
+continue
+except PermissionError:
+return 0.0
+return round(total / (1024 * 1024), 2)
 
 def auditar_ecossistemas() -> Dict[str, Dict[str, str]]:
-    """Inspeciona a presença, pacotes e impacto em armazenamento dos ecossistemas."""
-    relatorio = {}
+"""Inspeciona a presença, pacotes e impacto em armazenamento dos ecossistemas."""
+relatorio: Dict[str, Dict[str, str]] = {}
 
-    # Auditoria Flatpak
-    if shutil.which("flatpak"):
-        saida = executar_comando(["flatpak", "list", "--app"])
-        qtd = len(saida.split("\n")) if saida else 0
-        tamanho = obter_tamanho_diretorio(
-            os.path.expanduser("~/.local/share/flatpak")
-        )
-        relatorio["Flatpak"] = {
-            "status": "Ativo",
-            "pacotes": f"{qtd} aplicações",
-            "armazenamento_user": f"{tamanho} MB",
-        }
-    else:
-        relatorio["Flatpak"] = {"status": "Inativo", "pacotes": "0", "armazenamento_user": "0 MB"}
+```
+# Auditoria Flatpak
+if shutil.which("flatpak"):
+    saida = executar_comando(["flatpak", "list", "--app"])
+    qtd = len(saida.split("\n")) if saida else 0
+    tamanho = obter_tamanho_diretorio(
+        os.path.expanduser("~/.local/share/flatpak")
+    )
+    relatorio["Flatpak"] = {
+        "status": "Ativo",
+        "pacotes": f"{qtd} aplicações",
+        "armazenamento_user": f"{tamanho} MB",
+    }
+else:
+    relatorio["Flatpak"] = {
+        "status": "Inativo",
+        "pacotes": "0",
+        "armazenamento_user": "0 MB",
+    }
 
-    # Auditoria Snap
-    if shutil.which("snap"):
-        saida = executar_comando(["snap", "list"])
-        qtd = max(0, len(saida.split("\n")) - 1) if saida else 0
-        tamanho = obter_tamanho_diretorio("/var/lib/snapd/snaps")
-        relatorio["Snap"] = {
-            "status": "Ativo",
-            "pacotes": f"{qtd} snaps",
-            "armazenamento_system": f"{tamanho} MB",
-        }
-    else:
-        relatorio["Snap"] = {"status": "Inativo", "pacotes": "0", "armazenamento_system": "0 MB"}
+# Auditoria Snap
+if shutil.which("snap"):
+    saida = executar_comando(["snap", "list"])
+    qtd = max(0, len(saida.split("\n")) - 1) if saida else 0
+    tamanho = obter_tamanho_diretorio("/var/lib/snapd/snaps")
+    relatorio["Snap"] = {
+        "status": "Ativo",
+        "pacotes": f"{qtd} snaps",
+        "armazenamento_system": f"{tamanho} MB",
+    }
+else:
+    relatorio["Snap"] = {
+        "status": "Inativo",
+        "pacotes": "0",
+        "armazenamento_system": "0 MB",
+    }
 
-    return relatorio
+return relatorio
 
+```
 
-if __name__ == "__main__":
-    print("=== [ Bizumática ] Relatório de Auditoria de Pacotes Universais ===")
-    dados = auditar_ecossistemas()
-    for sistema, info in dados.items():
-        print(f"\nSistema: {sistema}")
-        for chave, valor in info.items():
-            print(f"  ├─ {chave.capitalize()}: {valor}")
-
-
+if **name** == "**main**":
+print("=== [ Bizumática ] Relatório de Auditoria de Pacotes Universais ===")
+dados = auditar_ecossistemas()
+for sistema, info in dados.items():
+print(f"\nSistema: {sistema}")
+for chave, valor in info.items():
+print(f"  ├─ {chave.capitalize()}: {valor}")
 {{< /terminal >}}
 
 ---
@@ -189,3 +222,7 @@ O **Snap** mantém seu valor estratégico inegável no ecossistema de servidores
 
 A excelência em engenharia de software exige a seleção criteriosa da ferramenta correta, fundamentada pela mitigação de riscos e pelo desempenho computacional da máquina.
 {{< /conclusao >}}
+
+```
+
+---

@@ -5,16 +5,16 @@ baseURL = "https://bizumatica.com.br/"
 title = "Bizumática"
 theme = "terminal"
 
-# Idioma e Localização (Mapeamento rigoroso BCP 47 - Hugo v0.158.0+)
+# Idioma e Localização (Mapeamento rigoroso BCP 47)
 defaultContentLanguage = "pt-br"
 locale = "pt-BR"
 enableEmoji = true
 
 [languages]
   [languages.pt-br]
+    languageCode = "pt-BR"
+    languageName = "Português"
     title = "Bizumática"
-    label = "Português"
-    locale = "pt-BR"
     weight = 1
 
 # Tratamento de URLs e Higienização de Build
@@ -27,7 +27,7 @@ canonifyURLs = false
 relativeURLs = false
 
 # ==============================================================================
-# TIPOS DE MÍDIA E FORMATOS DE SAÍDA (Obrigatório para API de Busca)
+# TIPOS DE MÍDIA E FORMATOS DE SAÍDA (Obrigatório para API de Busca / JSON AST)
 # ==============================================================================
 [outputs]
   home = ["HTML", "RSS", "JSON"]
@@ -48,7 +48,7 @@ relativeURLs = false
 # PARÂMETROS DO TEMA TERMINAL & ADTECH
 # ==============================================================================
 [params]
-  # ESSENCIAL PARA O TEMA TERMINAL: Define qual seção do content/ alimenta a Home
+  # Define qual seção do content/ alimenta a Home no Tema Terminal
   contentTypeName = "posts"
   
   themeColor = "orange"
@@ -57,7 +57,7 @@ relativeURLs = false
   favicon = "favicon.png"
   customCSS = ["css/extended.css"]
 
-  # Exibição de Data nos Posts
+  # Exibição de Metadados nos Posts
   showMenu = true
   showReadingTime = true
   showTableOfContents = true
@@ -72,15 +72,15 @@ relativeURLs = false
     client = "ca-pub-3733806324330520"
 
 # ==============================================================================
-# PROCESSAMENTO DE IMAGENS (LCP OPTIMIZATION PIPELINE)
+# PROCESSAMENTO DE IMAGENS (PIPELINE OTIMIZADO DE LCP / CORE WEB VITALS)
 # ==============================================================================
 [imaging]
   resampleFilter = "lanczos"
   quality = 85
-  anchor = "smart"
+  anchor = "Center"
 
 # ==============================================================================
-# TAXONOMIAS (Evita Thin Content / Taxonomias Fantasmas)
+# TAXONOMIAS (Prevenção de Thin Content e Taxonomias Fantasmas)
 # ==============================================================================
 [taxonomies]
   category = "categories"
@@ -88,11 +88,12 @@ relativeURLs = false
   series = "series"
 
 # ==============================================================================
-# ENGINE DE CONTEÚDO RELACIONADO (MATRIZ TF-IDF EM SSG)
+# ENGINE DE CONTEÚDO RELACIONADO (MATRIZ TF-IDF / ÍNDICE INVERTIDO UNIFICADO)
 # ==============================================================================
 [related]
-  threshold = 50
+  threshold = 60          # Equilíbrio ideal entre precisão e revocação
   includeNewer = true
+  includeEmpty = false
   toLower = true
 
   [[related.indices]]
@@ -129,7 +130,7 @@ relativeURLs = false
     privacyEnhanced = true
 
 # ==============================================================================
-# RENDERIZAÇÃO DE MARKUP (KaTeX + HTML Seguro + Atributos Goldmark)
+# RENDERIZAÇÃO DE MARKUP (GOLDMARK + KATEX PASSTHROUGH PADRÃO HUGO)
 # ==============================================================================
 [markup]
   [markup.tableOfContents]
@@ -149,11 +150,11 @@ relativeURLs = false
       [markup.goldmark.extensions.passthrough]
         enable = true
         [markup.goldmark.extensions.passthrough.delimiters]
-          block = [['$$', '$$'], ['\\[', '\\]']]
-          inline = [['$', '$'], ['\\(', '\\)']]
+          block = [ ["$$", "$$"], ["\\[", "\\]"] ]
+          inline = [ ["$", "$"], ["\\(", "\\)"] ]
 
 # ==============================================================================
-# MENU PRINCIPAL (NAVBAR SUPERIOR - CATEGORIAS TÉCNICAS E BUSCA)
+# MENU PRINCIPAL (NAVBAR SUPERIOR)
 # ==============================================================================
 [[menu.main]]
   identifier = "linux"
@@ -192,7 +193,7 @@ relativeURLs = false
   weight = 35
 
 # ==============================================================================
-# MENU SECUNDÁRIO (RODAPÉ / FOOTER - INSTITUCIONAL & PÁGINAS LEGAIS)
+# MENU SECUNDÁRIO (RODAPÉ / FOOTER)
 # ==============================================================================
 [[menu.footer]]
   identifier = "sobre"

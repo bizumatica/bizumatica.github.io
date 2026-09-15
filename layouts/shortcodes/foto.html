@@ -1,36 +1,42 @@
+{{- /* 
+  Shortcode Foto/Diagrama Hardened - Bizumática
+  Resolve caminhos de Leaf Bundles (.Page.Resources) para evitar HTTP 404 em listagens de seção/home.
+  Uso: {{< foto src="cover.webp" alt="Linux Mint - Cinnamon Desktop" legenda="Linux Mint - Cinnamon" class="thumb-frame thumb-right" >}}
+*/ -}}
 {{- $src := .Get "src" -}}
-{{- $alt := .Get "alt" | default "Imagem do artigo" -}}
+{{- $alt := .Get "alt" | default (.Get "legenda") | htmlEscape -}}
 {{- $legenda := .Get "legenda" -}}
+{{- $class := .Get "class" | default "artigo-foto-container" -}}
 
-<figure class="artigo-foto-container">
-  <img src="{{ $src }}" alt="{{ $alt }}" class="artigo-foto" loading="lazy">
-  {{ if $legenda }}
-    <figcaption class="artigo-foto-legenda">:: [ {{ upper $legenda }} ] ::</figcaption>
-  {{ end }}
+{{- $imgURL := "" -}}
+
+{{- if $src -}}
+  {{- if or (hasPrefix $src "http://") (hasPrefix $src "https://") (hasPrefix $src "//") (hasPrefix $src "/") -}}
+    {{- /* URLs externas ou absolutas mantêm seu valor original */ -}}
+    {{- $imgURL = $src -}}
+  {{- else -}}
+    {{- /* Busca o arquivo dentro dos recursos do Leaf Bundle da página */ -}}
+    {{- $res := .Page.Resources.GetMatch $src -}}
+    {{- if $res -}}
+      {{- $imgURL = $res.RelPermalink -}}
+    {{- else -}}
+      {{- /* Fallback para imagens em /static/ caso não seja encontrado no Bundle */ -}}
+      {{- $imgURL = printf "/%s" (strings.TrimPrefix "/" $src) -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if $imgURL -}}
+<figure class="{{ $class }}">
+  <img 
+    src="{{ $imgURL | safeURL }}" 
+    alt="{{ $alt }}" 
+    class="artigo-foto" 
+    loading="lazy"
+    decoding="async"
+  >
+  {{- with $legenda -}}
+    <figcaption class="artigo-foto-legenda">:: [ {{ upper . }} ] ::</figcaption>
+  {{- end -}}
 </figure>
-
-<style>
-.artigo-foto-container {
-  margin: 2.5rem 0;
-  padding: 0;
-  text-align: center;
-}
-
-.artigo-foto {
-  max-width: 100%;
-  height: auto;
-  border: 1px solid #222;
-  background-color: #16161e; /* Fundo interno caso a imagem tenha transparência */
-  padding: 6px;
-  display: block;
-  margin: 0 auto;
-}
-
-.artigo-foto-legenda {
-  margin-top: 10px;
-  font-family: monospace;
-  font-size: 0.8rem;
-  color: #a9b1d6; /* Cinza do Tokyo Night */
-  letter-spacing: 0.5px;
-}
-</style>
+{{- end -}}

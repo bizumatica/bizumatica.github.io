@@ -14,11 +14,11 @@ math: true
 
 A sofisticação muitas vezes se disfarça de obviedade. No vasto teatro das distribuições Linux, onde sistemas imutáveis fulguram como a promessa do amanhã e sistemas minimalistas demandam devoção monástica, o Linux Mint é frequentemente rotulado de forma simplista: uma mera porta de entrada para iniciantes.
 
-{{< foto src="cover.webp" alt="Linux Mint - Cinnamon" legenda="Linux Mint - Cinnamon" >}}
+{{< foto src="cover.webp" alt="Linux Mint - Cinnamon Desktop" legenda="Linux Mint - Cinnamon" class="thumb-frame thumb-right" >}}
 
 Não obstante, esse julgamento apressado oculta uma engenharia pragmática de altíssimo nível. A busca incessante pela novidade tecnológica costuma cobrar seu preço em instabilidade operacional. O verdadeiro poder do Linux Mint não reside na reinvenção perpétua da roda, mas na garantia de que ela jamais cessará de girar de forma previsível e eficiente.
 
-{{< adsense >}}
+{{< adsense slot="4043462063" >}}
 
 ---
 
@@ -54,11 +54,11 @@ Sob a elegante superfície visual do Linux Mint habita um ecossistema de pacotes
 
 A recusa aos pacotes Snap elimina o overhead de performance causado pela montagem de dispositivos de loop adicionais para cada aplicação, mantendo o tempo de boot limpo e livre de lentidões causadas por compressões excessivas. Dessarte, o Mint resguarda a autonomia de seu gerenciamento de pacotes local, adotando o **Flatpak** como formato universal de sandbox por padrão. 
 
-A integração nativa com o Flathub através de sua *Software Manager* limpa e rápida cria uma elegante simetria operacional. A estabilidade do espaço de usuário ($U_s$) sob esta arquitetura híbrida pode ser descrita matematicamente como a intersecção harmônica entre a robustez imutável da base de sistema ($B_s$) e o isolamento controlado de aplicações em sandbox ($A_i$), onde o risco de conflitos de dependências é nulo:
+A integração nativa com o Flathub através de sua *Software Manager* limpa e rápida cria uma elegante simetria operacional. A estabilidade do espaço de usuário ($U_s$) sob esta arquitetura híbrida pode ser descrita matematicamente como a intersecção harmônica entre a robustez imutável da base de sistema ($B_s$) e o isolamento controlled de aplicações em sandbox ($A_i$), onde o risco de conflitos de dependências é nulo:
 
 $$U_s \cap (B_s \times A_i) \implies \text{Conflito Zero}$$
 
-O usuário tem acesso direto ao manancial de softwares mais recentes do mercado através do ecossistema Flatpak, sem que as atualizações interfiram na estabilidade do núcleo do sistema operacional.
+O usuário tem acesso direto ao manancial de softwares mais recentes do mercado através do ecossistema Flatpak, sem que as atualizações interferiram na estabilidade do núcleo do sistema operacional.
 
 {{< box tipo="bizu" titulo="O Diferencial Estrutural do Mint" >}}
 * **Boicote ao Snap:** Respeito absoluto à herança tradicional do gerenciamento de pacotes APT, sem telemetria ou processos de loop forçados em segundo plano.
@@ -108,7 +108,7 @@ flatpak install flathub com.spotify.Client -y
 
 ---
 
-### <a name="engenharia-hardware"></a>⚙️ Engenharia de Hardware: O Segredo do Plug-and-Play
+### ⚙️ Engenharia de Hardware: O Segredo do Plug-and-Play
 
 Poucas dores de cabeça superam a frustração de uma tela preta pós-instalação decorrente de incompatibilidade de drivers proprietários. Sob a ótica de quem precisa produzir, o hardware deve obedecer à mente de forma imediata. É nesse gargalo técnico que o Linux Mint consolida sua primazia através do seu célebre **Driver Manager**.
 
@@ -116,34 +116,19 @@ O sistema possui rotinas de detecção offline que identificam adaptadores de re
 
 Para ilustrar a discrepância de atrito na configuração, analisemos a experiência prática entre diferentes ecossistemas:
 
-{{< bizu-tabela headers="Critério, Linux Mint, Distros DIY, Distros Tradicionais" aligns="l,c,c,c" cor="#1ed760" >}}
-  <tr>
-    <td><strong>Configuração de GPU Híbrida</strong></td>
-    <td>Nativa e automática</td>
-    <td>Manual via terminal</td>
-    <td>Requer repositórios terceiros</td>
-  </tr>
-  <tr>
-    <td><strong>Instalação de Drivers Wi-Fi</strong></td>
-    <td>Detecção offline</td>
-    <td>Requer configuração manual</td>
-    <td>Requer firmwares não-livres</td>
-  </tr>
-  <tr>
-    <td><strong>Curva de Aprendizado</strong></td>
-    <td>Quase nula</td>
-    <td>Extremamente alta</td>
-    <td>Moderada</td>
-  </tr>
-{{< /bizu-tabela >}}
+| Critério | Linux Mint | Distros DIY | Distros Tradicionais |
+| --- | --- | --- | --- |
+| **Configuração de GPU Híbrida** | Nativa e automática | Manual via terminal | Requer repositórios terceiros |
+| **Instalação de Drivers Wi-Fi** | Detecção offline | Requer configuração manual | Requer firmwares não-livres |
+| **Curva de Aprendizado** | Quase nula | Extremamente alta | Moderada |
 
 ---
 
-### <a name="cinnamon-desktop"></a>🖥️ Cinnamon Desktop: Interface Tradicional, Performance Moderna
+### 🖥️ Cinnamon Desktop: Interface Tradicional, Performance Moderna
+
+{{< foto src="zena.webp" alt="LINUX MINT ZENA" legenda="LINUX MINT ZENA" class="thumb-frame thumb-right" >}}
 
 O Cinnamon não é uma mera emulação nostálgica da interface clássica do Windows. Trata-se, com efeito, de um projeto moderno construído sob um arcabouço lógico focado em ergonomia cognitiva e respeito à memória muscular do profissional. Ele evita as firulas visuais que drenam os ciclos da CPU.
-
-{{< foto src="zena.webp" alt="Linux Mint Zena" legenda="Linux Mint Zena" >}}
 
 Enquanto ambientes de desktop modernos demandam volumosos recursos de hardware para processar animações triviais, o Cinnamon mantém-se incrivelmente leve. Ele consome uma fração da memória RAM se comparado ao GNOME contemporâneo ou ao Windows 11.
 
@@ -155,7 +140,7 @@ Adicionalmente, sua arquitetura de customização interna permite alterar o visu
 
 ---
 
-### <a name="automatizacao"></a>🚀 O Bizu Prático: Automação de Limpeza e Otimização no Mint
+### 🚀 O Bizu Prático: Automação de Limpeza e Otimização no Mint
 
 Para os profissionais que buscam manter o sistema sempre em seu estado de arte e com latência mínima de leitura em disco, a manutenção manual pode ser um estorvo. O script Bash abaixo automatiza a limpeza profunda do cache do gerenciador APT, remove dependências órfãs obsoletas e sincroniza o ecossistema Flatpak, eliminando runtimes antigos que consomem valioso espaço em SSDs.
 
@@ -169,29 +154,49 @@ Para os profissionais que buscam manter o sistema sempre em seu estado de arte e
 # ==============================================================================
 
 set -euo pipefail
+shopt -s inherit_errexit 2>/dev/null || true
+
+# Garantir execução do APT com privilégios de Superusuário
+
+if [[ $EUID -ne 0 ]]; then
+echo "ERROR: Este script exige privilégios de superusuário (sudo) para operações APT." >&2
+exit 1
+fi
 
 echo "[*] Iniciando rotina de otimização estrutural do Linux Mint..."
 
-# 1. Atualização dos repositórios locais e pacotes APT
+# 1. Atualização dos repositórios locais
 
 echo "[*] Sincronizando repositórios APT..."
-sudo apt update -y
+apt update
 
-# 2. Atualização e purga de runtimes e aplicações Flatpak obsoletas
-
-if command -v flatpak &> /dev/null; then
-echo "[*] Atualizando Flatpaks e removendo runtimes órfãos..."
-flatpak update -y
-flatpak uninstall --unused -y
-fi
-
-# 3. Remoção de pacotes residuais e dependências não utilizadas (APT)
+# 2. Remoção de pacotes residuais e dependências não utilizadas (APT)
 
 echo "[*] Purgando dependências e arquivos órfãos..."
-sudo apt autoremove --purge -y
-sudo apt clean
+apt autoremove --purge -y
+apt clean
 
-# 4. Otimização do banco de dados de fontes e reconstrução de caches de ícones
+# 3. Atualização do ecossistema Flatpak (Efetua chamada segura via usuário real se invocado via sudo)
+
+FLATPAK_BIN=$(command -v flatpak || true)
+if [[ -n "$FLATPAK_BIN" ]]; then
+echo "[*] Atualizando Flatpaks e removendo runtimes órfãos..."
+
+```
+# Se rodando sob sudo, invoca o flatpak no escopo do usuário para não corromper permissões do $HOME
+if [[ -n "${SUDO_USER:-}" ]]; then
+    sudo -u "$SUDO_USER" flatpak update -y
+    sudo -u "$SUDO_USER" flatpak uninstall --unused -y
+else
+    flatpak update -y
+    flatpak uninstall --unused -y
+fi
+
+```
+
+fi
+
+# 4. Otimização do banco de dados de fontes
 
 echo "[*] Reconstruindo cache de fontes do sistema..."
 fc-cache -f -v > /dev/null
@@ -201,7 +206,7 @@ echo "✅ Sistema operacional Linux Mint otimizado com absoluto sucesso!"
 
 ---
 
-### <a name="veredito"></a>🧭 O Veredito: Para Quem é o Linux Mint Hoje?
+### 🧭 O Veredito: Para Quem é o Linux Mint Hoje?
 
 O Linux Mint transcendeu a etiqueta de "sistema para iniciantes". Ele consolidou-se como a ferramenta de escolha para o profissional pragmático que não tem tempo a perder com a manutenção de sistemas operacionais quebrados.
 
@@ -215,7 +220,7 @@ Qual foi a sua pior experiência de incompatibilidade de hardware no ecossistema
 
 ---
 
-### <a name="material"></a>📖 Material Consagrado para Estudo
+### 📖 Material Consagrado para Estudo
 
 {{< intro-recomenda tag="REFERENCIA_HISTORICA" icone="🐧" >}}
 Para dominar o ecossistema Linux sem depender de receitas de bolo prontas, é fundamental beber direto de fontes consolidadas pela comunidade. **Este é o ponto de partida definitivo:**
@@ -227,12 +232,10 @@ O **Guia Foca** é a maior referência em língua portuguesa para quem quer apre
 
 ---
 
-### <a name="fontes"></a>📚 Fontes e Referências
+### 📚 Fontes e Referências
 
 * **Linux Mint Project:** [linuxmint.com](https://linuxmint.com) - Portal oficial e notas de lançamento da distribuição.
 * **Flatpak Package Management:** [flatpak.org](https://flatpak.org) - Documentação oficial sobre segurança e empacotamento em sandbox.
 * **Debian & Ubuntu LTS Lifecycle:** [ubuntu.com/about/release-cycle](https://ubuntu.com/about/release-cycle) - Detalhes técnicos sobre a base de suporte de longo prazo.
 
-```
-
-```
+---

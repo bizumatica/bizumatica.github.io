@@ -1,6 +1,6 @@
 {{ $slot := .Get "slot" | default "4043462063" }}
 
-<div class="ad-wrapper" style="margin: 2.5rem 0; display: flex; flex-direction: column; align-items: center;">
+<div class="ad-container">
     {{ if not hugo.IsServer }}
         <ins class="adsbygoogle"
              style="display:block"
@@ -12,9 +12,9 @@
              (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
     {{ else }}
-        <div style="background: #1a1b27; border: 1px dashed #00ff41; color: #00ff41; padding: 1.5rem; font-family: 'Fira Code', monospace; width: 100%; max-width: 728px; text-align: center;">
-            <p style="margin: 0;">[ ⚡ AD_SYSTEM_STUB: SLOT {{ $slot }} ]</p>
-            <p style="font-size: 0.7rem; color: #ff79c6;">Status: READY_FOR_DEPLOY</p>
+        <div class="ad-dev-stub" role="region" aria-label="Anúncio (Simulação Local)" style="background: #1a1b27; border: 1px dashed #00ff41; color: #00ff41; padding: 1.5rem; font-family: 'Fira Code', monospace; width: 100%; text-align: center; box-sizing: border-box;">
+            <p style="margin: 0; font-weight: bold;">[ ⚡ AD_SYSTEM_STUB: SLOT {{ $slot }} ]</p>
+            <p style="font-size: 0.75rem; color: #ff79c6; margin: 4px 0 0 0;">Status: READY_FOR_DEPLOY (Simulação Local)</p>
         </div>
     {{ end }}
 </div>

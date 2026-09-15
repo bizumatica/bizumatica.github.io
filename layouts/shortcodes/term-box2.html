@@ -1,0 +1,229 @@
+{{/* 
+================================================================================
+  SHORTCODE: Terminal / HUD Box2 (Cyberpunk Tokyo Night DJ Theme)
+  
+  Exemplos de Uso no Markdown (.md):
+
+  1. MODO PILL (Inline / Linha única):
+     {{< term-box2 cmd="git clone https://github.com/bizumatica.git" >}}
+     Shorthand posicional: {{< term-box2 "git status" >}}
+
+  2. MODO JANELA DE TERMINAL (Com código interno):
+     {{< term-box2 lang="bash" title="scripts/deploy.sh" >}}
+     echo "Deploying to Tokyo-Net..."
+     {{< /term-box2 >}}
+
+  3. MODO EDITOR DE CÓDIGO (Variant "editor"):
+     {{< term-box2 variant="editor" title="config.json" lang="json" >}}
+     { "env": "production", "cyber": true }
+     {{< /term-box2 >}}
+
+  4. MODO NAVEGADOR WEB (Variant "browser"):
+     {{< term-box2 variant="browser" title="https://bizumatica.io/shell" >}}
+     Conteúdo visualizado simulando uma janela de browser com SSL.
+     {{< /term-box2 >}}
+
+  5. MODO CLEAN / CARD (Painel limpo para listas, diretórios ou notas):
+     {{< term-box2 variant="clean" title="ESTRUTURA // DIRETÓRIOS" >}}
+     * `./Shell_Scripting_e_Automacao`
+     * `./Ecossistema_Linux`
+     {{< /term-box2 >}}
+
+  5. MODO HERO (Destaque principal de página):
+     {{< term-box2 hero="true" cmd="hugo server -D" >}}
+     Painel de status ativado.
+     {{< /term-box2 >}}
+================================================================================
+*/}}
+
+{{- $cmd := .Get "cmd" -}}
+{{- $title := .Get "title" -}}
+{{- $hero := false -}}
+{{- with .Get "hero" -}}
+  {{- $hero = eq (printf "%v" .) "true" -}}
+{{- end -}}
+{{- $variant := .Get "variant" | default (.Get "style" | default "terminal") -}}
+
+{{/* Resolução de Argumentos Posicionais */}}
+{{- if not .IsNamedParams -}}
+  {{- if eq (len .Params) 1 -}}
+    {{- $cmd = .Get 0 -}}
+  {{- else if ge (len .Params) 2 -}}
+    {{- $title = .Get 0 -}}
+    {{- $cmd = .Get 1 -}}
+  {{- end -}}
+{{- end -}}
+
+{{/* 1. MODO PILL: Linha única Cyberpunk */}}
+{{- if and (not $title) (not $hero) $cmd (eq $variant "terminal") (not .Inner) -}}
+<div class="tn-dj-pill" role="region" aria-label="Comando: {{ $cmd }}">
+  <span class="tn-dj-user">guest@bizumatica</span><span class="tn-dj-sym">:~$</span>
+  <code class="tn-dj-cmd">{{ $cmd }}</code>
+</div>
+{{- else -}}
+
+{{/* 2. MODO WINDOW: HUD Cyber-DJ com variações de layout */}}
+<div class="tn-dj-window term-variant-{{ $variant }}{{ if $hero }} is-hero{{ end }}" role="region">
+
+  <div class="tn-dj-bar">
+    {{- if eq $variant "terminal" -}}
+      <div class="tn-dj-dots" aria-hidden="true">
+        <span class="dot-c"></span><span class="dot-m"></span><span class="dot-y"></span>
+      </div>
+      <div class="tn-dj-title">
+        <span class="glow-c">[</span> {{ if $hero }}bizumatica:~#{{ else }}{{ $title | default "SYS//TERMINAL" }}{{ end }} <span class="glow-m">]</span>
+      </div>
+      <span class="tn-dj-badge">TTY1</span>
+
+    {{- else if or (eq $variant "editor") (eq $variant "code") -}}
+      <div class="tn-dj-meta">
+        <span class="glow-m">//</span>
+        <span class="tn-dj-file">{{ $title | default "script.sh" }}</span>
+      </div>
+      <span class="tn-dj-badge">UTF-8</span>
+
+    {{- else if eq $variant "browser" -}}
+      <div class="tn-dj-nav" aria-hidden="true">
+        <span>«</span><span>»</span><span>↻</span>
+      </div>
+      <div class="tn-dj-url">
+        <span class="glow-c">⚡</span> {{ $title | default "https://bizumatica.io" }}
+      </div>
+      <span class="tn-dj-badge">SSL:RAW</span>
+
+    {{- else if or (eq $variant "clean") (eq $variant "card") -}}
+      <div class="tn-dj-meta">
+        <span class="tn-dj-led-pulse" aria-hidden="true"></span>
+        <strong class="tn-dj-clean-title">{{ $title | default "DIRETÓRIO // CONTEÚDOS" }}</strong>
+      </div>
+      <span class="tn-dj-badge">INDEX</span>
+
+    {{- else -}}
+      <div class="tn-dj-title">{{ $title | default "Bizumática" }}</div>
+    {{- end -}}
+  </div>
+
+  {{- if or $hero $cmd .Inner -}}
+  <div class="tn-dj-body">
+    {{- if $hero -}}
+    <div class="tn-dj-hero-head">
+      <div class="brand-hero">
+        <span class="b-cyan">B</span><span class="b-magenta">Σ</span>
+      </div>
+      <div class="tn-dj-wave" aria-hidden="true"><span class="wave-bar"></span></div>
+    </div>
+    <div class="tn-dj-line">[ SYSTEM STATUS: <span class="glow-c">ONLINE</span> // AUDIO_ENGINE: <span class="glow-m">NEON_WAVE</span> ]</div>
+    {{- end -}}
+
+    {{- if $cmd -}}
+    <div class="tn-dj-pill">
+      <span class="tn-dj-user">guest@bizumatica</span><span class="tn-dj-sym">:~$</span>
+      <code class="tn-dj-cmd">{{ $cmd }}</code>
+    </div>
+    {{- end -}}
+
+    {{- if .Inner -}}
+      {{- $lang := .Get "lang" -}}
+      {{- if $lang -}}
+        {{- highlight (trim .Inner "\n\r") $lang "" -}}
+      {{- else -}}
+        <div class="tn-dj-inner">
+          {{- .Inner | markdownify -}}
+        </div>
+      {{- end -}}
+    {{- end -}}
+  </div>
+  {{- end -}}
+</div>
+{{- end -}}
+
+{{- if not (.Page.Store.Get "tn-dj-term-css") -}}
+  {{- .Page.Store.Set "tn-dj-term-css" true -}}
+  <style type="text/css">
+    .tn-dj-pill {
+      background: #12131a;
+      border: 1px solid rgba(5, 217, 232, 0.4);
+      border-left: 3px solid #ff2a6d;
+      padding: 0.4rem 0.8rem;
+      border-radius: 2px;
+      font-family: ui-monospace, 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      margin: 0.8rem 0;
+      box-shadow: 0 0 10px rgba(5, 217, 232, 0.15);
+    }
+    .tn-dj-user { color: #05d9e8; font-weight: bold; }
+    .tn-dj-sym { color: #ff2a6d; margin-right: 6px; }
+    .tn-dj-cmd { color: #a9b1d6; background: transparent; }
+
+    .tn-dj-window {
+      margin: 1.5rem 0;
+      background: #1a1b26;
+      border: 1px solid rgba(5, 217, 232, 0.3);
+      border-left: 3px solid #ff2a6d;
+      border-radius: 4px;
+      box-shadow: -3px 0 12px rgba(255, 42, 109, 0.25), 0 0 15px rgba(5, 217, 232, 0.15);
+      overflow: hidden;
+    }
+    .tn-dj-bar {
+      background: #12131a;
+      padding: 0.4rem 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(5, 217, 232, 0.2);
+      font-family: ui-monospace, monospace;
+      font-size: 0.75rem;
+    }
+    .tn-dj-dots { display: flex; gap: 5px; }
+    .tn-dj-dots span { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+    .dot-c { background: #05d9e8; box-shadow: 0 0 5px #05d9e8; }
+    .dot-m { background: #ff2a6d; box-shadow: 0 0 5px #ff2a6d; }
+    .dot-y { background: #e0af68; box-shadow: 0 0 5px #e0af68; }
+
+    .tn-dj-title { color: #c0caf5; font-weight: bold; font-size: 0.72rem; letter-spacing: 0.5px; }
+    .glow-c { color: #05d9e8; text-shadow: 0 0 6px rgba(5, 217, 232, 0.6); }
+    .glow-m { color: #ff2a6d; text-shadow: 0 0 6px rgba(255, 42, 109, 0.6); }
+    
+    .tn-dj-badge {
+      background: rgba(255, 42, 109, 0.15);
+      border: 1px solid rgba(255, 42, 109, 0.4);
+      color: #ff2a6d;
+      font-size: 0.6rem;
+      padding: 1px 5px;
+      border-radius: 2px;
+      font-weight: bold;
+    }
+    .tn-dj-meta { display: flex; align-items: center; gap: 6px; }
+    .tn-dj-file { color: #7dcfff; font-weight: 600; }
+
+    .tn-dj-nav { color: #05d9e8; font-weight: bold; letter-spacing: 2px; }
+    .tn-dj-url {
+      background: rgba(0,0,0,0.4);
+      border: 1px solid rgba(5, 217, 232, 0.2);
+      padding: 1px 10px;
+      border-radius: 3px;
+      color: #7dcfff;
+      font-size: 0.7rem;
+    }
+    .tn-dj-led-pulse {
+      width: 7px; height: 7px; background: #05d9e8; border-radius: 50%;
+      box-shadow: 0 0 8px #05d9e8; animation: tn-pulse 1.8s infinite;
+    }
+    .tn-dj-clean-title { color: #bb9af7; letter-spacing: 1px; font-size: 0.75rem; }
+
+    .tn-dj-body { padding: 0.8rem 1rem; background: #1a1b26; }
+    .tn-dj-body pre {
+      margin: 0 !important; padding: 0.8rem 1rem !important;
+      background: #16161e !important; border: 1px solid rgba(255,255,255,0.05);
+      font-family: 'JetBrains Mono', monospace !important; font-size: 0.82rem !important;
+    }
+    .tn-dj-hero-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem; }
+    .brand-hero { font-family: monospace; font-size: 1.4rem; font-weight: 900; }
+    .b-cyan { color: #05d9e8; text-shadow: 0 0 8px #05d9e8; }
+    .b-magenta { color: #ff2a6d; text-shadow: 0 0 8px #ff2a6d; }
+    .tn-dj-line { font-family: monospace; font-size: 0.7rem; color: #565f89; margin-bottom: 0.6rem; }
+    .tn-dj-inner { color: #a9b1d6; font-size: 0.85rem; }
+
+    @keyframes tn-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
+  </style>
+{{- end -}}

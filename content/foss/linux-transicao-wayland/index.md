@@ -14,11 +14,11 @@ math: false
 
 Na engenharia de software, a manutenção de retrocompatibilidade perpétua frequentemente colide com os imperativos de segurança e performance modernos. O sistema de janelas X11 (X.Org), que serviu como a espinha dorsal gráfica do ecossistema Linux por quatro décadas, atingiu seu limite arquitetural.
 
+{{< foto src="wayx11.webp" alt="Diagrama de Arquitetura do Protocolo Wayland vs X11" legenda="A simplificação do pipeline gráfico: o compositor Wayland assume o papel central e elimina intermediários redundantes." class="thumb-frame thumb-right" >}}
+
 Grandes distribuições de peso corporativo, como Fedora e Ubuntu, lideram um movimento irreversível de remoção do suporte nativo ao X11 por padrão. Trata-se de uma transição estruturalizada que redefine como o espaço de usuário (*user space*) interage com o hardware de vídeo.
 
 Para Administradores de Sistemas (SysAdmins) e desenvolvedores, ignorar essa mudança é aceitar o risco de quebras severas em ambientes de produção. Fluxos de trabalho baseados em automação visual, acessibilidade e monitoramento multiplataforma exigem readequação imediata.
-
-{{< foto src="wayx11.webp" alt="Diagrama de Arquitetura do Protocolo Wayland vs X11" legenda="A simplificação do pipeline gráfico: o compositor Wayland assume o papel central e elimina intermediários redundantes." >}}
 
 A técnica sem planejamento gera imprevisibilidade operacional. Diante da maturidade técnica alcançada pelo protocolo Wayland, a comunidade migra em ritmo acelerado para um modelo de renderização mais seguro, fluido e isolado.
 
@@ -150,6 +150,6 @@ Com efeito, os profissionais que anteciparem essa migração e dominarem as nova
 Para expandir seu conhecimento e dominar a gerência de ecossistemas Linux de nível corporativo, é fundamental investir em literaturas que unam teoria e prática de campo. Ao adquirir os livros recomendados pelos nossos links, você apoia a produção de novos conteúdos técnicos neste portal:
 {{< /links >}}
 
-{{< foto src="cover.webp" alt="Seção X11" legenda="Do X11 ao Wayland: mudança gradual." >}}
+{{< foto src="cover.webp" alt="Seção X11" legenda="Do X11 ao Wayland: mudança gradual." class="thumb-frame thumb-center" >}}
 
 {{< compra id="comolinuxfunciona" >}}

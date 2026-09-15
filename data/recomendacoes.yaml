@@ -35,3 +35,19 @@ robbins-classic-shell:
   tipo: "Livro Didático"
   nivel: "Intermediário"
   isbn: "9780596005955"
+
+stevens-apue:
+  titulo: "Advanced Programming in the UNIX Environment"
+  autor: "W. Richard Stevens"
+  tipo: "Livro Didático"
+  nivel: "Avançado"
+  isbn: "9780201563177"
+  cor: "#05d9e8"
+
+newham-bash:
+  titulo: "Learning the bash Shell"
+  autor: "Cameron Newham & Bill Rosenblatt"
+  tipo: "Livro Didático"
+  nivel: "Intermediário"
+  isbn: "9781565923478"
+  cor: "#ff2a6d"

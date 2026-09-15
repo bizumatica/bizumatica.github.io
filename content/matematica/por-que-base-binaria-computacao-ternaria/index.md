@@ -11,9 +11,9 @@ math: true
 
 A ubiquidade do sistema binário nos microprocessadores modernos induz a uma falsa premissa: a de que a base 2 é a única opção matematicamente viável para o processamento de dados. **Não obstante**, a hegemonia do bit não decorre de uma perfeição numérica absoluta, mas de um compromisso histórico entre a **física dos semicondutores** e a **simplicidade da lógica booleana**.
 
-Se pudéssemos projetar a arquitetura dos computadores a partir de um quadro em branco, apoiados puramente pela otimização teórica, estaríamos operando sob uma base diferente.
+{{< foto src="transistor-signal.webp" alt="Diagrama de níveis de tensão e margem de ruído em transistores CMOS" legenda="Margens de ruído elétrico: a estabilidade bistável superou a densidade de estados." class="thumb-frame thumb-center" >}}
 
-{{< foto src="transistor-signal.webp" alt="Diagrama de níveis de tensão e margem de ruído em transistores CMOS" caption="Margens de ruído elétrico: a estabilidade bistável (ON/OFF) superou a densidade de estados analógicos." >}}
+Se pudéssemos projetar a arquitetura dos computadores a partir de um quadro em branco, apoiados puramente pela otimização teórica, estaríamos operando sob uma base diferente.
 
 ---
 
@@ -47,10 +47,6 @@ $$f'(b) = \frac{\ln(b) - 1}{[\ln(b)]^2} = 0 \implies \ln(b) = 1 \implies b = e \
 {{< /axioma >}}
 
 A base teoricamente perfeita é a constante de Euler ($e$). Avaliando os inteiros mais próximos:
-- **Base 2 (Binário):** $f(2) = \frac{2}{\ln(2)} \approx 2,8854$
-- **Base 3 (Ternário):** $f(3) = \frac{3}{\ln(3)} \approx 2,7307$
-
-A base teoricamente perfeita é a constante de Euler ($e$). Avaliando os inteiros mais próximos:
 
 {{< benchmark titulo="Economia do Radix: Base 2 vs. Base 3" label1="Base 2 (Binário)" valor1="2,8854" label2="Base 3 (Ternário)" valor2="2,7307" metric="" cor1="#ff2a6d" cor2="#05d9e8" >}}
 A Base 3 (Ternário) é 5,3% mais eficiente que a Base 2 no armazenamento e custo de linhas de memória.
@@ -60,9 +56,9 @@ A Base 3 (Ternário) é 5,3% mais eficiente que a Base 2 no armazenamento e cust
 
 ## A Alternativa Eleita: Ternário Balanceado ($\{-1, 0, +1\}$)
 
-Entre todas as alternativas ao binário, o **Ternário Balanceado** representa o ápice da elegância matemática. Em vez de utilizar os dígitos $\{0, 1, 2\}$, o sistema utiliza os valores $\{-1, 0, +1\}$.
+Entre todas as alternatives ao binário, o **Ternário Balanceado** representa o ápice da elegância matemática. Em vez de utilizar os dígitos $\{0, 1, 2\}$, o sistema utiliza os valores $\{-1, 0, +1\}$.
 
-{{< foto src="setun-computer.webp" alt="O computador ternário soviético Setun desenvolvido na Universidade de Moscou em 1958" legenda="O computador ternário soviético Setun desenvolvido na Universidade de Moscou em 1958">}}
+{{< foto src="setun-computer.webp" alt="O computador ternário soviético Setun desenvolvido na Universidade de Moscou em 1958" legenda="O computador ternário soviético Setun (Universidade de Moscou, 1958)." class="thumb-frame thumb-center" >}}
 
 ### As Vantagens Algébricas do Ternário Balanceado
 
@@ -78,7 +74,7 @@ Decimal  | Binário (8-bit) | Ternário Balanceado (+, 0, -)
 -13      | 11110011 (C2)   | - - -  (-9 - 3 - 1 = -13)
 {{< /terminal >}}
 
-{{< adsense >}}
+{{< adsense slot="4043462063" >}}
 
 ---
 
@@ -93,31 +89,31 @@ Bizumática - Motor de Análise de Economia de Radix e Ternário Balanceado.
 import math
 
 def decimal_para_ternario_balanceado(n: int) -> str:
-"""Converte um inteiro decimal para representação em Ternário Balanceado (-, 0, +)."""
-if n == 0:
-return "0"
+    """Converte um inteiro decimal para representação em Ternário Balanceado (-, 0, +)."""
+    if n == 0:
+        return "0"
 
-trits = []
-temp = n
-mapa_trits = {-1: "-", 0: "0", 1: "+"}
+    trits = []
+    temp = n
+    mapa_trits = {-1: "-", 0: "0", 1: "+"}
 
-while temp != 0:
-    remainder = temp % 3
-    temp = temp // 3
-    
-    if remainder == 2:
-        remainder = -1
-        temp += 1
-    elif remainder == -2:
-        remainder = 1
-        temp -= 1
+    while temp != 0:
+        remainder = temp % 3
+        temp = temp // 3
         
-    trits.append(mapa_trits[remainder])
-    
-return "".join(reversed(trits))
+        if remainder == 2:
+            remainder = -1
+            temp += 1
+        elif remainder == -2:
+            remainder = 1
+            temp -= 1
+            
+        trits.append(mapa_trits[remainder])
+        
+    return "".join(reversed(trits))
 
-if **name** == "**main**":
-print(f"Decimal: 2026 => Ternário Balanceado: {decimal_para_ternario_balanceado(2026)}")
+if __name__ == "__main__":
+    print(f"Decimal: 2026 => Ternário Balanceado: {decimal_para_ternario_balanceado(2026)}")
 {{< /terminal >}}
 
 ---

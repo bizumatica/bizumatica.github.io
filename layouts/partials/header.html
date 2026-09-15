@@ -1,147 +1,23 @@
 <header class="header">
     <div class="header__inner">
         <div class="header__logo-row">
-            {{- /* Link da Logo com acessibilidade e URL limpa */ -}}
-            <a href="{{ "/" | absURL }}" class="logo-link" aria-label="BIZUMÁTICA - Página Inicial">
-                <div class="logo-box">BIZUMÁTICA</div>
+            <a href="{{ site.Home.RelPermalink }}" class="logo-link" aria-label="BIZUMÁTICA - Página Inicial">
+                <span class="logo-box">BIZUMÁTICA</span>
             </a>
-            <!-- Padrão serrilhado de barras verticais estilo terminal -->
             <div class="terminal-bars" aria-hidden="true"></div>
         </div>
 
-        <nav class="menu-nav" aria-label="Navegação Principal">
-            <ul class="menu__inner">
-                {{- $sections := slice "Linux" "FOSS" "Matemática" "Apps" "Shell" "Buscar" -}}
-
-                {{- range $sections }}
-                <li>
-                    <a href="{{ printf "/%s/" (. | urlize) | absURL }}" aria-label="Seção {{ . }}">
-                        [ {{ . }} ]
-                    </a>
-                </li>
-                {{- end }}
-            </ul>
+        <nav class="top-nav-cyber" aria-label="Navegação Principal">
+            {{- $sections := slice "Linux" "FOSS" "Matemática" "Apps" "Shell" "Buscar" -}}
+            {{- range $sections }}
+                {{- $isSearch := eq . "Buscar" -}}
+                {{- $url := cond $isSearch "/buscar/" (printf "/%s/" (. | urlize)) -}}
+                {{- $label := cond $isSearch "Pesquisar no site" (printf "Seção %s" .) -}}
+                
+                <a href="{{ $url | relLangURL }}" class="nav-item nav-{{ . | urlize }}" aria-label="{{ $label }}">
+                    <span class="nav-text">{{ . }}</span>
+                </a>
+            {{- end }}
         </nav>
     </div>
 </header>
-
-<style>
-    /* Variáveis Globais do Header (Facilidade de Manutenção) */
-    :root {
-        --terminal-yellow: #EEC35E;
-        --terminal-black: #000000;
-        --font-mono: monospace;
-    }
-
-    .header__inner {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 20px 0;
-    }
-
-    .header__logo-row {
-        display: flex;
-        align-items: center;
-        width: 100%;
-        overflow: hidden;
-    }
-
-    .logo-link {
-        text-decoration: none;
-        flex-shrink: 0;
-        display: inline-block;
-    }
-
-    .logo-box {
-        background-color: var(--terminal-yellow);
-        color: var(--terminal-black);
-        padding: 5px 12px;
-        font-weight: bold;
-        font-family: var(--font-mono);
-        display: inline-block;
-        text-transform: uppercase;
-        margin-right: 10px;
-        cursor: pointer;
-        user-select: none;
-    }
-
-    /* Padrão serrilhado de barras verticais pixel-perfect */
-    .terminal-bars {
-        flex-grow: 1;
-        min-width: 40px;
-        height: 32px;
-        background-image: linear-gradient(to right, var(--terminal-yellow) 1px, transparent 1px);
-        background-size: 4px 100%;
-        background-repeat: repeat-x;
-        align-self: center;
-    }
-
-    .menu-nav {
-        margin-top: 25px;
-        width: 100%;
-    }
-
-    .menu__inner {
-        display: flex;
-        flex-wrap: wrap;
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        width: 100%;
-        justify-content: space-between;
-        gap: 12px 10px;
-    }
-
-    .menu__inner li {
-        flex: 0 1 auto;
-        text-align: center;
-    }
-
-    .menu__inner li a {
-        color: var(--terminal-yellow);
-        text-decoration: none;
-        font-family: var(--font-mono);
-        font-size: 1.1rem;
-        white-space: nowrap;
-        display: inline-block;
-        transition: filter 0.2s ease, text-decoration 0.2s ease;
-    }
-
-    .menu__inner li a:hover,
-    .menu__inner li a:focus-visible {
-        text-decoration: underline;
-        filter: brightness(1.2);
-        outline: none;
-    }
-
-    /* Media Queries para adaptação elástica */
-    @media (max-width: 960px) {
-        .menu__inner {
-            justify-content: space-between;
-            gap: 14px 8px;
-        }
-    }
-
-    @media (max-width: 640px) {
-        .menu__inner {
-            justify-content: space-around;
-            gap: 16px 10px;
-        }
-
-        .menu__inner li a {
-            font-size: 1.05rem;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .menu__inner {
-            justify-content: space-between;
-            gap: 15px 5px;
-        }
-
-        .menu__inner li a {
-            font-size: 0.95rem;
-        }
-    }
-</style>

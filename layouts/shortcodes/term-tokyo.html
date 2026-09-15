@@ -1,0 +1,101 @@
+{{- $lang := .Get "lang" | default (.Get 0) | default "bash" -}}
+{{- $titulo := .Get "titulo" | default (.Get 1) | default "TERMINAL // SYS.RAW" -}}
+{{- $options := .Get "options" | default "" -}}
+
+<div class="tn-cyber-term">
+  <div class="tn-cyber-head">
+    <div class="tn-cyber-status">
+      <span class="tn-led"></span>
+      <span class="tn-host">TOKYO-NET</span>
+    </div>
+    <div class="tn-cyber-title">
+      <span class="tn-bracket">[</span>{{ $titulo }}<span class="tn-bracket">]</span>
+    </div>
+    <div class="tn-cyber-meta">
+      <span class="tn-tag">{{ upper $lang }}</span>
+    </div>
+  </div>
+  <div class="tn-cyber-body">
+    {{- highlight (trim .Inner "\n\r") $lang $options -}}
+  </div>
+</div>
+
+{{- if not (.Page.Store.Get "tn-cyber-term-css") -}}
+  {{- .Page.Store.Set "tn-cyber-term-css" true -}}
+  <style type="text/css">
+    .tn-cyber-term {
+      margin: 2rem 0;
+      background: #1a1b26;
+      border: 1px solid #05d9e8;
+      border-left: 3px solid #ff2a6d;
+      border-radius: 2px;
+      box-shadow: 0 0 15px rgba(5, 217, 232, 0.25), -4px 0 12px rgba(255, 42, 109, 0.4);
+      overflow: hidden;
+      position: relative;
+    }
+    .tn-cyber-head {
+      background: #12131a;
+      padding: 0.4rem 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(5, 217, 232, 0.3);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.7rem;
+    }
+    .tn-cyber-status {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #9ece6a;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .tn-led {
+      width: 7px;
+      height: 7px;
+      background: #05d9e8;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #05d9e8, 0 0 12px #05d9e8;
+      animation: tn-pulse 2s infinite ease-in-out;
+    }
+    .tn-host { color: #7dcfff; text-transform: uppercase; font-size: 0.65rem; }
+    .tn-cyber-title {
+      color: #bb9af7;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-shadow: 0 0 6px rgba(187, 154, 247, 0.5);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 50%;
+    }
+    .tn-bracket { color: #ff2a6d; }
+    .tn-cyber-meta { display: flex; align-items: center; }
+    .tn-tag {
+      background: rgba(5, 217, 232, 0.1);
+      border: 1px solid rgba(5, 217, 232, 0.4);
+      color: #05d9e8;
+      padding: 1px 6px;
+      border-radius: 2px;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .tn-cyber-body pre {
+      margin: 0 !important;
+      padding: 1.1rem 1.25rem !important;
+      background: #1a1b26 !important;
+      font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace !important;
+      font-size: 0.82rem !important;
+      line-height: 1.5 !important;
+      overflow-x: auto !important;
+    }
+    .tn-cyber-body code { color: #a9b1d6 !important; background: transparent !important; }
+    @keyframes tn-pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+  </style>
+{{- end -}}

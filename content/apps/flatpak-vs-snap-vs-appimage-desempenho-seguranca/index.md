@@ -12,6 +12,8 @@ math: false
 
 A busca pela distribuição Linux perfeita foi, por décadas, marcada pela fragmentação vertiginosa dos ecossistemas de empacotamento. **Não obstante**, a promessa dos formatos universais não visava apenas suprimir a celeuma das dependências cruzadas (*dependency hell*), mas sim construir um amálgama eficiente entre **portabilidade de software**, **isolamento de execução** e **estabilidade do sistema base**.
 
+{{< foto src="snap-flatpak-appimge.webp" alt="Flatpak, Snap e Appimage" legenda="Os três formatos universais do Linux." class="thumb-frame thumb-center" >}}
+
 Chegados a 2026, é forçoso reconhecer que a disputa entre Flatpak, Snap e AppImage transcendeu a mera preferência de comunidade. O debate atual reside na arquitetura de segurança do kernel, na gestão de estado do sistema de arquivos e no impacto computacional dos runtimes em ambientes de produção e desktop.
 
 ---
@@ -222,7 +224,5 @@ O **Snap** mantém seu valor estratégico inegável no ecossistema de servidores
 
 A excelência em engenharia de software exige a seleção criteriosa da ferramenta correta, fundamentada pela mitigação de riscos e pelo desempenho computacional da máquina.
 {{< /conclusao >}}
-
-```
 
 ---

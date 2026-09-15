@@ -12,8 +12,8 @@ enableEmoji = true
 
 [languages]
   [languages.pt-br]
-    languageCode = "pt-BR"
-    languageName = "Português"
+    locale = "pt-BR"
+    label = "Português"
     title = "Bizumática"
     weight = 1
 
@@ -142,6 +142,7 @@ relativeURLs = false
     [markup.goldmark.parser]
       [markup.goldmark.parser.attribute]
         title = true
+        block = true
 
     [markup.goldmark.renderer]
       unsafe = true

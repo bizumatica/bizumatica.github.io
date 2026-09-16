@@ -29,7 +29,7 @@ affiliate:
 
 O lançamento do **Rocky Linux 10** marca uma mudança de paradigma drástica na engenharia interna das distribuições de nível empresarial baseadas em código aberto (*FOSS*). Após anos consolidando sua posição como o substituto espiritual do CentOS tradicional, a RESF (*Rocky Enterprise Software Foundation*) reestruturou completamente sua infraestrutura de compilação.
 
-{{< foto src="prod-rocky-linux-10-enterprise.webp" alt="Rocky Linux 10.1" legenda="Interface gráfica padrão do ambiente corporativo estável do Rocky Linux 10." >}}
+{{< foto src="prod-rocky-linux-10-enterprise.webp" alt="Rocky Linux 10.1" legenda="Interface gráfica padrão do ambiente corporativo estável do Rocky Linux 10." class="thumb-frame thumb-right"  >}}
 
 O projeto abandonou o sistema de build customizado *Peridot* e migrou integralmente para o **Koji**, o robusto e consagrado ecossistema de compilação utilizado historicamente pelo Fedora e pelo Red Hat Enterprise Linux (RHEL). Essa movimentação não foi estética: trata-se de uma decisão estratégica para blindar a integridade da *software supply chain* contra ataques vetoriais e garantir previsibilidade absoluta na reprodução de pacotes binários estáveis por uma janela de suporte que se estende pelos próximos dez anos.
 
@@ -57,7 +57,7 @@ Onde $C_i$ representa o custo computacional isolado de compilação de cada paco
 
 Com o amadurecimento das matrizes de código do ecossistema Enterprise Linux, as duas distribuições comunitárias predominantes adotaram filosofias de engenharia e escolhas de infraestrutura divergentes nesta versão 10:
 
-<div class="tabela-compacta">
+{{< bizu-tabela caption="Matriz Comparativa | Rocky Linux 10 x AlmaLinux 10" cor="#05d9e8" >}}
 
 | Critério Técnico | Rocky Linux 10 (RESF) | AlmaLinux 10 (Benfeitora) |
 | :--- | :--- | :--- |
@@ -65,8 +65,7 @@ Com o amadurecimento das matrizes de código do ecossistema Enterprise Linux, as
 | **Arquiteturas** | Suporte Nativo a RISC-V (`riscv64`) estável | Foco restrito a x86_64, ARM64, s390x e ppc64le |
 | **Isolamento** | Ambientes limpos via `mock` isolados de rede | Contenerização elástica distribuída |
 | **Alinhamento** | Kernel Corporativo com retrocompatibilidade total | Kernel Otimizado com foco em mitigação agressiva |
-
-</div>
+{{< /bizu-tabela >}}
 
 A decisão do Rocky Linux 10 de incorporar o suporte estável a RISC-V representa uma antecipação de mercado sem precedentes no mundo empresarial. Ambientes de computação de borda (*Edge Computing*), aceleradores de Inteligência Artificial e datacenters hiper-escala baseados em silício customizado e arquitetura RISC-V agora contam com o mesmo padrão de segurança, ciclo de vida e gerenciamento de pacotes (`dnf/rpm`) exigido pelas corporações financeiras tradicionais.
 
@@ -80,23 +79,39 @@ Administradores de sistemas que realizam espelhamento (*mirroring*) ou gerenciam
 
 ### Script de Validação e Sincronismo de Repositórios
 
-```bash
+{{< term-tokyo >}}
+
 #!/usr/bin/env bash
 # ==============================================================================
-# BIZUMÁTICA LABS - DIAGNÓSTICO E VERIFICAÇÃO DE REPOSITÓRIOS ROCKY LINUX 10
+# BIZUMÁTICA LABS - DIAGNÓSTICO ROCKY LINUX 10 (COMPACT & D5 COMPLIANT)
 # ==============================================================================
 set -euo pipefail
+shopt -s inherit_errexit 2>/dev/null || true
 
-echo "===> [1/3] Verificando a presença de pacotes da arquitetura instalada..."
-uname -m
+cleanup() { local ec=$?; [[ $ec -eq 0 ]] || printf "\e[31m[ERROR]\e[0m Diagnóstico abortado (code %d)\n" "$ec" >&2; }
+trap cleanup EXIT
 
-echo "===> [2/3] Listando repositórios ativos do Rocky 10 e chaves GPG da RESF..."
-dnf repolist -v | grep -E "(repo id|repo name|baseurl)"
+log() { printf "\e[%sm[%s]\e[0m %s\n" "$1" "$2" "$3" >&2; } # $1: ANSI Color, $2: Level, $3: Message
 
-echo "===> [3/3] Checando integridade da assinatura de segurança de pacotes core..."
-rpm -q --qf '%{NAME}-%{VERSION}-%{RELEASE} --> Assinado por: %{RSAHEADER:pgpslot}\n' glibc | head -n 1
+main() {
+    command -v uname dnf rpm grep >/dev/null 2>&1 || { log 31 ERROR "Binários essenciais ausentes no PATH"; exit 1; }
+    [[ -f /etc/rocky-release || -f /etc/redhat-release ]] || log 33 WARN "Ambiente não-Rocky/RHEL"
 
-```
+    local arch; arch=$(uname -m)
+    log 32 INFO "[1/3] Arquitetura: ${arch}"
+
+    log 32 INFO "[2/3] Mapeando repositórios DNF5..."
+    local repos; repos=$(dnf repolist -v 2>/dev/null | grep -iE "(repo\s*(id|name|baseurl)|base\s*url)" || true)
+    [[ -n "${repos}" ]] && echo "${repos}" || log 33 WARN "Nenhum parâmetro de repositório capturado"
+
+    log 32 INFO "[3/3] Assinatura GPG do pacote core (glibc)..."
+    local sig; sig=$(rpm -q --qf '%{NAME}-%{VERSION}-%{RELEASE} | Sig: %|PGPSIG?{%{PGPSIG}}:{%|RSAHEADER?{%{RSAHEADER}}:(não assinado)|}|\n' glibc 2>/dev/null || echo "Pacote glibc ausente")
+    echo "${sig}"
+}
+
+main "$@"
+
+{{< /term-tokyo >}}
 
 Se o seu sistema foi migrado ou instalado corretamente a partir das novas mídias geradas via Koji, o comando `rpm` acima retornará a validação da assinatura digital oficial da chave primária do Rocky Linux 10, garantindo que o binário em execução é idêntico byte a byte ao homologado pela comunidade internacional.
 

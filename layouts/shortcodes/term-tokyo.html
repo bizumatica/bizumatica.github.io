@@ -1,3 +1,23 @@
+{{/* 
+  MODO DE USO / SINTAXE DO SHORTCODE (term-tokyo):
+  
+  1. Chamada por parâmetros nomeados (Recomendado):
+     {{< term-tokyo lang="bash" titulo="CONFIGURANDO REDE" options="lineNos=true" >}}
+     echo "Hello Cyberpunk"
+     {{< /term-tokyo >}}
+
+  2. Chamada posicional curta (Parâmetro 0 = lang, Parâmetro 1 = titulo):
+     {{< term-tokyo "python" "MAIN SCRIPT" >}}
+     def main():
+         print("Initializing system...")
+     {{< /term-tokyo >}}
+
+  3. Chamada mínima (Defaults: lang="bash", titulo="TERMINAL // SYS.RAW"):
+     {{< term-tokyo >}}
+     systemctl restart nginx
+     {{< /term-tokyo >}}
+*/}}
+
 {{- $lang := .Get "lang" | default (.Get 0) | default "bash" -}}
 {{- $titulo := .Get "titulo" | default (.Get 1) | default "TERMINAL // SYS.RAW" -}}
 {{- $options := .Get "options" | default "" -}}

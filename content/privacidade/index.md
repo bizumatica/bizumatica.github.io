@@ -1,40 +1,59 @@
 ---
-slug: "privacidade"
 title: "Política de Privacidade"
-date: 2026-04-09
+slug: "privacidade"
+description: "Diretiva de privacidade, tratamento de dados, conformidade LGPD e diretrizes de publicidade (Google AdSense) do ecossistema Bizumática."
+summary: "Transparência sobre coleta de dados, cookies de publicidade contextual, métricas de tráfego e direitos do usuário sob a LGPD."
+date: 2026-04-09T10:00:00-03:00
 draft: false
-layout: "page"
+layout: "single"
+type: "page"
+math: false
 ---
 
-A presente Diretiva de Conformidade e Privacidade regula os processos de tratamento de dados, armazenamento e auditoria de tráfego no ecossistema digital do **Bizumática**. Esta página legal foi estruturada de forma transparente para garantir que nossos visitantes compreendam como as informações são processadas em nossa infraestrutura baseada em geradores de sites estáticos (JAMstack) e servidores de distribuição.
+A presente Política de Privacidade e Diretiva de Conformidade regula os processos de tratamento de dados, telemetria de tráfego e veiculação de anúncios no ecossistema digital do **Bizumática**. Este documento foi elaborado em estrita observância à Lei Geral de Proteção de Dados Pessoais (LGPD - Lei nº 13.709/2018) e às Políticas de Editores do Google (Google AdSense e Google Ad Manager).
 
 ### 1. Coleta e Processamento de Informações
-Nós coletamos informações para fornecer serviços melhores, mais rápidos e semanticamente relevantes a todos os nossos usuários. O processamento de dados no **Bizumática** ocorre estritamente sob duas modalidades operacionais:
 
-* **Informações fornecidas ativamente por você:** Dados cadastrais, como endereços de correio eletrônico (e-mails), submetidos voluntariamente através de formulários de contato, caixas de comentários ou inscrições em nossa newsletter técnica.
-* **Informações de navegação e metadados de rede:** Coletamos de forma automatizada dados sobre quais serviços você utiliza e como interage com eles. Isso inclui logs de requisições HTTP originados quando você visualiza um artigo de matemática aplicada, interage com nossos repositórios de FOSS ou executa rotinas de teste documentadas no portal.
+Como uma plataforma baseada em Arquitetura Estática (Jamstack) e distribuição via rede de entrega de conteúdo (*Edge Network*), limitamos o processamento de dados ao estritamente necessário para garantir performance, segurança e monetização sustentável:
 
-### 2. Cookies, Web Beacons e Diretrizes Google AdSense
-O Google, como fornecedor de serviços de terceiros, utiliza tecnologias de rastreamento lógico conhecidas como cookies para veicular e exibir anúncios contextuais neste site:
+* **Dados fornecidos voluntariamente:** Endereço de e-mail e nome submetidos de forma ativa pelo usuário em formulários de contato, inscrição em *newsletters* ou caixas de comentários. Esses dados são processados exclusivamente para a finalidade informada no momento da coleta.
+* **Metadados de tráfego e logs de rede:** Registros automatizados de requisições HTTP/HTTPS (incluindo endereço IP anonimizado, *User-Agent* do navegador, tipo de dispositivo, páginas solicitadas e carimbo de data/hora), processados na camada de *Edge* para mitigação de ataques (DDoS/botnets) e otimização da entrega estática.
 
-* **Mecanismo de Cookies (incluindo tecnologias legadas/DART):** Através do processamento de identificadores criptográficos, o Google e seus parceiros homologados podem exibir anúncios personalizados para você com base no seu histórico de visitas a este portal e a outros domínios distribuídos na rede mundial de computadores.
-* **Controle de Consentimento:** O usuário detém total autonomia para desativar a publicidade personalizada. Para mitigar o rastreamento, basta visitar a página oficial de Configurações de Anúncios e a Política de Privacidade da rede de conteúdo e anúncios do Google.
-* **Métricas com Google Analytics:** Paralelamente, utilizamos ferramentas de telemetria analítica para inspecionar o tráfego do site. Este serviço isola dados estritamente anônimos (como tipo de arquitetura do navegador, sistema operacional e tempo de permanência em tela) para otimização de performance de renderização.
+### 2. Publicidade Digital e Cookies do Google AdSense
 
-### 3. Destinação e Uso das Informações
-Toda e qualquer informação coletada em nossa infraestrutura é utilizada exclusivamente para os seguintes propósitos de engenharia e experiência:
+O **Bizumática** utiliza o Google AdSense e tecnologias de publicidade de terceiros para exibição de anúncios. O funcionamento desta camada segue os seguintes parâmetros técnicos e legais:
 
-* Operar, manter, depurar e expandir o conteúdo analítico do blog.
-* Personalizar a experiência de navegação do usuário através da injeção de blocos de anúncios altamente relevantes e otimizados via AdSense.
-* Processar requisições de suporte, enviar atualizações sobre infraestrutura técnica ou responder a dúvidas submetidas via formulário de comunicação direta.
+* **Cookies de Terceiros e Tecnologias de Identificação:** O Google e seus parceiros de publicidade usam cookies, identificadores móveis e métricas de armazenamento local para veicular anúncios personalizados com base em suas visitas a este e a outros sites da internet.
+* **Anonimização de IP e Telemetria:** As ferramentas de medição de audiência e desempenho de renderização utilizam dados estatísticos agregados e IP anonimizado para análise de tempo de permanência, resposta de layout e Core Web Vitals (INP, LCP, CLS).
+* **Gestão e Opt-Out de Publicidade:** O usuário pode gerenciar suas preferências de publicidade personalizada a qualquer momento acessando as [Configurações de Anúncios do Google](https://adssettings.google.com) ou através do portal independente [Network Advertising Initiative (NAI)](https://optout.networkadvertising.org).
 
-### 4. Segurança de Dados e Filosofia FOSS
-Implementamos medidas de segurança estruturais e lógicas para salvaguardar suas informações pessoais contra acessos não autorizados. No entanto, em conformidade com os axiomas de segurança da informação, lembramos que nenhum método de transmissão de pacotes pela internet ou armazenamento em bancos de dados eletrônicos é 100% inviolável. Como um projeto nativo focado na cultura **FOSS (Free and Open Source Software)**, prezamos pela transparência absoluta em todo o ciclo de vida do tratamento de dados.
+### 3. Base Legal e Finalidade do Tratamento (LGPD)
 
-### 5. Consentimento e Aceite Termos
-Ao utilizar a nossa infraestrutura, navegar pelas nossas seções técnicas e consumir nossos dados estáticos, você declara estar ciente e concordar com os termos estipulados nesta política de privacidade.
+O tratamento de dados pessoais no portal fundamenta-se nos seguintes pilares do Artigo 7º da LGPD:
 
-### 6. Canal de Comunicação e Contato
-Para fins de auditoria, exercício de direitos de privacidade ou esclarecimento de dúvidas técnicas sobre esta política, o usuário pode acionar diretamente o administrador do sistema através do endereço de e-mail institucional: `julio@bizumatica.com.br`.
+* **Legítimo Interesse (Art. 7º, IX):** Para garantia da estabilidade, segurança em *Edge*, prevenções contra fraudes de cliques (*invalid click traffic*) e otimização de performance do site.
+* **Consentimento (Art. 7º, I):** Para envio de comunicações técnicas por e-mail e exibição de publicidade personalizada via rede AdSense, coletado de forma clara e revogável por meio de nossos mecanismos de consentimento (*Cookie Consent Banner* / CMP).
+* **Cumprimento de Obrigação Legal (Art. 7º, II):** Para guarda de logs de acesso a aplicações de internet, conforme exigido pelo Marco Civil da Internet (Lei nº 12.965/2014).
 
-*Última atualização: 09 de Abril de 2026.*
+### 4. Armazenamento, Segurança e Filosofia FOSS
+
+Por ser um projeto focado na cultura **FOSS (Free and Open Source Software)**, prezamos pela minimização da coleta (*Data Minimization*). Não mantemos bancos de dados relacionais locais contendo dados pessoais de navegação. 
+
+Adotamos criptografia em trânsito via TLS 1.3/HTTPS, políticas rígidas de *Content Security Policy* (CSP) e isolamento de dependências para prevenir injeção de scripts maliciosos (*Cross-Site Scripting* - XSS).
+
+### 5. Direitos do Titular de Dados
+
+Em conformidade com o Artigo 18 da LGPD, você possui o direito de solicitar a qualquer momento:
+
+1. Confirmação da existência de tratamento de seus dados pessoais.
+2. Acesso, correção, anonimização ou eliminação de dados desnecessários ou excessivos.
+3. Revogação do consentimento concedido para comunicações diretas ou rastreamento.
+
+### 6. Encarregado de Proteção de Dados (DPO) e Contato
+
+Para exercer seus direitos de privacidade, realizar auditorias de conformidade ou sanar dúvidas sobre o tratamento de dados no **Bizumática**, entre em contato com o responsável pela administração e segurança do sistema:
+
+* **Encarregado / Administrador:** Julio Prata (`BackInBash`)
+* **Canal Oficial de Privacidade:** `julio@bizumatica.com.br`
+
+*Última revisão técnica e jurídica: 09 de Abril de 2026.*

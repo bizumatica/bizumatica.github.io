@@ -3,7 +3,7 @@
         
         {{/* Bloco Principal: Hero / Boas-vindas */}}
         <div class="post" data-pagefind-body>
-            {{ if .Title }}
+            {{ if and .Title (not .Params.hideTitle) }}
                 <div class="terminal-centered-header" style="text-align: center;">
                     <h1 class="post-title logo__text" style="color: var(--primary-color); font-family: monospace; display: inline-block; margin-bottom: 10px;">{{ .Title }}</h1>
                     <div class="terminal-line" style="margin: 0 auto 20px auto;">:::::::::::::::::::::::::::::</div>
@@ -193,13 +193,11 @@
 }
 </style>
 
-{{/* Script Inquebrável com Cloudflare Trace Bypass (Imune a AdBlockers) */}}
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     fetch('https://www.cloudflare.com/cdn-cgi/trace')
         .then(response => response.text())
         .then(text => {
-            // O endpoint do Cloudflare retorna dados textuais em linhas (ex: ip=192.168.0.1)
             const lines = text.split('\n');
             const ipLine = lines.find(line => line.startsWith('ip='));
             if (ipLine) {
@@ -211,7 +209,6 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         })
         .catch(error => {
-            // Fallback elegante caso esteja completamente offline
             const ipSpan = document.getElementById('user-ip');
             if (ipSpan) ipSpan.textContent = '127.0.0.1';
         });

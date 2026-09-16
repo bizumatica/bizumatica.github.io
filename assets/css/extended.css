@@ -536,7 +536,8 @@ ins.adsbygoogle img {
 .ad-container:has(ins.adsbygoogle) {
   min-height: 280px;
   margin: 2.5rem auto;
-  contain: layout slots;
+  /* Cria um novo contexto de formatação e isola a pintura no Edge/Browser */
+  contain: layout paint; 
 }
 
 /* Garante margem no ambiente de desenvolvimento */
@@ -930,4 +931,29 @@ figure.artigo-foto-container .artigo-foto-legenda {
         font-size: 0.85rem;
         padding: 5px 8px;
     }
+}
+
+.introduction {
+  margin-top: 2.1875rem; /* 35px */
+  text-align: left;
+}
+.manifesto-box {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border-left: 4px solid var(--primary-color, #00ff66);
+  background-color: var(--bg-secondary, #121212);
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+.counter-wrapper {
+  text-align: center;
+  margin-top: 2.5rem;
 }

@@ -1,39 +1,50 @@
 ---
-slug: "termos-de-uso"
 title: "Termos de Uso"
-date: 2026-06-08
+slug: "termos-de-uso"
+description: "Condições de uso, licenciamento de código FOSS, isenção de responsabilidade técnica para scripts Bash/Linux e diretrizes AdTech do Bizumática."
+summary: "Regras de uso da plataforma, licenciamento MIT/CC BY-SA 4.0, Isenção de Responsabilidade para execução de comandos CLI e políticas anti-fraude de anúncios."
+date: 2026-06-08T10:00:00-03:00
 draft: false
-layout: "page"
+layout: "single"
+type: "page"
+math: false
 ---
 
-O presente Termo de Condições de Uso e Licença de Navegação rege o acesso, a interação e a replicação de dados contidos no ecossistema digital do **Bizumática**. Ao navegar por nossa infraestrutura estática, consumir nossas análises de código aberto ou copiar rotinas de automação, você declara estar ciente e em estrita conformidade com as cláusulas operacionais e jurídicas detalhadas a seguir.
+O presente Termo de Condições de Uso e Licença de Navegação rege o acesso, a interação e o reuso de código e dados contidos no ecossistema digital do **Bizumática**. Ao navegar por nossa infraestrutura estática, consumir nossas análises, executar comandos de terminal ou adaptar nossas rotinas de automação, você concorda integralmente com as disposições operacionais e jurídicas a seguir.
 
-### 1. Escopo do Serviço e Consumo de Conteúdo
-O **Bizumática** opera como um portal de curadoria técnica, análise de software livre (FOSS), engenharia de infraestrutura Linux e matemática aplicada. O conteúdo é distribuído de forma pública e gratuita, visando a disseminação de conhecimento puramente educacional e informativo.
+### 1. Escopo do Serviço e Caráter Educacional
 
-### 2. Isenção Estrita de Responsabilidade Executiva (Cláusula de Sandbox)
-Dada a natureza técnica das publicações que envolvem *Shell Scripting*, administração de sistemas Linux e automações estruturais:
+O **Bizumática** opera como uma plataforma pública de engenharia, dedicada à curadoria técnica, análise de software livre (FOSS), administração de sistemas Linux/Unix, automação de infraestrutura e matemática aplicada. Todo o conteúdo é distribuído estaticamente para fins puramente educacionais, informativos e de pesquisa de engenharia.
 
-* **Ambiente de Homologação Obrigatório:** Toda e qualquer linha de código, script Bash, comando de terminal ou arquitetura lógica disponibilizada neste portal deve ser testada e validada pelo usuário em um ambiente de desenvolvimento ou homologação isolado antes de qualquer implementação em sistemas de produção.
-* **Ausência de Garantia Implícita:** O **Bizumática** e seus editores não fornecem garantias de *runtime*, infalibilidade ou compatibilidade universal para os scripts compartilhados. 
-* **Inexistência de Nexo Causal por Danos:** Nós não nos responsabilizamos por perdas de dados, corrupção de sistemas de arquivos, indisponibilidade de servidores (downtime), falhas de segurança ou qualquer outro dano colateral derivado da execução, compilação ou parsing dos códigos presentes nas nossas páginas. A responsabilidade pela execução do comando em linha de comando (CLI) é 100% do operador do sistema.
+### 2. Isenção Estrita de Responsabilidade Técnica (Cláusula Sandbox/CLI)
+
+Dada a natureza avançada das publicações que envolvem *Shell Scripting* (Bash/POSIX), utilitários GNU/Linux, manipulação de Kernel, permissões administrativas e automação de redes:
+
+* **Ambiente de Homologação Isolado:** Toda instrução, script, comando CLI, rotina de deployment ou arquitetura apresentada deve obrigatoriamente ser analisada, auditada e executada pelo usuário em ambiente de testes/sandbox (*containers*, máquinas virtuais ou ambientes de staging isolados) antes de qualquer aplicação em infraestrutura de produção.
+* **Ausência de Garantia (*AS IS*):** Todo o código e documentação são fornecidos "no estado em que se encontram" (*AS IS*), sem garantias explícitas ou implícitas de funcionalidade, idempotência, segurança absoluta ou compatibilidade com distribuições/versões específicas.
+* **Exclusão Absoluta de Nexo Causal:** O **Bizumática** e seus mantenedores não se responsabilizam por danos diretos ou indiretos — incluindo perda de dados, corrupção de sistemas de arquivos, indisponibilidade de serviços (*downtime*), quebras de segurança ou falhas de hardware/software — decorrentes do *parsing*, interpretação, alteração ou execução de comandos sugeridos no portal. A responsabilidade pela invocação de rotinas no terminal é exclusiva do operador do sistema.
 
 ### 3. Propriedade Intelectual e Licenciamento FOSS
-Prezamos pela filosofia do software livre e do conhecimento compartilhado, aplicando as seguintes regras de direitos autorais:
 
-* **Materiais Textuais e Ensaios:** Os textos explicativos, análises conceituais, manifestos e artigos originais são de propriedade intelectual do **Bizumática**, sendo protegidos pela legislação de direitos autorais. A reprodução parcial é permitida, desde que acompanhada de atribuição de fonte explícita e link canônico para a URL original.
-* **Códigos e Scripts:** Salvo indicação em contrário dentro do próprio arquivo de código, todos os scripts, funções e algoritmos disponibilizados no portal são distribuídos sob licenças de código aberto compatíveis com a cultura FOSS, permitindo modificação, estudo e redistribuição livre.
+O **Bizumática** é guiado pelos princípios da cultura do Software Livre e do Conhecimento Aberto:
 
-### 4. Navegação Otimizada e Monetização (Google AdSense)
-Para manter a viabilidade financeira da infraestrutura sem comprometer a experiência do usuário (UX), o portal integra redes de anúncios de terceiros:
+* **Código-Fonte e Scripts:** Salvo indicação em contrário no próprio arquivo ou diretório, todos os scripts Bash, funções, snippets de código e automações publicados no portal são licenciados sob a **Licença MIT**. Você é livre para copiar, modificar, mesclar e distribuir o código, desde que mantida a isenção de responsabilidade.
+* **Conteúdo Editorial e Análises:** Os ensaios, textos explicativos, diagramas e artigos originais estão protegidos e distribuídos sob a licença **Creative Commons Atribuição-CompartilhaIgual 4.0 Internacional (CC BY-SA 4.0)**. É permitida a citação e reprodução parcial ou integral, desde que atribuída a autoria com link canônico visível para a URL original do **Bizumática**.
 
-* **Respeito aos Espaços Publicitários:** O usuário se compromete a interagir com o site de forma legítima. São expressamente proibidas práticas de engenharia reversa para manipulação de cliques, injeção de scripts maliciosos (XSS) para adulterar os blocos do Google AdSense ou o uso de automações (bots/scrapers) com a finalidade de inflar artificialmente as métricas de tráfego.
-* **Rastreamento Técnico:** A veiculação de anúncios contextualizados depende do processamento de cookies gerenciados pelo Google, conforme detalhado em nossa [Política de Privacidade](/privacidade/).
+### 4. Uso Aceitável, Integridade de Tráfego e Monetização (AdSense/GAM)
 
-### 5. Modificações na Infraestrutura Legal
-O administrador do ecossistema **Bizumática** reserva-se o direito de atualizar, modificar ou refatorar estes Termos de Uso a qualquer momento, visando adequação a novas exigências do programa Google AdSense ou atualizações na legislação de dados vigente. As alterações entram em vigor imediatamente após sua publicação no ambiente de produção.
+Para garantir a viabilidade operacional e a conformidade com o programa **Google AdSense** e redes de anúncios parceiras, o usuário compromete-se a:
 
-### 6. Legislação e Foro
-Este termo é regido pelas leis da República Federativa do Brasil. Para a resolução de quaisquer controvérsias técnicas ou jurídicas oriundas do uso deste ecossistema, fica eleito o foro do domicílio do administrador do portal.
+* **Interação Legítima:** Não praticar engenharia reversa, alteração de cliente JS (`adsbygoogle.js`), automação de cliques (*invalid click activity*), nem utilizar *botnets*, *scrapers* ou rotinas headless com o propósito de manipular métricas de tráfego, impressão de anúncios ou engajamento.
+* **Proibição de Frame e Ad-Injection:** É expressamente vedado incorporar as páginas do portal em *iFrames* de terceiros, utilizar técnicas de *clickjacking* ou injetar scripts maliciosos (XSS) que alterem a disposição dos blocos publicitários.
+* **Respeito aos Mecanismos de Consentimento:** O processamento de cookies publicitários e métricas de audiência é regido de forma transparente por nossa [Política de Privacidade](/privacidade/).
 
-*Última atualização: 08 de Junho de 2026.*
+### 5. Alterações nos Termos e Infraestrutura
+
+O administrador do **Bizumática** reserva-se o direito de atualizar este documento a qualquer tempo para adequação técnica, atendimento às Políticas de Editores do Google ou atualizações regulatórias. As alterações passam a vigorar imediatamente a partir de sua publicação e compilação na camada de entrega (*Edge Network*).
+
+### 6. Legislação Aplicável e Foro
+
+Estes Termos de Uso são regidos e interpretados segundo as leis da República Federativa do Brasil. Fica eleito o foro do domicílio do administrador do portal para dirimir quaisquer controvérsias decorrentes da utilização do portal e de seus artefatos técnicos.
+
+*Última revisão técnica e jurídica: 08 de Junho de 2026.*

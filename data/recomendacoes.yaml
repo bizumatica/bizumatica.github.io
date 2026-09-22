@@ -51,3 +51,12 @@ newham-bash:
   nivel: "Intermediário"
   isbn: "9781565923478"
   cor: "#ff2a6d"
+
+raymond-unix:
+  titulo: "The Art of UNIX Programming"
+  autor: "Eric S. Raymond"
+  tipo: "Ensaios & Engenharia de Software"
+  nivel: "Avançado"
+  isbn: "9780131429017"
+  cor: "#05d9e8"
+  url: "https://openlibrary.org/works/OL6036022W/The_art_of_UNIX_programming?utm_source=gemini"

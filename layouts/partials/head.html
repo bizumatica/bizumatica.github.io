@@ -1,5 +1,8 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>{{ if .IsHome }}{{ $.Site.Title }}{{ else }}{{ .Title }} | {{ $.Site.Title }}{{ end }}</title>
+
 <meta name="description" content="{{ if .IsHome }}{{ $.Site.Params.Subtitle }}{{ else if .Description}}{{ .Description | plainify }}{{ else }}{{ .Summary | plainify }}{{ end }}" />
 <meta name="keywords" content="{{ with .Params.Keywords }}{{ delimit . ", " }}{{ else }}{{ $.Site.Params.Keywords }}{{ end }}" />
 
@@ -11,6 +14,10 @@
 
 <link rel="canonical" href="{{ .Permalink }}" />
 
+<!-- Preload da Fonte Principal para Evitar Layout Shift no Mobile -->
+<link rel="preload" href="{{ "fonts/noto-sans-jp-v56-latin-regular.woff2" | absURL }}" as="font" type="font/woff2" crossorigin>
+
+<!-- Pipeline Unificado de CSS Minificado via Hugo Pipes -->
 {{ $css := resources.Match "css/*.css" }}
 {{ range $css }}
   {{ $styles := . | minify | fingerprint }}
@@ -22,6 +29,7 @@
 
 <link rel="shortcut icon" href="{{ "favicon.png" | absURL }}">
 
+<!-- OpenGraph / Twitter Cards -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="{{ if .IsHome }}{{ $.Site.Title }}{{ else }}{{ .Title }}{{ end }}" />
 <meta name="twitter:description" content="{{ if .Description }}{{ .Description | plainify }}{{ else }}{{ .Summary | plainify }}{{ end }}" />

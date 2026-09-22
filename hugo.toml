@@ -27,6 +27,21 @@ canonifyURLs = false
 relativeURLs = false
 
 # ==============================================================================
+# MINIFICAÇÃO GLOBAL DO BUILD (OTIMIZAÇÃO DE PERFORMANCE MOBILE)
+# ==============================================================================
+[minify]
+  minifyOutput = true
+  [minify.tdewolff]
+    [minify.tdewolff.html]
+      keepComments = false
+      keepSpecialComments = true
+      keepDefaultAttrVals = true
+      keepDocumentTags = true
+      keepEndTags = true
+      keepQuotes = true
+      keepWhitespace = false
+
+# ==============================================================================
 # TIPOS DE MÍDIA E FORMATOS DE SAÍDA (Obrigatório para API de Busca / JSON AST)
 # ==============================================================================
 [outputs]
@@ -76,8 +91,9 @@ relativeURLs = false
 # ==============================================================================
 [imaging]
   resampleFilter = "lanczos"
-  quality = 85
+  quality = 82
   anchor = "Center"
+  hint = "photo"
 
 # ==============================================================================
 # TAXONOMIAS (Prevenção de Thin Content e Taxonomias Fantasmas)

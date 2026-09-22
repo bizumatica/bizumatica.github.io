@@ -7,7 +7,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('/fonts/noto-sans-jp-v52-latin-regular.woff2') format('woff2');
+  src: url('/fonts/noto-sans-jp-v56-latin-regular.woff2') format('woff2');
 }
 
 @font-face {
@@ -15,7 +15,7 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('/fonts/noto-sans-jp-v52-latin-700.woff2') format('woff2');
+  src: url('/fonts/noto-sans-jp-v56-latin-700.woff2') format('woff2');
 }
 
 :root {

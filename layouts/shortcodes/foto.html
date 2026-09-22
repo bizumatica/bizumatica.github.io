@@ -1,7 +1,6 @@
 {{- /* 
   Shortcode Foto/Diagrama Hardened - Bizumática
-  Resolve caminhos de Leaf Bundles (.Page.Resources) para evitar HTTP 404 em listagens de seção/home.
-  Uso: {{< foto src="cover.webp" alt="Linux Mint - Cinnamon Desktop" legenda="Linux Mint - Cinnamon" class="thumb-frame thumb-right" >}}
+  Resolve caminhos de Leaf Bundles (.Page.Resources) mantendo proporções nativas contra CLS.
 */ -}}
 {{- $src := .Get "src" -}}
 {{- $alt := .Get "alt" | default (.Get "legenda") | htmlEscape -}}
@@ -9,18 +8,21 @@
 {{- $class := .Get "class" | default "artigo-foto-container" -}}
 
 {{- $imgURL := "" -}}
+{{- $imgWidth := "" -}}
+{{- $imgHeight := "" -}}
 
 {{- if $src -}}
   {{- if or (hasPrefix $src "http://") (hasPrefix $src "https://") (hasPrefix $src "//") (hasPrefix $src "/") -}}
-    {{- /* URLs externas ou absolutas mantêm seu valor original */ -}}
     {{- $imgURL = $src -}}
   {{- else -}}
-    {{- /* Busca o arquivo dentro dos recursos do Leaf Bundle da página */ -}}
     {{- $res := .Page.Resources.GetMatch $src -}}
     {{- if $res -}}
       {{- $imgURL = $res.RelPermalink -}}
+      {{- if ne $res.MediaType.SubType "svg" -}}
+        {{- $imgWidth = $res.Width -}}
+        {{- $imgHeight = $res.Height -}}
+      {{- end -}}
     {{- else -}}
-      {{- /* Fallback para imagens em /static/ caso não seja encontrado no Bundle */ -}}
       {{- $imgURL = printf "/%s" (strings.TrimPrefix "/" $src) -}}
     {{- end -}}
   {{- end -}}
@@ -34,6 +36,8 @@
     class="artigo-foto" 
     loading="lazy"
     decoding="async"
+    {{ if $imgWidth }}width="{{ $imgWidth }}"{{ end }}
+    {{ if $imgHeight }}height="{{ $imgHeight }}"{{ end }}
   >
   {{- with $legenda -}}
     <figcaption class="artigo-foto-legenda">:: [ {{ upper . }} ] ::</figcaption>

@@ -1,10 +1,26 @@
 {{- with .Params.image -}}
     {{- $image := $.Resources.GetMatch . -}}
     {{- if $image -}}
-        {{- /* Se a imagem está na pasta do post (Bundle) */ -}}
-        <img src="{{ $image.RelPermalink }}" class="post-cover" alt="{{ $.Title }}" />
+        {{- /* Se a imagem está na pasta do post (Bundle) - extrai dimensões para evitar CLS */ -}}
+        <img 
+            src="{{ $image.RelPermalink }}" 
+            class="post-cover" 
+            alt="{{ $.Title }}" 
+            loading="eager" 
+            fetchpriority="high" 
+            decoding="async"
+            width="{{ $image.Width }}" 
+            height="{{ $image.Height }}"
+        />
     {{- else -}}
         {{- /* Se a imagem está na pasta static/ ou é uma URL externa */ -}}
-        <img src="{{ . | absURL }}" class="post-cover" alt="{{ $.Title }}" />
+        <img 
+            src="{{ . | absURL }}" 
+            class="post-cover" 
+            alt="{{ $.Title }}" 
+            loading="eager" 
+            fetchpriority="high" 
+            decoding="async"
+        />
     {{- end -}}
 {{- end -}}

@@ -1,6 +1,6 @@
 {{- /* 
   Shortcode Foto/Diagrama Hardened - Bizumática
-  Resolve caminhos de Leaf Bundles (.Page.Resources) mantendo proporções nativas contra CLS.
+  Resolve caminhos de Leaf Bundles (.Page.Resources) e Assets mantendo proporções nativas contra CLS.
 */ -}}
 {{- $src := .Get "src" -}}
 {{- $alt := .Get "alt" | default (.Get "legenda") | htmlEscape -}}
@@ -12,10 +12,15 @@
 {{- $imgHeight := "" -}}
 
 {{- if $src -}}
-  {{- if or (hasPrefix $src "http://") (hasPrefix $src "https://") (hasPrefix $src "//") (hasPrefix $src "/") -}}
+  {{- if or (hasPrefix $src "http://") (hasPrefix $src "https://") (hasPrefix $src "//") -}}
     {{- $imgURL = $src -}}
   {{- else -}}
+    {{- $pathClean := strings.TrimPrefix "/" $src -}}
     {{- $res := .Page.Resources.GetMatch $src -}}
+    {{- if not $res -}}
+      {{- $res = resources.Get $pathClean -}}
+    {{- end -}}
+
     {{- if $res -}}
       {{- $imgURL = $res.RelPermalink -}}
       {{- if ne $res.MediaType.SubType "svg" -}}
@@ -23,7 +28,7 @@
         {{- $imgHeight = $res.Height -}}
       {{- end -}}
     {{- else -}}
-      {{- $imgURL = printf "/%s" (strings.TrimPrefix "/" $src) -}}
+      {{- $imgURL = printf "/%s" $pathClean -}}
     {{- end -}}
   {{- end -}}
 {{- end -}}

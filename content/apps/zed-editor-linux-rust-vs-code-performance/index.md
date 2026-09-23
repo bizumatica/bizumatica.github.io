@@ -44,7 +44,7 @@ O compartilhamento de contexto de código opera com criptografia ponta a ponta e
 
 Sob a ótica da engenharia de desempenho, a substituição dos nós da DOM por matrizes de vértices aceleradas por hardware reduz drasticamente a resposta ao toque das teclas. Por conseguinte, a latência do cursor atinge marcas sub-milissegundas, superando até mesmo editores de terminal tradicionais em ambientes gráficos complexos.
 
-{{< axioma titulo="Axioma da Eficiência Nactiva" referencia="Sistemas de Baixo Nível" cor="#ff9d00" >}}
+{{< axioma titulo="Axioma da Eficiência Nativa" referencia="Sistemas de Baixo Nível" cor="#ff9d00" >}}
 A complexidade de uma camada de abstração jamais deve ultrapassar a complexidade do problema que ela se propõe a resolver. A verdadeira elegância computacional reside em maximizar o trabalho útil realizado por ciclo de clock.
 {{< /axioma >}}
 

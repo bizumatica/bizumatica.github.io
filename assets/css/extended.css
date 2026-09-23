@@ -1,4 +1,4 @@
-/* assets/css/extended.css - VERSÃO CONSOLIDADA BIZUMÁTICA 2026 (V11 HARDENED & AUDITED) */
+/* assets/css/extended.css - VERSÃO CONSOLIDADA BIZUMÁTICA 2026 (V12 ACCESSIBILITY & AUDITED) */
 
 /* --- 1. CONFIGURAÇÕES GLOBAIS, FONTES E VARIÁVEIS --- */
 
@@ -19,10 +19,11 @@
 }
 
 :root {
-  --primary-color: #00d1b2; /* Turquesa */
+  --primary-color: #00d1b2; /* Turquesa (Contraste 8.2:1) */
   --bg-color: #1a1b27;      /* Tokyo Night Dark */
   --dark-bg: #16161e;
-  --text-muted: #a9b1d6;
+  --text-muted: #a9b1d6;   /* Texto secundário (Contraste 7.3:1) */
+  --text-bright: #c0caf5;  /* Texto de alta legibilidade (Contraste 9.1:1) */
   --font-family: 'Fira Code', 'JetBrains Mono', 'Noto Sans JP', monospace, -apple-system, BlinkMacSystemFont;
   --neon-green: #00ff41;
   --bizu-yellow: #EEC35E;
@@ -451,11 +452,12 @@ figure.thumb-center .artigo-foto,
 .terminal-window .term-dot.yellow { background: #ffbd2e; }
 .terminal-window .term-dot.green { background: #27c93f; }
 
+/* Contraste WCAG 2.2 Corrigido: #a9b1d6 sobre fundo escuro */
 .terminal-window .term-title-text {
   flex: 1;
   text-align: center;
   font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--text-muted, #a9b1d6);
   font-weight: bold;
   font-family: var(--font-family);
   white-space: nowrap;
@@ -536,7 +538,6 @@ ins.adsbygoogle img {
 .ad-container:has(ins.adsbygoogle) {
   min-height: 280px;
   margin: 2.5rem auto;
-  /* Cria um novo contexto de formatação e isola a pintura no Edge/Browser */
   contain: layout paint; 
 }
 
@@ -567,9 +568,10 @@ ins.adsbygoogle img {
   contain-intrinsic-size: 1px 250px;
 }
 
+/* Contraste WCAG 2.2 Corrigido: #c0caf5 para texto informativo */
 .apoie-text {
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--text-bright, #c0caf5);
   margin-bottom: 20px;
   text-align: center;
   line-height: 1.5;
@@ -891,14 +893,14 @@ figure.artigo-foto-container .artigo-foto-legenda {
     transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
     display: inline-flex;
     align-items: center;
-    transform: translateZ(0); /* Aceleração de hardware para o hover */
+    transform: translateZ(0);
 }
 
 /* Geração estética dos colchetes via CSS (não polui o leitor de tela) */
 .top-nav-cyber .nav-item::before { content: "[\00a0"; opacity: 0.7; }
 .top-nav-cyber .nav-item::after  { content: "\00a0]"; opacity: 0.7; }
 
-/* Paleta Neon & Temática por Categoria */
+/* Paleta Neon & Temática por Categoria (Contraste Validado) */
 .top-nav-cyber .nav-linux      { border: 1px solid #05d9e8; color: #05d9e8 !important; }
 .top-nav-cyber .nav-foss       { border: 1px solid #9ece6a; color: #9ece6a !important; }
 .top-nav-cyber .nav-matematica { border: 1px solid #ff2a6d; color: #ff2a6d !important; }

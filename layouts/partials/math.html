@@ -1,14 +1,30 @@
 {{- $renderMath := or .Params.math .Site.Params.math (eq .Section "matematica") -}}
 {{- if $renderMath -}}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" 
-    onload='renderMathInElement(document.body, {
+<!-- Otimização de conexão com a CDN (sem impacto no layout) -->
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+
+<!-- Estilo e scripts do KaTeX -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+
+<!-- Execução isolada após a montagem completa do HTML -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var targetNode = document.querySelector(".post-content") || document.querySelector("article") || document.querySelector(".content") || document.body;
+    if (typeof renderMathInElement === "function" && targetNode) {
+      renderMathInElement(targetNode, {
         delimiters: [
-            {left: "$$", right: "$$", display: true},
-            {left: "$", right: "$", display: false}
+          {left: "$$", right: "$$", display: true},
+          {left: "$", right: "$", display: false}
         ],
-        throwOnError : false
-    });'>
+        ignoredTags: ["script", "noscript", "style", "textarea", "pre", "code"],
+        ignoredClasses: ["no-katex"],
+        throwOnError: false,
+        errorCallback: function() {}
+      });
+    }
+  });
 </script>
 {{- end -}}

@@ -13,7 +13,7 @@
 {{- $isEager := eq (string (.Get "eager" | default "false")) "true" -}}
 
 {{- $processedImg := "" -}}
-{{- $imgWidth := $targetWidth -}}
+{{- $imgWidth := "" -}}
 {{- $imgHeight := "" -}}
 
 {{- if $srcRaw -}}

@@ -3,7 +3,15 @@
 
 <title>{{ if .IsHome }}{{ $.Site.Title }}{{ else }}{{ .Title }} | {{ $.Site.Title }}{{ end }}</title>
 
-<meta name="description" content="{{ if .IsHome }}{{ $.Site.Params.Subtitle }}{{ else if .Description}}{{ .Description | plainify }}{{ else }}{{ .Summary | plainify }}{{ end }}" />
+<!-- Meta Description Robusta com Cascata de Fallbacks e Limpeza para SEO -->
+{{- $desc := "" -}}
+{{- if .IsHome -}}
+  {{- $desc = .Description | default $.Site.Params.Subtitle | default $.Site.Params.description -}}
+{{- else -}}
+  {{- $desc = .Description | default .Summary | default $.Site.Params.description -}}
+{{- end -}}
+<meta name="description" content="{{ $desc | plainify | htmlEscape | chomp }}" />
+
 <meta name="keywords" content="{{ with .Params.Keywords }}{{ delimit . ", " }}{{ else }}{{ $.Site.Params.Keywords }}{{ end }}" />
 
 {{ if .Params.noindex }}
@@ -14,42 +22,72 @@
 
 <link rel="canonical" href="{{ .Permalink }}" />
 
-<!-- Preload da Fonte Principal para Evitar Layout Shift no Mobile -->
-<link rel="preload" href="{{ "fonts/noto-sans-jp-v56-latin-regular.woff2" | absURL }}" as="font" type="font/woff2" crossorigin>
+<!-- Preload Otimizado da Fonte Principal (Suporte CORS e URL Relativa) -->
+<link rel="preload" href="{{ "fonts/noto-sans-jp-v56-latin-regular.woff2" | relURL }}" as="font" type="font/woff2" crossorigin="anonymous">
 
-<!-- Pipeline Unificado de CSS Minificado via Hugo Pipes -->
-{{ $css := resources.Match "css/*.css" }}
-{{ range $css }}
-  {{ $styles := . | minify | fingerprint }}
-  <link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}">
+<!-- Processamento Não-Bloqueante de CSS via Injeção Inline Minificada -->
+{{ $cssFiles := resources.Match "css/*.css" }}
+{{ if $cssFiles }}
+  {{ $cssBundle := $cssFiles | resources.Concat "css/bundle.css" | minify }}
+  <style>{{ $cssBundle.Content | safeCSS }}</style>
 {{ end }}
 
-{{ if (fileExists "static/terminal.css") }}<link rel="stylesheet" href="{{ "terminal.css" | absURL }}">{{ end }}
-{{ if (fileExists "static/style.css") }}<link rel="stylesheet" href="{{ "style.css" | absURL }}">{{ end }}
+<!-- Fallback e Estilos Adicionais Estáticos em Modo Não-Bloqueante (URL Relativa) -->
+{{ if (fileExists "static/terminal.css") }}
+  <link rel="preload" href="{{ "terminal.css" | relURL }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="{{ "terminal.css" | relURL }}"></noscript>
+{{ end }}
+{{ if (fileExists "static/style.css") }}
+  <link rel="preload" href="{{ "style.css" | relURL }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="{{ "style.css" | relURL }}"></noscript>
+{{ end }}
 
-<link rel="shortcut icon" href="{{ "favicon.png" | absURL }}">
+<link rel="shortcut icon" href="{{ "favicon.png" | relURL }}">
 
 <!-- OpenGraph / Twitter Cards -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="{{ if .IsHome }}{{ $.Site.Title }}{{ else }}{{ .Title }}{{ end }}" />
-<meta name="twitter:description" content="{{ if .Description }}{{ .Description | plainify }}{{ else }}{{ .Summary | plainify }}{{ end }}" />
+<meta name="twitter:description" content="{{ $desc | plainify | htmlEscape | chomp }}" />
 
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
 <meta property="og:title" content="{{ if .IsHome }}{{ $.Site.Title }}{{ else }}{{ .Title }}{{ end }}">
 <meta property="og:url" content="{{ .Permalink }}" />
 <meta property="og:site_name" content="{{ $.Site.Title }}" />
-<meta property="og:description" content="{{ if .Description }}{{ .Description | plainify }}{{ else }}{{ .Summary | plainify }}{{ end }}" />
+<meta property="og:description" content="{{ $desc | plainify | htmlEscape | chomp }}" />
 
 {{ if .Params.image }}
     {{ $imagePath := printf "images/%s" .Params.image }}
     {{ if (fileExists (printf "static/%s" $imagePath)) }}
-        <meta property="og:image" content="{{ $imagePath | absURL }}" />
-        <meta name="twitter:image" content="{{ $imagePath | absURL }}" />
+        <meta property="og:image" content="{{ $imagePath | relURL }}" />
+        <meta name="twitter:image" content="{{ $imagePath | relURL }}" />
     {{ end }}
 {{ else if $.Site.Params.DefaultImage }}
-    <meta property="og:image" content="{{ $.Site.Params.DefaultImage | absURL }}" />
-    <meta name="twitter:image" content="{{ $.Site.Params.DefaultImage | absURL }}" />
+    <meta property="og:image" content="{{ $.Site.Params.DefaultImage | relURL }}" />
+    <meta name="twitter:image" content="{{ $.Site.Params.DefaultImage | relURL }}" />
 {{ end }}
 
 {{ partial "math.html" . }}
 {{ partial "extended_head.html" . }}
+
+<!-- Lazy Load de Alta Performance do Google AdSense -->
+{{ if not hugo.IsServer }}
+<script>
+  (function() {
+    var adLoaded = false;
+    function loadAdSense() {
+      if (adLoaded) return;
+      adLoaded = true;
+      var script = document.createElement('script');
+      script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ $.Site.Params.adsense.client | default "ca-pub-3733806324330520" }}";
+      script.async = true;
+      script.crossOrigin = "anonymous";
+      document.head.appendChild(script);
+    }
+
+    var events = ['scroll', 'touchstart', 'mousemove', 'keydown'];
+    events.forEach(function(e) {
+      window.addEventListener(e, loadAdSense, { passive: true, once: true });
+    });
+  })();
+</script>
+{{ end }}

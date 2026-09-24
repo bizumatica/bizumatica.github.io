@@ -98,15 +98,15 @@ span.math-term {
   font-style: normal;
 }
 
-/* Justificação tipográfica controlada com suporte a hifenização */
+/* Justificação tipográfica controlada sem hifenização */
 .post-content p,
 .post p,
 .content p {
   text-align: justify;
   text-justify: inter-word;
-  hyphens: auto;
-  -webkit-hyphens: auto;
-  -ms-hyphens: auto;
+  hyphens: none;
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
 }
 
 /* Proteção contra quebra de layout/leitura em blocos estruturados */

@@ -10,17 +10,17 @@
 {{- else -}}
   {{- $desc = .Description | default .Summary | default $.Site.Params.description -}}
 {{- end -}}
-<meta name="description" content="{{ $desc | plainify | htmlEscape | chomp }}" />
+<meta name="description" content="{{ $desc | plainify | htmlEscape | chomp }}">
 
-<meta name="keywords" content="{{ with .Params.Keywords }}{{ delimit . ", " }}{{ else }}{{ $.Site.Params.Keywords }}{{ end }}" />
+<meta name="keywords" content="{{ with .Params.Keywords }}{{ delimit . ", " }}{{ else }}{{ $.Site.Params.Keywords }}{{ end }}">
 
 {{ if .Params.noindex }}
-    <meta name="robots" content="noindex, nofollow" />
+    <meta name="robots" content="noindex, nofollow">
 {{ else }}
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow">
 {{ end }}
 
-<link rel="canonical" href="{{ .Permalink }}" />
+<link rel="canonical" href="{{ .Permalink }}">
 
 <!-- Preload Otimizado da Fonte Principal (Suporte CORS e URL Relativa) -->
 <link rel="preload" href="{{ "fonts/noto-sans-jp-v56-latin-regular.woff2" | relURL }}" as="font" type="font/woff2" crossorigin="anonymous">
@@ -50,25 +50,25 @@
 <link rel="manifest" href="{{ "site.webmanifest" | relURL }}">
 
 <!-- OpenGraph / Twitter Cards -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="{{ if .IsHome }}{{ $.Site.Title }}{{ else }}{{ .Title }}{{ end }}" />
-<meta name="twitter:description" content="{{ $desc | plainify | htmlEscape | chomp }}" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ if .IsHome }}{{ $.Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+<meta name="twitter:description" content="{{ $desc | plainify | htmlEscape | chomp }}">
 
-<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
 <meta property="og:title" content="{{ if .IsHome }}{{ $.Site.Title }}{{ else }}{{ .Title }}{{ end }}">
-<meta property="og:url" content="{{ .Permalink }}" />
-<meta property="og:site_name" content="{{ $.Site.Title }}" />
-<meta property="og:description" content="{{ $desc | plainify | htmlEscape | chomp }}" />
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:site_name" content="{{ $.Site.Title }}">
+<meta property="og:description" content="{{ $desc | plainify | htmlEscape | chomp }}">
 
 {{ if .Params.image }}
     {{ $imagePath := printf "images/%s" .Params.image }}
     {{ if (fileExists (printf "static/%s" $imagePath)) }}
-        <meta property="og:image" content="{{ $imagePath | relURL }}" />
-        <meta name="twitter:image" content="{{ $imagePath | relURL }}" />
+        <meta property="og:image" content="{{ $imagePath | relURL }}">
+        <meta name="twitter:image" content="{{ $imagePath | relURL }}">
     {{ end }}
 {{ else if $.Site.Params.DefaultImage }}
-    <meta property="og:image" content="{{ $.Site.Params.DefaultImage | relURL }}" />
-    <meta name="twitter:image" content="{{ $.Site.Params.DefaultImage | relURL }}" />
+    <meta property="og:image" content="{{ $.Site.Params.DefaultImage | relURL }}">
+    <meta name="twitter:image" content="{{ $.Site.Params.DefaultImage | relURL }}">
 {{ end }}
 
 {{ partial "math.html" . }}

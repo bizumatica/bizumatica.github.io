@@ -42,7 +42,12 @@
   <noscript><link rel="stylesheet" href="{{ "style.css" | relURL }}"></noscript>
 {{ end }}
 
-<link rel="shortcut icon" href="{{ "favicon.png" | relURL }}">
+<!-- Declaração do Bloco de Favicons e PWA Manifest (BΣ) -->
+<link rel="icon" type="image/x-icon" href="{{ "favicon.ico" | relURL }}">
+<link rel="icon" type="image/svg+xml" href="{{ "favicon.svg" | relURL }}">
+<link rel="icon" type="image/png" sizes="96x96" href="{{ "favicon-96x96.png" | relURL }}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ "apple-touch-icon.png" | relURL }}">
+<link rel="manifest" href="{{ "site.webmanifest" | relURL }}">
 
 <!-- OpenGraph / Twitter Cards -->
 <meta name="twitter:card" content="summary_large_image" />

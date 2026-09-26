@@ -2,7 +2,7 @@
 
 ![Architecture](https://img.shields.io/badge/Architecture-Leaf_Bundles_v6.0-BA1650?logo=hugo&logoColor=white)
 ![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub_Actions_%26_Cloudflare-2088FF?logo=cloudflare&logoColor=orange)
-![Last Commit](https://img.shields.io/github/last-commit/bizumatica/bizumatica.github.io?display_timestamp=author_date&label=%C3%BAltimo%20push&color=00ffcc&logo=github&logoColor=white)
+![GitHub last commit](https://img.shields.io/github/last-commit/bizumatica/bizumatica.github.io/main?label=%C3%BAltimo%20push&color=00ffcc&logo=github&logoColor=white)
 ![Shell Script](https://img.shields.io/badge/Shell_Script-Bash_v6.0_Shielded-4EAA25?logo=gnu-bash&logoColor=white)
 ![Environment](https://img.shields.io/badge/Python-3.10%2B_Venv-3776AB?logo=python&logoColor=white)
 

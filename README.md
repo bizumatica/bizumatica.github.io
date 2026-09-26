@@ -1,9 +1,10 @@
-
 # 🚀 Bizumática
 
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/bizumatica/bizumatica.github.io/deploy.yml?branch=main&label=pipeline&color=00ffcc)
-![GitHub License](https://img.shields.io/badge/license-MIT-8532D3?logo=github&logoColor=white)
+![GitHub last commit](https://img.shields.io/github/last-commit/bizumatica/bizumatica.github.io?display_timestamp=author_date&label=%C3%BAltimo%20push&color=00ffcc&logo=github&logoColor=white)
 ![Hugo Version](https://img.shields.io/badge/hugo-extended-blue?logo=hugo&logoColor=white)
+![PWA Ready](https://img.shields.io/badge/PWA-enabled-000000?logo=pwa&logoColor=00ffcc)
+![GitHub License](https://img.shields.io/badge/license-MIT-8532D3?logo=github&logoColor=white)
 
 > Ecossistema estático focado em educação tecnológica, matemática elementar, shell scripting avançado e curadoria programática de hardware.
 

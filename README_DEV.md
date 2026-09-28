@@ -1,12 +1,14 @@
 # 🛠️ Bizumática - Developer & Architecture Docs
 
-![Architecture](https://img.shields.io/badge/Architecture-Leaf_Bundles_v6.0-BA1650?logo=hugo&logoColor=white)
-![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub_Actions_%26_Cloudflare-2088FF?logo=cloudflare&logoColor=orange)
-![GitHub last commit](https://img.shields.io/github/last-commit/bizumatica/bizumatica.github.io/main?label=%C3%BAltimo%20push&color=00ffcc&logo=github&logoColor=white)
-![Shell Script](https://img.shields.io/badge/Shell_Script-Bash_v6.0_Shielded-4EAA25?logo=gnu-bash&logoColor=white)
-![Environment](https://img.shields.io/badge/Python-3.10%2B_Venv-3776AB?logo=python&logoColor=white)
+![Architecture](https://img.shields.io/badge/Architecture-Leaf_Bundles_v6.0-ff4088?logo=hugo&logoColor=white&style=flat-square)
+![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub_Actions_%26_Cloudflare-7aa2f7?logo=cloudflare&logoColor=white&style=flat-square)
+![GitHub last commit](https://img.shields.io/github/last-commit/bizumatica/bizumatica.github.io/main?label=%C3%BAltimo%20push&color=2ac3de&logo=github&logoColor=white&style=flat-square)
+![Shell Script](https://img.shields.io/badge/Shell_Script-Bash_v6.0_Shielded-4EAA25?logo=gnubash&logoColor=white&style=flat-square)
+![Environment](https://img.shields.io/badge/Python-3.10%2B_Venv-3776AB?logo=python&logoColor=white&style=flat-square)
 
 Este documento detalha as especificações de engenharia de software, o pipeline de dados automatizado e as travas de segurança implementadas a partir da **versão 6.0** do ciclo de automação do portal.
+
+```
 
 ---
 
@@ -18,18 +20,18 @@ O Bizumática utiliza estritamente o padrão de **Leaf Bundles** do Hugo para ga
 
 1. **Proibição Absoluta de Arquivos Soltos:** Nenhum artigo deve existir como `.md` solto diretamente nas pastas de seções. Cada artigo possui sua própria pasta.
 2. **Leaf Bundles Atômicos:** O ponto de entrada de um artigo dentro de sua subpasta é obrigatoriamente chamado `index.md`.
-3. **Branch Bundles Puros:** Arquivos `_index.md` pertencem exclusivamente à raiz das seções para fins de listagem nativa de categorias do Hugo. 
+3. **Branch Bundles Puros:** Arquivos `_index.md` pertencem exclusivamente à raiz das seções para fins de listagem nativa de categorias do Hugo.
 
 ```text
 content/
-├── curadoria/
-│   ├── _index.md                    <-- Correto (Branch Bundle)
+├── apps/
+│   ├── _index.md                    <-- Correto (Branch Bundle)*
 │   └── steam-deck/
 │       ├── index.md                 <-- Correto (Leaf Bundle)
 │       └── cover.webp               <-- Ativo isolado
-└── _index.md                        <-- Capa do Portal
-
+└── _index.md                        <-- Capa do Portal*
 ```
+*não utilizado neste projeto
 
 > ⚠️ **TRAVA ANTIFALHA:** É expressamente proibida a criação da estrutura `pasta/_index/index.md`. Esse comportamento legado quebrava o encadeamento de links internos e foi permanentemente mitigado.
 
@@ -85,10 +87,11 @@ rm -rf public/ resources/_gen/
 git pull origin main
 
 ```
+
 ---
 
-**Versão da Arquitetura Interna:** 6.0 
+**Versão da Arquitetura Interna:** 6.0
 
-![Static Badge](https://img.shields.io/badge/pipeline-status-%23FF9F7A?logo=githubactions&logoColor=white) ![Static Badge](https://img.shields.io/badge/serverless-100%25-%23056C5C?logo=serverless&logoColor=white) ![Static Badge](https://img.shields.io/badge/cloud-protected-orange?logo=icloud&logoColor=white)
+![Static Badge](https://img.shields.io/badge/pipeline-status-%23FF9F7A?logo=githubactions&logoColor=white&style=flat-square) ![Static Badge](https://img.shields.io/badge/serverless-100%25-%23056C5C?logo=serverless&logoColor=white&style=flat-square) ![Static Badge](https://img.shields.io/badge/cloud-protected-orange?logo=icloud&logoColor=white&style=flat-square)
 
 ```

@@ -1,3 +1,40 @@
+{{/* 
+========================================================================================
+SHORTCODE: conclusao.html (ou fechamento.html)
+========================================================================================
+Descrição:
+  Renderiza um bloco destacado para o encerramento do artigo com caixa de síntese e 
+  seção expansível/estruturada para fontes e referências bibliográficas.
+
+Parâmetros (Todos Opcionais):
+  - titulo       : Título do bloco principal. Default: "Conclusão"
+  - tituloFontes : Título da seção de fontes. Default: "Referências & Fontes"
+  - fontes       : String contendo os links/fontes. Aceita quebras de linha com '\n',
+                   que são convertidas automaticamente em tópicos (•).
+  - cor          : Cor em hex para borda, ícone e título. Default: "#05d9e8"
+
+Exemplos de Uso no Markdown:
+
+1. Uso Simples (Apenas Síntese com Título Padrão):
+   {{< conclusao >}}
+   A Teoria dos Grafos não é apenas um estudo abstrato da matemática, mas a fundação
+   que sustenta os algoritmos de roteamento modernos e a inteligência artificial.
+   {{< /conclusao >}}
+
+2. Uso Completo (Com Fontes, Título Customizado e Cor Personalizada):
+   {{< conclusao 
+       titulo="Síntese Pragmática" 
+       tituloFontes="Bases Acadêmicas & Referências" 
+       cor="#ff9d00" 
+       fontes="Euler, L. (1736). Solutio problematis ad geometriam situs pertinentis.\nDijkstra, E. W. (1959). A note on two problems in connexion with graphs.\nWest, D. B. (2001). Introduction to Graph Theory." >}}
+   
+   A busca pela eficiência em redes complexas não prescinde do rigor formal: 
+   a técnica sem fundamento geométrico é apenas ruído computacional.
+   
+   {{< /conclusao >}}
+========================================================================================
+*/}}
+
 {{- $titulo := .Get "titulo" | default "Conclusão" -}}
 {{- $tituloFontes := .Get "tituloFontes" | default "Referências & Fontes" -}}
 {{- $fontesRaw := .Get "fontes" -}}

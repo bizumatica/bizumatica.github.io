@@ -60,3 +60,12 @@ raymond-unix:
   isbn: "9780131429017"
   cor: "#05d9e8"
   url: "https://openlibrary.org/works/OL6036022W/The_art_of_UNIX_programming?utm_source=gemini"
+
+west-graph-theory:
+  titulo: "Introduction to Graph Theory"
+  autor: "Douglas B. West"
+  tipo: "Teoria dos Grafos & Combinatória"
+  nivel: "Avançado"
+  isbn: "9780130144003"
+  cor: "#ff9d00"
+  link: "https://openlibrary.org/books/OL792219M/Introduction_to_graph_theory"

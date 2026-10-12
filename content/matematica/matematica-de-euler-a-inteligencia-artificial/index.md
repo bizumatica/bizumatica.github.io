@@ -83,103 +83,40 @@ Abaixo, apresentamos uma implementação limpa e funcional em Python comparando 
 
 {{< term-tokyo >}}
 #!/usr/bin/env python3
-"""
-Bizumática - Análise Comparativa de Roteamento Mínimo: Dijkstra vs A*
-"""
+"""Bizumática - Roteamento Mínimo: Dijkstra vs A*"""
+from heapq import heappop, heappush
+from math import inf
 
-import heapq
-from typing import Callable, Optional
-
-Ponto = tuple[int, int]
-HeuristicaFn = Callable[[Ponto, Ponto], float]
+manhattan = lambda a, b: abs(a[0] - b[0]) + abs(a[1] - b[1])
 
 
-class GrafoGrid:
-    """Representa uma malha ortogonal bidimensional com suporte a obstáculos."""
-
-    def __init__(self, largura: int, altura: int):
-        self.largura = largura
-        self.altura = altura
-        self.obstaculos: set[Ponto] = set()
-
-    def vizinhos(self, p: Ponto) -> list[Ponto]:
-        """Retorna as adjacências ortogonais válidas e desobstruídas."""
-        x, y = p
-        candidatos = [(x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)]
-        return [
-            (nx, ny)
-            for nx, ny in candidatos
-            if 0 <= nx < self.largura
-            and 0 <= ny < self.altura
-            and (nx, ny) not in self.obstaculos
-        ]
-
-
-def heuristica_manhattan(a: Ponto, b: Ponto) -> float:
-    """Métrica L1 para estimativa de custo em grids ortogonais."""
-    return float(abs(a[0] - b[0]) + abs(a[1] - b[1]))
-
-
-def buscar_caminho_minimo(
-    grafo: GrafoGrid,
-    inicio: Ponto,
-    objetivo: Ponto,
-    heuristica: Optional[HeuristicaFn] = None,
-) -> tuple[dict[Ponto, float], int]:
-    """
-    Executa a busca de menor caminho (A* ou Dijkstra).
-    Se 'heuristica' for None, o algoritmo opera estritamente como Dijkstra.
-    """
-    fronteira: list[tuple[float, Ponto]] = [(0.0, inicio)]
-    custo_acumulado: dict[Ponto, float] = {inicio: 0.0}
-    fechados: set[Ponto] = set()
-    nos_avaliados = 0
-
-    while fronteira:
-        _, atual = heapq.heappop(fronteira)
-
-        if atual in fechados:
+def buscar(w, h, inicio, fim, obstaculos=frozenset(), heuristica=lambda a, b: 0):
+    """Dijkstra por padrão (h=0); A* se uma heurística for passada."""
+    custo, avaliados = {inicio: 0}, 0
+    fila = [(heuristica(inicio, fim), 0, inicio)]
+    while fila:
+        _, g, p = heappop(fila)
+        if g > custo[p]:                     # entrada obsoleta na fila
             continue
-        fechados.add(atual)
-        nos_avaliados += 1
-
-        if atual == objetivo:
+        avaliados += 1
+        if p == fim:
             break
-
-        for proximo in grafo.vizinhos(atual):
-            if proximo in fechados:
-                continue
-
-            novo_custo = custo_acumulado[atual] + 1.0
-
-            if proximo not in custo_acumulado or novo_custo < custo_acumulado[proximo]:
-                custo_acumulado[proximo] = novo_custo
-                h = heuristica(proximo, objetivo) if heuristica else 0.0
-                heapq.heappush(fronteira, (novo_custo + h, proximo))
-
-    return custo_acumulado, nos_avaliados
+        x, y = p
+        for q in ((x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)):
+            if (0 <= q[0] < w and 0 <= q[1] < h and q not in obstaculos
+                    and g + 1 < custo.get(q, inf)):
+                custo[q] = g + 1
+                heappush(fila, (g + 1 + heuristica(q, fim), g + 1, q))
+    return custo, avaliados
 
 
 if __name__ == "__main__":
-    grid = GrafoGrid(50, 50)
-    ponto_inicio, ponto_fim = (0, 0), (49, 49)
-
-    # Execução sob Dijkstra (sem heurística)
-    custo_d, nos_d = buscar_caminho_minimo(
-        grid, ponto_inicio, ponto_fim, heuristica=None
-    )
-
-    # Execução sob A* (com heurística Manhattan)
-    custo_a, nos_a = buscar_caminho_minimo(
-        grid, ponto_inicio, ponto_fim, heuristica=heuristica_manhattan
-    )
-
-    reducao = ((nos_d - nos_a) / nos_d) * 100
-
+    ini, fim = (0, 0), (49, 49)
+    (cd, nd), (ca, na) = buscar(50, 50, ini, fim), buscar(50, 50, ini, fim, heuristica=manhattan)
     print("--- BENCHMARK DE EXPLORAÇÃO DE ESTADOS ---")
-    print(f"Dijkstra -> Nós Avaliados: {nos_d} | Custo: {custo_d[ponto_fim]:.1f}")
-    print(f"A*       -> Nós Avaliados: {nos_a} | Custo: {custo_a[ponto_fim]:.1f}")
-    print(f"Ganho de Eficiência (A*): Redução de {reducao:.2f}% dos nós explorados.")
+    print(f"Dijkstra -> Nós: {nd} | Custo: {cd[fim]}")
+    print(f"A*       -> Nós: {na} | Custo: {ca[fim]}")
+    print(f"Ganho (A*): redução de {(nd - na) / nd:.2%} dos nós explorados.")
 {{< /term-tokyo >}}
 
 {{< recomenda id="west-graph-theory" >}}

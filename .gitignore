@@ -1,5 +1,5 @@
 # ==========================================
-# GITHUB REPOSITORY ISOLATION (v5.2)
+# GITHUB REPOSITORY ISOLATION (v5.3)
 # ==========================================
 
 # 1. Ambientes Virtuais e Scripts Locais
@@ -12,12 +12,13 @@ __pycache__/
 content/agendados/
 .deploy_backups/
 
-# 3. Artefatos de Build e Compilação (Essencial!)
-# Impede que os builds locais subam para o repositório
+# 3. Artefatos de Build, Compilação e Node.js (Essencial!)
+# Impede que os builds locais e pacotes do NPM subam para o repositório
 docs/
 public/
 resources/
 .hugo_build.lock
+node_modules/
 
 # 4. Metadados de Sistema e IDE
 .DS_Store

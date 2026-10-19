@@ -1,0 +1,141 @@
+{{/* 
+  Shortcode: layouts/shortcodes/faq.html
+  Descrição: Processador agnóstico de FAQ. Converte automaticamente títulos Markdown 
+             (ex: #### Pergunta) e seus parágrafos em um accordion interativo 
+             (details/summary) no tema Tokyonight Magenta Techno.
+  
+  Parâmetros:
+    - titulo (opcional): Cabeçalho do bloco de FAQ. Padrão: "❓ PERGUNTAS FREQUENTES"
+    - cor (opcional): Cor do destaque neon. Padrão: "#f7768e" (Tokyonight Magenta)
+
+  Exemplo de uso no Markdown (.md):
+    {{< faq >}}
+    #### O Manjaro XFCE é mais leve que o Manjaro KDE?
+    Sim. Em boot limpo, o XFCE inicia consumindo cerca de 550 MB de RAM.
+
+    #### Baixar o swappiness para 10 pode danificar o SSD?
+    Não. Pelo contrário: reduzir o swappiness diminui a quantidade de gravações desnecessárias.
+    {{< /faq >}}
+*/}}
+
+{{- $titulo := .Get "titulo" | default "❓ PERGUNTAS FREQUENTES" -}}
+{{- $cor := .Get "cor" | default "#f7768e" -}}
+
+{{/* 1. Converte o Markdown interno para HTML */}}
+{{- $rawContent := .Inner | chomp | markdownify -}}
+{{- $processedContent := $rawContent -}}
+
+{{/* 2. RegEx simplificado e validado para evitar erro de parse na sintaxe Go Template */}}
+{{- $patternHeader := "(?s)<h[1-6][^>]*>(.*?)</h[1-6]>" -}}
+{{- $replacement := "</details><details><summary>$1</summary>" -}}
+
+{{- if findRE "<h[1-6]" $rawContent -}}
+  {{- $processedContent = replaceRE $patternHeader $replacement $rawContent -}}
+  {{- $processedContent = replaceRE "^\\s*</details>" "" $processedContent -}}
+  {{- $processedContent = printf "%s</details>" $processedContent -}}
+{{- end -}}
+
+{{/* Injeção Única de CSS por Página (Princípio DRY) */}}
+{{- if not (.Page.Scratch.Get "tn-faq-style-injected") -}}
+  {{- .Page.Scratch.Set "tn-faq-style-injected" true -}}
+  <style>
+    .tn-faq-wrapper {
+      --faq-bg: rgba(22, 22, 30, 0.85);
+      --faq-border: rgba(187, 154, 247, 0.25);
+      --faq-text: #a9b1d6;
+      margin: 2rem 0;
+      border: 1px solid var(--faq-border);
+      border-left: 4px solid var(--faq-accent, #f7768e);
+      border-radius: 6px;
+      background: var(--faq-bg);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+    }
+
+    .tn-faq-header {
+      padding: 0.85rem 1.25rem;
+      background: rgba(187, 154, 247, 0.05);
+      border-bottom: 1px solid var(--faq-border);
+      font-family: var(--font-mono, monospace);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--faq-accent, #f7768e);
+      letter-spacing: 0.5px;
+    }
+
+    .tn-faq-content {
+      padding: 0.25rem 0.75rem;
+    }
+
+    .tn-faq-wrapper details {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      transition: background-color 0.2s ease;
+    }
+
+    .tn-faq-wrapper details:last-child {
+      border-bottom: none;
+    }
+
+    .tn-faq-wrapper summary {
+      padding: 0.9rem 0.75rem;
+      font-weight: 600;
+      color: #c0caf5;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.95rem;
+      transition: color 0.2s ease, background-color 0.2s ease;
+      user-select: none;
+    }
+
+    .tn-faq-wrapper summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .tn-faq-wrapper summary::after {
+      content: "►";
+      font-family: var(--font-mono, monospace);
+      font-size: 0.8rem;
+      color: var(--faq-accent, #f7768e);
+      transition: transform 0.25s ease;
+      margin-left: 10px;
+      flex-shrink: 0;
+    }
+
+    .tn-faq-wrapper details[open] summary::after {
+      transform: rotate(90deg);
+    }
+
+    .tn-faq-wrapper summary:hover {
+      color: var(--faq-accent, #f7768e);
+      background-color: rgba(247, 118, 142, 0.06);
+    }
+
+    .tn-faq-wrapper details[open] summary {
+      color: #ffffff;
+      border-bottom: 1px dashed rgba(187, 154, 247, 0.2);
+    }
+
+    .tn-faq-wrapper details > :not(summary) {
+      padding: 0.85rem 0.75rem 1rem 0.75rem;
+      margin: 0;
+      color: var(--faq-text);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+  </style>
+{{- end -}}
+
+<div class="tn-faq-wrapper" style="--faq-accent: {{ $cor | safeCSS }};">
+  {{- if $titulo -}}
+    <div class="tn-faq-header">
+      <span class="tn-faq-title">{{ $titulo }}</span>
+    </div>
+  {{- end -}}
+
+  <div class="tn-faq-content">
+    {{ $processedContent | safeHTML }}
+  </div>
+</div>

@@ -1,23 +1,24 @@
 {{/*
   Shortcode: layouts/shortcodes/bizu-tabela.html
-  Descrição: Renderizador de tabelas GFM centralizadas e adaptativas (Intrinsic Sizing).
-             Redimensiona proporcionalmente ao volume de texto com transição fluida.
+  Descrição: Renderizador de tabelas GFM centralizadas, responsivas e adaptativas.
+             Permite quebras de linha controladas nas células (com max-width ideal)
+             evitando linhas infinitas no mobile e garantindo leitura confortável.
 */}}
 {{- $cor := .Get "cor" | default "#05d9e8" -}}
 {{- $caption := .Get "caption" | default "" -}}
 {{- $id := printf "tbl-%d" .Ordinal -}}
 
-<!-- Contêiner principal com Intrinsic Sizing (fit-content) e transição suave -->
+<!-- Contêiner principal adaptativo -->
 <figure class="bizu-tabela-container" 
         style="margin: 2rem auto; 
                width: fit-content; 
-               max-width: calc(100% - 1.5rem); 
+               max-width: 100%; 
                clear: both; 
                interpolate-size: allow-keywords; 
                transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1), max-width 0.35s cubic-bezier(0.4, 0, 0.2, 1);">
   
   {{- if $caption -}}
-    <!-- Título Badge proporcional à largura intrínseca da tabela -->
+    <!-- Título Badge proporcional à largura da tabela -->
     <div style="text-align: center; margin-bottom: -2px; position: relative; z-index: 2; width: 100%;">
       <span id="{{ $id }}-caption" 
             style="display: inline-block; 
@@ -79,10 +80,10 @@
       border-radius: 4px;
     }
 
-    /* Regras da Tabela Interna com Ajuste Intrínseco */
+    /* Regras da Tabela Interna com Quebra Controlada de Linhas */
     .bizu-tabela-content table {
-      width: max-content !important;
-      max-width: 100% !important;
+      width: 100% !important;
+      min-width: max-content;
       border-collapse: collapse !important;
       margin: 0 auto !important;
       border: none !important;
@@ -90,9 +91,14 @@
 
     .bizu-tabela-content th,
     .bizu-tabela-content td {
-      white-space: nowrap !important;
-      padding: 0.85rem 1.25rem !important;
+      white-space: normal !important; /* Permite quebras de linha */
+      word-wrap: break-word !important;
+      overflow-wrap: break-word !important;
+      min-width: 120px;               /* Garante que colunas não fiquem esmagadas */
+      max-width: 280px;               /* Limite confortável de largura por coluna no desktop */
+      padding: 0.85rem 1.1rem !important;
       text-align: left;
+      vertical-align: top;            /* Mantém o alinhamento no topo em textos multilinha */
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
@@ -115,6 +121,16 @@
 
     .bizu-tabela-content tr:hover {
       background-color: rgba(255, 255, 255, 0.06);
+    }
+
+    /* Ajuste fino para dispositivos móveis */
+    @media (max-width: 640px) {
+      .bizu-tabela-content th,
+      .bizu-tabela-content td {
+        max-width: 200px; /* Reduz a largura máxima por coluna em telas pequenas */
+        padding: 0.75rem 0.85rem !important;
+        font-size: 0.85rem;
+      }
     }
 
     /* Navegação Acessível via Teclado */

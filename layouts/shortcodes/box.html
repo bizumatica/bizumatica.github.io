@@ -1,34 +1,62 @@
-{{ $tipo := .Get "tipo" | default "bizu" }}
-{{ $titulo := .Get "titulo" | default (upper $tipo) }}
-{{ $lang := .Get "lang" | default "bash" }}
+{{/*
+Shortcode: box.html (ou bizu.html)
+Descrição: Renderiza caixas de destaque/callouts temáticas com suporte a Markdown
+ou blocos de código formatados com syntax highlighting.
 
-{{/* Mapeamento de Ícones */}}
-{{ $icon := "💡" }}
-{{ if eq $tipo "teorema" }}{{ $icon = "📐" }}{{ end }}
-{{ if eq $tipo "aviso" }}{{ $icon = "⚠️" }}{{ end }}
-{{ if eq $tipo "check" }}{{ $icon = "✅" }}{{ end }}
-{{ if eq $tipo "link" }}{{ $icon = "🔗" }}{{ end }}
-{{ if eq $tipo "atencao" }}{{ $icon = "🧐" }}{{ end }}
-{{ if or (eq $tipo "code") (eq $tipo "script") }}{{ $icon = "💻" }}{{ end }}
+Parâmetros:
+- tipo (opcional): "bizu" (padrão), "teorema", "aviso", "check", "link", "atencao", "code", "script"
+- titulo (opcional): Título da caixa. Padrão: Nome do tipo em maiúsculas (ex: "BIZU").
+- lang (opcional): Linguagem para syntax highlighting quando tipo for "code" ou "script". Padrão: "bash".
 
-{{/* Definindo as cores dinâmicas para o estilo inline retrocompatível */}}
-{{ $borderColor := "var(--bizu-yellow)" }}
-{{ if eq $tipo "teorema" }}{{ $borderColor = "var(--primary-color)" }}{{ end }}
-{{ if eq $tipo "aviso" }}{{ $borderColor = "#ffbd2e" }}{{ end }}
-{{ if eq $tipo "check" }}{{ $borderColor = "var(--neon-green)" }}{{ end }}
-{{ if eq $tipo "atencao" }}{{ $borderColor = "var(--magenta)" }}{{ end }}
-{{ if or (eq $tipo "code") (eq $tipo "script") }}{{ $borderColor = "var(--neon-cyan)" }}{{ end }}
+Exemplos de uso em arquivos Markdown (.md):
 
-<div class="mat-box box-{{ $tipo }}" style="border-left: 5px solid {{ $borderColor }}; background: var(--dark-bg, #16161e); padding: 1rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0; border-top: 1px solid rgba(255, 255, 255, 0.05); border-right: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
-    <div class="box-header" style="display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 6px;">
-        <span class="box-icon">{{ $icon }}</span>
-        <strong class="box-title" style="font-family: var(--font-family, monospace); letter-spacing: 1px; color: {{ $borderColor }}; font-size: 0.9rem;">{{ $titulo }}</strong>
-    </div>
-    <div class="box-content" style="font-size: 0.95rem; line-height: 1.6;">
-        {{ if or (eq $tipo "code") (eq $tipo "script") }}
-            {{ highlight (trim .Inner "\n\r") $lang "" }}
-        {{ else }}
-            {{ .Inner | markdownify }}
-        {{ end }}
-    </div>
-</div>
+1. Uso simples (padrão - Bizu):
+{{< box>}}
+    Este é um **bizu** importante sobre a configuração.
+    {{< /box>}}
+
+        2. Aviso customizado com título:
+        {{< box tipo="aviso" titulo="CUIDADO">}}
+            Não execute este comando em ambiente de produção!
+            {{< /box>}}
+
+                3. Bloco de código/script destacado:
+                {{< box tipo="code" lang="python" titulo="Script de Automação">}}
+                    def hello():
+                    print("Hello World")
+                    {{< /box>}}
+                        */}}
+
+                        {{/* Leitura e valores padrão dos parâmetros */}}
+                        {{ $tipo := .Get "tipo" | default "bizu" }}
+                        {{ $titulo := .Get "titulo" | default (upper $tipo) }}
+                        {{ $lang := .Get "lang" | default "bash" }}
+
+                        {{/* Mapeamento de Ícones usando dicionário (mais limpo e performático) */}}
+                        {{ $icons := dict "teorema" "📐" "aviso" "⚠️" "check" "✅" "link" "🔗" "atencao" "🧐" "code" "💻"
+                        "script" "💻" }}
+                        {{ $icon := index $icons $tipo | default "💡" }}
+
+                        {{/* Mapeamento de Cores usando dicionário */}}
+                        {{ $colors := dict "teorema" "var(--primary-color)" "aviso" "#ffbd2e" "check"
+                        "var(--neon-green)" "atencao" "var(--magenta)" "code" "var(--neon-cyan)" "script"
+                        "var(--neon-cyan)" }}
+                        {{ $borderColor := index $colors $tipo | default "var(--bizu-yellow)" }}
+
+                        <div class="mat-box box-{{ $tipo }}"
+                            style="border-left: 5px solid {{ $borderColor }}; background: var(--dark-bg, #16161e); padding: 1rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0; border-top: 1px solid rgba(255, 255, 255, 0.05); border-right: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+                            <div class="box-header"
+                                style="display: flex; align-items: center; gap: 10px; margin-bottom: 0.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 6px;">
+                                <span class="box-icon">{{ $icon }}</span>
+                                <strong class="box-title"
+                                    style="font-family: var(--font-family, monospace); letter-spacing: 1px; color: {{ $borderColor }}; font-size: 0.9rem;">{{
+                                    $titulo }}</strong>
+                            </div>
+                            <div class="box-content" style="font-size: 0.95rem; line-height: 1.6;">
+                                {{ if or (eq $tipo "code") (eq $tipo "script") }}
+                                {{ highlight (trim .Inner "\n\r") $lang "" }}
+                                {{ else }}
+                                {{ .Inner | markdownify }}
+                                {{ end }}
+                            </div>
+                        </div>

@@ -1,0 +1,99 @@
+{{/* 
+  Shortcode: layouts/shortcodes/matrix-prompt.html
+  Descrição: Caixa de destaque estilo terminal/prompt hacker em tom Ciano/Azul elétrico 
+             (complementar à paleta Tokyonight Magenta Techno).
+  
+  Parâmetros:
+    - prompt (opcional): Texto da linha de comando/cabeçalho. Padrão: "[sys.exec] :: PROMPT_"
+    - cor (opcional): Cor do destaque/prompt. Padrão: "#7dcfff" (Tokyonight Cyan)
+    - icone (opcional): Ícone da barra de status. Padrão: "⚡"
+
+  Exemplos de uso no Markdown:
+
+    1. Dica de terminal / aviso com Markdown:
+       {{< matrix-prompt prompt="[sys.info] :: OTIMIZACAO_SSD" >}}
+       Reduzir o **swappiness** para `10` reduz a taxa de gravação no SSD, aumentando sua durabilidade.
+       {{< /matrix-prompt >}}
+
+    2. Linha de comando customizada:
+       {{< matrix-prompt prompt="user@tokyonight:~$" cor="#7aa2f7" icone="❯" >}}
+       `sudo sysctl vm.swappiness=10`
+       {{< /matrix-prompt >}}
+*/}}
+
+{{- $prompt := .Get "prompt" | default "[sys.exec] :: PROMPT_" -}}
+{{- $cor := .Get "cor" | default "#7dcfff" -}}
+{{- $icone := .Get "icone" | default "⚡" -}}
+{{- $id := printf "prompt-%d" .Ordinal -}}
+
+<aside class="tn-matrix-prompt {{ $id }}" 
+       style="--prompt-accent: {{ $cor | safeCSS }};" 
+       aria-label="{{ $prompt }}">
+  <div class="tn-prompt-header">
+    <span class="tn-prompt-icon" aria-hidden="true">{{ $icone }}</span>
+    <strong class="tn-prompt-title">{{ $prompt }}</strong>
+  </div>
+  <div class="tn-prompt-body">
+    {{ .Inner | chomp | markdownify }}
+  </div>
+</aside>
+
+<style>
+  .tn-matrix-prompt.{{ $id }} {
+    --prompt-bg: rgba(15, 20, 30, 0.9);
+    --prompt-border: rgba(125, 207, 255, 0.25);
+    --prompt-text: #c0caf5;
+    margin: 1.75rem 0;
+    border: 1px solid var(--prompt-border);
+    border-left: 4px solid var(--prompt-accent);
+    border-radius: 4px;
+    background: var(--prompt-bg);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+    contain: content;
+  }
+
+  .tn-matrix-prompt.{{ $id }} .tn-prompt-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.65rem 1rem;
+    background: rgba(125, 207, 255, 0.05);
+    border-bottom: 1px solid var(--prompt-border);
+  }
+
+  .tn-matrix-prompt.{{ $id }} .tn-prompt-icon {
+    font-size: 1rem;
+  }
+
+  .tn-matrix-prompt.{{ $id }} .tn-prompt-title {
+    color: var(--prompt-accent);
+    font-family: var(--font-mono, monospace);
+    font-size: 0.875rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .tn-matrix-prompt.{{ $id }} .tn-prompt-body {
+    padding: 0.9rem 1rem;
+    font-size: 0.925rem;
+    line-height: 1.6;
+    color: var(--prompt-text);
+  }
+
+  .tn-matrix-prompt.{{ $id }} .tn-prompt-body p {
+    margin: 0;
+  }
+
+  .tn-matrix-prompt.{{ $id }} .tn-prompt-body p + p {
+    margin-top: 0.75rem;
+  }
+
+  .tn-matrix-prompt.{{ $id }} .tn-prompt-body code {
+    background: rgba(0, 0, 0, 0.4);
+    color: var(--prompt-accent);
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+    border: 1px solid rgba(125, 207, 255, 0.2);
+    font-family: var(--font-mono, monospace);
+  }
+</style>

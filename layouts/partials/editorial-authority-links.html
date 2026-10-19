@@ -1,26 +1,40 @@
-{{/* layouts/partials/editorial-authority-links.html */}}
+{{/* 
+  Partial: editorial-authority-links.html
+  Descrição: Renderiza um bloco com links para páginas de autoridade editorial
+             (primeiro busca dentro da mesma seção, com fallback para o site global).
+             Exclui automaticamente a página atual e páginas já listadas em outros blocos.
+
+  Parâmetros esperados no dicionário de entrada:
+    - context (obrigatório): O contexto da página atual (ex: .)
+    - exclude (opcional): Slice de páginas para excluir da listagem (ex: .Params.related)
+
+  Exemplos de uso em layouts/single.html:
+
+    1. Chamada básica (passando apenas o contexto atual):
+       {{ partial "editorial-authority-links.html" (dict "context" .) }}
+
+    2. Chamada excluindo páginas relacionadas já exibidas em outra seção:
+       {{ partial "editorial-authority-links.html" (dict "context" . "exclude" $relatedPages) }}
+*/}}
+
 {{ $ctx := .context }}
 {{ $excludePages := .exclude | default slice }}
 
-{{/* Build do vetor de exclusão (Atual + Relacionados Exibidos) */}}
+{{/* Constrói a lista de Permalinks a serem excluídos (Atual + Excluídos explicitamente) */}}
 {{ $excludePermalinks := slice $ctx.Permalink }}
 {{ range $excludePages }}
   {{ $excludePermalinks = $excludePermalinks | append .Permalink }}
 {{ end }}
 
-{{/* 1. Tenta buscar na mesma Seção */}}
+{{/* 1. Busca páginas da mesma Seção excluindo os Permalinks mapeados */}}
 {{ $sectionPages := where $ctx.Site.RegularPages "Section" $ctx.Section }}
-{{ $filteredCluster := slice }}
-{{ range $sectionPages }}
-  {{ if not (in $excludePermalinks .Permalink) }}
-    {{ $filteredCluster = $filteredCluster | append . }}
-  {{ end }}
-{{ end }}
+{{ $filteredCluster := where $sectionPages "Permalink" "not in" $excludePermalinks }}
 
-{{/* 2. Fallback: Se a Seção não preencher 3 itens, busca no site globalmente */}}
+{{/* 2. Fallback: Se a Seção tiver menos de 3 itens, busca globalmente no site */}}
 {{ if lt (len $filteredCluster) 3 }}
-  {{ range $ctx.Site.RegularPages }}
-    {{ if and (not (in $excludePermalinks .Permalink)) (not (in $filteredCluster .)) }}
+  {{ $globalPages := where $ctx.Site.RegularPages "Permalink" "not in" $excludePermalinks }}
+  {{ range $globalPages }}
+    {{ if not (in $filteredCluster .) }}
       {{ $filteredCluster = $filteredCluster | append . }}
     {{ end }}
   {{ end }}

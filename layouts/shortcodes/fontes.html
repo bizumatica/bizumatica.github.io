@@ -1,0 +1,171 @@
+{{/* 
+  Shortcode: layouts/shortcodes/fontes.html
+  Descrição: Renderiza referências bibliográficas do Front Matter ou IDs do data/referencias.toml.
+             Suporta chamadas vazias (autofechadas) ou em bloco com conteúdo Markdown interno.
+  
+  Parâmetros:
+    - ids (opcional): Lista de chaves do data/referencias.toml separadas por vírgula (ex: ids="clrs,rfc-793")
+    - titulo (opcional): Título do bloco. Padrão: "📚 FONTES E REFERÊNCIAS BIBLIOGRÁFICAS"
+    - cor (opcional): Cor do destaque. Padrão: "#7aa2f7" (Tokyonight Blue)
+
+  Exemplos de Uso no Artigo (.md):
+
+    1. Automático via Front Matter (sem conteúdo interno - USE A BARRA />):
+       {{< fontes />}}
+
+    2. Chamando IDs específicos da biblioteca global (USE A BARRA />):
+       {{< fontes ids="clrs-book, linux-kernel-docs" />}}
+
+    3. Inline (Markdown Puro no corpo - EXIGE FECHAMENTO):
+       {{< fontes >}}
+       - [Manjaro Wiki](https://wiki.manjaro.org) — Equipe Manjaro [Wiki Oficial]
+       {{< /fontes >}}
+*/}}
+
+{{- $titulo := .Get "titulo" | default "📚 FONTES E REFERÊNCIAS BIBLIOGRÁFICAS" -}}
+{{- $cor := .Get "cor" | default "#7aa2f7" -}}
+{{- $idsParam := .Get "ids" | default "" -}}
+
+{{/* Base global em data/referencias.toml */}}
+{{- $bdGlobal := .Site.Data.referencias | default dict -}}
+{{- $fontesEstruturadas := slice -}}
+
+{{/* 1. Coleta fontes do Front Matter do artigo (.Params.referencias) */}}
+{{- $fmRef := .Page.Params.referencias | default slice -}}
+{{- range $fmRef -}}
+  {{- if .ref_id -}}
+    {{- $itemGlobal := index $bdGlobal .ref_id -}}
+    {{- if $itemGlobal -}}
+      {{- $fontesEstruturadas = $fontesEstruturadas | append $itemGlobal -}}
+    {{- end -}}
+  {{- else -}}
+    {{- $fontesEstruturadas = $fontesEstruturadas | append . -}}
+  {{- end -}}
+{{- end -}}
+
+{{/* 2. Coleta IDs passados diretamente no parâmetro do shortcode (ex: ids="clrs,rfc") */}}
+{{- if ne $idsParam "" -}}
+  {{- $listaIds := split $idsParam "," -}}
+  {{- range $listaIds -}}
+    {{- $chave := trim . " " -}}
+    {{- $itemGlobal := index $bdGlobal $chave -}}
+    {{- if $itemGlobal -}}
+      {{- $fontesEstruturadas = $fontesEstruturadas | append $itemGlobal -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{/* Injeção Única de CSS por Página (Princípio DRY) */}}
+{{- if not (.Page.Scratch.Get "tn-fontes-style-injected") -}}
+  {{- .Page.Scratch.Set "tn-fontes-style-injected" true -}}
+  <style>
+    .tn-fontes-wrapper {
+      --fontes-bg: rgba(22, 22, 30, 0.85);
+      --fontes-border: rgba(122, 162, 247, 0.25);
+      --fontes-text: #a9b1d6;
+      margin: 2rem 0;
+      border: 1px solid var(--fontes-border);
+      border-left: 4px solid var(--fontes-accent, #7aa2f7);
+      border-radius: 6px;
+      background: var(--fontes-bg);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+    }
+
+    .tn-fontes-header {
+      padding: 0.85rem 1.25rem;
+      background: rgba(122, 162, 247, 0.05);
+      border-bottom: 1px solid var(--fontes-border);
+      font-family: var(--font-mono, monospace);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--fontes-accent, #7aa2f7);
+      letter-spacing: 0.5px;
+    }
+
+    .tn-fontes-content {
+      padding: 1rem 1.25rem;
+    }
+
+    .tn-fontes-list {
+      margin: 0;
+      padding-left: 1.2rem;
+      color: var(--fontes-text);
+      font-size: 0.9rem;
+    }
+
+    .tn-fontes-item {
+      margin-bottom: 0.75rem;
+      line-height: 1.5;
+    }
+
+    .tn-fontes-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .tn-fontes-link {
+      color: #7dcfff;
+      text-decoration: underline;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .tn-fontes-link:hover {
+      color: #bb9af7;
+    }
+
+    .tn-fontes-meta {
+      font-family: var(--font-mono, monospace);
+      font-size: 0.8rem;
+      opacity: 0.7;
+      margin-left: 0.4rem;
+    }
+
+    .tn-fontes-inner {
+      font-size: 0.9rem;
+      color: var(--fontes-text);
+      line-height: 1.6;
+    }
+  </style>
+{{- end -}}
+
+<div class="tn-fontes-wrapper" style="--fontes-accent: {{ $cor | safeCSS }};">
+  {{- if $titulo -}}
+    <div class="tn-fontes-header">
+      <span class="tn-fontes-title">{{ $titulo }}</span>
+    </div>
+  {{- end -}}
+
+  <div class="tn-fontes-content">
+    {{- if gt (len $fontesEstruturadas) 0 -}}
+      <ol class="tn-fontes-list">
+        {{- range $fontesEstruturadas -}}
+          <li class="tn-fontes-item">
+            {{- if .url -}}
+              <a href="{{ .url }}" target="_blank" rel="noopener noreferrer" class="tn-fontes-link">
+                {{ .titulo }}
+              </a>
+            {{- else -}}
+              <strong style="color: #c0caf5;">{{ .titulo }}</strong>
+            {{- end -}}
+            
+            {{- if .autor -}}
+              <span> — {{ .autor }}</span>
+            {{- end -}}
+            
+            {{- if .tipo -}}
+              <span class="tn-fontes-meta">[{{ .tipo }}]</span>
+            {{- end -}}
+          </li>
+        {{- end -}}
+      </ol>
+    {{- end -}}
+
+    {{/* Lê .Inner se o shortcode foi chamado como bloco */}}
+    {{- if .Inner -}}
+      <div class="tn-fontes-inner" {{- if gt (len $fontesEstruturadas) 0 -}}style="margin-top: 1rem; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 0.75rem;"{{- end -}}>
+        {{ .Inner | chomp | markdownify }}
+      </div>
+    {{- end -}}
+  </div>
+</div>

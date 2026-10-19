@@ -1,4 +1,22 @@
-{{/* layouts/partials/related-auto.html */}}
+{{/* 
+  Partial: related-auto.html
+  Descrição: Renderiza o bloco de artigos relacionados por TF-IDF / algoritmos de afinidade.
+             O código é encapsulado com verificação defensiva para exibir a caixa 
+             apenas quando houver posts relacionados disponíveis.
+
+  Parâmetros esperados no dicionário de entrada:
+    - related (obrigatório): Coleção de páginas recomendadas (usualmente via .Site.RegularPages.Related .)
+
+  Exemplos de uso em layouts/_default/single.html:
+
+    1. Chamada recomendada usando a engine nativa de recomendação do Hugo:
+       {{ $related := .Site.RegularPages.Related . | first 3 }}
+       {{ partial "related-auto.html" (dict "related" $related) }}
+
+    2. Chamada inline direta:
+       {{ partial "related-auto.html" (dict "related" (.Site.RegularPages.Related . | first 5)) }}
+*/}}
+
 {{ $related := .related }}
 {{ with $related }}
 <aside class="related-posts-wrapper" data-pagefind-ignore aria-label="Artigos Relacionados Dinâmicos" style="margin-top: 35px; contain: content;">

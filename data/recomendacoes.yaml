@@ -69,3 +69,13 @@ west-graph-theory:
   isbn: "9780130144003"
   cor: "#ff9d00"
   link: "https://openlibrary.org/books/OL792219M/Introduction_to_graph_theory"
+
+rocky-livros:
+  titulo: "Documentação Oficial do Rocky Linux"
+  autor: "Rocky Enterprise Software Foundation"
+  tipo: "Documentação Oficial"
+  nivel: "Iniciante ao Avançado"
+  idioma: "Inglês"
+  link: "https://docs.rockylinux.org/10/books/"
+  botao: "Abrir documentação"
+  cor: "#00d26a"

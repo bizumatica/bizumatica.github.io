@@ -33,7 +33,7 @@ Exemplos de uso em arquivos Markdown (.md):
                         {{ $lang := .Get "lang" | default "bash" }}
 
                         {{/* Mapeamento de Ícones usando dicionário (mais limpo e performático) */}}
-                        {{ $icons := dict "teorema" "📐" "aviso" "⚠️" "check" "✅" "link" "🔗" "atencao" "🧐" "code" "💻"
+                        {{ $icons := dict "teorema" "📐" "aviso" "⚠️" "check" "✅" "link" "🔗" "atencao" "🧐" "code" ">_"
                         "script" "💻" }}
                         {{ $icon := index $icons $tipo | default "💡" }}
 

@@ -1,4 +1,30 @@
-{{/* 1. Resolução de Dados (Hugo 0.156+ / hugo.Data) */}}
+{{/*
+  recomenda.html — cartão de recomendação agnóstico (livro, documentação, vídeo, ferramenta, link...)
+
+  Uso:
+    {{< recomenda id="rocky-livros" >}}Descrição opcional em Markdown.{{< /recomenda >}}
+    {{< recomenda titulo="..." autor="..." tipo="..." link="..." >}}...{{< /recomenda >}}
+
+  Precedência de cada campo: parâmetro do shortcode > entrada no data/recomendacoes.yaml > padrão.
+
+  Campos (todos opcionais, exceto que é preciso ter ao menos titulo, via parâmetro ou YAML):
+    id         chave no recomendacoes.yaml (mapa) ou valor do campo "id" (lista)
+    titulo     título do item
+    autor      autor, editora ou organização (omitido se vazio)
+    tipo       "Livro Didático", "Documentação Oficial", "Vídeo", "Ferramenta"... (define o ícone)
+    nivel      "Iniciante", "Avançado"... (omitido se vazio)
+    idioma     "Inglês", "Português"... (omitido se vazio)
+    isbn       gera link e capa via Open Library quando link/capa não forem informados
+    link       URL do material (tem prioridade sobre o ISBN)
+    capa       URL ou caminho local (/img/capa.jpg) da imagem; sem ele, usa a capa do ISBN, se houver
+    cor        cor de destaque em hex (#rgb ou #rrggbb); inválida ou ausente = cor derivada do id/título
+    rotulo     texto pequeno do topo (padrão: "Recomendação")
+    botao      texto do botão (padrão: "Acessar material")
+    icone      força o ícone: livro | doc | video | ferramenta | link
+    descricao  texto usado quando o shortcode não tem corpo
+*/}}
+
+{{/* 1. Resolução de dados (Hugo 0.156+ / hugo.Data) */}}
 {{- $id := .Get "id" -}}
 {{- $entry := dict -}}
 {{- $data := hugo.Data.recomendacoes -}}
@@ -7,39 +33,88 @@
   {{- if reflect.IsMap $data -}}
     {{- $entry = index $data $id | default dict -}}
   {{- else if reflect.IsSlice $data -}}
-    {{- $entry = index (where $data "id" "eq" $id) 0 | default dict -}}
+    {{- with where $data "id" "eq" $id -}}
+      {{- $entry = index . 0 -}}
+    {{- end -}}
   {{- end -}}
 {{- end -}}
 
-{{/* 2. Cascata de Fallbacks Otimizada (DRY) */}}
-{{- $titulo := .Get "titulo" | default (index $entry "titulo") | default "Leitura Recomendada" -}}
-{{- $autor  := .Get "autor"  | default (index $entry "autor")  | default "Autor Desconhecido" -}}
-{{- $tipo   := .Get "tipo"   | default (index $entry "tipo")   | default "Guia" -}}
-{{- $nivel  := .Get "nivel"  | default (index $entry "nivel")  | default "Todos" -}}
-{{- $isbn   := .Get "isbn"   | default (index $entry "isbn") -}}
+{{/* 2. Cascata de campos: shortcode > YAML > padrão */}}
+{{- $titulo    := .Get "titulo"    | default (index $entry "titulo")    | default "Recomendação" -}}
+{{- $autor     := .Get "autor"     | default (index $entry "autor")     | default "" -}}
+{{- $tipo      := .Get "tipo"      | default (index $entry "tipo")      | default "" -}}
+{{- $nivel     := .Get "nivel"     | default (index $entry "nivel")     | default "" -}}
+{{- $idioma    := .Get "idioma"    | default (index $entry "idioma")    | default "" -}}
+{{- $rotulo    := .Get "rotulo"    | default (index $entry "rotulo")    | default "Recomendação" -}}
+{{- $botao     := .Get "botao"     | default (index $entry "botao")     | default "Acessar material" -}}
+{{- $iconeReq  := .Get "icone"     | default (index $entry "icone")     | default "" -}}
+{{- $descricao := .Get "descricao" | default (index $entry "descricao") | default "" -}}
 
-{{/* 3. Cálculo de Cor Determinístico (hash.FNV32a + Modulo) */}}
+{{/* ISBN pode vir como número no YAML; normaliza para só dígitos (e X) */}}
+{{- $isbn := .Get "isbn" | default (index $entry "isbn") | default "" | string | replaceRE `[^0-9Xx]` "" -}}
+
+{{/* 3. Cor de destaque: valida hex e cai para a paleta determinística */}}
 {{- $palette := slice "#7aa2f7" "#bb9af7" "#7dcfff" "#9ece6a" "#e0af68" "#f7768e" "#05d9e8" "#ff2a6d" -}}
-{{- $paletteCor := "#05d9e8" -}}
-{{- if $id -}}
-  {{- $paletteCor = index $palette (mod (hash.FNV32a $id) (len $palette)) -}}
+{{- $seed := $id | default $titulo | string -}}
+{{- $cor := index $palette (mod (hash.FNV32a $seed) (len $palette)) -}}
+{{- $corReq := .Get "cor" | default (index $entry "cor") | default "" | string -}}
+{{- if findRE `^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$` $corReq -}}
+  {{- $cor = $corReq -}}
 {{- end -}}
-{{- $cor := .Get "cor" | default (index $entry "cor") | default $paletteCor -}}
 
-{{/* 4. Derivação de Links e Mídia */}}
-{{- $link := .Get "link" | default (index $entry "link") -}}
+{{/* 4. Link: explícito > Open Library via ISBN */}}
+{{- $link := .Get "link" | default (index $entry "link") | default "" -}}
 {{- if and (not $link) $isbn -}}
   {{- $link = printf "https://openlibrary.org/isbn/%s" $isbn -}}
 {{- end -}}
+{{- $externo := hasPrefix $link "http" -}}
 
-{{- $capa := "" -}}
-{{- if $isbn -}}
-  {{- $capa = printf "https://covers.openlibrary.org/b/isbn/%s-M.jpg" $isbn -}}
+{{/* 5. Capa: explícita > Open Library via ISBN (?default=false faz a API responder 404 sem capa, ativando o fallback) */}}
+{{- $capa := .Get "capa" | default (index $entry "capa") | default "" -}}
+{{- if and (not $capa) $isbn -}}
+  {{- $capa = printf "https://covers.openlibrary.org/b/isbn/%s-M.jpg?default=false" $isbn -}}
+{{- end -}}
+{{- $capaSrc := "" -}}
+{{- if $capa -}}
+  {{- if hasPrefix $capa "/" -}}
+    {{- $capaSrc = $capa | relURL -}}
+  {{- else -}}
+    {{- $capaSrc = $capa -}}
+  {{- end -}}
 {{- end -}}
 
-{{- $svgBook := `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="rec-svg"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>` | safeHTML -}}
+{{/* 6. Ícone: forçado por "icone" ou inferido do "tipo" */}}
+{{- $icons := dict
+  "livro"      `<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>`
+  "doc"        `<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="8" y1="13" x2="16" y2="13"></line><line x1="8" y1="17" x2="16" y2="17"></line>`
+  "video"      `<circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon>`
+  "ferramenta" `<polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line>`
+  "link"       `<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>`
+-}}
+{{- $key := lower $iconeReq -}}
+{{- if not (index $icons $key) -}}
+  {{- $t := lower $tipo -}}
+  {{- if or (strings.Contains $t "livro") (strings.Contains $t "leitura") (strings.Contains $t "didático") (strings.Contains $t "didatico") -}}
+    {{- $key = "livro" -}}
+  {{- else if or (strings.Contains $t "document") (strings.Contains $t "guia") (strings.Contains $t "artigo") (strings.Contains $t "paper") (strings.Contains $t "manual") -}}
+    {{- $key = "doc" -}}
+  {{- else if or (strings.Contains $t "vídeo") (strings.Contains $t "video") (strings.Contains $t "curso") (strings.Contains $t "aula") (strings.Contains $t "podcast") -}}
+    {{- $key = "video" -}}
+  {{- else if or (strings.Contains $t "ferrament") (strings.Contains $t "software") (strings.Contains $t "aplicativo") (strings.Contains $t "utilitár") -}}
+    {{- $key = "ferramenta" -}}
+  {{- else -}}
+    {{- $key = "link" -}}
+  {{- end -}}
+{{- end -}}
+{{- $svg := printf `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="rec-svg">%s</svg>` (index $icons $key) | safeHTML -}}
 
-{{/* 5. Carregamento de CSS Único via .Page.Store */}}
+{{/* 7. Corpo: conteúdo do shortcode > campo descricao do YAML */}}
+{{- $corpo := trim (printf "%s" .Inner) " \n\r\t" -}}
+{{- if not $corpo -}}
+  {{- $corpo = $descricao -}}
+{{- end -}}
+
+{{/* 8. CSS único por página */}}
 {{- if not (.Page.Store.Get "recomenda-css-loaded") -}}
   {{- .Page.Store.Set "recomenda-css-loaded" true -}}
   <style>
@@ -89,9 +164,9 @@
       text-transform: uppercase;
     }
     .rec-badge-highlight {
-      border-color: var(--rec-color-alpha);
+      border-color: color-mix(in srgb, var(--rec-color) 25%, transparent);
       color: var(--rec-color);
-      background: var(--rec-color-alpha-bg);
+      background: color-mix(in srgb, var(--rec-color) 6%, transparent);
     }
     .rec-body-wrap { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1rem; }
     .rec-cover-wrap {
@@ -102,7 +177,6 @@
       overflow: hidden;
       background: #1a1d24;
       border: 1px solid rgba(255, 255, 255, 0.08);
-      position: relative;
     }
     .rec-cover-img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .rec-cover-fallback {
@@ -116,7 +190,8 @@
     }
     .rec-cover-fallback .rec-svg { width: 28px; height: 28px; }
     .rec-body { font-size: 0.95rem; line-height: 1.6; color: #e2e8f0; flex: 1; min-width: 0; }
-    .rec-body p { margin: 0; }
+    .rec-body > :first-child { margin-top: 0; }
+    .rec-body > :last-child { margin-bottom: 0; }
     .rec-footer { display: flex; justify-content: flex-end; }
     .rec-button {
       display: inline-flex;
@@ -135,7 +210,10 @@
     }
     .rec-button:hover { filter: brightness(1.15); transform: translateY(-1px); }
     .rec-button:focus-visible { outline: 2px solid #ffffff; outline-offset: 2px; }
-    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    @media (prefers-reduced-motion: reduce) {
+      .rec-button { transition: none; }
+      .rec-button:hover { transform: none; }
+    }
     @media (max-width: 600px) {
       .rec-header { flex-direction: column; align-items: flex-start; }
       .rec-badges { margin-top: 0.25rem; }
@@ -144,58 +222,57 @@
   </style>
 {{- end -}}
 
-{{/* 6. Markup HTML Semântico */}}
-<aside class="bizu-recomenda" aria-label="Recomendação de Leitura: {{ $titulo }}" style="--rec-color: {{ $cor | safeCSS }}; --rec-color-alpha: {{ $cor | safeCSS }}40; --rec-color-alpha-bg: {{ $cor | safeCSS }}10;">
+{{/* 9. Markup semântico */}}
+<aside class="bizu-recomenda" aria-label="{{ $rotulo }}: {{ $titulo }}" style="--rec-color: {{ $cor | safeCSS }};">
   <div class="rec-header">
     <div class="rec-meta-left">
-      <div class="rec-icon" aria-hidden="true">{{ $svgBook }}</div>
+      <div class="rec-icon" aria-hidden="true">{{ $svg }}</div>
       <div class="rec-title-wrap">
-        <span class="rec-label">RECOMENDAÇÃO DE LEITURA</span>
+        <span class="rec-label">{{ $rotulo }}</span>
         <span class="rec-title">{{ $titulo }}</span>
       </div>
     </div>
+    {{- if or $autor $tipo $nivel $idioma }}
     <div class="rec-badges">
-      <span class="rec-badge"><span aria-hidden="true">✍️ </span>Autor: {{ $autor }}</span>
-      <span class="rec-badge rec-badge-highlight"><span aria-hidden="true">🏷️ </span>Tipo: {{ $tipo }}</span>
-      <span class="rec-badge"><span aria-hidden="true">🎚️ </span>Nível: {{ $nivel }}</span>
+      {{- with $autor }}<span class="rec-badge"><span aria-hidden="true">✍️ </span>Autor: {{ . }}</span>{{ end }}
+      {{- with $tipo }}<span class="rec-badge rec-badge-highlight"><span aria-hidden="true">🏷️ </span>Tipo: {{ . }}</span>{{ end }}
+      {{- with $nivel }}<span class="rec-badge"><span aria-hidden="true">🎚️ </span>Nível: {{ . }}</span>{{ end }}
+      {{- with $idioma }}<span class="rec-badge"><span aria-hidden="true">🌐 </span>Idioma: {{ . }}</span>{{ end }}
     </div>
+    {{- end }}
   </div>
 
+  {{- if or $capaSrc $corpo }}
   <div class="rec-body-wrap">
-    {{- if $capa -}}
+    {{- if $capaSrc }}
     <div class="rec-cover-wrap">
       <img
-        src="{{ $capa | safeURL }}"
-        alt="Capa do livro {{ $titulo }}"
+        src="{{ $capaSrc | safeURL }}"
+        alt="Capa: {{ $titulo }}"
         class="rec-cover-img"
         width="72"
         height="108"
         loading="lazy"
         decoding="async"
-        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+        onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='flex';"
       >
-      <div class="rec-cover-fallback" aria-hidden="true">{{ $svgBook }}</div>
+      <div class="rec-cover-fallback" aria-hidden="true">{{ $svg }}</div>
     </div>
-    {{- end -}}
-    <div class="rec-body">
-      {{- with .Inner -}}
-        {{- . | markdownify -}}
-      {{- else -}}
-        <p>Material de leitura complementar recomendado para consolidar a fundamentação teórica deste tópico.</p>
-      {{- end -}}
-    </div>
+    {{- end }}
+    {{- if $corpo }}
+    <div class="rec-body">{{ $corpo | markdownify }}</div>
+    {{- end }}
   </div>
+  {{- end }}
 
-  {{- if $link -}}
+  {{- if $link }}
   <div class="rec-footer">
     <a href="{{ $link | safeURL }}"
-       target="_blank"
-       rel="noopener noreferrer"
        class="rec-button"
-       aria-label="Acessar material {{ $titulo }} (abre em nova aba)">
-      Acessar Material <span aria-hidden="true">➜</span>
-      <span class="sr-only">(abre em nova aba)</span>
+       {{- if $externo }} target="_blank" rel="noopener noreferrer"{{ end }}
+       aria-label="{{ $botao }}: {{ $titulo }}{{ if $externo }} (abre em nova aba){{ end }}">
+      {{ $botao }} <span aria-hidden="true">➜</span>
     </a>
   </div>
-  {{- end -}}
+  {{- end }}
 </aside>

@@ -27,7 +27,7 @@
 {{- $idsParam := .Get "ids" | default "" -}}
 
 {{/* Base global em data/referencias.toml */}}
-{{- $bdGlobal := .Site.Data.referencias | default dict -}}
+{{- $bdGlobal := hugo.Data.referencias | default dict -}}
 {{- $fontesEstruturadas := slice -}}
 
 {{/* 1. Coleta fontes do Front Matter do artigo (.Params.referencias) */}}

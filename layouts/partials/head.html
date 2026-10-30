@@ -1,98 +1,94 @@
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>{{ if .IsHome }}{{ $.Site.Title }}{{ else }}{{ .Title }} | {{ $.Site.Title }}{{ end }}</title>
+{{/* 1. Lógica Determinística de Indexação (Robots) */}}
+{{ $isNoIndex := or .Params.noindex (in (slice "taxonomy" "term") .Kind) (eq .Layout "search") (eq .RelPermalink "/buscar/") (eq .RelPermalink "/search/") }}
 
-<!-- Meta Description Robusta com Cascata de Fallbacks e Limpeza para SEO -->
-{{- $desc := "" -}}
-{{- if .IsHome -}}
-  {{- $desc = .Description | default $.Site.Params.Subtitle | default $.Site.Params.description -}}
-{{- else -}}
-  {{- $desc = .Description | default .Summary | default $.Site.Params.description -}}
-{{- end -}}
-<meta name="description" content="{{ $desc | plainify | htmlEscape | chomp }}">
-
-<meta name="keywords" content="{{ with .Params.Keywords }}{{ delimit . ", " }}{{ else }}{{ $.Site.Params.Keywords }}{{ end }}">
-
-{{ if .Params.noindex }}
-    <meta name="robots" content="noindex, nofollow">
+{{ if $isNoIndex }}
+  <meta name="robots" content="noindex, follow">
 {{ else }}
-    <meta name="robots" content="index, follow">
+  <meta name="robots" content="index, follow">
 {{ end }}
 
+{{/* 2. Título da Página */}}
+<title>{{ if .IsHome }}{{ .Site.Title }} | Engenharia, Linux e Matemática{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+
+{{/* 3. Meta Description (Fallback: Description -> Summary -> Params.description) */}}
+{{ $desc := .Description | default .Summary | default .Site.Params.description }}
+<meta name="description" content="{{ $desc | plainify | truncate 155 }}">
+
+{{/* 4. Canonical URL */}}
 <link rel="canonical" href="{{ .Permalink }}">
 
-<!-- Preload Otimizado da Fonte Principal (Suporte CORS e URL Relativa) -->
-<link rel="preload" href="{{ "fonts/noto-sans-jp-v56-latin-regular.woff2" | relURL }}" as="font" type="font/woff2" crossorigin="anonymous">
-
-<!-- Processamento Não-Bloqueante de CSS via Injeção Inline Minificada -->
-{{ $cssFiles := resources.Match "css/*.css" }}
-{{ if $cssFiles }}
-  {{ $cssBundle := $cssFiles | resources.Concat "css/bundle.css" | minify }}
-  <style>{{ $cssBundle.Content | safeCSS }}</style>
+{{/* 5. Estilos CSS e Assets */}}
+{{ $css := resources.Match "css/*.css" }}
+{{ range $css }}
+  {{ $styles := . | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $styles.Permalink }}" integrity="{{ $styles.Data.Integrity }}">
 {{ end }}
 
-<!-- Fallback e Estilos Adicionais Estáticos em Modo Não-Bloqueante (URL Relativa) -->
-{{ if (fileExists "static/terminal.css") }}
-  <link rel="preload" href="{{ "terminal.css" | relURL }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="{{ "terminal.css" | relURL }}"></noscript>
-{{ end }}
-{{ if (fileExists "static/style.css") }}
-  <link rel="preload" href="{{ "style.css" | relURL }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="{{ "style.css" | relURL }}"></noscript>
-{{ end }}
+{{ if (fileExists "static/terminal.css") -}}
+  <link rel="stylesheet" href="{{ "terminal.css" | absURL }}">
+{{- end }}
 
-<!-- Declaração do Bloco de Favicons e PWA Manifest (BΣ) -->
-<link rel="icon" type="image/x-icon" href="{{ "favicon.ico" | relURL }}">
-<link rel="icon" type="image/svg+xml" href="{{ "favicon.svg" | relURL }}">
-<link rel="icon" type="image/png" sizes="96x96" href="{{ "favicon-96x96.png" | relURL }}">
-<link rel="apple-touch-icon" sizes="180x180" href="{{ "apple-touch-icon.png" | relURL }}">
-<link rel="manifest" href="{{ "site.webmanifest" | relURL }}">
+{{ if (fileExists "static/style.css") -}}
+  <link rel="stylesheet" href="{{ "style.css" | absURL }}">
+{{- end }}
 
-<!-- OpenGraph / Twitter Cards -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{{ if .IsHome }}{{ $.Site.Title }}{{ else }}{{ .Title }}{{ end }}">
-<meta name="twitter:description" content="{{ $desc | plainify | htmlEscape | chomp }}">
+{{/* 6. Ícones do Site */}}
+<link rel="shortcut icon" href="{{ "favicon.png" | absURL }}">
+<link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | absURL }}">
 
+{{/* 7. Open Graph (Facebook, LinkedIn) */}}
+<meta property="og:locale" content="{{ $.Site.Language.Lang | default "pt_BR" }}">
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
-<meta property="og:title" content="{{ if .IsHome }}{{ $.Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+<meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+<meta property="og:description" content="{{ $desc | plainify | truncate 155 }}">
 <meta property="og:url" content="{{ .Permalink }}">
-<meta property="og:site_name" content="{{ $.Site.Title }}">
-<meta property="og:description" content="{{ $desc | plainify | htmlEscape | chomp }}">
+<meta property="og:site_name" content="{{ .Site.Title }}">
 
-{{ if .Params.image }}
-    {{ $imagePath := printf "images/%s" .Params.image }}
-    {{ if (fileExists (printf "static/%s" $imagePath)) }}
-        <meta property="og:image" content="{{ $imagePath | relURL }}">
-        <meta name="twitter:image" content="{{ $imagePath | relURL }}">
-    {{ end }}
-{{ else if $.Site.Params.DefaultImage }}
-    <meta property="og:image" content="{{ $.Site.Params.DefaultImage | relURL }}">
-    <meta name="twitter:image" content="{{ $.Site.Params.DefaultImage | relURL }}">
+{{/* Tratamento Otimizado de Imagem de Capa (OG Image) */}}
+{{ $ogImage := "og-image.png" | absURL }}
+{{ if .Params.cover }}
+  {{ $ogImage = .Params.cover | absURL }}
+  {{ with (.Resources.GetMatch .Params.cover) }}
+    {{ $ogImage = .Permalink }}
+  {{ end }}
+{{ else if .Params.image }}
+  {{ $ogImage = .Params.image | absURL }}
+{{ end }}
+<meta property="og:image" content="{{ $ogImage }}">
+
+{{ range .Params.categories }}
+  <meta property="article:section" content="{{ . }}">
+{{ end }}
+{{ if isset .Params "date" }}
+  <meta property="article:published_time" content="{{ time .Date }}">
 {{ end }}
 
-{{ partial "math.html" . }}
-{{ partial "extended_head.html" . }}
+{{/* 8. Twitter Cards */}}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+<meta name="twitter:description" content="{{ $desc | plainify | truncate 155 }}">
+<meta name="twitter:image" content="{{ $ogImage }}">
 
-<!-- Lazy Load de Alta Performance do Google AdSense -->
+{{/* 9. Feeds RSS & JSON AST */}}
+{{ with .OutputFormats.Get "RSS" }}
+  <link href="{{ .Permalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}">
+{{ end }}
+{{ with .OutputFormats.Get "json" }}
+  <link href="{{ .Permalink }}" rel="alternate" type="application/json" title="{{ $.Site.Title }}">
+{{ end }}
+
+{{/* 10. Google Analytics Nativo do Hugo */}}
+{{ template "_internal/google_analytics.html" . }}
+
+{{/* 11. AdSense Async Inserção Automática (Injetado apenas em Build de Produção usando hugo.IsServer) */}}
 {{ if not hugo.IsServer }}
-<script>
-  (function() {
-    var adLoaded = false;
-    function loadAdSense() {
-      if (adLoaded) return;
-      adLoaded = true;
-      var script = document.createElement('script');
-      script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ $.Site.Params.adsense.client | default "ca-pub-3733806324330520" }}";
-      script.async = true;
-      script.crossOrigin = "anonymous";
-      document.head.appendChild(script);
-    }
-
-    var events = ['scroll', 'touchstart', 'mousemove', 'keydown'];
-    events.forEach(function(e) {
-      window.addEventListener(e, loadAdSense, { passive: true, once: true });
-    });
-  })();
-</script>
+{{ with .Site.Params.adsense.client }}
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ . }}" crossorigin="anonymous"></script>
 {{ end }}
+{{ end }}
+
+{{/* 12. Hook de Injeção Adicional */}}
+{{ partial "extended_head.html" . }}

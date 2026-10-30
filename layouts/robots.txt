@@ -1,0 +1,11 @@
+# ==============================================================================
+# BIZUMÁTICA - POLÍTICA DE INDEXAÇÃO E RASTREAMENTO (HUGO LAYOUT TEMPLATE)
+# ==============================================================================
+
+User-agent: Mediapartners-Google
+Allow: /
+
+User-agent: *
+Allow: /
+
+Sitemap: {{ "sitemap.xml" | absURL }}

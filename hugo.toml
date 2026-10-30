@@ -44,10 +44,13 @@ relativeURLs = false
 # ==============================================================================
 # TIPOS DE MÍDIA E FORMATOS DE SAÍDA (Obrigatório para API de Busca / JSON AST)
 # ==============================================================================
+# Trava explícita da geração de RSS para taxonomias/termos (Elimina os 16 index.xml)
 [outputs]
-  home = ["HTML", "RSS", "JSON"]
+  home = ["HTML", "RSS", "JSON", "ROBOTS"]
   page = ["HTML"]
   section = ["HTML", "RSS"]
+  taxonomy = ["HTML"]
+  term = ["HTML"]
 
 [mediaTypes]
   [mediaTypes."application/json"]
@@ -63,8 +66,11 @@ relativeURLs = false
 # PARÂMETROS DO TEMA TERMINAL & ADTECH
 # ==============================================================================
 [params]
-  # Define qual seção do content/ alimenta a Home no Tema Terminal
-  contentTypeName = "posts"
+  description = "Engenharia de software, automação Shell Script, administração de sistemas Linux e matemática aplicada."
+  author = "Bizumática"
+
+  # Seção primária exibida na Home do Tema Terminal (Ajustado de "posts" para "linux")
+  contentTypeName = "linux"
   
   themeColor = "orange"
   centerTheme = true
@@ -87,13 +93,18 @@ relativeURLs = false
     client = "ca-pub-3733806324330520"
 
 # ==============================================================================
-# PROCESSAMENTO DE IMAGENS (PIPELINE OTIMIZADO DE LCP / CORE WEB VITALS)
+# PROCESSAMENTO DE IMAGENS (SINTAXE HUGO v0.163.0+)
 # ==============================================================================
 [imaging]
   resampleFilter = "lanczos"
-  quality = 82
   anchor = "Center"
-  hint = "photo"
+  [imaging.jpeg]
+    quality = 82
+  [imaging.webp]
+    quality = 82
+    hint = "photo"
+  [imaging.avif]
+    quality = 82
 
 # ==============================================================================
 # TAXONOMIAS (Prevenção de Thin Content e Taxonomias Fantasmas)

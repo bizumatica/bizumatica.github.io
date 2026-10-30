@@ -218,17 +218,3 @@ O **VS Code** continua sendo uma escolha sólida pelo ecossistema gigante de ext
 {{< /conclusao >}}
 
 ---
-
-### SEO e conferência
-
-* **Palavra-chave principal:** `zed editor linux` (presente no H1, nas primeiras 100 palavras, nos H2s e na meta description).
-* **Title (H1):** Zed no Linux: O Editor em Rust Que Realmente Ameaça o VS Code (63 caracteres).
-* **Meta description:** O Zed chegou ao Linux usando Rust e renderização por GPU. Veja como ele reduz a latência e o consumo de RAM em comparação com o VS Code. (149 caracteres).
-* **Slug:** `zed-editor-linux-rust-vs-code-performance`
-* **Alt das imagens:** "Interface do Zed Editor no Linux mostrando código e mapa de arquivos"
-* **Onde cabem links internos:**
-* [LINK INTERNO: flatpak-vs-snap-vs-appimage-desempenho-seguranca] na seção de instalação via Flatpak.
-* [LINK INTERNO: configurar-lsp-neovim-linux] na tabela comparativa de servidores LSP.
-
-
-* **Reexecução e conferência:** Script Python validado com `psutil` e `subprocess`. Antes de publicar como "testado", rode o script no seu ambiente para medir os valores exatos de RSS de memória e boot no hardware local.

@@ -1,11 +1,9 @@
----
-title: Calculadora Grafica Texas Ti Nspire
+---title: Calculadora Grafica Texas Ti Nspire
 date: '2026-04-05T10:15:42-03:00'
 last_check: '2026-05-22T17:41:55-03:00'
 draft: false
 slug: ti-nspire
 math: true
-noindex: true
 aliases:
   - /curadoria/ti-nspire/
 product:
@@ -25,7 +23,6 @@ affiliate:
   link: https://amzn.to/4s0OMLE
   best_deal: false
 ---
-
 A TI-Nspire CX II CAS representa o ápice da computação algébrica portátil, unindo um motor de cálculo simbólico literal a um kit de carregamento dedicado para garantir autonomia máxima em rotinas severas de engenharia.
 
 ## O Poder do Sistema Algébrico Computacional (CAS) no Ambiente Acadêmico

@@ -1,11 +1,9 @@
----
-title: "Steam Deck OLED 1TB Valve"
+---title: "Steam Deck OLED 1TB Valve"
 date: "2026-04-06T16:30:00-03:00"
 last_check: "2026-05-22T17:41:55-03:00"
 draft: false
 slug: "steam-deck"
 math: true
-noindex: true
 aliases:
   - /curadoria/steam-deck/
 product:
@@ -27,7 +25,6 @@ affiliate:
     link: "https://amzn.to/3Q8VBNT"
     best_deal: true
 ---
-
 ### O Hardware que Mudou o Jogo
 
 O **Steam Deck** não é apenas um console portátil voltado ao entretenimento casual; sob a ótica da engenharia de hardware, ele representa uma verdadeira estação de trabalho Linux disfarçada em um formato compacto e altamente eficiente. Equipado com uma APU customizada da AMD (codinome Sephiroth, utilizando acrobatas de arquitetura Zen 2 e RDNA 2), o dispositivo entrega uma curva de performance por Watt extremamente otimizada, capaz de rivalizar com notebooks tradicionais que operam sob footprints energéticos muito mais agressivos. 

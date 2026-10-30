@@ -1,11 +1,9 @@
----
-title: "Backup Universal Shell com SSD Portátil SanDisk"
+---title: "Backup Universal Shell com SSD Portátil SanDisk"
 date: 2026-03-18T18:15:07-03:00
 last_check: '2026-05-19T17:50:00-03:00'
 draft: false
 slug: "backup-universal-shell-sandisk"
 math: true
-noindex: true
 aliases:
   - /curadoria/backup-universal-shell-sandisk/
 product:
@@ -27,7 +25,6 @@ affiliate:
     link: "https://meli.la/2WHsNed"
     best_deal: false
 ---
-
 No ambiente corporativo e no desenvolvimento de software, seguimos uma regra axiomática de segurança da informação: **"Quem tem um backup, não tem nenhum; quem tem dois, tem apenas um"**. Se os seus arquivos confidenciais, repositórios de código e logs sensíveis residem estritamente no armazenamento NVMe interno do seu notebook de trabalho, você está a uma pane elétrica na placa-mãe ou a uma falha crítica de sistema de arquivos (*filesystem corruption*) de um desastre operacional completo.
 
 Abaixo, entregamos um script de automação Unix universal robusto e a revisão analítica do hardware ideal para profissionais de infraestrutura e exatas que não podem tolerar perdas de dados.

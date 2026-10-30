@@ -1,5 +1,4 @@
----
-title: "Workstations Xeon: O 'Bizu' do Hardware de Elite a Preço de Custo"
+---title: "Workstations Xeon: O 'Bizu' do Hardware de Elite a Preço de Custo"
 date: 2026-05-12T16:00:00-03:00
 draft: false
 toc: true
@@ -10,7 +9,11 @@ tags: ["hardware", "xeon", "workstation", "bizu"]
 math: true
 image: "cover.webp"
 
-# --- SEÇÃO DE MONETIZAÇÃO UNIFICADA (Padrão Shortcode Compra) ---
+#
+aliases:
+  - /posts/laptops-xeon-linux-performance-custo-beneficio/
+---
+SEÇÃO DE MONETIZAÇÃO UNIFICADA (Padrão Shortcode Compra) ---
 product:
   name: "Mobile Workstations Intel Xeon (Lenovo ThinkPad P52 / Dell Precision)"
   current_price: 2185.00

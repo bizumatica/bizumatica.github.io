@@ -1,11 +1,9 @@
----
-title: "Calculadora Gráfica Texas TI-84 Plus CE"
+---title: "Calculadora Gráfica Texas TI-84 Plus CE"
 date: "2026-04-04T19:24:01-03:00"
 last_check: "2026-05-13T17:16:20-03:00"
 draft: false
 slug: "ti-84-plus-ce"
 math: true
-noindex: true
 aliases:
   - /curadoria/ti-84-plus-ce/
 product:
@@ -25,7 +23,6 @@ affiliate:
     link: "https://amzn.to/4s0OMLE"
     best_deal: false
 ---
-
 Padrão ouro em exames internacionais, a TI-84 Plus CE combina tela colorida vibrante e bateria recarregável para estudantes de engenharia e ciências.
 
 ## Análise Acurada da TI-84 Plus CE para Engenharia e Ciências

@@ -1,5 +1,4 @@
----
-title: "XFCE: Indicador de Caps Lock via Terminal"
+---title: "XFCE: Indicador de Caps Lock via Terminal"
 date: 2026-03-26T10:00:00-03:00
 last_check: '2026-05-20T15:20:00-03:00'
 draft: false
@@ -9,8 +8,11 @@ categories: ["Shell Scripting"]
 tags: ["linux", "xfce", "bash", "produtividade", "foss"]
 slug: xfce-indicador-caps-lock-terminal
 type: posts
+aliases:
+  - /equipamentos/caps-lock-indicator/
+  - /shell-scripting/caps-lock-indicator/
+  - /shell-scripting/xfce-indicador-caps-lock-terminal/
 ---
-
 > **LOG_LEVEL:** INFO  
 > **AMBIENTE:** XFCE Desktop / Window Managers Autónomos
 

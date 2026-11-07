@@ -1,0 +1,46 @@
+{{/* 
+================================================================================
+SHORTCODE: elegancia.html (Bizumática Labs)
+================================================================================
+DESCRIÇÃO:
+  Renderiza um bloco de destaque para manifestos, axiomas ou equações matemáticas
+  com suporte nativo ao KaTeX e HTML semântico (blockquote).
+
+EXEMPLOS DE USO:
+
+1. USO PADRÃO (Sem parâmetros - renderiza a Identidade de Euler):
+   {{< elegancia / >}}
+
+2. USO CUSTOMIZADO (Via parâmetros nomeados):
+   {{< elegancia 
+       titulo="A Equação de Campo de Einstein:" 
+       formula="$$G_{\\mu\\nu} + \\Lambda g_{\\mu\\nu} = \\kappa T_{\\mu\\nu}$$" 
+       legenda="Relaciona a geometria do espaço-tempo com a distribuição de matéria." / >}}
+
+3. USO COM BLOCO INTERNO (.Inner):
+   {{< elegancia titulo="Segunda Lei de Newton:" legenda="Princípio fundamental da dinâmica." >}}
+     $$ \vec{F} = \frac{d\vec{p}}{dt} $$
+   {{< /elegancia >}}
+================================================================================
+*/}}
+
+{{- $titulo := .Get "titulo" | default "O Manifesto da Elegância:" -}}
+{{- $formula := .Get "formula" | default "$$\\mathrm{e}^{i\\pi} + 1 = 0$$" -}}
+{{- $legenda := .Get "legenda" | default "A identidade de Euler relaciona as cinco constantes fundamentais da matemática em uma única igualdade elegante." -}}
+
+<section class="manifesto-box" aria-label="{{ $titulo }}">
+  <h2 class="sr-only">{{ $titulo }}</h2>
+  <blockquote cite="{{ .Site.BaseURL }}">
+    <p class="manifesto-title">{{ $titulo }}</p>
+    <div class="math-display">
+      {{ if .Inner }}
+        {{ .Inner | safeHTML }}
+      {{ else }}
+        {{ $formula | safeHTML }}
+      {{ end }}
+    </div>
+    <footer>
+      <em>{{ $legenda }}</em>
+    </footer>
+  </blockquote>
+</section>

@@ -16,18 +16,7 @@ No <strong>Bizumática</strong>, exploramos a intersecção entre o código aber
 <span class="math-term">$\text{μαθηματικά}$</span> e o terminal falarão sempre a mesma língua: a da elegância e da eficiência.
 </p>
 
-<section class="manifesto-box" aria-label="Manifesto da Elegância">
-  <h2 class="sr-only">O Manifesto da Elegância</h2>
-  <blockquote cite="https://bizumatica.com.br">
-    <p class="manifesto-title">O Manifesto da Elegância:</p>
-    <div class="math-display">
-      $$\mathrm{e}^{i\pi} + 1 = 0$$
-    </div>
-    <footer>
-      <em>A identidade de Euler relaciona as cinco constantes fundamentais da matemática em uma única igualdade elegante.</em>
-    </footer>
-  </blockquote>
-</section>
+{{< elegancia / >}}
 
 ---
 
